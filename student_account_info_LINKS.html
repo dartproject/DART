@@ -1,0 +1,1084 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<title>User Management - DART System</title>
+<link rel="stylesheet" href="dart_test.css" type="text/css">
+<script>
+<!--
+function popUp2(URL, x, y) {
+  	self.name = "listings"; // names current window as "listings"
+	newwindow = window.open(URL, 'name', 'toolbar=1,scrollbars=1,location=1,statusbar=0,menubar=0,resizable=1,width=' + x + ',height=' + y + ',left=376,top=135');
+	if(window.focus) {newwindow.focus()}
+  }
+
+function confirmMsg(msg)
+{
+  inbox = confirm(msg);
+  return(inbox);
+}
+
+function logout(skip){
+	window.location = 'index.php?cmd=expired&msg=Idle time exceed. You have been automatically logged out."';
+}
+
+function go2(skip){
+	if(skip == false) {
+		alert ("You will be automatically logged out in 2 minutes if you don't save data or refresh screen");
+		window.refresh();
+	}
+	window.setTimeout("go2(false)", 2400 * 1000); // 1000 is for every min or 1 sec
+	window.setTimeout("logout(false)", 3600 * 1000); // 1000 is for every min or 1 sec
+}
+
+go2(true);
+-->
+</script>
+<script>
+function handleChange(value) {
+     window.location=value;
+     }
+function editValue(title, field, fieldval)
+{
+    var name=prompt("Please edit " + title, fieldval);
+    if (name!=null && name!="") {
+        loc = location.href;
+        window.location="index.php?cmd=saveStudentInfo&id=10461&field=" + field + "&value=" + name; 
+//        window.location.reload();
+     }
+ }</script>
+		<script>
+var countDownInterval=3600;
+var countDownTime=countDownInterval+1;
+function countDown(){
+countDownTime--;
+if (countDownTime <=0){
+countDownTime=countDownInterval;
+clearTimeout(counter)
+//window.location="index.php?cmd=expired&msg=Idle time exceed. You have been automatically logged out.";
+return
+}
+if (document.all) //if IE 4+
+document.all.countDownText.innerText = countDownTime+" ";
+else if (document.getElementById) //else if NS6+
+document.getElementById("countDownText").innerHTML=countDownTime+" "
+else if (document.layers){ //CHANGE TEXT BELOW TO YOUR OWN
+document.c_reload.document.c_reload2.document.write('Timing out in <b id="countDownText">'+countDownTime+' </b> seconds')
+document.c_reload.document.c_reload2.document.close()
+}
+counter=setTimeout("countDown()", 1000);
+}
+
+function startit(){
+if (document.all||document.getElementById) //CHANGE TEXT BELOW TO YOUR OWN
+document.write('Timing out in <b id="countDownText">'+countDownTime+' </b> seconds')
+countDown()
+}
+
+if (document.all||document.getElementById)
+startit()
+else
+window.onload=startit
+//setTimeout("location.href='index.php?cmd=expired&msg=Idle time exceed. You have been automatically logged out.'" , t)
+</script>
+	</head>
+	<body marginheight="0" topmargin="0" vspace="0"
+	marginwidth="0" leftmargin="0" hspace="0" style="margin:0; padding:0">
+	<table border=0 cellpadding=0 cellspacing=0>
+	
+	<tr><td colspan=3 valign=top nowrap><br>
+<a name='top_anchor'><img src="https://dart.bssd.org/images/frontlogo.gif" alt=""></a>
+<a title="DART Project Information" href="http://wiki.bssd.org/index.php/DART_System" target="_blank">DART Project Info</a> :: <a title="DART Support Information" href="http://wiki.bssd.org/index.php/DART_System#DART_Technical_Support">Support</a> :: <a title="DART Contact Information" href="http://wiki.bssd.org/index.php/DART_System#DART_Contacts" target="_blank">Contact</a>
+</td></tr>
+	<tr><td colspan=3 valign=top><img src="images/cleardot.gif" height="10"></td></tr>
+	
+	<tr><td width=10>
+	<img src="images/cleardot.gif" height="1" width="10" border="0" alt="spacer">
+	</td>
+	<td valign=top width=90>
+	<div align="left">
+		<b><font color="#0066ff">Logged In As:</font></b><br>
+		<img src="https://dart.bssd.org/images/dart1.gif" alt="" height="67" width="77" border="0"><br>
+		<b><font color="#0066ff">Concilus, John</font></b><br><b><font color="#0066ff">DART Info<br></font></b>
+		  <img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href="index.php?cmd=logout">Log Out</a><br>
+			<img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href="index.php?cmd=home">Dart Home</a><br>
+			<img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href="index.php?cmd=editProfile">Edit Profile</a><br>
+			<img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href="mailto:dart@bssd.org" target=_blank>Feedback</a><br>
+			<img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href="index.php?cmd=districtrep" target=_blank>SIP Plan</a><br>
+			<img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href="index.php?cmd=siterep" target=_blank>Site SIP Plan</a><br>
+			<img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href="index.php?cmd=teacherrep" target=_blank>Teacher SIP Plan</a><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href="index.php?cmd=search">Search</a><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href="index.php?cmd=Dashboard">Dashboard</a><br><br>
+			<font color="#0066ff"><b>My Groups</b></font><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=9752>*</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=990>Bea WR</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=9511>CA 2 Test</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=10137>CoSN Demo</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=10138>CoSN MA 3</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=10140>CoSN MA6.2</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=10141>CoSN RE.5</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=923>DanTest</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=3428>GLVTransTest</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=10032>Joe_Demo</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=7908>Judy</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=10056>KKA_Demo</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=3550>MA6_Aug</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=3551>MA6_UNK</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=2077>Mary Demo</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=8749>Math_11</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=1893>NancyTest</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=2024>Overall Test</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=5509>Pitch_Demo</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=2104>RE 3SBA</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=9309>RE_6_LHF</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=5362>S3_MA</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=2081>SBA3</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=5232>SBA_3</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=1079>SHH RE 1</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=1087>SHH RE 3</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=1086>SHH RE 4</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=10058>SHH SBA MA</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=9750>ShortList</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=5361>ShowJoe</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=2103>SitkaDemo</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=8805>SKM_MA_6</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=8804>SMK_All</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=5993>Tagaytay</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=1611>Testing LF</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=3335>TransTest</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=8803>Tylers</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=7459>UNK PASS</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=4822>UNK_3rd</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=10108>UNK_MA_5</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=1887>UNK_TE_Over</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=7627>WBB All</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=2023>WMO_Test</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=991>WR Test</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=5237>Zero_size</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=10024>{Name Group!}</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=10026>{Name Group!}</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=10033>{Name Group!}</a><font color=\"#0066ff\"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=10057>{Name Group!}</a><font color=\"#0066ff\"><br><br><font color="#0066ff"><b>Shared Groups<br>Admin</b></font><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=10551>c_ELI</a><font color="#0066ff"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=10550>ELI</a><font color="#0066ff"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=8478>HS Active*</a><font color="#0066ff"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=8477>HS Watch List*</a><font color="#0066ff"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=8620>NACTEC S 01</a><font color="#0066ff"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=8866>NACTEC S 02</a><font color="#0066ff"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=9180>NACTEC S 03</a><font color="#0066ff"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=9321>NACTEC S 04</a><font color="#0066ff"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=9517>NACTEC S 05</a><font color="#0066ff"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=9575>NACTEC S 06</a><font color="#0066ff"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=9673>NACTEC S 07</a><font color="#0066ff"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=9789>NACTEC S 08</a><font color="#0066ff"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=9974>NACTEC S 09</a><font color="#0066ff"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=10014>NACTEC S 10</a><font color="#0066ff"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=10165>NACTEC S 11</a><font color="#0066ff"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=10237>NACTEC S 12</a><font color="#0066ff"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=10278>NACTEC S 13</a><font color="#0066ff"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=10521>NACTEC S 14</a><font color="#0066ff"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=10659>NACTEC S 15</a><font color="#0066ff"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=10553>RE8</a><font color="#0066ff"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=1457>SC Math</a><font color="#0066ff"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=2400>UNK K-1</a><font color="#0066ff"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=4762>WBB 4/21</a><font color="#0066ff"><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=1778>WBB_6</a><font color="#0066ff"><br><br><font color="#0066ff"><b>Private Shared List</b></font><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href=index.php?cmd=showscores&p1=1078>SHH RE 2</a><font color="#0066ff"><br><br><font color="#0066ff"><b>Manage Groups</b></font><br>
+			<img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href="index.php?cmd=newlist">New Group</a><br>
+			<img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href="index.php?cmd=editlist">Edit Groups</a><br><br><font color="#0066ff"><b>Reports</b></font><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href="index.php?cmd=reportsInd">Official</a><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href="index.php?cmd=pivot">Drill Down!</a><br>
+<img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href="index.php?cmd=extraPacingReport">PASS</a><br><br><font color="#0066ff"><b>Admin Area</b></font><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href="index.php?cmd=userAdmin&site=Admin&status=Active">Users Admin</a><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href="index.php?cmd=InternalError">Internal Error</a><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href="index.php?cmd=SchoolCalendar&site=DIO&year=2009">Edit School Cal</a><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href="index.php?cmd=progress&site=Admin">Progress Admin</a><br><br><img src="images/check_history.gif" alt="" height="46" width="46" border="0"><a href="index.php?cmd=history"></a><br><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href="index.php?cmd=history">History Toggle</a><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href="index.php?cmd=historylogin">History Login</a><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href="index.php?cmd=uploadInput">Mass Import</a><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href="index.php?cmd=editNotes">Edit Notes</a><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a href="index.php?cmd=editRepNotes">Edit Report Notes</a><br><img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a title="DART Enrollment Form" href="http://www.bssd.org/enrollment_form.shtml">Add Student</a><br>
+
+<img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a title="DART Drop &amp; Transfer Form" href="http://www.bssd.org/transfer_form.shtml">Drop/ Transfer</a><br>
+
+<img src="images/10_h.gif" alt="" height="2" width="10" border="0"><a title="DART Level Adjustment Form" href="http://www.bssd.org/schedule_form.shtml">Level Change</a><br><br><b>SFA</b><br>
+  <img src="images/10_h.gif" alt="" height="2" width="10" border="0">
+  <a href=index.php?module=sfa&cmd=sfahome>Home</a><br>
+  <img src="images/10_h.gif" alt="" height="2" width="10" border="0">
+  <a href='javascript:void(0);' ONCLICK="popUp('sfa/sri.html', 550, 650);">SRI Sheet</a><br><br>
+  <script>
+<!-- Begin
+  function popUp(URL, x, y) {
+	newwindow = window.open(URL, 'name', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=' + x + ',height=' + y + ',left=376,top=135');
+	if(window.focus) {newwindow.focus();return false;}
+	return false
+  }
+// End -->
+</script>
+
+
+<b>SIP</b><br>
+  <img src="images/10_h.gif" alt="" height="2" width="10" border="0">
+  <a href=index.php?module=sip&cmd=siphome>Home</a><br><br><b>Special Ed</b><br>
+  <img src="images/10_h.gif" alt="" height="2" width="10" border="0">
+  <a href=index.php?module=sped&cmd=spedhome>Home</a><br><br><b>TESTING</b><br>
+  <img src="images/10_h.gif" alt="" height="2" width="10" border="0">
+  <a href=index.php?module=testing&cmd=testingHome>Home</a><br><br>
+	<img src="images/cleardot.gif" height="1" width="100" border="0" alt="spacer">
+	</td>
+	<td valign=top align=left width=600><br><table width="100%" border="0" cellspacing="2" cellpadding="0">
+								<tr>
+									<td bgcolor="white">
+								<div align="left">
+											<br>
+											<div align="left">
+												<a name='toppage'></a><font size="4" color="#cc0000">Student Account Info - </font><font size="4" color="#228b22">Active Student</font><br>
+												<br>
+												<form  name='go'>
+							<select name='cs_popup_name_0' onChange='handleChange(this.value)'>
+								<option value='#' selected>Jump to...</option>
+								<option value='#toppage'>Top Of Page</option>
+								<option value='#account'>Account Information</option>
+								<option value='#demo'>Demographics</option>
+								<option value='#profile'>Student Learning Profile</option>
+								<option value='#levels'>Levels Information</option>
+								<option value='#testing'>Testing Information</option>
+							</select>
+						</form>
+                       </div>
+											<div class="noteimportant">
+										This is the page that view basic student account information. The Student Accounting editing screen district staff have access to is used to change most of these items. Others are calculated from other areas in DART and displayed here for reference. Some fields may be editable to you, depending on your account permissions settings, and those will have a link in the name of the field if you are permitted to do so.</div>
+											<table width="75%" border="0" cellspacing="2" cellpadding="0">
+												<tr>
+													<td width="25%">
+														<div align="center">
+															<img src="https://dart.bssd.org/images/SchoolLogos/702602.gif" alt="" border="0"></div>
+													</td>
+													<td nowrap width="50%">
+														<div align="center">
+															<font size="4">Unalakleet Schools School: Mia Concilus<br>
+																<br>
+															</font><b><font size="2">Last Access: </font></b><font size="2">05/21/2006 at 3:21 p.m.</font><b><font size="2"><br>
+																</font></b><font size="4"></font><font size="2"><a href="index.php?cmd=history&student=10461">Account History</a></font></div>
+													</td>
+													<td nowrap width="25%">
+														<div align="center">
+															<img src="https://dart.bssd.org/images/student/Concilus, Mia.JPG" alt=",  - SKK" height="105" width="95" border="0">
+                              <br>
+													<form enctype="multipart/form-data" name=upload method=post action=index.php?cmd=upload><input type=hidden name=id value=10461><input size=10 type="file" name="pict_file" class="textfield" /><input type=submit name=activity value=Upload><input type=submit name=activity value=Delete></form>
+												</div>
+													</td>
+												</tr>
+											</table>
+											<br>
+											<a name='account'></a><font size="4">Mia Concilus - Account Information </font><font size="4"></font><br>
+												<form  name='go'>
+							<select name='cs_popup_name_0' onChange='handleChange(this.value)'>
+								<option value='#' selected>Jump to...</option>
+								<option value='#toppage'>Top Of Page</option>
+								<option value='#account'>Account Information</option>
+								<option value='#demo'>Demographics</option>
+								<option value='#profile'>Student Learning Profile</option>
+								<option value='#levels'>Levels Information</option>
+								<option value='#testing'>Testing Information</option>
+							</select>
+						</form>
+											<br>
+									<table width="100%" border="0" cellspacing="0" cellpadding="0">
+										<tr>
+											<td colspan="4" nowrap bgcolor="#ccffff">
+												<div align="right">
+													<b><font size="2" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">Account Basics</font></b></div>
+											</td>
+										</tr>
+										<tr>
+													<td nowrap width="15%"><b><font color="#cc0000">First Name: </font></b></td>
+													<td width="35%">Mia</td>
+													<td nowrap width="15%"><b><font color="#cc0000">Student ID: </font></b></td>
+													<td width="35%">10461</td>
+												</tr>
+												<tr>
+													<td nowrap width="15%"><b><font color="#cc0000">Middle Name: </font></b></td>
+													<td width="35%">Nicole</td>
+													<td nowrap width="15%"><b><font color="#cc0000">Username: </font></b></td>
+													<td width="35%">MConcilus461</td>
+												</tr>
+												<tr>
+													<td nowrap width="15%"><font color="#cc0000"><b>Last Name:</b></font></td>
+													<td width="35%">Concilus</td>
+													<td nowrap width="15%"><b><font color="#cc0000">Password: </font></b></td>
+													<td width="35%">rory4ever</td>
+												</tr>
+												<tr>
+													<td nowrap width="15%"><b><font color="#cc0000">Mailing Address:</font></b></td>
+													<td width="35%">P.O. Box 166</td>
+													<td nowrap width="15%"><b><font color="#cc0000">Alaska Student ID:</font></b></td>
+													<td width="35%">83720</td>
+												</tr>
+												<tr>
+													<td nowrap width="15%"><b><font color="#cc0000">Village:</font></b></td>
+													<td width="35%">Unalakleet</td>
+													<td nowrap width="15%"><b><font color="#cc0000">PowerSchool ID:</font></b></td>
+													<td width="35%">10789</td>
+												</tr>
+												<tr>
+													<td nowrap width="15%"><b><font color="#cc0000">State: </font></b></td>
+													<td width="35%">Alaska</td>
+													<td nowrap width="15%"><b><font color="#cc0000">Testing Grade Level: </font></b></td>
+													<td width="35%">9</td>
+												</tr>
+												<tr>
+													<td nowrap width="15%"><b><font color="#cc0000">Zip Code: </font></b></td>
+													<td width="35%">99684</td>
+													<td nowrap width="15%"><b><font color="#cc0000">Birthdate:</font></b></td>
+													<td width="35%">1995-05-24</td>
+												</tr>
+												<tr>
+													<td nowrap width="15%"><b><font color="#cc0000">Phone: </font></b></td>
+													<td width="35%">907-624-4294</td>
+													<td nowrap width="15%"><b><font color="#cc0000">Chronological Age: </font></b></td>
+													<td width="35%">14y 1m 23d</td>
+												</tr>
+												<tr>
+													<td nowrap width="15%"><b><font color="#cc0000">Email Address: </font></b></td>
+													<td width="35%"><a href="(EmptyReference!)">mconcilus@bssd.org</a></td>
+													<td nowrap width="15%"><b><font color="#cc0000">Latest Entry / Exit:</font></b></td>
+													<td width="35%">Entered / Type / Date</td>
+												</tr>
+											</table>
+								</div>
+								<div align="center">
+									<br>
+									<a name="demo"></a><font size="4">Mia Concilus - Demographics </font><font size="4"></font><br>
+									<form name="go">
+										<select name="cs_popup_name_0" onchange="handleChange(this.value)">
+											<option value="#" selected>Jump to...</option>
+											<option value="#toppage">Top Of Page</option>
+											<option value="#account">Account Information</option>
+											<option value="#demo">Demographics</option>
+											<option value="#profile">Student Learning Profile</option>
+											<option value="#levels">Levels Information</option>
+											<option value="#testing">Testing Information</option>
+										</select>
+									</form>
+									<br>
+									<table width="100%" border="0" cellspacing="2" cellpadding="0">
+										<tr>
+											<td nowrap width="15%"><b><font color="#cc0000">Gender: </font></b></td>
+											<td width="35%">Female</td>
+											<td nowrap width="15%"><b><font color="#cc0000">Ethnicity: </font></b></td>
+											<td width="35%">Asian (4)</td>
+										</tr>
+										<tr>
+											<td nowrap width="15%"><b><a href="javascript:editValue('NSLP_Eligible:','NSLPEligible','');"><font color="#cc0000">NSLP Eligible:</font></a></b></td>
+											<td width="35%">No</td>
+											<td nowrap width="15%"><b><a href="javascript:editValue('Migrant:','migrant','');"><font color="#cc0000">Migrant Ed:</font></a></b></td>
+											<td width="35%">Yes</td>
+										</tr>
+									</table>
+									<br>
+									<a name="profile"></a><font size="4">Mia Concilus - Learning Profile </font><br>
+									<form name="go">
+										<select name="cs_popup_name_0" onchange="handleChange(this.value)">
+											<option value="#" selected>Jump to...</option>
+											<option value="#toppage">Top Of Page</option>
+											<option value="#account">Account Information</option>
+											<option value="#demo">Demographics</option>
+											<option value="#profile">Student Learning Profile</option>
+											<option value="#levels">Levels Information</option>
+											<option value="#testing">Testing Information</option>
+										</select>
+									</form>
+									<br>
+									<table width="100%" border="0" cellspacing="2" cellpadding="0">
+										<tr>
+											<td nowrap width="15%"><b><font color="#cc0000">Attendance YTD: </font></b></td>
+											<td width="40%"></td>
+											<td nowrap width="15%"><b><font color="#cc0000">Attendance Trend: </font></b></td>
+											<td width="35%"><b><font color="#ff1493">&lt;&lt;&lt;&lt;SPARKCHART HERE&gt;&gt;&gt;&gt;&gt;</font></b></td>
+										</tr>
+										<tr>
+											<td colspan="4" nowrap>
+												<div align="center">
+													<img src="http://sparklines.bitworking.info/spark.cgi?type=impulse&d=0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,-1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,-2,2,2,2,2,2,2,2,2,2,-2,2,2,2,2,2,2,2,2,-1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,-2,2,2,2,2,2,2,2,2&height=20&limits=-2,2&upper=0&above-color=blue&below-color=red&width=4" alt="" border="0"></div>
+											</td>
+										</tr>
+										<tr>
+											<td nowrap width="15%"><b><font color="#cc0000">Suspensions YTD:</font></b></td>
+											<td width="40%">0</td>
+											<td nowrap width="15%"><b><font color="#cc0000">ISS YTD:</font></b></td>
+											<td width="35%">
+												<div align="left">
+													3</div>
+											</td>
+										</tr>
+										<tr>
+											<td nowrap width="15%"><b><font color="#cc0000">Gym List YTD:</font></b></td>
+											<td width="40%">
+												<div align="left">
+													<a href="(EmptyReference!)">6</a></div>
+											</td>
+											<td width="15%"><b><font color="#cc0000">Discipline Log Events:</font></b></td>
+											<td width="35%"> <a href="(EmptyReference!)">2</a></td>
+										</tr>
+										<tr>
+											<td colspan="4" nowrap>
+												<div align="center">
+													<img src="http://sparklines.bitworking.info/spark.cgi?type=impulse&amp;d=0,0,0,0,2,6,0,1,2,2,1,0,0,0,0,0,0,1,1,0,0,0,9,0,0,2,2,2,0,0,0,0,0,0,2,0,0,1,2,2,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,2,2,2,0,0,0,0,0,0,2,0,0,1,2,2,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,2,2,2,0,0,0,0,0,0,2,0,0,1,2,2,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,2,2,2,0,0,0,0,0,0,2,0,0,1,2,2,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,2,2,2,0,0,0,0,0,0,2,0,0,1,2,2,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,2,2,2,0,0&amp;height=20&amp;limits=-3,20&amp;upper=1&amp;above-color=blue&amp;below-color=green&amp;width=4" style="margin: 0;" alt=""></div>
+											</td>
+										</tr>
+										<tr>
+											<td nowrap width="15%"><b><font color="#cc0000">LEP:</font></b></td>
+											<td width="40%">No</td>
+											<td nowrap width="15%"><b><font color="#cc0000">LEP Status:</font></b></td>
+											<td width="35%">Some LEP Status Here</td>
+										</tr>
+										<tr>
+											<td nowrap width="15%"><b><font color="#cc0000">Indian Education:</font></b></td>
+											<td width="40%">No</td>
+											<td nowrap width="15%"><b><font color="#cc0000">Bilingual Code:</font></b></td>
+											<td width="35%">Some Bilingual Code Here</td>
+										</tr>
+										<tr>
+											<td nowrap width="15%"><b><font color="#cc0000">Section 504:</font></b></td>
+											<td width="40%">No</td>
+											<td nowrap width="15%"><b><font color="#cc0000">SpEd IEP:</font></b></td>
+											<td width="35%">No</td>
+										</tr>
+										<tr>
+											<td nowrap width="15%"><b><font color="#cc0000">Related Services:</font></b></td>
+											<td width="40%">No</td>
+											<td nowrap width="15%"><b><font color="#cc0000">Accommodations: </font></b></td>
+											<td width="35%">No Accommodations in Place</td>
+										</tr>
+										<tr>
+											<td nowrap width="15%"><b><font color="#cc0000">Behavior_Plan:</font></b></td>
+											<td width="40%">No</td>
+											<td nowrap width="15%"><b><font color="#cc0000">WHAT GOES HERE?:</font></b></td>
+											<td width="35%"></td>
+										</tr>
+									</table>
+									<br>
+									<a name="levels"></a><font size="4">Mia Concilus - Levels &amp; Progress Information<br>
+									</font>
+									<form name="go">
+										<select name="cs_popup_name_0" onchange="handleChange(this.value)">
+											<option value="#" selected>Jump to...</option>
+											<option value="#toppage">Top Of Page</option>
+											<option value="#account">Account Information</option>
+											<option value="#demo">Demographics</option>
+											<option value="#profile">Student Learning Profile</option>
+											<option value="#levels">Levels Information</option>
+											<option value="#testing">Testing Information</option>
+										</select>
+									</form>
+									<br>
+									<img src="http://dart.bssd.org/images/dart_percent_standards_mock.jpg" alt="Percentage of Standards Completed" height="270" width="436" border="0"><br>
+								</div>
+								<div align="left">
+									<table width="100%" border="1">
+										<tbody>
+											<tr>
+												<td nowrap bgcolor="#ccccff">
+													<div align="center">
+														<b>Content Area</b></div>
+												</td>
+												<td nowrap bgcolor="#ccccff">
+													<div align="center">
+														<b>Level</b></div>
+												</td>
+												<td nowrap bgcolor="#ccccff">
+													<div align="center">
+														<b>Overall</b></div>
+												</td>
+												<td nowrap bgcolor="#ccccff">
+													<div align="center">
+														<b>QPI</b></div>
+												</td>
+												<td nowrap bgcolor="#ccccff">
+													<div align="center">
+														<b>Started</b></div>
+												</td>
+												<td nowrap bgcolor="#ccccff">
+													<div align="center">
+														<b>TIL</b></div>
+												</td>
+												<td nowrap bgcolor="#ccccff">
+													<div align="center">
+														<b>Standards</b></div>
+												</td>
+												<td nowrap bgcolor="#ccccff">
+													<div align="center">
+														<b>Toggle Trend</b></div>
+												</td>
+											</tr>
+											<tr>
+												<td nowrap>Cultural Awareness</td>
+												<td nowrap>
+													<div align="center">
+														CA 7</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+															DEV</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														Acceptable </div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														&nbsp;5/08/08</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														4Q&nbsp;</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														5/13</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														<b><font color="#ff1493">&lt;&lt;&lt;&lt;SPARKCHART HERE&gt;&gt;&gt;&gt;&gt;</font></b></div>
+												</td>
+											</tr>
+											<tr>
+												<td nowrap>Career Skills</td>
+												<td nowrap>
+													<div align="center">
+														CS 6</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+															DEV</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														Exemplary </div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														5/22/07</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														8Q&nbsp;</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														2/4</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														<b><font color="#ff1493">&lt;&lt;&lt;&lt;SPARKCHART HERE&gt;&gt;&gt;&gt;&gt;</font></b></div>
+												</td>
+											</tr>
+											<tr>
+												<td nowrap>Life Skills</td>
+												<td nowrap>
+													<div align="center">
+														LS 6</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+															DEV</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														Exemplary </div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														5/16/08&nbsp;</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														4Q&nbsp;</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														7/10</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														<b><font color="#ff1493">&lt;&lt;&lt;&lt;SPARKCHART HERE&gt;&gt;&gt;&gt;&gt;</font></b></div>
+												</td>
+											</tr>
+											<tr>
+												<td nowrap>Mathematics</td>
+												<td nowrap>
+													<div align="center">
+														MA 10</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+															DEV</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														Exemplary </div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														4/06/09</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														1Q</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														17/29</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														<b><font color="#ff1493">&lt;&lt;&lt;&lt;SPARKCHART HERE&gt;&gt;&gt;&gt;&gt;</font></b></div>
+												</td>
+											</tr>
+											<tr>
+												<td nowrap>Reading</td>
+												<td nowrap>
+													<div align="center">
+														RE 9</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+															DEV</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														Exemplary </div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														&nbsp;1/11/08</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														&nbsp;6Q</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														6/8</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														<b><font color="#ff1493">&lt;&lt;&lt;&lt;SPARKCHART HERE&gt;&gt;&gt;&gt;&gt;</font></b></div>
+												</td>
+											</tr>
+											<tr>
+												<td nowrap>Science</td>
+												<td nowrap>
+													<div align="center">
+														SC 6P</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+															DEV</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														Acceptable </div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														10/21/08</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														&nbsp;3Q</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														28/39</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														<b><font color="#ff1493">&lt;&lt;&lt;&lt;SPARKCHART HERE&gt;&gt;&gt;&gt;&gt;</font></b></div>
+												</td>
+											</tr>
+											<tr>
+												<td nowrap>Social Studies</td>
+												<td nowrap>
+													<div align="center">
+														SS 9</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+															EMG</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														Exemplary </div>
+												</td>
+												<td nowrap>
+													<div align="center">5/07/09&nbsp;</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														1Q</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														0/13</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														<b><font color="#ff1493">&lt;&lt;&lt;&lt;SPARKCHART HERE&gt;&gt;&gt;&gt;&gt;</font></b></div>
+												</td>
+											</tr>
+											<tr>
+												<td nowrap>Technology</td>
+												<td nowrap>
+													<div align="center">
+														TE 7</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+															EMG</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														Not Instructed </div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														10/11/06&nbsp;</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														&nbsp;11Q</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														0/1</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														<b><font color="#ff1493">&lt;&lt;&lt;&lt;SPARKCHART HERE&gt;&gt;&gt;&gt;&gt;</font></b></div>
+												</td>
+											</tr>
+											<tr>
+												<td nowrap>Writing</td>
+												<td nowrap>
+													<div align="center">
+														WR 7</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+															DEV</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														Exemplary </div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														10/19/07&nbsp;</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														7Q&nbsp;</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														26/28</div>
+												</td>
+												<td nowrap>
+													<div align="center">
+														<b><font color="#ff1493">&lt;&lt;&lt;&lt;SPARKCHART HERE&gt;&gt;&gt;&gt;&gt;</font></b></div>
+												</td>
+											</tr>
+										
+									</table>
+								</div>
+							</td>
+								</tr>
+								<tr>
+					<td bgcolor="white">
+								<div align="center">
+									</div>
+							</td>
+				</tr>
+								<tr>
+					<td bgcolor="white">
+										<div align="center">
+											<table width="100%" border="0" cellspacing="2" cellpadding="0">
+												<tr>
+													<td colspan="3">
+												<div align="left">
+													<br>
+													<a name="testing"></a><font size="4">Mia Concilus - Testing Summary - </font><font size="2"><a href="(EmptyReference!)">Detailed Testing Data</a></font><font size="4"> </font><br>
+													<form name="go">
+														<select name="cs_popup_name_0" onchange="handleChange(this.value)">
+															<option value="#" selected>Jump to...</option>
+															<option value="#toppage">Top Of Page</option>
+															<option value="#account">Account Information</option>
+															<option value="#demo">Demographics</option>
+															<option value="#profile">Student Learning Profile</option>
+															<option value="#levels">Levels Information</option>
+															<option value="#testing">Testing Information</option>
+														</select>
+													</form>
+													<br>
+													<b><font color="#cc0000">SBA Summary - 2009<br>
+														</font></b><br>
+													<img src="../sba_legend.jpg" alt="" height="24" width="402" border="0">
+													<table border=1>
+														<tr>
+															<th>
+																<div align="center">
+																	Alaska ID</div>
+															</th>
+															<th>
+																<div align="center">
+																	Name </div>
+															</th>
+															<th>
+																<div align="center">
+																	Grade<br>
+																	Level </div>
+															</th>
+															<th>
+																<div align="center">
+																	Reading<br>
+																	Proficiency </div>
+															</th>
+															<th>
+																<div align="center">
+																	Writing<br>
+																	Proficiency </div>
+															</th>
+															<th>
+																<div align="center">
+																	Math<br>
+																	Proficiency </div>
+															</th>
+															<th>
+																<div align="center">
+																	Science<br>
+																	Proficiency </div>
+															</th>
+															<th>
+																<div align="center">
+																	Reading<br>
+																	Scale Scores </div>
+															</th>
+															<th>
+																<div align="center">
+																	Writing<br>
+																	Scale Scores </div>
+															</th>
+															<th>
+																<div align="center">
+																	Math<br>
+																	Scale Scores </div>
+															</th>
+															<th>
+																<div align="center">
+																	Science<br>
+																	Scale Scores </div>
+															</th>
+															<th>
+																<div align="center">
+																	Gender </div>
+															</th>
+															<th>
+																<div align="center">
+																	Ethnicity </div>
+															</th>
+															<th>
+																<div align="center">
+																	Economically<br>
+																	Disadvantage </div>
+															</th>
+															<th>
+																<div align="center">
+																	LEP </div>
+															</th>
+															<th>
+																<div align="center">
+																	SPED </div>
+															</th>
+															<th>
+																<div align="center">
+																	504 </div>
+															</th>
+														</tr>
+														<tr>
+															<td>
+																<div align="center">
+																	<a href="index.php?cmd=showIndividualTestScores&module=testing&aid=83720">83720</a></div>
+															</td>
+															<td>
+																<div align="center">
+																	Mia Concilus</div>
+															</td>
+															<td>
+																<div align="center">
+																	9</div>
+															</td>
+															<td bgcolor="#add8e6">
+																<div align="center">
+																	ADV&nbsp;</div>
+															</td>
+															<td bgcolor="#add8e6">
+																<div align="center">
+																	ADV &nbsp;</div>
+															</td>
+															<td bgcolor="#add8e6">
+																<div align="center">
+																	ADV &nbsp;</div>
+															</td>
+															<td>
+																<div align="center">
+																	&nbsp;</div>
+															</td>
+															<td class="Adv">
+																<div align="center">
+																	451&nbsp;</div>
+															</td>
+															<td class="Adv">
+																<div align="center">
+																	471&nbsp;</div>
+															</td>
+															<td class="Adv">
+																<div align="center">
+																	408 &nbsp;</div>
+															</td>
+															<td class="">
+																<div align="center">
+																	&nbsp;</div>
+															</td>
+															<td>
+																<div align="center">
+																	Female</div>
+															</td>
+															<td>
+																<div align="center">
+																	4 &nbsp;</div>
+															</td>
+															<td>
+																<div align="center">
+																	&nbsp;</div>
+															</td>
+															<td>
+																<div align="center">
+																	X &nbsp;</div>
+															</td>
+															<td>
+																<div align="center">
+																	N &nbsp;</div>
+															</td>
+															<td>
+																<div align="center">
+																	&nbsp;</div>
+															</td>
+														</tr>
+													</table>
+													<br>
+													<b><font color="#cc0000">SBA Summary - 2008<br>
+														</font></b><br>
+													<img src="../sba_legend.jpg" alt="" height="24" width="402" border="0">
+													<p></p>
+													<table border=1>
+														<tr>
+															<th>
+																<div align="center">
+																	Alaska ID</div>
+															</th>
+															<th>
+																<div align="center">
+																	Name </div>
+															</th>
+															<th>
+																<div align="center">
+																	Grade<br>
+																	Level </div>
+															</th>
+															<th>
+																<div align="center">
+																	Reading<br>
+																	Proficiency </div>
+															</th>
+															<th>
+																<div align="center">
+																	Writing<br>
+																	Proficiency </div>
+															</th>
+															<th>
+																<div align="center">
+																	Math<br>
+																	Proficiency </div>
+															</th>
+															<th>
+																<div align="center">
+																	Science<br>
+																	Proficiency </div>
+															</th>
+															<th>
+																<div align="center">
+																	Reading<br>
+																	Scale Scores </div>
+															</th>
+															<th>
+																<div align="center">
+																	Writing<br>
+																	Scale Scores </div>
+															</th>
+															<th>
+																<div align="center">
+																	Math<br>
+																	Scale Scores </div>
+															</th>
+															<th>
+																<div align="center">
+																	Science<br>
+																	Scale Scores </div>
+															</th>
+															<th>
+																<div align="center">
+																	Gender </div>
+															</th>
+															<th>
+																<div align="center">
+																	Ethnicity </div>
+															</th>
+															<th>
+																<div align="center">
+																	Economically<br>
+																	Disadvantage </div>
+															</th>
+															<th>
+																<div align="center">
+																	LEP </div>
+															</th>
+															<th>
+																<div align="center">
+																	SPED </div>
+															</th>
+															<th>
+																<div align="center">
+																	504 </div>
+															</th>
+														</tr>
+														<tr>
+															<td>
+																<div align="center">
+																	<a href="index.php?cmd=showIndividualTestScores&module=testing&aid=83720">83720</a></div>
+															</td>
+															<td>
+																<div align="center">
+																	Mia Concilus</div>
+															</td>
+															<td>
+																<div align="center">
+																	8 &nbsp;</div>
+															</td>
+															<td bgcolor="#add8e6">
+																<div align="center">
+																	ADV&nbsp;</div>
+															</td>
+															<td bgcolor="#add8e6">
+																<div align="center">
+																	ADV</div>
+															</td>
+															<td bgcolor="#add8e6">
+																<div align="center">
+																	ADV&nbsp;</div>
+															</td>
+															<td>
+																<div align="center">
+																	&nbsp;</div>
+															</td>
+															<td class="Adv">
+																<div align="center">
+																	449 &nbsp;</div>
+															</td>
+															<td class="Adv">
+																<div align="center">
+																	474 &nbsp;</div>
+															</td>
+															<td class="Adv">
+																<div align="center">
+																	403 &nbsp;</div>
+															</td>
+															<td class="">
+																<div align="center">
+																	&nbsp;</div>
+															</td>
+															<td>
+																<div align="center">
+																	Female</div>
+															</td>
+															<td>
+																<div align="center">
+																	4 &nbsp;</div>
+															</td>
+															<td>
+																<div align="center">
+																	&nbsp;</div>
+															</td>
+															<td>
+																<div align="center">
+																	X &nbsp;</div>
+															</td>
+															<td>
+																<div align="center">
+																	N &nbsp;</div>
+															</td>
+															<td>
+																<div align="center">
+																	&nbsp;</div>
+															</td>
+														</tr>
+													</table>
+													<p>&lt;&lt;&lt;&lt;&lt;INCLUDE ANY SBA's / TERRANOVA / HSGQE OVERVIEW FROM PRIOR AND CURRENT YEAR&gt;&gt;&gt;&gt;</p>
+													<p>&lt;&lt;&lt;&lt;&lt;LINK UNDER ALASKA ID GOES TO DETAILED VIEW FOR THOSE WITH PERMISSION FOR TESTING MODULE&gt;&gt;&gt;&gt;&gt;</p>
+												</div>
+											</td>
+												</tr>
+											</table>
+										</div>
+									</td>
+				</tr>
+							</table></td></tr>
+	
+	<tr><td colspan=2></td><td><br><br><div align="center">
+	<table width="100%" border="0" cellspacing="2" cellpadding="0">
+		<tr>
+			<td colspan="3">
+				
+			</td>
+		</tr>
+		<tr>
+			<td nowrap width="33%"><a title="DART Project Information" href="http://wiki.bssd.org/index.php/DART_System" target="_blank">DART Project Info</a> :: <a title="DART Support Information" href="http://wiki.bssd.org/index.php/DART_System#DART_Technical_Support">Support</a> :: <a title="DART Contact Information" href="http://wiki.bssd.org/index.php/DART_System#DART_Contacts" target="_blank">Contact</a></td>
+			<td valign="middle" nowrap width="30%">
+				<div align="center">
+					<a title="This software is licensed under the CC-GNU GPL." href="http://creativecommons.org/licenses/GPL/2.0/" target="_blank"><img src="https://dart.bssd.org/images/somerights20.gif" alt="Attribution-NonCommercial-ShareAlike 2.5 License" height="31" width="88" align="absmiddle" border="0"></a></div>
+			</td>
+			<td valign="middle" nowrap width="60%">
+				<div align="right">
+					DART: Standards tracking that is free like a puppy!</div>
+			</td>
+		</tr>
+	</table>
+</div>
+</td></tr>
+	</table>
+	<script language="JavaScript" type="text/javascript" src="wz_tooltip.js"></script>
+	</body>
+</html>

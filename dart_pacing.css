@@ -1,0 +1,636 @@
+/* CSS Document */
+table {}
+.style0
+	{text-align:general;
+	vertical-align:bottom;
+        color:windowtext;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Verdana;
+	border:none;}
+td
+	{padding-top:1px;
+	padding-right:1px;
+	padding-left:1px;
+	color:windowtext;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Verdana;
+	text-align:general;
+//	vertical-align:bottom;
+	border:none;}
+.xl24
+	{font-size:14.0pt;
+	font-family:"Times New Roman";
+	text-align:center;
+	vertical-align:middle;
+	border:.5pt solid windowtext;
+	white-space:normal;}
+.xl25
+	{font-size:14.0pt;
+	font-family:"Times New Roman";
+	text-align:center;
+	vertical-align:middle;
+	border:.5pt solid windowtext;
+	background:#669999;
+	white-space:normal;}
+.xl26
+	{font-size:14.0pt;
+	font-family:"Times New Roman";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	white-space:normal;}
+.xl27
+	{font-size:14.0pt;
+	font-family:"Times New Roman";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	background:#969696;
+	white-space:normal;}
+.xl28
+	{font-size:14.0pt;
+	font-weight:700;
+	font-family:"Times New Roman";
+	text-align:center;
+	vertical-align:middle;
+	border:.5pt solid windowtext;
+	white-space:normal;}
+.xl29
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;
+	white-space:normal;}
+.xl30
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:1.5pt solid windowtext;
+	border-right:none;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;
+	white-space:normal;}
+.xl31
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:1.5pt solid windowtext;
+	border-right:1.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;}
+.xl32
+	{color:#333333;
+	font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	background:white;
+	white-space:normal;}
+.xl33
+	{color:#333333;
+	font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border:.5pt solid windowtext;
+	background:white;
+	white-space:normal;}
+.xl34
+	{color:#333333;
+	font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:1.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;
+	background:#669999;
+	white-space:normal;}
+.xl35
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border:.5pt solid windowtext;
+	white-space:normal;}
+.xl36
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:1.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;
+	white-space:normal;}
+.xl37
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	background:669999;
+	white-space:normal;}
+.xl38
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border:.5pt solid windowtext;
+	background:black;
+	white-space:normal;}
+.xl39
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:1.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;
+	background:#669999;
+	white-space:normal;}
+.xl40
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	white-space:normal;}
+.xl41
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:none;
+	border-right:1.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;
+	white-space:normal;}
+.xl42
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	white-space:normal;}
+.xl43
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	background:black;
+	white-space:normal;}
+.xl44
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	white-space:normal;}
+.xl45
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border:.5pt solid windowtext;
+	white-space:normal;}
+.xl46
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:1.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;
+	white-space:normal;}
+.xl47
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:1.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;
+	background:black;
+	white-space:normal;}
+.xl48
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border:.5pt solid windowtext;
+	background:silver;
+	white-space:normal;}
+.xl49
+	{font-size:16.0pt;
+	font-family:"Times New Roman";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:1.5pt solid windowtext;
+	border-bottom:none;
+	border-left:.5pt solid windowtext;
+	background:black;
+	white-space:normal;}
+.xl50
+	{font-size:14.0pt;
+	font-weight:700;
+	font-family:"Times New Roman";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:none;
+	border-left:none;
+	background:black;
+	white-space:normal;}
+.xl51
+	{font-size:14.0pt;
+	font-weight:700;
+	font-family:"Times New Roman";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:none;
+	border-left:.5pt solid windowtext;
+	background:black;
+	white-space:normal;}
+.xl52
+	{font-size:14.0pt;
+	font-family:"Times New Roman";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:none;
+	border-left:.5pt solid windowtext;
+	background:#969696;
+	white-space:normal;}
+.xl53
+	{font-size:14.0pt;
+	font-family:"Times New Roman";
+	text-align:center;
+	vertical-align:middle;
+	white-space:normal;}
+.xl54
+	{font-size:20.0pt;
+	font-family:"Times New Roman";
+	vertical-align:middle;
+	white-space:normal;}
+.xl55
+	{font-size:14.0pt;
+	font-weight:700;
+	font-family:"Times New Roman";
+	text-align:center;
+	vertical-align:middle;
+	white-space:normal;
+	background:#000000;}
+.xl56
+	{font-size:20.0pt;
+	vertical-align:middle;
+	white-space:normal;}
+.xl57
+	{font-size:20.0pt;
+	font-family:"Times New Roman";
+	vertical-align:middle;}
+.xl58
+	{font-size:20.0pt;
+	font-weight:700;
+	font-family:"Times New Roman";
+	text-align:left;
+	vertical-align:middle;
+	background:silver;}
+.xl59
+	{font-size:20.0pt;
+	font-weight:700;
+	font-family:"Times New Roman";
+	text-align:center;
+	vertical-align:middle;
+	background:silver;
+	white-space:normal;}
+.xl60
+	{font-size:20.0pt;
+	font-weight:700;
+	font-family:"Times New Roman";
+	text-align:center;
+	vertical-align:middle;
+	white-space:normal;}
+.xl61
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:1.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	white-space:normal;}
+.xl62
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:none;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;
+	background:#FFFFCC;
+	white-space:normal;}
+.xl63
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:1.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;
+	background:#FFFFCC;
+	white-space:normal;}
+.xl64
+	{font-size:14.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border:.5pt solid windowtext;
+	background:#FFFFCC;
+	white-space:normal;}
+.xl65
+	{font-size:14.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:1.5pt solid windowtext;
+	border-left:.5pt solid windowtext;
+	background:#FFFFCC;
+	white-space:normal;}
+.xl66
+	 { font-weight: 700; font-size: 20pt; font-family: "Arial Narrow"; background-color: #000000; text-align: center; vertical-align: middle; border: solid 0.5pt }
+.xl67
+	{font-size:20.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:1.5pt solid windowtext;
+	border-left:.5pt solid windowtext;
+	background:#FFFFCC;
+	white-space:normal;}
+.xl68
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:none;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;
+	white-space:normal;}
+.xl69
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:none;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;
+	background:silver;
+	white-space:normal;}
+.xl70
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	background:silver;
+	white-space:normal;}
+.xl71
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:1.5pt solid windowtext;
+	border-right:none;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;
+	background:silver;}
+.xl72
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:1.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	background:silver;}
+.xl73
+	{font-size:20.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:none;
+	border-left:.5pt solid windowtext;
+	background:#FFFFCC;
+	white-space:normal;}
+.xl74
+	{font-size:20.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;
+	background:#FFFFCC;
+	white-space:normal;}
+.xl75
+	{font-size:20.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:1.5pt solid windowtext;
+	border-left:.5pt solid windowtext;
+	background:#FFFFCC;
+	white-space:normal;}
+.xl76
+	{font-size:20.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:none;
+	border-right:.5pt solid windowtext;
+	border-bottom:1.5pt solid windowtext;
+	border-left:.5pt solid windowtext;
+	background:#FFFFCC;
+	white-space:normal;}
+.xl77
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:none;
+	border-bottom:.5pt solid windowtext;
+	border-left:1.5pt solid windowtext;
+	white-space:normal;}
+.xl78
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:none;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	white-space:normal;}
+.xl79
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:1.5pt solid windowtext;
+	border-right:none;
+	border-bottom:.5pt solid windowtext;
+	border-left:1.5pt solid windowtext;
+	white-space:normal;}
+.xl80
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:1.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	white-space:normal;}
+.xl81
+	{font-size:20.0pt;
+	vertical-align:middle;
+	white-space:normal;}
+.xl82
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:none;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;
+	white-space:normal;}
+.xl83
+	{font-size:16.0pt;
+	font-weight:700;
+	font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:none;
+	border-bottom:.5pt solid windowtext;
+	border-left:.5pt solid windowtext;
+	background:silver;
+	white-space:normal;}
+.xl84
+	{font-family:"Arial Narrow";
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:.5pt solid windowtext;
+	border-left:none;
+	background:669999;
+	white-space:normal;}

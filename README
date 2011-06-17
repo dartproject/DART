@@ -1,0 +1,181 @@
+DART - Data Analysis and Reporting Toolkit
+Copyright (C) 2006 Bering Strait School District
+
+Project Pages located at:
+
+        Project Wiki & Tutorials
+        http://wiki.bssd.org/index.php/DART_System
+
+        Software Repository, Developer Forums & Bugtracker
+        https://eduforge.org/projects/dart/
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version. 
+
+You can read the full license here:
+
+        http://creativecommons.org/licenses/GPL/2.0/
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program package; if not, write to the Free Software Foundation,
+Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+
+ABOUT DOCUMENTATION: This is just a first stab at organizing documentation for
+the DART system. The wiki pages, and Eduforge site will hopefully soon
+have a group of users who can help in providing more detailed instructions,
+as well as feedback on how DART can be most easily be documented.
+
+To install the DART system:
+
+- Put all components in a directory that is assessible by a web browser running php/mysql. 
+- Then use the lib/dart_create.sql file to create a sql database. 
+- Set up the database access parameters and other machine specific information in the lib/machine.config.php file.
+
+----------------------
+REPLACING STUDENT DATA
+----------------------
+There are three (3) tables have all the student information in the system:
+
+        student - core student information
+        studentlevel - current and pass level information
+        grades - individual toggle information
+
+----------------------
+REPLACING USER INFORMATION
+--------------------------
+There are also three (3) tables have all the users information in the system:
+
+        user - basic user information with logon and password
+        list - name of list that the user has created along with shared site
+        listitem - studentid, listid pair for creating a list of students
+
+--------------------------------------------
+INFORMATION FOR REPLACING BSSD STANDARDS
+--------------------------------------------
+
+        subject - List of all the subjects that you are teaching with graduation level
+        standards - List of every standard with subject, level and std
+        level - List of all the levels that the system needs to know about
+
+------------------------------------------------------------------
+GENERAL MODULES AND PAGES
+------------------------------------------------------------------
+
+USER PERMISSIONS
+-----------
+        userAdmin - userAdmin.inc
+        userInfo - userInfo.inc
+        updateUser - updateUser.inc
+        permissions - permissions.inc
+        savePermissions - savePermissions.inc
+
+NOTES
+-----
+        editNotes - editNotes.inc
+        saveNotes - saveNotes.inc
+
+GROUPS
+------
+        editlist - editlist.inc
+        deletelist - deleteList.inc
+        updateListName - updateListName.inc
+        updateListType - updateListType.inc
+        newlist - newList.inc
+        updatelist - updatelist.inc
+        handleGroup - handleGroup.inc
+
+REPORTS
+-------
+        pivot - pivot.inc
+        drilldown - drilldown.inc
+        reportsInd - reportsInd.inc
+        reports - reports.inc
+        pacingReport - pacingReport.inc
+        progressReport - progressReport.inc
+        sreport - sreport.inc
+
+SEARCH
+-------
+        search - search.inc
+        searchResults - searchResults.inc
+
+STUDENT INFO
+------------
+        showscores - showscores.inc = displays all students in group
+
+        toggle - toggleSubjectLevel.inc = displays group on subject level (toggle)
+        saveToggle - saveToggle.inc
+
+        toggleStudent - toggleStudent.inc = displays student entire record (toggle)
+        saveStudentToggle - saveStudentToggle.inc
+
+        studentInfo - studentInfo.inc - individual student aux info (edit)
+        saveStudentInfo - saveStudentInfo.inc
+        upload - upload.inc - for pictures
+
+        advEdit - advEdit - abilty to edit all information about a student. This is reserved for only the super of super users.
+        saveAdvEditStudentInfo - saveAdvEditStudentInfo.inc - saves the demographic information about a student.
+        saveLevels - saveLevels.inc - saves the student level information about the current student. What level they are currently at.
+        saveAdvToggle - saveAdvToggle.inc - saves the toggle information that has been changed for the current student.
+
+HISTORY
+-------
+        history - history.inc
+
+HOME PAGE
+---------
+        home,default - home.inc
+
+------------------------------------------------------------------
+SUPPORT PAGES
+------------------------------------------------------------------
+
+Pages For All Users
+===================
+        expired,logout - logout.inc
+        logon - logon.inc
+        forget - forget.inc
+        getPwd - getPwd.inc
+        processLogon - processLogon.inc
+
+Pages For Super Admin
+========================
+        initialize - initialize.inc
+
++++++++++++++++++++++++++++ TABLE DEFINITIONS +++++++++++++++++++++++++++
+
+grades - individual values for each standards toggle value for each student
+
+history - toggle and update history
+
+history2 - change log (standards, login, logout, etc.)
+
+level - all the possible levels for each area 
+
+standards - listing of every standard with that standards information
+
+student - each student in the system
+
+studentlevel - each area and level that the student has achieved or is working on
+
+subjects - each area and what the graduation value is for that level
+
+users - users of the syste along with their permissions
+
+list - a user or sites list information (name, site, userid)
+
+listitems - student/list pair of the students  on a particular list 
+
+site - information about each school site
+
+============== WARNINGS ===========
+
+1) Do not have levels with . or _ or -

@@ -1,0 +1,68 @@
+[13-Dec-2008 17:26:47] PHP Parse error:  syntax error, unexpected T_STRING in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 9
+[13-Dec-2008 17:26:47] PHP Parse error:  syntax error, unexpected T_STRING in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 9
+[13-Dec-2008 17:26:47] PHP Parse error:  syntax error, unexpected T_STRING in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 9
+[13-Dec-2008 17:26:47] PHP Parse error:  syntax error, unexpected T_STRING in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 9
+[13-Dec-2008 17:26:47] PHP Parse error:  syntax error, unexpected T_STRING in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 9
+[13-Dec-2008 17:29:33] PHP Parse error:  syntax error, unexpected T_STRING, expecting ']' in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 15
+[13-Dec-2008 17:29:33] PHP Parse error:  syntax error, unexpected T_STRING, expecting ']' in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 15
+[13-Dec-2008 17:29:33] PHP Parse error:  syntax error, unexpected T_STRING, expecting ']' in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 15
+[13-Dec-2008 17:29:33] PHP Parse error:  syntax error, unexpected T_STRING, expecting ']' in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 15
+[13-Dec-2008 17:29:34] PHP Parse error:  syntax error, unexpected T_STRING, expecting ']' in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 15
+[13-Dec-2008 23:14:47] PHP Parse error:  syntax error, unexpected T_LNUMBER in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 25
+[13-Dec-2008 23:14:47] PHP Parse error:  syntax error, unexpected T_LNUMBER in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 25
+[13-Dec-2008 23:14:47] PHP Parse error:  syntax error, unexpected T_LNUMBER in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 25
+[13-Dec-2008 23:14:47] PHP Parse error:  syntax error, unexpected T_LNUMBER in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 25
+[13-Dec-2008 23:14:47] PHP Parse error:  syntax error, unexpected T_LNUMBER in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 25
+[13-Dec-2008 23:15:30] PHP Parse error:  syntax error, unexpected T_LNUMBER in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 25
+[13-Dec-2008 23:15:31] PHP Parse error:  syntax error, unexpected T_LNUMBER in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 25
+[13-Dec-2008 23:15:31] PHP Parse error:  syntax error, unexpected T_LNUMBER in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 25
+[13-Dec-2008 23:15:31] PHP Parse error:  syntax error, unexpected T_LNUMBER in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 25
+[13-Dec-2008 23:15:31] PHP Parse error:  syntax error, unexpected T_LNUMBER in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 25
+[13-Dec-2008 23:15:53] PHP Parse error:  syntax error, unexpected T_LNUMBER in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 25
+[13-Dec-2008 23:16:16] PHP Warning:  include_once(lib/machine.config.inc) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 3
+[13-Dec-2008 23:16:16] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening 'lib/machine.config.inc' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 3
+[13-Dec-2008 23:16:16] PHP Warning:  include_once(lib/ez_sql.inc) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 4
+[13-Dec-2008 23:16:16] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening 'lib/ez_sql.inc' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 4
+[13-Dec-2008 23:16:16] PHP Warning:  include_once(lib/warning.inc) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 5
+[13-Dec-2008 23:16:16] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening 'lib/warning.inc' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 5
+[13-Dec-2008 23:16:16] PHP Warning:  include_once(lib/function.inc) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 6
+[13-Dec-2008 23:16:16] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening 'lib/function.inc' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 6
+[13-Dec-2008 23:16:16] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/idgadmin/public_html/fymmdev/codebase/get.php:3) in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 10
+[13-Dec-2008 23:16:16] PHP Fatal error:  Call to a member function get_var() on a non-object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 19
+[13-Dec-2008 23:16:59] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 64
+[13-Dec-2008 23:16:59] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 64
+[13-Dec-2008 23:16:59] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 64
+[13-Dec-2008 23:16:59] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 64
+[13-Dec-2008 23:16:59] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 64
+[13-Dec-2008 23:17:30] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 65
+[13-Dec-2008 23:17:30] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 65
+[13-Dec-2008 23:17:30] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 65
+[13-Dec-2008 23:17:30] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 65
+[13-Dec-2008 23:17:30] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 65
+[13-Dec-2008 23:18:20] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 65
+[13-Dec-2008 23:18:22] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 65
+[13-Dec-2008 23:18:26] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 65
+[13-Dec-2008 23:18:35] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 64
+[13-Dec-2008 23:28:40] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 49
+[13-Dec-2008 23:28:40] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 49
+[13-Dec-2008 23:28:40] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 49
+[13-Dec-2008 23:28:40] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 49
+[13-Dec-2008 23:28:40] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 49
+[13-Dec-2008 23:28:40] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 49
+[13-Dec-2008 23:28:40] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 49
+[13-Dec-2008 23:28:40] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 49
+[13-Dec-2008 23:28:40] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 49
+[13-Dec-2008 23:30:36] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 49
+[13-Dec-2008 23:30:36] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 49
+[13-Dec-2008 23:30:36] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 49
+[13-Dec-2008 23:30:36] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 49
+[13-Dec-2008 23:30:36] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 49
+[13-Dec-2008 23:30:36] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 49
+[13-Dec-2008 23:30:36] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 49
+[13-Dec-2008 23:30:36] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 49
+[13-Dec-2008 23:30:36] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 49
+[13-Dec-2008 23:31:08] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 49
+[13-Dec-2008 23:31:08] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 49
+[13-Dec-2008 23:31:08] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 49
+[13-Dec-2008 23:31:08] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 49
+[13-Dec-2008 23:31:08] PHP Warning:  reset() [<a href='function.reset'>function.reset</a>]: Passed variable is not an array or object in /home/idgadmin/public_html/fymmdev/codebase/get.php on line 49

@@ -1,0 +1,3 @@
+// Command to update end of the year to move fourth_rawscore from last year to base_rawscore of next year.
+
+insert into sfascores  (year, studentid, base_rawscore) select "2007", studentid, fourth_rawscore FROM sfascores where year = "2006"

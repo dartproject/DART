@@ -1,0 +1,1628 @@
+<html><head><title>MA 8 Group - DART - Data Analysis and Reporting Tool</title>
+
+
+<link rel="stylesheet" href="dart_test.css" type="text/css">
+<script>
+function changeValue(name) {
+//alert (name)
+        document.getElementById("ch_" + name).value = document.getElementById(name).value;
+// toggle image
+//        document.getElementById(name + "_img").src = 'images\\dot.gif';
+//        document.gri_2_CA_3_3_img.src = 'images\\dot.gif';
+//alert(name + "_img " + 'images\\dot.gif');
+ }</script></head><body>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody>
+				<tr>
+					<td colspan="2" valign="top"><input src="http://dart.bssd.org/images/frontlogo.jpg" alt="" type="image"><a title="DART Project Information" href="http://wiki.bssd.org/index.php/DART_System" target="_blank">DART Project Info</a> :: <a href="http://wiki.bssd.org/index.php/DART_System#DART_Technical_Support">Support</a> :: <a title="DART Contact Information" href="http://wiki.bssd.org/index.php/DART_System#DART_Contacts" target="_blank">Contact</a></td>
+				</tr>
+				<tr>
+					<td valign="top" width="100">
+						<div align="left">
+							<img src="individual_toggle_files/cleardot.gif" alt="spacer" border="0" height="1" width="100"><br>
+							<b><font color="#0066ff">Logged In As:</font></b><br>
+							<img src="http://www.bssd.org/images/dart1.gif" alt="" height="67" width="77" border="0"><br>
+							<b><font color="#0066ff">John Concilus</font></b>
+							<p><b><font color="#0066ff">DART Info<br>
+									</font></b><img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="http://www.edunew.com/dart/index.php?cmd=home">Home</a><br>
+								<img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="(EmptyReference!)">History</a><br>
+								<img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="(EmptyReference!)">Alerts</a><br>
+								<br>
+								<font color="#0066ff"><b>Reports</b><br>
+								</font><img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="(EmptyReference!)">Individual</a><font color="#0066ff"><br>
+								</font><img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="(EmptyReference!)">Group</a><font color="#0066ff"><br>
+								</font><br>
+								<font color="#0066ff"><b>My Groups</b><br>
+								</font><img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="http://www.edunew.com/dart/index.php?cmd=showscores&amp;p1=8">SFA Group</a><a href="(EmptyReference!)"><br>
+								</a><img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="http://www.edunew.com/dart/index.php?cmd=showscores&amp;p1=9">SS 7 Group</a><a href="(EmptyReference!)"><br>
+								</a><img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="http://www.edunew.com/dart/index.php?cmd=showscores&amp;p1=9">PBL Group</a>&nbsp;<br>
+								<img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="http://www.edunew.com/dart/index.php?cmd=showscores&amp;p1=9">SBT Group<br>
+								</a><img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="http://www.edunew.com/dart/index.php?cmd=showscores&amp;p1=9">Autopsy VTC</a></p>
+							<p><font color="#0066ff"><b>Edit Groups</b><br>
+								</font><img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="http://www.edunew.com/dart/index.php?cmd=newlist&amp;p1=2">New Group</a><br>
+								<img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="http://www.edunew.com/dart/index.php?cmd=newlist&amp;p1=2">Edit Group</a><br>
+								<img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="http://www.edunew.com/dart/index.php?cmd=newlist&amp;p1=2">Delete Group</a><br>
+								<br>
+								<font color="#0066ff"><b>Admin Area</b><br>
+								</font><img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="http://www.edunew.com/dart/index.php?cmd=adminListUsers">Users</a><br>
+								<img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="(EmptyReference!)">Subjects</a><br>
+								<img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="(EmptyReference!)">Standards</a><br>
+								<img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="http://www.edunew.com/dart/index.php?cmd=newlist&amp;p1=2">Data</a><br>
+							</p>
+						</div>
+					</td>
+					<td valign="top" width="100%">
+						<div align="center">
+							<table width="100%" border="0" cellspacing="2" cellpadding="0">
+								<tr>
+									<td bgcolor="white">
+										<div align="left">
+											<br>
+											<font size="4">All Students - Math Level 8 - PBL Group<br>
+												<br>
+											</font><font size="2"><select name="selectName" size="1">
+													<option selected value="one">Choose One</option>
+													<option value="#top_anchor">Top of Page</option>
+													<option value="#tag_cloud">Highest Needs</option>
+													<option value="one">Beam, James</option>
+													<option value="#walker_johnnie">Daniels, Jack</option>
+													<option value="#walker_johnnie">Dickel, George</option>
+													<option value="#walker_johnnie">Walker, Johnnie</option>
+													<option value="#save_changes">Save All Changes</option>
+												</select><br>
+											</font>
+											<ul>
+												<li type="circle"><font size="2"><b>Note:</b> Roll over each standard number to read it!</font>
+											</ul>
+											<p>The screen below shows the current status of these students in this content area.  Toggle the appropriate indicator, and enter comments as needed. Make sure you &quot;Save Changes&quot; for the entire page from either the pull down menu, or the button at the bottom of the page.  The time and date stamp of your entry for this student will be added.</p>
+											<p>Students files currently being toggled by other staff members will have a ten-minute &quot;Editing Lock&quot; symbol  <b><font color="#cc0000"><img src="http://dart.bssd.org/images/edit_lock.gif" alt="" height="15" width="15" border="0"></font></b><font color="black">  to protect that data. </font>  <br>
+												<br>
+												<font size="4">Shared Standard Needs - Math Level 8 - PBL Group<br>
+													<br>
+												</font><font size="2">Here is a &quot;weighted list&quot; of the common relative weaknesses of this group of students. The more students is this group that show any standard as having no toggled status </font><font size="2">, Emerging status, or Developing status, the larger the name of the standard is in the list. This means that the largest short standard names are the most common relative weaknesses of the group.</font></p>
+											<div class="notetarget">
+												<a title="Equivalent Representations" href="http://wiki.bssd.org//index.php/MA_8.2_(A1.3.4)_Translates_between_equivalent_representations_of_the_same_number_(fractions,_decimals,_percents,_exponents,_scientific_notation,_rational_numbers_and_standard_notation)." target="_blank"><t4>Equivalent Representations</t4></a> :: <a title="Estimation Strategies" href="http://wiki.bssd.org//index.php/MA_8.11_(A3.3.2)_Applies_and_defends_a_variety_of_estimation_and_problem-solving_strategies_(lists,_guess_%26_check,_extended_patterns)_and_represents_mathematical_problems_numerically,_pictorially_or_symbolically." target="_blank"><t3>Estimation Strategies</t3></a> :: <a title="Find Missing Angle / Side" href="http://wiki.bssd.org//index.php/MA_8.20_(A5.3.3)_Uses_similarity_and_congruence_to_find_the_scale_factor_and_apply_it_to_find_missing_angles_or_sides_of_figures.,_including_use_of_a_coordinate_plane." target="_blank"><t2>Find Missing Angle/Side</t2> :: <a title="Geometric Formulas" href="http://wiki.bssd.org//index.php/MA_8.26_(A5.4.6)_Applies_geometric_formulas_to_a_variety_of_situations_(midpoint,_distance,_slope,_area,_and_volume)." target="_blank"><t3>Geometric Formulas</t3> :: <a title="Measure Precision Error" href="http://wiki.bssd.org/index.php/MA_8.31_Evaluates_measurements_for_accuracy,_precision_and_error;_explains_acceptable_range_of_error." target="_blank"><t2>Measure Precision Error</t2></a> :: <a title="Defends Conclusions" href="http://wiki.bssd.org//index.php/MA_8.32_(D1.3.3)_Explains,_justifies_and_defends_conclusions_with_examples_from_other_disciplines_and_every_day_life." target="_blank"><t5>Defends Conclusions</t5></a> :: <a title="Net &amp; Gross Pay / Tax Forms" href="http://wiki.bssd.org//index.php/MA_8.38_Calculates_net_pay_vs._gross_pay_and_completes_the_end_of_year_federal_income_tax_using_the_short_form." target="_blank"><t4>Net &amp; Gross Pay / Tax Forms</t4></a> :: <a title="Graphing Relationships" href="http://wiki.bssd.org//index.php/MA_8.41_Graphing_or_identifying_relationships_of_variables_on_a_coordinate_plane_(e.g._length/width,_area/diameter,_cost/pound)." target="_blank"><t3>Graphing Relationships</t3></a> :: <t4>Analytical Assessment</t4> :: <t4>Problem Solving 1</t4> :: <t3>Problem Solving 2</t3></div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<form name="toggle" method="post" action="index.php?cmd=saveStudentToggle">
+											<h3><input name="studentid" value="8552" type="hidden"></h3>
+											<font size="2"><b><font color="#cc0000">Beam, James<br>
+													</font>Math Level 8 Students:</b><select name="selectName" size="1">
+													<option selected value="one">Choose One</option>
+													<option value="#top_anchor">Top of Page</option>
+													<option value="#tag_cloud">Highest Needs</option>
+													<option value="one">Beam, James</option>
+													<option value="#walker_johnnie">Daniels, Jack</option>
+													<option value="#walker_johnnie">Dickel, George</option>
+													<option value="#walker_johnnie">Walker, Johnnie</option>
+													<option value="#save_changes">Save All Changes</option>
+												</select><br>
+												<b>Last Change: </b>Tommy Teacher (4/27/06 - 1:13 p.m.) - <a href="change_history.html" target="_blank">History</a></font>
+											<table border="1">
+												<tbody>
+													<tr bgcolor="#ffffcc">
+														<th rowspan="2" nowrap>MA (8)</th>
+														<th title="[Base ?systems] - (A1.4.2) Applies basic operations with different base ?systems.">&nbsp;&nbsp;1&nbsp;&nbsp;</th>
+														<th title="[Equivalent ?representations] - (A1.3.4) Translates between equivalent ?representations of the same number (fractions, decimals, percents, ?exponents, scientific notation).">&nbsp;&nbsp;2&nbsp;&nbsp;</th>
+														<th title="[Basic properties] - ?(A1.3.7) Applies commutative, associative and distributive properties ?with variables.">&nbsp;&nbsp;3&nbsp;&nbsp;</th>
+														<th title="[Order of operations] - ?Multiplies, divides, and performs the proper order of operations with ?signed numbers (with and without parentheses) and with scientific ?notations.">&nbsp;&nbsp;4&nbsp;&nbsp;</th>
+														<th title="[LCM] - Applies the LCM ?using unit multipliers.">&nbsp;&nbsp;5&nbsp;&nbsp;</th>
+														<th title="[Proportions/percents] - ?(A3.4.6) Uses proportions to solve percent problems greater than 100. ?MA 8.6 (A3.4.6) Uses proportions to solve percent problems greater ?than 100.">&nbsp;&nbsp;6&nbsp;&nbsp;</th>
+														<th title="[Volume] - Calculates ?volumes of simple geometric solids and the area of complex figures ?and converges units of area">&nbsp;&nbsp;7&nbsp;&nbsp;</th>
+														<th title="[Complex percent] - Solves ?complex percentage problems.">&nbsp;&nbsp;8&nbsp;&nbsp;</th>
+														<th title="[Estimates] - Estimates ?products, quotients and square roots.">&nbsp;&nbsp;9&nbsp;&nbsp;</th>
+														<th title="[Taxes short form] - ?Calculates end of year federal income tax using short form.">&nbsp;&nbsp;10&nbsp;&nbsp;</th>
+													</tr>
+													<tr bgcolor="#ffffcc">
+														<td><input name="old_gri_8552_MA_8_1" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_1" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_1" onclick='changeValue("gri_8552_MA_8_1")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_2" value="PRO" type="hidden"> <input name="ch_gru_8552_MA_8_2" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_2" onclick='changeValue("gru_8552_MA_8_2")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO" selected="selected">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_3" value="PRO" type="hidden"> <input name="ch_gru_8552_MA_8_3" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_3" onclick='changeValue("gru_8552_MA_8_3")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO" selected="selected">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_4" value="PRO" type="hidden"> <input name="ch_gru_8552_MA_8_4" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_4" onclick='changeValue("gru_8552_MA_8_4")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO" selected="selected">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_5" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_5" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_5" onclick='changeValue("gri_8552_MA_8_5")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_6" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_6" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_6" onclick='changeValue("gri_8552_MA_8_6")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_7" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_7" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_7" onclick='changeValue("gri_8552_MA_8_7")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_8" value="DEV" type="hidden"> <input name="ch_gru_8552_MA_8_8" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_8" onclick='changeValue("gru_8552_MA_8_8")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV" selected="selected">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_9" value="ADV" type="hidden"> <input name="ch_gru_8552_MA_8_9" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_9" onclick='changeValue("gru_8552_MA_8_9")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV" selected="selected">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_10" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_10" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_10" onclick='changeValue("gri_8552_MA_8_10")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+													</tr>
+												</tbody>
+											</table>
+											<table border="1">
+												<tbody>
+													<tr bgcolor="#ffffcc">
+														<th rowspan="2" nowrap>MA (8)</th>
+														<th title="[Estimation strategies] ?- (A3.3.2) Applies and defends a variety of estimation strategies.">&nbsp;&nbsp;11&nbsp;&nbsp;</th>
+														<th title="[Rational/irrational ?computations] - (A3.3.5) Adds, subtracts, multiplies and divides ?rational and common irrational numbers forms (fraction, decimals, and ?percents).">&nbsp;&nbsp;12&nbsp;&nbsp;</th>
+														<th title="[Convert equivalent ?fractions] - (A1.4.4, A3.3.5) Converts between equivalent fractions, ?percents, proportions, and exponential forms of numbers.">&nbsp;&nbsp;13&nbsp;&nbsp;</th>
+														<th title="[Graph ?inequalities/functions] - Recognizes, evaluates, and graphs ?inequalities and functions.">&nbsp;&nbsp;14&nbsp;&nbsp;</th>
+														<th title="[Inverse operations] - ?Uses inverse operations and the properties of 1 and 0 to solve ?rational number problems.">&nbsp;&nbsp;15&nbsp;&nbsp;</th>
+														<th title="[Words and symbols] - ?(A4.4.2) Translates word problems into symbolic expressions, ?equations, or inequalities and solves (including linear and ?quadratic).">&nbsp;&nbsp;16&nbsp;&nbsp;</th>
+														<th title="[Number patterns] - ?(A4.3.1) Generalizes numeric and geometric patterns and sequences.">&nbsp;&nbsp;17&nbsp;&nbsp;</th>
+														<th title="[Analyze patterns] - ?(A4.3.4) Uses tables of ordered pairs, graphs, and linear equations ?to analyze patterns.">&nbsp;&nbsp;18&nbsp;&nbsp;</th>
+														<th title="[Identify graphs] - ?(A4.4.1) Identifies and predicts the graphs of families of functions ?(linear, absolute value, quadratic, exponential).">&nbsp;&nbsp;19&nbsp;&nbsp;</th>
+														<th title="[Find missing ?angle/side] - (A5.3.3) Uses similarity and congruence to find missing ?angles or sides of figures.">&nbsp;&nbsp;20&nbsp;&nbsp;</th>
+													</tr>
+													<tr bgcolor="#ffffcc">
+														<td><input name="old_gru_8552_MA_8_11" value="PRO" type="hidden"> <input name="ch_gru_8552_MA_8_11" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_11" onclick='changeValue("gru_8552_MA_8_11")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO" selected="selected">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_12" value="PRO" type="hidden"> <input name="ch_gru_8552_MA_8_12" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_12" onclick='changeValue("gru_8552_MA_8_12")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO" selected="selected">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_13" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_13" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_13" onclick='changeValue("gri_8552_MA_8_13")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_14" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_14" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_14" onclick='changeValue("gri_8552_MA_8_14")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_15" value="PRO" type="hidden"> <input name="ch_gru_8552_MA_8_15" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_15" onclick='changeValue("gru_8552_MA_8_15")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO" selected="selected">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_16" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_16" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_16" onclick='changeValue("gri_8552_MA_8_16")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_17" value="DEV" type="hidden"> <input name="ch_gru_8552_MA_8_17" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_17" onclick='changeValue("gru_8552_MA_8_17")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV" selected="selected">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_18" value="DEV" type="hidden"> <input name="ch_gru_8552_MA_8_18" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_18" onclick='changeValue("gru_8552_MA_8_18")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV" selected="selected">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_19" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_19" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_19" onclick='changeValue("gri_8552_MA_8_19")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_20" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_20" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_20" onclick='changeValue("gri_8552_MA_8_20")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+													</tr>
+												</tbody>
+											</table>
+											<table border="1">
+												<tbody>
+													<tr bgcolor="#ffffcc">
+														<th rowspan="2" nowrap>MA (8)</th>
+														<th title="[Drawing polygons] - ?(A5.3.1) Classifies, compares, and sketches regular and irregular ?polygons.">&nbsp;&nbsp;21&nbsp;&nbsp;</th>
+														<th title="[3D figures] - (A5.3.2) ?Identifies and describes a variety of 3D figures">&nbsp;&nbsp;22&nbsp;&nbsp;</th>
+														<th title="[Volume and surface ?area] - (A5.3.4) Estimates and calculates volume and surface area of ?solids.">&nbsp;&nbsp;23&nbsp;&nbsp;</th>
+														<th title="[Transformations] - ?(A5.3.5) Draws and describes the results of transformations (slides, ?rotations, reflections, and dilations).">&nbsp;&nbsp;24&nbsp;&nbsp;</th>
+														<th title="[Constructions] - ?Performs basic geometry constructions (midpoint, angle bisector, ?parallel and perpendicular lines).">&nbsp;&nbsp;25&nbsp;&nbsp;</th>
+														<th title="[Geometric formulas] - ?(A5.4.6) Applies geometric formulas to a variety of situations ?(midpoint, slope, area, and volume).">&nbsp;&nbsp;26&nbsp;&nbsp;</th>
+														<th title="[Record data] - Samples ?and records data systematically.">&nbsp;&nbsp;27&nbsp;&nbsp;</th>
+														<th title="[Create: ?graph/table/chart] - (A6.3.1) Creates graphs, tables and charts from ?collected data with and without technology (histograms, scatter ?plots, frequency distribution).">&nbsp;&nbsp;28&nbsp;&nbsp;</th>
+														<th title="[Projections and ?inferences] - (A6.3.4) Makes projections based on available data and ?evaluates whether inferences can be made from the data.">&nbsp;&nbsp;29&nbsp;&nbsp;</th>
+														<th title="[Problem-solving] - ?Applies various problem-solving strategies to solve problems aligned ?to this level.">&nbsp;&nbsp;30&nbsp;&nbsp;</th>
+													</tr>
+													<tr bgcolor="#ffffcc">
+														<td><input name="old_gri_8552_MA_8_21" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_21" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_21" onclick='changeValue("gri_8552_MA_8_21")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_22" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_22" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_22" onclick='changeValue("gri_8552_MA_8_22")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_23" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_23" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_23" onclick='changeValue("gri_8552_MA_8_23")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_24" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_24" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_24" onclick='changeValue("gri_8552_MA_8_24")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_25" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_25" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_25" onclick='changeValue("gri_8552_MA_8_25")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_26" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_26" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_26" onclick='changeValue("gri_8552_MA_8_26")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_27" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_27" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_27" onclick='changeValue("gri_8552_MA_8_27")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_28" value="DEV" type="hidden"> <input name="ch_gru_8552_MA_8_28" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_28" onclick='changeValue("gru_8552_MA_8_28")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV" selected="selected">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_29" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_29" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_29" onclick='changeValue("gri_8552_MA_8_29")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_30" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_30" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_30" onclick='changeValue("gri_8552_MA_8_30")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+													</tr>
+												</tbody>
+											</table>
+											<table border="1">
+												<tbody>
+													<tr bgcolor="#ffffcc">
+														<th rowspan="2" nowrap>MA (8)<a name="walker_johnnie"></a></th>
+														<th title="[Measure precision ?error] - Evaluates measurements for accuracy, precision and error; ?explains acceptable range of error.">&nbsp;&nbsp;31&nbsp;&nbsp;</th>
+														<th title="[Defends conclusions] - ?(D1.3.3) Defends conclusions with examples and applies to new ?situations">&nbsp;&nbsp;32&nbsp;&nbsp;</th>
+														<th title="[Applies to everyday ?life] - (E1.3.1) Applies mathematical skills and processes to other ?disciplines and in everyday life.">&nbsp;&nbsp;33&nbsp;&nbsp;</th>
+													</tr>
+													<tr bgcolor="#ffffcc">
+														<td><input name="old_gru_8552_MA_8_31" value="DEV" type="hidden"> <input name="ch_gru_8552_MA_8_31" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_31" onclick='changeValue("gru_8552_MA_8_31")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV" selected="selected">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_32" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_32" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_32" onclick='changeValue("gri_8552_MA_8_32")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_33" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_33" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_33" onclick='changeValue("gri_8552_MA_8_33")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+													</tr>
+												</tbody>
+											</table>
+											<table border="1">
+												<tbody>
+													<tr bgcolor="#ffffcc">
+														<th rowspan="2" nowrap>MA (8)<a name="walker_johnnie"></a></th>
+														<th title="[Measure precision ?error] - Evaluates measurements for accuracy, precision and error; ?explains acceptable range of error.">Skills Based</th>
+														<th title="[Defends conclusions] - ?(D1.3.3) Defends conclusions with examples and applies to new ?situations">Problem Solving - 1</th>
+														<th title="[Applies to everyday ?life] - (E1.3.1) Applies mathematical skills and processes to other ?disciplines and in everyday life.">Problem Solving - 2</th>
+														<th title="[Applies to everyday ?life] - (E1.3.1) Applies mathematical skills and processes to other ?disciplines and in everyday life.">Analytical</th>
+														<th title="[Applies to everyday ?life] - (E1.3.1) Applies mathematical skills and processes to other ?disciplines and in everyday life.">EOL Summary</th>
+														<th title="[Applies to everyday ?life] - (E1.3.1) Applies mathematical skills and processes to other ?disciplines and in everyday life.">Overall QPI</th>
+													</tr>
+													<tr bgcolor="#ffffcc">
+														<td><input name="old_gru_8552_MA_8_31" value="DEV" type="hidden"> <input name="ch_gru_8552_MA_8_31" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_31" onclick='changeValue("gru_8552_MA_8_31")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV" selected="selected">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_32" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_32" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_32" onclick='changeValue("gri_8552_MA_8_32")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_33" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_33" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_33" onclick='changeValue("gri_8552_MA_8_33")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_33" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_33" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_33" onclick='changeValue("gri_8552_MA_8_33")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select></td>
+														<td><input name="old_gri_8552_MA_8_33" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_33" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_33" onclick='changeValue("gri_8552_MA_8_33")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select></td>
+														<td><input name="old_gri_8552_MA_8_33" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_33" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_33" onclick='changeValue("gri_8552_MA_8_33")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select></td>
+													</tr>
+												</tbody>
+											</table>
+											<font size="2"><b>Teacher Comments:<br>
+												</b></font><textarea name="textareaName" rows="8" cols="80" wrap="physical"></textarea><br>
+											<br>
+											<font size="2"><b><font color="#cc0000">Daniels, Jack<br>
+													</font>Math Level 8 Students:</b><select name="selectName" size="1">
+													<option selected value="one">Choose One</option>
+													<option value="#top_anchor">Top of Page</option>
+													<option value="#tag_cloud">Highest Needs</option>
+													<option value="one">Beam, James</option>
+													<option value="#walker_johnnie">Daniels, Jack</option>
+													<option value="#walker_johnnie">Dickel, George</option>
+													<option value="#walker_johnnie">Walker, Johnnie</option>
+													<option value="#save_changes">Save All Changes</option>
+												</select><br>
+												<b>Last Change: </b>Bob DeCat (4/20/06 - 9:22 p.m.)<b><font color="#cc0000"> </font></b>- <a href="change_history.html" target="_blank">History</a> - <b><font color="black"> </font><font color="#cc0000"><img src="http://www.bssd.org/images/edit_lock.gif" alt="" height="15" width="15" border="0"> </font><font color="black">Editing Lock</font><font color="#cc0000"><br>
+													</font></b></font>
+											<table border="1">
+												<tbody>
+													<tr bgcolor="#ffffcc">
+														<th rowspan="2" nowrap>MA (8)</th>
+														<th title="[Base ?systems] - (A1.4.2) Applies basic operations with different base ?systems.">&nbsp;&nbsp;1&nbsp;&nbsp;</th>
+														<th title="[Equivalent ?representations] - (A1.3.4) Translates between equivalent ?representations of the same number (fractions, decimals, percents, ?exponents, scientific notation).">&nbsp;&nbsp;2&nbsp;&nbsp;</th>
+														<th title="[Basic properties] - ?(A1.3.7) Applies commutative, associative and distributive properties ?with variables.">&nbsp;&nbsp;3&nbsp;&nbsp;</th>
+														<th title="[Order of operations] - ?Multiplies, divides, and performs the proper order of operations with ?signed numbers (with and without parentheses) and with scientific ?notations.">&nbsp;&nbsp;4&nbsp;&nbsp;</th>
+														<th title="[LCM] - Applies the LCM ?using unit multipliers.">&nbsp;&nbsp;5&nbsp;&nbsp;</th>
+														<th title="[Proportions/percents] - ?(A3.4.6) Uses proportions to solve percent problems greater than 100. ?MA 8.6 (A3.4.6) Uses proportions to solve percent problems greater ?than 100.">&nbsp;&nbsp;6&nbsp;&nbsp;</th>
+														<th title="[Volume] - Calculates ?volumes of simple geometric solids and the area of complex figures ?and converges units of area">&nbsp;&nbsp;7&nbsp;&nbsp;</th>
+														<th title="[Complex percent] - Solves ?complex percentage problems.">&nbsp;&nbsp;8&nbsp;&nbsp;</th>
+														<th title="[Estimates] - Estimates ?products, quotients and square roots.">&nbsp;&nbsp;9&nbsp;&nbsp;</th>
+														<th title="[Taxes short form] - ?Calculates end of year federal income tax using short form.">&nbsp;&nbsp;10&nbsp;&nbsp;</th>
+													</tr>
+													<tr bgcolor="#ffffcc">
+														<td><input name="old_gri_8552_MA_8_1" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_1" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_1" onclick='changeValue("gri_8552_MA_8_1")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_2" value="PRO" type="hidden"> <input name="ch_gru_8552_MA_8_2" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_2" onclick='changeValue("gru_8552_MA_8_2")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO" selected="selected">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_3" value="PRO" type="hidden"> <input name="ch_gru_8552_MA_8_3" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_3" onclick='changeValue("gru_8552_MA_8_3")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO" selected="selected">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_4" value="PRO" type="hidden"> <input name="ch_gru_8552_MA_8_4" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_4" onclick='changeValue("gru_8552_MA_8_4")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO" selected="selected">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_5" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_5" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_5" onclick='changeValue("gri_8552_MA_8_5")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_6" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_6" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_6" onclick='changeValue("gri_8552_MA_8_6")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_7" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_7" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_7" onclick='changeValue("gri_8552_MA_8_7")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_8" value="DEV" type="hidden"> <input name="ch_gru_8552_MA_8_8" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_8" onclick='changeValue("gru_8552_MA_8_8")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV" selected="selected">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_9" value="ADV" type="hidden"> <input name="ch_gru_8552_MA_8_9" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_9" onclick='changeValue("gru_8552_MA_8_9")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV" selected="selected">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_10" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_10" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_10" onclick='changeValue("gri_8552_MA_8_10")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+													</tr>
+												</tbody>
+											</table>
+											<table border="1">
+												<tbody>
+													<tr bgcolor="#ffffcc">
+														<th rowspan="2" nowrap>MA (8)</th>
+														<th title="[Estimation strategies] ?- (A3.3.2) Applies and defends a variety of estimation strategies.">&nbsp;&nbsp;11&nbsp;&nbsp;</th>
+														<th title="[Rational/irrational ?computations] - (A3.3.5) Adds, subtracts, multiplies and divides ?rational and common irrational numbers forms (fraction, decimals, and ?percents).">&nbsp;&nbsp;12&nbsp;&nbsp;</th>
+														<th title="[Convert equivalent ?fractions] - (A1.4.4, A3.3.5) Converts between equivalent fractions, ?percents, proportions, and exponential forms of numbers.">&nbsp;&nbsp;13&nbsp;&nbsp;</th>
+														<th title="[Graph ?inequalities/functions] - Recognizes, evaluates, and graphs ?inequalities and functions.">&nbsp;&nbsp;14&nbsp;&nbsp;</th>
+														<th title="[Inverse operations] - ?Uses inverse operations and the properties of 1 and 0 to solve ?rational number problems.">&nbsp;&nbsp;15&nbsp;&nbsp;</th>
+														<th title="[Words and symbols] - ?(A4.4.2) Translates word problems into symbolic expressions, ?equations, or inequalities and solves (including linear and ?quadratic).">&nbsp;&nbsp;16&nbsp;&nbsp;</th>
+														<th title="[Number patterns] - ?(A4.3.1) Generalizes numeric and geometric patterns and sequences.">&nbsp;&nbsp;17&nbsp;&nbsp;</th>
+														<th title="[Analyze patterns] - ?(A4.3.4) Uses tables of ordered pairs, graphs, and linear equations ?to analyze patterns.">&nbsp;&nbsp;18&nbsp;&nbsp;</th>
+														<th title="[Identify graphs] - ?(A4.4.1) Identifies and predicts the graphs of families of functions ?(linear, absolute value, quadratic, exponential).">&nbsp;&nbsp;19&nbsp;&nbsp;</th>
+														<th title="[Find missing ?angle/side] - (A5.3.3) Uses similarity and congruence to find missing ?angles or sides of figures.">&nbsp;&nbsp;20&nbsp;&nbsp;</th>
+													</tr>
+													<tr bgcolor="#ffffcc">
+														<td><input name="old_gru_8552_MA_8_11" value="PRO" type="hidden"> <input name="ch_gru_8552_MA_8_11" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_11" onclick='changeValue("gru_8552_MA_8_11")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO" selected="selected">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_12" value="PRO" type="hidden"> <input name="ch_gru_8552_MA_8_12" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_12" onclick='changeValue("gru_8552_MA_8_12")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO" selected="selected">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_13" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_13" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_13" onclick='changeValue("gri_8552_MA_8_13")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_14" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_14" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_14" onclick='changeValue("gri_8552_MA_8_14")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_15" value="PRO" type="hidden"> <input name="ch_gru_8552_MA_8_15" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_15" onclick='changeValue("gru_8552_MA_8_15")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO" selected="selected">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_16" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_16" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_16" onclick='changeValue("gri_8552_MA_8_16")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_17" value="DEV" type="hidden"> <input name="ch_gru_8552_MA_8_17" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_17" onclick='changeValue("gru_8552_MA_8_17")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV" selected="selected">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_18" value="DEV" type="hidden"> <input name="ch_gru_8552_MA_8_18" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_18" onclick='changeValue("gru_8552_MA_8_18")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV" selected="selected">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_19" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_19" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_19" onclick='changeValue("gri_8552_MA_8_19")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_20" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_20" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_20" onclick='changeValue("gri_8552_MA_8_20")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+													</tr>
+												</tbody>
+											</table>
+											<table border="1">
+												<tbody>
+													<tr bgcolor="#ffffcc">
+														<th rowspan="2" nowrap>MA (8)</th>
+														<th title="[Drawing polygons] - ?(A5.3.1) Classifies, compares, and sketches regular and irregular ?polygons.">&nbsp;&nbsp;21&nbsp;&nbsp;</th>
+														<th title="[3D figures] - (A5.3.2) ?Identifies and describes a variety of 3D figures">&nbsp;&nbsp;22&nbsp;&nbsp;</th>
+														<th title="[Volume and surface ?area] - (A5.3.4) Estimates and calculates volume and surface area of ?solids.">&nbsp;&nbsp;23&nbsp;&nbsp;</th>
+														<th title="[Transformations] - ?(A5.3.5) Draws and describes the results of transformations (slides, ?rotations, reflections, and dilations).">&nbsp;&nbsp;24&nbsp;&nbsp;</th>
+														<th title="[Constructions] - ?Performs basic geometry constructions (midpoint, angle bisector, ?parallel and perpendicular lines).">&nbsp;&nbsp;25&nbsp;&nbsp;</th>
+														<th title="[Geometric formulas] - ?(A5.4.6) Applies geometric formulas to a variety of situations ?(midpoint, slope, area, and volume).">&nbsp;&nbsp;26&nbsp;&nbsp;</th>
+														<th title="[Record data] - Samples ?and records data systematically.">&nbsp;&nbsp;27&nbsp;&nbsp;</th>
+														<th title="[Create: ?graph/table/chart] - (A6.3.1) Creates graphs, tables and charts from ?collected data with and without technology (histograms, scatter ?plots, frequency distribution).">&nbsp;&nbsp;28&nbsp;&nbsp;</th>
+														<th title="[Projections and ?inferences] - (A6.3.4) Makes projections based on available data and ?evaluates whether inferences can be made from the data.">&nbsp;&nbsp;29&nbsp;&nbsp;</th>
+														<th title="[Problem-solving] - ?Applies various problem-solving strategies to solve problems aligned ?to this level.">&nbsp;&nbsp;30&nbsp;&nbsp;</th>
+													</tr>
+													<tr bgcolor="#ffffcc">
+														<td><input name="old_gri_8552_MA_8_21" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_21" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_21" onclick='changeValue("gri_8552_MA_8_21")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_22" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_22" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_22" onclick='changeValue("gri_8552_MA_8_22")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_23" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_23" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_23" onclick='changeValue("gri_8552_MA_8_23")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_24" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_24" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_24" onclick='changeValue("gri_8552_MA_8_24")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_25" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_25" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_25" onclick='changeValue("gri_8552_MA_8_25")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_26" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_26" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_26" onclick='changeValue("gri_8552_MA_8_26")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_27" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_27" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_27" onclick='changeValue("gri_8552_MA_8_27")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_28" value="DEV" type="hidden"> <input name="ch_gru_8552_MA_8_28" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_28" onclick='changeValue("gru_8552_MA_8_28")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV" selected="selected">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_29" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_29" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_29" onclick='changeValue("gri_8552_MA_8_29")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_30" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_30" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_30" onclick='changeValue("gri_8552_MA_8_30")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+													</tr>
+												</tbody>
+											</table>
+											<table border="1">
+												<tbody>
+													<tr bgcolor="#ffffcc">
+														<th rowspan="2" nowrap>MA (8)</th>
+														<th title="[Measure precision ?error] - Evaluates measurements for accuracy, precision and error; ?explains acceptable range of error.">&nbsp;&nbsp;31&nbsp;&nbsp;</th>
+														<th title="[Defends conclusions] - ?(D1.3.3) Defends conclusions with examples and applies to new ?situations">&nbsp;&nbsp;32&nbsp;&nbsp;</th>
+														<th title="[Applies to everyday ?life] - (E1.3.1) Applies mathematical skills and processes to other ?disciplines and in everyday life.">&nbsp;&nbsp;33&nbsp;&nbsp;</th>
+													</tr>
+													<tr bgcolor="#ffffcc">
+														<td><input name="old_gru_8552_MA_8_31" value="DEV" type="hidden"> <input name="ch_gru_8552_MA_8_31" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_31" onclick='changeValue("gru_8552_MA_8_31")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV" selected="selected">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_32" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_32" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_32" onclick='changeValue("gri_8552_MA_8_32")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_33" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_33" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_33" onclick='changeValue("gri_8552_MA_8_33")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+													</tr>
+												</tbody>
+											</table>
+											<table border="1">
+												<tbody>
+													<tr bgcolor="#ffffcc">
+														<th rowspan="2" nowrap>MA (8)<a name="walker_johnnie"></a></th>
+														<th title="[Measure precision ?error] - Evaluates measurements for accuracy, precision and error; ?explains acceptable range of error.">Skills Based</th>
+														<th title="[Defends conclusions] - ?(D1.3.3) Defends conclusions with examples and applies to new ?situations">Problem Solving - 1</th>
+														<th title="[Applies to everyday ?life] - (E1.3.1) Applies mathematical skills and processes to other ?disciplines and in everyday life.">Problem Solving - 2</th>
+														<th title="[Applies to everyday ?life] - (E1.3.1) Applies mathematical skills and processes to other ?disciplines and in everyday life.">Analytical</th>
+														<th title="[Applies to everyday ?life] - (E1.3.1) Applies mathematical skills and processes to other ?disciplines and in everyday life.">EOL Summary</th>
+														<th title="[Applies to everyday ?life] - (E1.3.1) Applies mathematical skills and processes to other ?disciplines and in everyday life.">Overall QPI</th>
+													</tr>
+													<tr bgcolor="#ffffcc">
+														<td><input name="old_gru_8552_MA_8_31" value="DEV" type="hidden"> <input name="ch_gru_8552_MA_8_31" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_31" onclick='changeValue("gru_8552_MA_8_31")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV" selected="selected">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_32" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_32" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_32" onclick='changeValue("gri_8552_MA_8_32")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_33" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_33" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_33" onclick='changeValue("gri_8552_MA_8_33")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_33" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_33" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_33" onclick='changeValue("gri_8552_MA_8_33")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select></td>
+														<td><input name="old_gri_8552_MA_8_33" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_33" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_33" onclick='changeValue("gri_8552_MA_8_33")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select></td>
+														<td><input name="old_gri_8552_MA_8_33" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_33" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_33" onclick='changeValue("gri_8552_MA_8_33")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select></td>
+													</tr>
+												</tbody>
+											</table>
+											<font size="2"><b>Teacher Comments:<br>
+												</b></font><textarea name="textareaName" rows="8" cols="80" wrap="physical"></textarea><br>
+											<br>
+											<font size="2"><b><font color="#cc0000">Dickel, George<br>
+													</font>Math Level 8 Students:</b><select name="selectName" size="1">
+													<option selected value="one">Choose One</option>
+													<option value="#top_anchor">Top of Page</option>
+													<option value="#tag_cloud">Highest Needs</option>
+													<option value="one">Beam, James</option>
+													<option value="#walker_johnnie">Daniels, Jack</option>
+													<option value="#walker_johnnie">Dickel, George</option>
+													<option value="#walker_johnnie">Walker, Johnnie</option>
+													<option value="#save_changes">Save All Changes</option>
+												</select><br>
+												<b>Last Change: </b>Tommy Teacher (3/17/06 - 8:54 a.m.) - <a href="change_history.html" target="_blank">History</a></font>
+											<table border="1">
+												<tbody>
+													<tr bgcolor="#ffffcc">
+														<th rowspan="2" nowrap>MA (8)</th>
+														<th title="[Base ?systems] - (A1.4.2) Applies basic operations with different base ?systems.">&nbsp;&nbsp;1&nbsp;&nbsp;</th>
+														<th title="[Equivalent ?representations] - (A1.3.4) Translates between equivalent ?representations of the same number (fractions, decimals, percents, ?exponents, scientific notation).">&nbsp;&nbsp;2&nbsp;&nbsp;</th>
+														<th title="[Basic properties] - ?(A1.3.7) Applies commutative, associative and distributive properties ?with variables.">&nbsp;&nbsp;3&nbsp;&nbsp;</th>
+														<th title="[Order of operations] - ?Multiplies, divides, and performs the proper order of operations with ?signed numbers (with and without parentheses) and with scientific ?notations.">&nbsp;&nbsp;4&nbsp;&nbsp;</th>
+														<th title="[LCM] - Applies the LCM ?using unit multipliers.">&nbsp;&nbsp;5&nbsp;&nbsp;</th>
+														<th title="[Proportions/percents] - ?(A3.4.6) Uses proportions to solve percent problems greater than 100. ?MA 8.6 (A3.4.6) Uses proportions to solve percent problems greater ?than 100.">&nbsp;&nbsp;6&nbsp;&nbsp;</th>
+														<th title="[Volume] - Calculates ?volumes of simple geometric solids and the area of complex figures ?and converges units of area">&nbsp;&nbsp;7&nbsp;&nbsp;</th>
+														<th title="[Complex percent] - Solves ?complex percentage problems.">&nbsp;&nbsp;8&nbsp;&nbsp;</th>
+														<th title="[Estimates] - Estimates ?products, quotients and square roots.">&nbsp;&nbsp;9&nbsp;&nbsp;</th>
+														<th title="[Taxes short form] - ?Calculates end of year federal income tax using short form.">&nbsp;&nbsp;10&nbsp;&nbsp;</th>
+													</tr>
+													<tr bgcolor="#ffffcc">
+														<td><input name="old_gri_8552_MA_8_1" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_1" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_1" onclick='changeValue("gri_8552_MA_8_1")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_2" value="PRO" type="hidden"> <input name="ch_gru_8552_MA_8_2" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_2" onclick='changeValue("gru_8552_MA_8_2")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO" selected="selected">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_3" value="PRO" type="hidden"> <input name="ch_gru_8552_MA_8_3" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_3" onclick='changeValue("gru_8552_MA_8_3")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO" selected="selected">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_4" value="PRO" type="hidden"> <input name="ch_gru_8552_MA_8_4" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_4" onclick='changeValue("gru_8552_MA_8_4")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO" selected="selected">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_5" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_5" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_5" onclick='changeValue("gri_8552_MA_8_5")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_6" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_6" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_6" onclick='changeValue("gri_8552_MA_8_6")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_7" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_7" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_7" onclick='changeValue("gri_8552_MA_8_7")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_8" value="DEV" type="hidden"> <input name="ch_gru_8552_MA_8_8" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_8" onclick='changeValue("gru_8552_MA_8_8")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV" selected="selected">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_9" value="ADV" type="hidden"> <input name="ch_gru_8552_MA_8_9" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_9" onclick='changeValue("gru_8552_MA_8_9")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV" selected="selected">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_10" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_10" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_10" onclick='changeValue("gri_8552_MA_8_10")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+													</tr>
+												</tbody>
+											</table>
+											<table border="1">
+												<tbody>
+													<tr bgcolor="#ffffcc">
+														<th rowspan="2" nowrap>MA (8)</th>
+														<th title="[Estimation strategies] ?- (A3.3.2) Applies and defends a variety of estimation strategies.">&nbsp;&nbsp;11&nbsp;&nbsp;</th>
+														<th title="[Rational/irrational ?computations] - (A3.3.5) Adds, subtracts, multiplies and divides ?rational and common irrational numbers forms (fraction, decimals, and ?percents).">&nbsp;&nbsp;12&nbsp;&nbsp;</th>
+														<th title="[Convert equivalent ?fractions] - (A1.4.4, A3.3.5) Converts between equivalent fractions, ?percents, proportions, and exponential forms of numbers.">&nbsp;&nbsp;13&nbsp;&nbsp;</th>
+														<th title="[Graph ?inequalities/functions] - Recognizes, evaluates, and graphs ?inequalities and functions.">&nbsp;&nbsp;14&nbsp;&nbsp;</th>
+														<th title="[Inverse operations] - ?Uses inverse operations and the properties of 1 and 0 to solve ?rational number problems.">&nbsp;&nbsp;15&nbsp;&nbsp;</th>
+														<th title="[Words and symbols] - ?(A4.4.2) Translates word problems into symbolic expressions, ?equations, or inequalities and solves (including linear and ?quadratic).">&nbsp;&nbsp;16&nbsp;&nbsp;</th>
+														<th title="[Number patterns] - ?(A4.3.1) Generalizes numeric and geometric patterns and sequences.">&nbsp;&nbsp;17&nbsp;&nbsp;</th>
+														<th title="[Analyze patterns] - ?(A4.3.4) Uses tables of ordered pairs, graphs, and linear equations ?to analyze patterns.">&nbsp;&nbsp;18&nbsp;&nbsp;</th>
+														<th title="[Identify graphs] - ?(A4.4.1) Identifies and predicts the graphs of families of functions ?(linear, absolute value, quadratic, exponential).">&nbsp;&nbsp;19&nbsp;&nbsp;</th>
+														<th title="[Find missing ?angle/side] - (A5.3.3) Uses similarity and congruence to find missing ?angles or sides of figures.">&nbsp;&nbsp;20&nbsp;&nbsp;</th>
+													</tr>
+													<tr bgcolor="#ffffcc">
+														<td><input name="old_gru_8552_MA_8_11" value="PRO" type="hidden"> <input name="ch_gru_8552_MA_8_11" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_11" onclick='changeValue("gru_8552_MA_8_11")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO" selected="selected">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_12" value="PRO" type="hidden"> <input name="ch_gru_8552_MA_8_12" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_12" onclick='changeValue("gru_8552_MA_8_12")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO" selected="selected">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_13" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_13" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_13" onclick='changeValue("gri_8552_MA_8_13")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_14" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_14" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_14" onclick='changeValue("gri_8552_MA_8_14")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_15" value="PRO" type="hidden"> <input name="ch_gru_8552_MA_8_15" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_15" onclick='changeValue("gru_8552_MA_8_15")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO" selected="selected">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_16" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_16" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_16" onclick='changeValue("gri_8552_MA_8_16")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_17" value="DEV" type="hidden"> <input name="ch_gru_8552_MA_8_17" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_17" onclick='changeValue("gru_8552_MA_8_17")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV" selected="selected">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_18" value="DEV" type="hidden"> <input name="ch_gru_8552_MA_8_18" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_18" onclick='changeValue("gru_8552_MA_8_18")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV" selected="selected">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_19" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_19" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_19" onclick='changeValue("gri_8552_MA_8_19")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_20" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_20" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_20" onclick='changeValue("gri_8552_MA_8_20")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+													</tr>
+												</tbody>
+											</table>
+											<table border="1">
+												<tbody>
+													<tr bgcolor="#ffffcc">
+														<th rowspan="2" nowrap>MA (8)</th>
+														<th title="[Drawing polygons] - ?(A5.3.1) Classifies, compares, and sketches regular and irregular ?polygons.">&nbsp;&nbsp;21&nbsp;&nbsp;</th>
+														<th title="[3D figures] - (A5.3.2) ?Identifies and describes a variety of 3D figures">&nbsp;&nbsp;22&nbsp;&nbsp;</th>
+														<th title="[Volume and surface ?area] - (A5.3.4) Estimates and calculates volume and surface area of ?solids.">&nbsp;&nbsp;23&nbsp;&nbsp;</th>
+														<th title="[Transformations] - ?(A5.3.5) Draws and describes the results of transformations (slides, ?rotations, reflections, and dilations).">&nbsp;&nbsp;24&nbsp;&nbsp;</th>
+														<th title="[Constructions] - ?Performs basic geometry constructions (midpoint, angle bisector, ?parallel and perpendicular lines).">&nbsp;&nbsp;25&nbsp;&nbsp;</th>
+														<th title="[Geometric formulas] - ?(A5.4.6) Applies geometric formulas to a variety of situations ?(midpoint, slope, area, and volume).">&nbsp;&nbsp;26&nbsp;&nbsp;</th>
+														<th title="[Record data] - Samples ?and records data systematically.">&nbsp;&nbsp;27&nbsp;&nbsp;</th>
+														<th title="[Create: ?graph/table/chart] - (A6.3.1) Creates graphs, tables and charts from ?collected data with and without technology (histograms, scatter ?plots, frequency distribution).">&nbsp;&nbsp;28&nbsp;&nbsp;</th>
+														<th title="[Projections and ?inferences] - (A6.3.4) Makes projections based on available data and ?evaluates whether inferences can be made from the data.">&nbsp;&nbsp;29&nbsp;&nbsp;</th>
+														<th title="[Problem-solving] - ?Applies various problem-solving strategies to solve problems aligned ?to this level.">&nbsp;&nbsp;30&nbsp;&nbsp;</th>
+													</tr>
+													<tr bgcolor="#ffffcc">
+														<td><input name="old_gri_8552_MA_8_21" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_21" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_21" onclick='changeValue("gri_8552_MA_8_21")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_22" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_22" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_22" onclick='changeValue("gri_8552_MA_8_22")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_23" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_23" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_23" onclick='changeValue("gri_8552_MA_8_23")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_24" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_24" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_24" onclick='changeValue("gri_8552_MA_8_24")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_25" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_25" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_25" onclick='changeValue("gri_8552_MA_8_25")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_26" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_26" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_26" onclick='changeValue("gri_8552_MA_8_26")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_27" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_27" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_27" onclick='changeValue("gri_8552_MA_8_27")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_28" value="DEV" type="hidden"> <input name="ch_gru_8552_MA_8_28" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_28" onclick='changeValue("gru_8552_MA_8_28")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV" selected="selected">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_29" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_29" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_29" onclick='changeValue("gri_8552_MA_8_29")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_30" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_30" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_30" onclick='changeValue("gri_8552_MA_8_30")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+													</tr>
+												</tbody>
+											</table>
+											<table border="1">
+												<tbody>
+													<tr bgcolor="#ffffcc">
+														<th rowspan="2" nowrap>MA (8)<a name="walker_johnnie"></a></th>
+														<th title="[Measure precision ?error] - Evaluates measurements for accuracy, precision and error; ?explains acceptable range of error.">&nbsp;&nbsp;31&nbsp;&nbsp;</th>
+														<th title="[Defends conclusions] - ?(D1.3.3) Defends conclusions with examples and applies to new ?situations">&nbsp;&nbsp;32&nbsp;&nbsp;</th>
+														<th title="[Applies to everyday ?life] - (E1.3.1) Applies mathematical skills and processes to other ?disciplines and in everyday life.">&nbsp;&nbsp;33&nbsp;&nbsp;</th>
+													</tr>
+													<tr bgcolor="#ffffcc">
+														<td><input name="old_gru_8552_MA_8_31" value="DEV" type="hidden"> <input name="ch_gru_8552_MA_8_31" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_31" onclick='changeValue("gru_8552_MA_8_31")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV" selected="selected">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_32" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_32" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_32" onclick='changeValue("gri_8552_MA_8_32")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_33" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_33" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_33" onclick='changeValue("gri_8552_MA_8_33")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+													</tr>
+												</tbody>
+											</table>
+											<table border="1">
+												<tbody>
+													<tr bgcolor="#ffffcc">
+														<th rowspan="2" nowrap>MA (8)<a name="walker_johnnie"></a></th>
+														<th title="[Measure precision ?error] - Evaluates measurements for accuracy, precision and error; ?explains acceptable range of error.">Skills Based</th>
+														<th title="[Defends conclusions] - ?(D1.3.3) Defends conclusions with examples and applies to new ?situations">Problem Solving - 1</th>
+														<th title="[Applies to everyday ?life] - (E1.3.1) Applies mathematical skills and processes to other ?disciplines and in everyday life.">Problem Solving - 2</th>
+														<th title="[Applies to everyday ?life] - (E1.3.1) Applies mathematical skills and processes to other ?disciplines and in everyday life.">Analytical</th>
+														<th title="[Applies to everyday ?life] - (E1.3.1) Applies mathematical skills and processes to other ?disciplines and in everyday life.">EOL Summary</th>
+														<th title="[Applies to everyday ?life] - (E1.3.1) Applies mathematical skills and processes to other ?disciplines and in everyday life.">Overall QPI</th>
+													</tr>
+													<tr bgcolor="#ffffcc">
+														<td><input name="old_gru_8552_MA_8_31" value="DEV" type="hidden"> <input name="ch_gru_8552_MA_8_31" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_31" onclick='changeValue("gru_8552_MA_8_31")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV" selected="selected">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_32" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_32" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_32" onclick='changeValue("gri_8552_MA_8_32")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_33" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_33" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_33" onclick='changeValue("gri_8552_MA_8_33")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_33" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_33" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_33" onclick='changeValue("gri_8552_MA_8_33")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select></td>
+														<td><input name="old_gri_8552_MA_8_33" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_33" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_33" onclick='changeValue("gri_8552_MA_8_33")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select></td>
+														<td><input name="old_gri_8552_MA_8_33" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_33" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_33" onclick='changeValue("gri_8552_MA_8_33")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select></td>
+													</tr>
+												</tbody>
+											</table>
+											<font size="2"><b>Teacher Comments:<br>
+												</b></font><textarea name="textareaName" rows="8" cols="80" wrap="physical"></textarea><br>
+											<br>
+											<font size="2"><b><font color="#cc0000">Walker, Johnnie<br>
+													</font>Math Level 8 Students:</b><select name="selectName" size="1">
+													<option selected value="one">Choose One</option>
+													<option value="#top_anchor">Top of Page</option>
+													<option value="#tag_cloud">Highest Needs</option>
+													<option value="one">Beam, James</option>
+													<option value="#walker_johnnie">Daniels, Jack</option>
+													<option value="#walker_johnnie">Dickel, George</option>
+													<option value="#walker_johnnie">Walker, Johnnie</option>
+													<option value="#save_changes">Save All Changes</option>
+												</select><br>
+												<b>Last Change: </b>Melissa Dismissa (4/27/06 - 1:13 p.m.) - <a href="change_history.html" target="_blank">History</a></font>
+											<table border="1">
+												<tbody>
+													<tr bgcolor="#ffffcc">
+														<th rowspan="2" nowrap>MA (8)</th>
+														<th title="[Base ?systems] - (A1.4.2) Applies basic operations with different base ?systems.">&nbsp;&nbsp;1&nbsp;&nbsp;</th>
+														<th title="[Equivalent ?representations] - (A1.3.4) Translates between equivalent ?representations of the same number (fractions, decimals, percents, ?exponents, scientific notation).">&nbsp;&nbsp;2&nbsp;&nbsp;</th>
+														<th title="[Basic properties] - ?(A1.3.7) Applies commutative, associative and distributive properties ?with variables.">&nbsp;&nbsp;3&nbsp;&nbsp;</th>
+														<th title="[Order of operations] - ?Multiplies, divides, and performs the proper order of operations with ?signed numbers (with and without parentheses) and with scientific ?notations.">&nbsp;&nbsp;4&nbsp;&nbsp;</th>
+														<th title="[LCM] - Applies the LCM ?using unit multipliers.">&nbsp;&nbsp;5&nbsp;&nbsp;</th>
+														<th title="[Proportions/percents] - ?(A3.4.6) Uses proportions to solve percent problems greater than 100. ?MA 8.6 (A3.4.6) Uses proportions to solve percent problems greater ?than 100.">&nbsp;&nbsp;6&nbsp;&nbsp;</th>
+														<th title="[Volume] - Calculates ?volumes of simple geometric solids and the area of complex figures ?and converges units of area">&nbsp;&nbsp;7&nbsp;&nbsp;</th>
+														<th title="[Complex percent] - Solves ?complex percentage problems.">&nbsp;&nbsp;8&nbsp;&nbsp;</th>
+														<th title="[Estimates] - Estimates ?products, quotients and square roots.">&nbsp;&nbsp;9&nbsp;&nbsp;</th>
+														<th title="[Taxes short form] - ?Calculates end of year federal income tax using short form.">&nbsp;&nbsp;10&nbsp;&nbsp;</th>
+													</tr>
+													<tr bgcolor="#ffffcc">
+														<td><input name="old_gri_8552_MA_8_1" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_1" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_1" onclick='changeValue("gri_8552_MA_8_1")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_2" value="PRO" type="hidden"> <input name="ch_gru_8552_MA_8_2" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_2" onclick='changeValue("gru_8552_MA_8_2")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO" selected="selected">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_3" value="PRO" type="hidden"> <input name="ch_gru_8552_MA_8_3" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_3" onclick='changeValue("gru_8552_MA_8_3")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO" selected="selected">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_4" value="PRO" type="hidden"> <input name="ch_gru_8552_MA_8_4" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_4" onclick='changeValue("gru_8552_MA_8_4")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO" selected="selected">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_5" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_5" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_5" onclick='changeValue("gri_8552_MA_8_5")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_6" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_6" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_6" onclick='changeValue("gri_8552_MA_8_6")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_7" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_7" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_7" onclick='changeValue("gri_8552_MA_8_7")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_8" value="DEV" type="hidden"> <input name="ch_gru_8552_MA_8_8" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_8" onclick='changeValue("gru_8552_MA_8_8")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV" selected="selected">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_9" value="ADV" type="hidden"> <input name="ch_gru_8552_MA_8_9" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_9" onclick='changeValue("gru_8552_MA_8_9")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV" selected="selected">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_10" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_10" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_10" onclick='changeValue("gri_8552_MA_8_10")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+													</tr>
+												</tbody>
+											</table>
+											<table border="1">
+												<tbody>
+													<tr bgcolor="#ffffcc">
+														<th rowspan="2" nowrap>MA (8)</th>
+														<th title="[Estimation strategies] ?- (A3.3.2) Applies and defends a variety of estimation strategies.">&nbsp;&nbsp;11&nbsp;&nbsp;</th>
+														<th title="[Rational/irrational ?computations] - (A3.3.5) Adds, subtracts, multiplies and divides ?rational and common irrational numbers forms (fraction, decimals, and ?percents).">&nbsp;&nbsp;12&nbsp;&nbsp;</th>
+														<th title="[Convert equivalent ?fractions] - (A1.4.4, A3.3.5) Converts between equivalent fractions, ?percents, proportions, and exponential forms of numbers.">&nbsp;&nbsp;13&nbsp;&nbsp;</th>
+														<th title="[Graph ?inequalities/functions] - Recognizes, evaluates, and graphs ?inequalities and functions.">&nbsp;&nbsp;14&nbsp;&nbsp;</th>
+														<th title="[Inverse operations] - ?Uses inverse operations and the properties of 1 and 0 to solve ?rational number problems.">&nbsp;&nbsp;15&nbsp;&nbsp;</th>
+														<th title="[Words and symbols] - ?(A4.4.2) Translates word problems into symbolic expressions, ?equations, or inequalities and solves (including linear and ?quadratic).">&nbsp;&nbsp;16&nbsp;&nbsp;</th>
+														<th title="[Number patterns] - ?(A4.3.1) Generalizes numeric and geometric patterns and sequences.">&nbsp;&nbsp;17&nbsp;&nbsp;</th>
+														<th title="[Analyze patterns] - ?(A4.3.4) Uses tables of ordered pairs, graphs, and linear equations ?to analyze patterns.">&nbsp;&nbsp;18&nbsp;&nbsp;</th>
+														<th title="[Identify graphs] - ?(A4.4.1) Identifies and predicts the graphs of families of functions ?(linear, absolute value, quadratic, exponential).">&nbsp;&nbsp;19&nbsp;&nbsp;</th>
+														<th title="[Find missing ?angle/side] - (A5.3.3) Uses similarity and congruence to find missing ?angles or sides of figures.">&nbsp;&nbsp;20&nbsp;&nbsp;</th>
+													</tr>
+													<tr bgcolor="#ffffcc">
+														<td><input name="old_gru_8552_MA_8_11" value="PRO" type="hidden"> <input name="ch_gru_8552_MA_8_11" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_11" onclick='changeValue("gru_8552_MA_8_11")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO" selected="selected">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_12" value="PRO" type="hidden"> <input name="ch_gru_8552_MA_8_12" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_12" onclick='changeValue("gru_8552_MA_8_12")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO" selected="selected">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_13" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_13" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_13" onclick='changeValue("gri_8552_MA_8_13")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_14" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_14" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_14" onclick='changeValue("gri_8552_MA_8_14")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_15" value="PRO" type="hidden"> <input name="ch_gru_8552_MA_8_15" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_15" onclick='changeValue("gru_8552_MA_8_15")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO" selected="selected">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_16" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_16" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_16" onclick='changeValue("gri_8552_MA_8_16")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_17" value="DEV" type="hidden"> <input name="ch_gru_8552_MA_8_17" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_17" onclick='changeValue("gru_8552_MA_8_17")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV" selected="selected">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_18" value="DEV" type="hidden"> <input name="ch_gru_8552_MA_8_18" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_18" onclick='changeValue("gru_8552_MA_8_18")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV" selected="selected">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_19" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_19" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_19" onclick='changeValue("gri_8552_MA_8_19")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_20" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_20" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_20" onclick='changeValue("gri_8552_MA_8_20")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+													</tr>
+												</tbody>
+											</table>
+											<table border="1">
+												<tbody>
+													<tr bgcolor="#ffffcc">
+														<th rowspan="2" nowrap>MA (8)</th>
+														<th title="[Drawing polygons] - ?(A5.3.1) Classifies, compares, and sketches regular and irregular ?polygons.">&nbsp;&nbsp;21&nbsp;&nbsp;</th>
+														<th title="[3D figures] - (A5.3.2) ?Identifies and describes a variety of 3D figures">&nbsp;&nbsp;22&nbsp;&nbsp;</th>
+														<th title="[Volume and surface ?area] - (A5.3.4) Estimates and calculates volume and surface area of ?solids.">&nbsp;&nbsp;23&nbsp;&nbsp;</th>
+														<th title="[Transformations] - ?(A5.3.5) Draws and describes the results of transformations (slides, ?rotations, reflections, and dilations).">&nbsp;&nbsp;24&nbsp;&nbsp;</th>
+														<th title="[Constructions] - ?Performs basic geometry constructions (midpoint, angle bisector, ?parallel and perpendicular lines).">&nbsp;&nbsp;25&nbsp;&nbsp;</th>
+														<th title="[Geometric formulas] - ?(A5.4.6) Applies geometric formulas to a variety of situations ?(midpoint, slope, area, and volume).">&nbsp;&nbsp;26&nbsp;&nbsp;</th>
+														<th title="[Record data] - Samples ?and records data systematically.">&nbsp;&nbsp;27&nbsp;&nbsp;</th>
+														<th title="[Create: ?graph/table/chart] - (A6.3.1) Creates graphs, tables and charts from ?collected data with and without technology (histograms, scatter ?plots, frequency distribution).">&nbsp;&nbsp;28&nbsp;&nbsp;</th>
+														<th title="[Projections and ?inferences] - (A6.3.4) Makes projections based on available data and ?evaluates whether inferences can be made from the data.">&nbsp;&nbsp;29&nbsp;&nbsp;</th>
+														<th title="[Problem-solving] - ?Applies various problem-solving strategies to solve problems aligned ?to this level.">&nbsp;&nbsp;30&nbsp;&nbsp;</th>
+													</tr>
+													<tr bgcolor="#ffffcc">
+														<td><input name="old_gri_8552_MA_8_21" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_21" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_21" onclick='changeValue("gri_8552_MA_8_21")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_22" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_22" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_22" onclick='changeValue("gri_8552_MA_8_22")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_23" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_23" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_23" onclick='changeValue("gri_8552_MA_8_23")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_24" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_24" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_24" onclick='changeValue("gri_8552_MA_8_24")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_25" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_25" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_25" onclick='changeValue("gri_8552_MA_8_25")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_26" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_26" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_26" onclick='changeValue("gri_8552_MA_8_26")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_27" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_27" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_27" onclick='changeValue("gri_8552_MA_8_27")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gru_8552_MA_8_28" value="DEV" type="hidden"> <input name="ch_gru_8552_MA_8_28" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_28" onclick='changeValue("gru_8552_MA_8_28")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV" selected="selected">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_29" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_29" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_29" onclick='changeValue("gri_8552_MA_8_29")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_30" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_30" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_30" onclick='changeValue("gri_8552_MA_8_30")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+													</tr>
+												</tbody>
+											</table>
+											<table border="1">
+												<tbody>
+													<tr bgcolor="#ffffcc">
+														<th rowspan="2" nowrap>MA (8)</th>
+														<th title="[Measure precision ?error] - Evaluates measurements for accuracy, precision and error; ?explains acceptable range of error.">&nbsp;&nbsp;31&nbsp;&nbsp;</th>
+														<th title="[Defends conclusions] - ?(D1.3.3) Defends conclusions with examples and applies to new ?situations">&nbsp;&nbsp;32&nbsp;&nbsp;</th>
+														<th title="[Applies to everyday ?life] - (E1.3.1) Applies mathematical skills and processes to other ?disciplines and in everyday life.">&nbsp;&nbsp;33&nbsp;&nbsp;</th>
+													</tr>
+													<tr bgcolor="#ffffcc">
+														<td><input name="old_gru_8552_MA_8_31" value="DEV" type="hidden"> <input name="ch_gru_8552_MA_8_31" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_31" onclick='changeValue("gru_8552_MA_8_31")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV" selected="selected">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_32" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_32" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_32" onclick='changeValue("gri_8552_MA_8_32")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_33" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_33" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_33" onclick='changeValue("gri_8552_MA_8_33")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+													</tr>
+												</tbody>
+											</table>
+											<table border="1">
+												<tbody>
+													<tr bgcolor="#ffffcc">
+														<th rowspan="2" nowrap>MA (8)<a name="walker_johnnie"></a></th>
+														<th title="[Measure precision ?error] - Evaluates measurements for accuracy, precision and error; ?explains acceptable range of error.">Skills Based</th>
+														<th title="[Defends conclusions] - ?(D1.3.3) Defends conclusions with examples and applies to new ?situations">Problem Solving - 1</th>
+														<th title="[Applies to everyday ?life] - (E1.3.1) Applies mathematical skills and processes to other ?disciplines and in everyday life.">Problem Solving - 2</th>
+														<th title="[Applies to everyday ?life] - (E1.3.1) Applies mathematical skills and processes to other ?disciplines and in everyday life.">Analytical</th>
+														<th title="[Applies to everyday ?life] - (E1.3.1) Applies mathematical skills and processes to other ?disciplines and in everyday life.">EOL Summary</th>
+														<th title="[Applies to everyday ?life] - (E1.3.1) Applies mathematical skills and processes to other ?disciplines and in everyday life.">Overall QPI</th>
+													</tr>
+													<tr bgcolor="#ffffcc">
+														<td><input name="old_gru_8552_MA_8_31" value="DEV" type="hidden"> <input name="ch_gru_8552_MA_8_31" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gru_8552_MA_8_31" onclick='changeValue("gru_8552_MA_8_31")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV" selected="selected">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_32" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_32" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_32" onclick='changeValue("gri_8552_MA_8_32")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_33" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_33" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_33" onclick='changeValue("gri_8552_MA_8_33")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select>&nbsp;</td>
+														<td><input name="old_gri_8552_MA_8_33" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_33" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_33" onclick='changeValue("gri_8552_MA_8_33")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select></td>
+														<td><input name="old_gri_8552_MA_8_33" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_33" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_33" onclick='changeValue("gri_8552_MA_8_33")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select></td>
+														<td><input name="old_gri_8552_MA_8_33" value="empty" type="hidden"> <input name="ch_gri_8552_MA_8_33" value="empty" type="hidden"> <select bgcolor="#FFFFCC" name="gri_8552_MA_8_33" onclick='changeValue("gri_8552_MA_8_33")'>
+																<option value=""></option>
+																<option value="EMG">EMG</option>
+																<option value="PRO">PRO</option>
+																<option value="DEV">DEV</option>
+																<option value="ADV">ADV</option>
+															</select></td>
+													</tr>
+												</tbody>
+											</table>
+											<font size="2"><b>Teacher Comments:<br>
+												</b></font><textarea name="textareaName" rows="8" cols="80" wrap="physical"></textarea><br>
+											<br>
+											<div align="left">
+												<p>This button saves all changes made to these records.  The pull down menu by each student does the same thing.</p>
+												<p><input value="Save All Changes" type="submit"><br>
+													<br>
+												</p>
+											</div>
+										</form>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div align="center">
+											<table width="100%" border="0" cellspacing="2" cellpadding="0">
+												<tr>
+													<td colspan="3">
+														
+													</td>
+												</tr>
+												<tr>
+													<td nowrap width="33%"><a title="DART Project Information" href="http://wiki.bssd.org/index.php/DART_System" target="_blank">DART Project Info</a> :: <a href="http://wiki.bssd.org/index.php/DART_System#DART_Technical_Support">Support</a> :: <a title="DART Contact Information" href="http://wiki.bssd.org/index.php/DART_System#DART_Contacts" target="_blank">Contact</a></td>
+													<td valign="middle" nowrap width="30%">
+														<div align="center">
+															<a title="Creative Commons License" href="http://creativecommons.org/licenses/by-nc-sa/2.5/" target="_blank"><img src="http://dart.bssd.org/images/somerights20.gif" alt="Attribution-NonCommercial-ShareAlike 2.5 License" height="31" width="88" align="absmiddle" border="0"></a></div>
+													</td>
+													<td valign="middle" nowrap width="60%">
+														<div align="right">
+															DART: Standards tracking that is free like a puppy!</div>
+													</td>
+												</tr>
+											</table>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<div align="center">
+							
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</body></html>

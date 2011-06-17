@@ -1,0 +1,672 @@
+<html><head><title>MA 8 Group - DART - Data Analysis and Reporting Tool</title>
+
+
+<link rel="stylesheet" href="dart.css" type="text/css">
+<script>
+function changeValue(name) {
+//alert (name)
+        document.getElementById("ch_" + name).value = document.getElementById(name).value;
+// toggle image
+//        document.getElementById(name + "_img").src = 'images\\dot.gif';
+//        document.gri_2_CA_3_3_img.src = 'images\\dot.gif';
+//alert(name + "_img " + 'images\\dot.gif');
+ }</script></head><body>
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tbody>
+				<tr>
+					<td colspan="2" valign="top"><input src="http://dart.bssd.org/images/frontlogo.jpg" alt="" type="image"><a title="DART Project Information" href="http://wiki.bssd.org/index.php/DART_System" target="_blank">DART Project Info</a> :: <a href="http://wiki.bssd.org/index.php/DART_System#DART_Technical_Support">Support</a> :: <a title="DART Contact Information" href="http://wiki.bssd.org/index.php/DART_System#DART_Contacts" target="_blank">Contact</a></td>
+				</tr>
+				<tr>
+					<td valign="top" width="100">
+						<div align="left">
+							<img src="individual_toggle_files/cleardot.gif" alt="spacer" border="0" height="1" width="100"><br>
+							<b><font color="#0066ff">Logged In As:</font></b><br>
+							<img src="http://www.bssd.org/images/dart1.gif" alt="" height="67" width="77" border="0"><br>
+							<b><font color="#0066ff">John Concilus</font></b>
+							<p><b><font color="#0066ff">DART Info<br>
+									</font></b><img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="http://www.edunew.com/dart/index.php?cmd=home">Home</a><br>
+								<img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="(EmptyReference!)">History</a><br>
+								<img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="(EmptyReference!)">Alerts</a><br>
+								<br>
+								<font color="#0066ff"><b>Reports</b><br>
+								</font><img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="(EmptyReference!)">Individual</a><font color="#0066ff"><br>
+								</font><img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="(EmptyReference!)">Group</a><font color="#0066ff"><br>
+								</font><br>
+								<font color="#0066ff"><b>My Groups</b><br>
+								</font><img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="http://www.edunew.com/dart/index.php?cmd=showscores&amp;p1=8">SFA Group</a><a href="(EmptyReference!)"><br>
+								</a><img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="http://www.edunew.com/dart/index.php?cmd=showscores&amp;p1=9">SS 7 Group</a><a href="(EmptyReference!)"><br>
+								</a><img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="http://www.edunew.com/dart/index.php?cmd=showscores&amp;p1=9">PBL Group</a>&nbsp;<br>
+								<img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="http://www.edunew.com/dart/index.php?cmd=showscores&amp;p1=9">SBT Group<br>
+								</a><img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="http://www.edunew.com/dart/index.php?cmd=showscores&amp;p1=9">Autopsy VTC</a></p>
+							<p><font color="#0066ff"><b>Edit Groups</b><br>
+								</font><img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="http://www.edunew.com/dart/index.php?cmd=newlist&amp;p1=2">New Group</a><br>
+								<img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="http://www.edunew.com/dart/index.php?cmd=newlist&amp;p1=2">Edit Group</a><br>
+								<img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="http://www.edunew.com/dart/index.php?cmd=newlist&amp;p1=2">Delete Group</a><br>
+								<br>
+								<font color="#0066ff"><b>Admin Area</b><br>
+								</font><img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="http://www.edunew.com/dart/index.php?cmd=adminListUsers">Users</a><br>
+								<img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="(EmptyReference!)">Subjects</a><br>
+								<img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="(EmptyReference!)">Standards</a><br>
+								<img src="http://dart.bssd.org/images/10_h.gif" alt="" height="2" width="10" border="0"><a href="http://www.edunew.com/dart/index.php?cmd=newlist&amp;p1=2">Data</a><br>
+							</p>
+						</div>
+					</td>
+					<td valign="top" width="100%">
+						<div align="center">
+							<table width="100%" border="0" cellspacing="2" cellpadding="0">
+								<tr>
+									<td bgcolor="white">
+										<div align="left">
+											<br>
+											<font size="4">Overview - All Content Areas - PBL Group<br>
+												<br>
+											</font><font size="2">Here is a &quot;weighted list&quot; of the common relative weaknesses of this group of students from <i>all of their content areas</i>. The more students is this group that show any standard as having no toggled status </font><font size="2">, Emerging status, or Developing status, the larger the name of the standard is in the list. This means that the largest short standard names are the most common relative weaknesses of the group.</font>
+											<div align="left">
+												<div align="left">
+													<div align="left">
+														<ul>
+															<li type="circle"><font size="2">Roll over each content area code to read it!<br>
+																</font>
+															<li type="circle"><font size="2">Click on the Level Number in any Content Area to view the <i>students in this group at that level</i>.<br>
+																</font>
+															<li type="circle"><font size="2" color="black">Click on the name of the student to see<i> his or her standards progress in all content areas</i>. </font><font size="2"><br>
+																</font>
+															<li type="circle"><font size="2">Click on any Content Area to <i>re-sort the view by Content Area &amp; Level Number</i>.</font>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div class="notetarget">
+												<a title="Equivalent Representations" href="http://wiki.bssd.org//index.php/MA_8.2_(A1.3.4)_Translates_between_equivalent_representations_of_the_same_number_(fractions,_decimals,_percents,_exponents,_scientific_notation,_rational_numbers_and_standard_notation)." target="_blank"><font size="2">Equivalent Representations</font></a> :: <a title="Estimation Strategies" href="http://wiki.bssd.org//index.php/MA_8.11_(A3.3.2)_Applies_and_defends_a_variety_of_estimation_and_problem-solving_strategies_(lists,_guess_%26_check,_extended_patterns)_and_represents_mathematical_problems_numerically,_pictorially_or_symbolically." target="_blank">Estimation Strategies</a> :: <a title="Find Missing Angle / Side" href="http://wiki.bssd.org//index.php/MA_8.20_(A5.3.3)_Uses_similarity_and_congruence_to_find_the_scale_factor_and_apply_it_to_find_missing_angles_or_sides_of_figures.,_including_use_of_a_coordinate_plane." target="_blank"><font size="2">Find Missing Angle/Side</font></a> :: <a title="Geometric Formulas" href="http://wiki.bssd.org//index.php/MA_8.26_(A5.4.6)_Applies_geometric_formulas_to_a_variety_of_situations_(midpoint,_distance,_slope,_area,_and_volume)." target="_blank"><font size="3">Geometric Formulas</font></a> :: <a title="Measure Precision Error" href="http://wiki.bssd.org/index.php/MA_8.31_Evaluates_measurements_for_accuracy,_precision_and_error;_explains_acceptable_range_of_error." target="_blank"><font size="4">Measure Precision Error</font></a> :: <a title="Defends Conclusions" href="http://wiki.bssd.org//index.php/MA_8.32_(D1.3.3)_Explains,_justifies_and_defends_conclusions_with_examples_from_other_disciplines_and_every_day_life." target="_blank"><font size="3">Defends Conclusions</font></a> :: <a title="Net &amp; Gross Pay / Tax Forms" href="http://wiki.bssd.org//index.php/MA_8.38_Calculates_net_pay_vs._gross_pay_and_completes_the_end_of_year_federal_income_tax_using_the_short_form." target="_blank"><font size="3">Net &amp; Gross Pay / Tax Forms</font></a> :: <a title="Graphing Relationships" href="http://wiki.bssd.org//index.php/MA_8.41_Graphing_or_identifying_relationships_of_variables_on_a_coordinate_plane_(e.g._length/width,_area/diameter,_cost/pound)." target="_blank"><font size="3">Graphing Relationships</font></a> </div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td><br>
+										<table width="100%" border= 1>
+											<tr>
+												<th colspan="11" bgcolor="#ccccff"><font size="4"><b>PBL Group Profile</b></font></th>
+											</tr>
+											<tr>
+												<th>
+													<div align="center">
+														<font size="4">Name</font></div>
+												</th>
+												<th bgcolor="#ffffcc">
+													<div align="center">
+														<font size="4">CD</font></div>
+												</th>
+												<th>
+													<div align="center">
+														<font size="4">CA</font></div>
+												</th>
+												<th bgcolor="#ffffcc">
+													<div align="center">
+														<font size="4">MA</font></div>
+												</th>
+												<th>
+													<div align="center">
+														<font size="4">PSH</font></div>
+												</th>
+												<th bgcolor="#ffffcc">
+													<div align="center">
+														<font size="4">RE</font></div>
+												</th>
+												<th>
+													<div align="center">
+														<font size="4">SC</font></div>
+												</th>
+												<th bgcolor="#ffffcc">
+													<div align="center">
+														<font size="4">SL</font></div>
+												</th>
+												<th>
+													<div align="center">
+														<font size="4">SS</font></div>
+												</th>
+												<th bgcolor="#ffffcc">
+													<div align="center">
+														<font size="4">TE</font></div>
+												</th>
+												<th>
+													<div align="center">
+														<font size="4">WR</font></div>
+												</th>
+											</tr>
+											<tr>
+												<td nowrap>
+													<div align="center">
+														<a href="index.php?cmd=toggleStudent&p1=8540"><font size="4">Richard Black</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=CD&p3=3"><font size="4">3</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=CA&p3=3"><font size="4">3</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=MA&p3=5"><font size="4">5</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=PS&p3=3"><font size="4">3</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=RE&p3=5"><font size="4">5</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=SC&p3=2"><font size="4">2</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=SL&p3=3"><font size="4">3</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=SS&p3=3"><font size="4">3</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=TE&p3=3"><font size="4">3</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=WR&p3=3"><font size="4">3</font></a></div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+											<tr bgcolor=WHITE>
+												<td nowrap>
+													<div align="center">
+														<a href="index.php?cmd=toggleStudent&p1=10702"><font size="4">Randy Jones</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=CD&p3=1"><font size="4">1</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=CA&p3=1"><font size="4">1</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=MA&p3=1"><font size="4">1</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=PS&p3=1"><font size="4">1</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=RE&p3=3"><font size="4">3</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=SC&p3=1"><font size="4">1</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=SL&p3=1"><font size="4">1</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=SS&p3=1"><font size="4">1</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=TE&p3=1"><font size="4">1</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=WR&p3=2"><font size="4">2</font></a></div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+											<tr>
+												<td nowrap>
+													<div align="center">
+														<a href="index.php?cmd=toggleStudent&p1=8572"><font size="4">Bill Kyser</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=CD&p3=4"><font size="4">4</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=CA&p3=5"><font size="4">5</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=MA&p3=9"><font size="4">9</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=PS&p3=5"><font size="4">5</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=RE&p3=7"><font size="4">7</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=SC&p3=5"><font size="4">5</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=SL&p3=5"><font size="4">5</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=SS&p3=7"><font size="4">7</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=TE&p3=5"><font size="4">5</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=WR&p3=8"><font size="4">8</font></a></div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+											<tr bgcolor=WHITE>
+												<td nowrap>
+													<div align="center">
+														<a href="index.php?cmd=toggleStudent&p1=8529"><font size="4">John North</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=CD&p3=3"><font size="4">3</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=CA&p3=3"><font size="4">3</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=MA&p3=3"><font size="4">3</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=PS&p3=3"><font size="4">3</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=RE&p3=5"><font size="4">5</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=SC&p3=2"><font size="4">2</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=SL&p3=3"><font size="4">3</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=SS&p3=3"><font size="4">3</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=TE&p3=3"><font size="4">3</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=WR&p3=3"><font size="4">3</font></a></div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+											<tr>
+												<td nowrap>
+													<div align="center">
+														<a href="index.php?cmd=toggleStudent&p1=8552"><font size="4">Dorothy Simon</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=CD&p3=3"><font size="4">3</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=CA&p3=4"><font size="4">4</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=MA&p3=8"><font size="4">8</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=PS&p3=4"><font size="4">4</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=RE&p3=5"><font size="4">5</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=SC&p3=4"><font size="4">4</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=SL&p3=4"><font size="4">4</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=SS&p3=5"><font size="4">5</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=TE&p3=4"><font size="4">4</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=WR&p3=6"><font size="4">6</font></a></div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+											<tr>
+												<td nowrap>
+													<div align="center">
+														<a href="index.php?cmd=toggleStudent&p1=9408"><font size="4">Leona Smith</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=CD&p3=6"><font size="4">6</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=CA&p3=5"><font size="4">5</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=MA&p3=9"><font size="4">9</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=PS&p3=6"><font size="4">6</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=RE&p3=8"><font size="4">8</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=SC&p3=5"><font size="4">5</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=SL&p3=6"><font size="4">6</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=SS&p3=7"><font size="4">7</font></a></div>
+												</td>
+												<td bgcolor="#ffffcc">
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=TE&p3=5"><font size="4">5</font></a></div>
+												</td>
+												<td>
+													<div align="center">
+														<a href="index.php?cmd=toggle&p1=9&p2=WR&p3=8"><font size="4">8</font></a></div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+												<td>
+													<div align="center"></div>
+												</td>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+										</table>
+										<br>
+										<br>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div align="center">
+											<table width="100%" border="0" cellspacing="2" cellpadding="0">
+												<tr>
+													<td colspan="3">
+														
+													</td>
+												</tr>
+												<tr>
+													<td nowrap width="33%"><a title="DART Project Information" href="http://wiki.bssd.org/index.php/DART_System" target="_blank">DART Project Info</a> :: <a href="http://wiki.bssd.org/index.php/DART_System#DART_Technical_Support">Support</a> :: <a title="DART Contact Information" href="http://wiki.bssd.org/index.php/DART_System#DART_Contacts" target="_blank">Contact</a></td>
+													<td valign="middle" nowrap width="30%">
+														<div align="center">
+															<a title="Creative Commons License" href="http://creativecommons.org/licenses/by-nc-sa/2.5/" target="_blank"><img src="http://dart.bssd.org/images/somerights20.gif" alt="Attribution-NonCommercial-ShareAlike 2.5 License" height="31" width="88" align="absmiddle" border="0"></a></div>
+													</td>
+													<td valign="middle" nowrap width="60%">
+														<div align="right">
+															DART: Standards tracking that is free like a puppy!</div>
+													</td>
+												</tr>
+											</table>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<div align="center">
+							
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</body></html>

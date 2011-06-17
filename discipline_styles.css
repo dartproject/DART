@@ -1,0 +1,153 @@
+<style>
+	<!--
+
+	
+
+	/* netscape inheritance-handicap stylesheet, redundant, but effective */
+
+	/* designed for ease of re-deployment */
+
+	
+
+	td,p,li { color: #000000; font: normal 10pt Arial, Tahoma, Verdana, sans-serif; text-decoration: none; }
+
+	
+
+	/* this is the default link style, and the one used in paragraphs of text for all subpages */
+
+	a:link    { color: navy; font: 8pt Arial, Helvetica, Tahoma, sans-serif; text-decoration: none }
+
+	a:visited    { color: navy; font: 8pt Arial, Helvetica, Tahoma, sans-serif; text-decoration: none }
+
+	a:hover    { color: aqua; font: 8pt Arial, Helvetica, Tahoma, sans-serif; text-decoration: none }
+
+	a:active    { color: navy; font: 8pt Arial, Helvetica, Tahoma, sans-serif; text-decoration: none }
+	
+	
+	/* this is the link style used in the for the headers that are also links */
+
+	a.head:link { color: #666666; font: bold 18px/18px BakerSignet, Arial, Tahoma, sans-serif; text-decoration: none; }
+
+	a.head:visited { color: #666666; font: bold 18px/18px BakerSignet, Arial, Tahoma, sans-serif; text-decoration: none; }
+
+	a.head:hover { color: #666666; font: bold 18px/18px BakerSignet, Arial, Tahoma, sans-serif; text-decoration: none; }
+
+	a.head:active { color: #666666; font: bold 18px/18px BakerSignet, Arial, Tahoma, sans-serif; text-decoration: none; }
+	
+	
+	/* this is the default aksca link style, and the one used in paragraphs of text for all subpages */
+
+	a.aksca:link   { color: #DC143C; font: bold 16px/16px BakerSignet, Arial, Tahoma, sans-serif; }
+
+	a.aksca:visited   { color: #DC143C; font: bold 16px/16px BakerSignet, Arial, Tahoma, sans-serif; }
+
+	a.aksca:hover   { color: #DC143C; font: bold 16px/16px BakerSignet, Arial, Tahoma, sans-serif; }
+
+	a.aksca:active   { color: #DC143C; font: bold 16px/16px BakerSignet, Arial, Tahoma, sans-serif; }
+	
+	a.aksca:hover { color: #000000; font: bold 16px/16px BakerSignet, Arial, Tahoma, sans-serif; }
+	
+	
+		/* this is the default lam link style, and the one used in paragraphs of text for all subpages */
+		
+	a.lam:head { color: #000000 font: bold 16px/16px Arial, Tahoma, sans-serif; }
+	
+	a.lam:link   { color: #333399; font: normal 10pt Arial, Helvetica, Tahoma, sans-serif; text-decoration: none; }
+
+	a.lam:visited   { color: #666699; font: normal 10pt Arial, Helvetica, Tahoma, sans-serif; text-decoration: none; }
+
+	a.lam:hover   { color: #0066CC; font: normal 10pt Arial, Helvetica, Tahoma, sans-serif; text-decoration: none; }
+
+	a.lam:active   { color: #666699; font: normal 10pt Arial, Helvetica, Tahoma, sans-serif; text-decoration: none; }
+
+
+	
+
+
+
+	/* this is the link style used in the top gold gradient bar */
+
+	a.topbar:link   { color: #333399; font: normal 9.5pt Arial, Helvetica, Tahoma, sans-serif; }
+
+	a.topbar:visited   { color: #333399; font: normal 9.5pt Arial, Helvetica, Tahoma, sans-serif; }
+
+	a.topbar:hover   { color: #0066CC; font: normal 9.5pt Arial, Helvetica, Tahoma, sans-serif; }
+
+	a.topbar:active   { color: #000066; font: normal 9.5pt Arial, Helvetica, Tahoma, sans-serif; }
+
+
+
+	/* this is the link style used in the column of links on the right */
+
+	a.sidebar:link   { color: #333399; font: bold 9pt/9pt  Verdana, sans-serif; }
+
+	a.sidebar:visited   { color: #333399; font: bold 9pt/9pt  Verdana, sans-serif; }
+
+	a.sidebar:hover   { color: #006FEB; font: bold 9pt/9pt  Verdana, sans-serif; }
+
+	a.sidebar:active   { color: #006FEB; font: bold 9pt/9pt Verdana, sans-serif; }
+
+
+
+	/* this is the link style used for small gray notes */
+
+	a.note:link   { color: #666699; font: normal 8pt/8pt Arial, Helvetica, Tahoma, sans-serif; }
+
+	a.note:visited   { color: #666666; font: normal 8pt/8pt Arial, Helvetica, Tahoma, sans-serif; }
+
+	a.note:hover   { color: #0066CC; font: normal 8pt/8pt Arial, Helvetica, Tahoma, sans-serif; }
+
+	a.note:active   { color: #666666; font: normal 8pt/8pt Arial, Helvetica, Tahoma, sans-serif; }
+
+
+
+	/* this is the link style used for the breadcrumb trail */
+
+	a.context:link   { color: #666699; font: normal 8pt/8pt Arial, Helvetica, Tahoma, sans-serif; }
+
+	a.context:visited   { color: #666699; font: normal 8pt/8pt Arial, Helvetica, Tahoma, sans-serif; }
+
+	a.context:hover   { color: #0066CC; font: normal 8pt/8pt Arial, Helvetica, Tahoma, sans-serif; }
+
+	a.context:active   { color: #666699; font: normal 8pt/8pt Arial, Helvetica, Tahoma, sans-serif; }
+
+	
+
+	/* this is the link style used for the small footer links */
+
+	a.footer:link { color: #666666; font: normal 7.5pt Arial, Helvetica, Tahoma, sans-serif; }
+
+	a.footer:visited { color: #666666; font: normal 7.5pt Arial, Helvetica, Tahoma, sans-serif; }
+
+	a.footer:hover { color: #333399; font: normal 7.5pt Arial, Helvetica, Tahoma, sans-serif; }
+
+	a.footer:active { color: #666666; font: normal 7.5pt Arial, Helvetica, Tahoma, sans-serif; }
+
+	
+
+	.head { color: #000000; font: bold 17px/17px Arial, Tahoma, sans-serif; }
+
+	.subhead { color: #666666; font: bold 16px Arial, Helvetica, Tahoma, sans-serif; }
+
+	.note { color: #000000; font: normal 8pt/8pt Arial, Helvetica, Tahoma, sans-serif; }
+
+	.caption { color: #666666; padding: 0; font: normal 8pt/8pt Arial, Helvetica, Tahoma, sans-serif;  }
+
+	.context { color: #666699; font: normal 8pt/8pt Arial, Helvetica, Tahoma, sans-serif; }
+
+	.footer { color: #666666; font: normal 7.5pt Arial, Helvetica, Tahoma, sans-serif; }
+
+	.textonly { color: #000000; font: normal 6pt/6pt Arial, Helvetica, Tahoma, sans-serif; }
+	
+	.spaced {letter-spacing: 0.5cm}
+
+
+
+	.form { background: #FFFFFF; color: #666666; font-size: 11px; font-family: Arial, Helvetica, sans-serif }
+
+
+
+	
+
+	-->
+</style>
