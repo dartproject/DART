@@ -6,7 +6,7 @@
 
 include_once("lib/YearQuarter.inc");
 
-  $debugflag = $_GET['debug'];
+  if(isset($_GET['debug']))	$debugflag = $_GET['debug'];
 //  $debugflag="on";
   $currentUser = "";
   $currentUserID = "";
