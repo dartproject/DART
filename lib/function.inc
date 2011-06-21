@@ -247,7 +247,7 @@ define ("GRADETHRESHHOLD", 80);
 	function logon($user, $pwd) {
 		global $db;
 
-		$query = "select userid user where user='$user' and pwd  = '$pwd' and status = 'Active'";
+		$query = "select userid FROM user where user='$user' and pwd  = '$pwd' and status = 'Active'";
 		debugPrint("Logon Query: " . $query);
 		$res = $db->get_results($query);
 		if ($db->num_rows == 1 ) {
@@ -2146,7 +2146,7 @@ LIMIT 0 , $limit ";
 		foreach ($results2 as $ln) {
 		 newfputcsv($fp, $ln, "\t");
 //		   print_r($ln);
-//		   echo "Å<br><br>";
+//		   echo "ï¿½<br><br>";
 		}
 
 		debugPrint("FINISHED WITH FN: $fn<br>");
