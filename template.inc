@@ -1,38 +1,41 @@
 <?php
 // ==================================================================
 //  Author: Robert Joseph (dart@vizmotion.com)
+//  Modified by: Bolek Kurowski (bkurowsk@andrew.cmu.edu)
 //	 Web: http://wiki.bssd.org/index.php/DART_System
 // ==================================================================
 
-if(!isset($title)) { $title = "DART"; } 
-// Times arein seconds
-$warningtime = 2400; 
-$timeout = 3600;
+//if (!isset($title)) {
+//    $title = "DART";
+//}
+// Times arein seconds; 
+//$timeout = 3600; Set in js/timeout.js
 
-$smarty->assign('pageTitle',$title);
-$smarty->assign('head',$head);
-$smarty->assign('body',$body);
-$smarty->assign('js',$js);
+$smarty->assign('head', $head);
+$smarty->assign('js', $js);
 $smarty->assign('imageURL', $imageURL);
-$smarty->assign('currentUserName',$currentUserName);
+$smarty->assign('currentUserName', $currentUserName);
 
 include("leftside.inc");
 
-$smarty->display('layout.tpl');
-
+//is smarty template doesn't exist set $body
+if ($isSmarty!=true) {
+    $smarty->assign('body', $body);
+    $smarty->display('layout.tpl');
+}
 ?>
 <!--<html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
-<title><?php //echo $title ?></title>
+<title><?php //echo $title  ?></title>
 <link rel="stylesheet" href="dart_test.css" type="text/css">
-<?php //echo $head ?>
+<?php //echo $head  ?>
 
 <script>
-<?php //echo $js ?>
+<?php //echo $js  ?>
 </script>
 <script>
-var countDownInterval=<?php //echo $timeout ?>;
+var countDownInterval=<?php //echo $timeout  ?>;
 var countDownTime=countDownInterval+1;
 function countDown(){
 countDownTime--;
@@ -69,22 +72,22 @@ window.onload=startit
 </head>
 	<body marginheight="0" topmargin="0" vspace="0"
 	marginwidth="0" leftmargin="0" hspace="0" style="margin:0; padding:0">
-	<table border=0 cellpadding=0 cellspacing=0>
-	
-	<tr><td colspan=3 valign=top nowrap><br><?php //include("header.inc") ?></td></tr>
-	<tr><td colspan=3 valign=top><img src="images/cleardot.gif" height="10"></td></tr>
-	
-	<tr><td width=10>
-	<img src="images/cleardot.gif" height="1" width="10" border="0" alt="spacer">
+        <table border=0 cellpadding=0 cellspacing=0>
+
+        <tr><td colspan=3 valign=top nowrap><br><?php //include("header.inc")  ?></td></tr>
+        <tr><td colspan=3 valign=top><img src="images/cleardot.gif" height="10"></td></tr>
+
+        <tr><td width=10>
+        <img src="images/cleardot.gif" height="1" width="10" border="0" alt="spacer">
 	</td>
-	<td valign=top width=90>
-	<?php //include("leftside.inc") ?><br>
-	<img src="images/cleardot.gif" height="1" width="100" border="0" alt="spacer">
+        <td valign=top width=90>
+<?php //include("leftside.inc")  ?><br>
+        <img src="images/cleardot.gif" height="1" width="100" border="0" alt="spacer">
 	</td>
-	<td valign=top align=left width=600><br><?php //echo $body ?></td></tr>
-	
-	<tr><td colspan=2></td><td><br><br><?php //include("footer.inc") ?></td></tr>
+        <td valign=top align=left width=600><br><?php //echo $body  ?></td></tr>
+
+        <tr><td colspan=2></td><td><br><br><?php //include("footer.inc") ?></td></tr>
 	</table>
-	<script language="JavaScript" type="text/javascript" src="wz_tooltip.js"></script>
+        <script language="JavaScript" type="text/javascript" src="wz_tooltip.js"></script>
 	</body>
 </html>-->

@@ -1,7 +1,7 @@
 <html>
     <head>
         <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
-        <title>{$pageTitle}</title>
+        <title>{block name=title}{/block}</title>
         <link rel="stylesheet" href="dart_test.css" type="text/css">
 	{block name=head}{/block}
         {$head}
