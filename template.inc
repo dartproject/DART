@@ -8,48 +8,31 @@ if(!isset($title)) { $title = "DART"; }
 // Times arein seconds
 $warningtime = 2400; 
 $timeout = 3600;
+
+$smarty->assign('pageTitle',$title);
+$smarty->assign('head',$head);
+$smarty->assign('body',$body);
+$smarty->assign('js',$js);
+$smarty->assign('imageURL', $imageURL);
+$smarty->assign('currentUserName',$currentUserName);
+
+include("leftside.inc");
+
+$smarty->display('layout.tpl');
+
 ?>
-<html>
+<!--<html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
-<title><?php echo $title ?></title>
+<title><?php //echo $title ?></title>
 <link rel="stylesheet" href="dart_test.css" type="text/css">
-<?php echo $head ?>
+<?php //echo $head ?>
+
 <script>
-<!--
-function popUp2(URL, x, y) {
-  	self.name = "listings"; // names current window as "listings"
-	newwindow = window.open(URL, 'name', 'toolbar=1,scrollbars=1,location=1,statusbar=0,menubar=0,resizable=1,width=' + x + ',height=' + y + ',left=376,top=135');
-	if(window.focus) {newwindow.focus()}
-  }
-
-function confirmMsg(msg)
-{
-  inbox = confirm(msg);
-  return(inbox);
-}
-
-function logout(skip){
-	window.location = 'index.php?cmd=expired&msg=Idle time exceed. You have been automatically logged out."';
-}
-
-function go2(skip){
-	if(skip == false) {
-		alert ("You will be automatically logged out in 2 minutes if you don't save data or refresh screen");
-		window.refresh();
-	}
-	window.setTimeout("go2(false)", <?php echo $warningtime ?> * 1000); // 1000 is for every min or 1 sec
-	window.setTimeout("logout(false)", <?php echo $timeout ?> * 1000); // 1000 is for every min or 1 sec
-}
-
-go2(true);
--->
+<?php //echo $js ?>
 </script>
 <script>
-<?php echo $js ?>
-</script>
-<script>
-var countDownInterval=<?php echo $timeout ?>;
+var countDownInterval=<?php //echo $timeout ?>;
 var countDownTime=countDownInterval+1;
 function countDown(){
 countDownTime--;
@@ -88,20 +71,20 @@ window.onload=startit
 	marginwidth="0" leftmargin="0" hspace="0" style="margin:0; padding:0">
 	<table border=0 cellpadding=0 cellspacing=0>
 	
-	<tr><td colspan=3 valign=top nowrap><br><?php include("header.inc") ?></td></tr>
+	<tr><td colspan=3 valign=top nowrap><br><?php //include("header.inc") ?></td></tr>
 	<tr><td colspan=3 valign=top><img src="images/cleardot.gif" height="10"></td></tr>
 	
 	<tr><td width=10>
 	<img src="images/cleardot.gif" height="1" width="10" border="0" alt="spacer">
 	</td>
 	<td valign=top width=90>
-	<?php include("leftside.inc") ?><br>
+	<?php //include("leftside.inc") ?><br>
 	<img src="images/cleardot.gif" height="1" width="100" border="0" alt="spacer">
 	</td>
-	<td valign=top align=left width=600><br><?php echo $body ?></td></tr>
+	<td valign=top align=left width=600><br><?php //echo $body ?></td></tr>
 	
-	<tr><td colspan=2></td><td><br><br><?php include("footer.inc") ?></td></tr>
+	<tr><td colspan=2></td><td><br><br><?php //include("footer.inc") ?></td></tr>
 	</table>
 	<script language="JavaScript" type="text/javascript" src="wz_tooltip.js"></script>
 	</body>
-</html>
+</html>-->
