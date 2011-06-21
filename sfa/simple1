@@ -1,0 +1,25 @@
+function change_title(c_id)
+{
+	var the_title = xbGetElementById('title_span_' + c_id);
+
+	if(the_title.childNodes.length) {
+		undo_texts[c_id] = the_title.innerHTML;
+		the_title.innerHTML = '';
+
+		// replace placeholder input box with a real one
+		var current_title = xbGetElementById("orig_title_" + c_id);
+		var input_span = xbGetElementById('input_span_' + c_id);
+                input_span.innerHTML = '<input type=text size=35 name="dyn_edit_' + c_id + '" id="dyn_edit_' + c_id + '" value="' + current_title.value + '">';
+	
+		var input_style = new xbStyle(input_span);
+		input_style.setVisibility('visible');
+	}
+
+	// check if we have to add the submit button...
+	var submit_style = new xbStyle(xbGetElementById('submit_span'));
+
+	if(submit_style.getVisibility() == 'hidden') {
+		submit_style.setVisibility('visible');
+	}	
+}
+

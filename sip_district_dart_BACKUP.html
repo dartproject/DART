@@ -1,0 +1,505 @@
+<html><head>
+		<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+		<title>DART - District SIP Summary</title>
+		<link rel="stylesheet" href="http://dart.bssd.org/dart_test.css" type="text/css">
+		<script>
+
+<!--
+
+function popUp2(URL, x, y) {
+
+  	self.name = "listings"; // names current window as "listings"
+
+	newwindow = window.open(URL, 'name', 'toolbar=1,scrollbars=1,location=1,statusbar=0,menubar=0,resizable=1,width=' + x + ',height=' + y + ',left=376,top=135');
+
+	if(window.focus) {newwindow.focus()}
+
+  }
+
+
+
+function confirmMsg(msg)
+
+{
+
+  inbox = confirm(msg);
+
+  return(inbox);
+
+}
+
+
+
+function logout(skip){
+
+	window.location = 'index.php?cmd=expired&msg=Idle time exceed. You have been automatically logged out."';
+
+}
+
+
+
+function go2(skip){
+
+	if(skip == false) {
+
+		alert ("You will be automatically logged out in 2 minutes if you don't save data or refresh screen");
+
+		window.refresh();
+
+	}
+
+	window.setTimeout("go2(false)", 2400 * 1000); // 1000 is for every min or 1 sec
+
+	window.setTimeout("logout(false)", 3600 * 1000); // 1000 is for every min or 1 sec
+
+}
+
+
+
+go2(true);
+
+-->
+
+</script>
+		<script>
+
+</script>
+		<script>
+
+var countDownInterval=3600;
+
+var countDownTime=countDownInterval+1;
+
+function countDown(){
+
+countDownTime--;
+
+if (countDownTime <=0){
+
+countDownTime=countDownInterval;
+
+clearTimeout(counter)
+
+//window.location="index.php?cmd=expired&msg=Idle time exceed. You have been automatically logged out.";
+
+return
+
+}
+
+if (document.all) //if IE 4+
+
+document.all.countDownText.innerText = countDownTime+" ";
+
+else if (document.getElementById) //else if NS6+
+
+document.getElementById("countDownText").innerHTML=countDownTime+" "
+
+else if (document.layers){ //CHANGE TEXT BELOW TO YOUR OWN
+
+document.c_reload.document.c_reload2.document.write('Timing out in <b id="countDownText">'+countDownTime+' </b> seconds')
+
+document.c_reload.document.c_reload2.document.close()
+
+}
+
+counter=setTimeout("countDown()", 1000);
+
+}
+
+
+
+function startit(){
+
+if (document.all||document.getElementById) //CHANGE TEXT BELOW TO YOUR OWN
+
+document.write('Timing out in <b id="countDownText">'+countDownTime+' </b> seconds')
+
+countDown()
+
+}
+
+
+
+if (document.all||document.getElementById)
+
+startit()
+
+else
+
+window.onload=startit
+
+//setTimeout("location.href='index.php?cmd=expired&msg=Idle time exceed. You have been automatically logged out.'" , t)
+
+</script>
+	</head><body topmargin="0" vspace="0" leftmargin="0" hspace="0" style="margin: 0pt; padding: 0pt;" marginheight="0" marginwidth="0">
+		<table border="0" cellpadding="0" cellspacing="0">
+	
+	<tbody><tr><td colspan="3" nowrap="nowrap" valign="top"><br>
+<a name="top_anchor" href="(EmptyReference!)"><img src="http://dart.bssd.org/images/frontlogo.gif" alt="" border="0"></a><br>
+						<font size="1" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><a title="DART Project Information" href="http://wiki.bssd.org/index.php/DART_System" target="_blank">DART Project Info</a> :: <a title="DART Support Information" href="http://wiki.bssd.org/index.php/DART_System#DART_Technical_Support">Support</a> :: <a title="DART Contact Information" href="http://wiki.bssd.org/index.php/DART_System#DART_Contacts" target="_blank">Contact</a></font></td></tr>
+	<tr><td colspan="3" valign="top"><img src="http://dart.bssd.org/images/cleardot.gif" height="10"></td></tr>
+	
+	<tr><td width="10"http://en.wikhttp://wiki.bssd.org/images/cleardot.gif" alt="spacer" border="0" height="1" width="10">
+	</td>
+	<td valign="top" width="90">
+	<div align="left">
+							<font size="2" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><b><font color="#0066ff">Logged In As:</font></b><br>
+								<img src="http://dart.bssd.org/images/dart1.gif" alt="" border="0" height="67" width="77"><br>
+								<b><font color="#0066ff">Alaska EED</font></b><br>
+								<br>
+							</font><font size="2" color="#0006f0" face="Arial, Helvetica, Geneva, Swiss, SunSans-Regular"><font color="#0006f0"><font color="#0006f0"><font color="#0006f0"><font color="#0006f0"><font color="#0006f0"><font color="#0006f0"><font color="#0006f0"><font color="#0006f0"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><b>SIP Module</b><br>
+																																							<img src="../*DART%20Screen%20Fixes/images/10_h.gif" alt="" border="0" height="2" width="10"> <a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?module=sip&amp;cmd=siphome">Plan View</a><br>
+																																						</font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></div></td>
+	<td align="left" valign="top">
+						<table border="0" cellpadding="0" cellspacing="2">
+							<tr>
+								<td width="60%">
+									<div align="left">
+										<br>
+										<font color="#cc0000" size="4" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">District Improvement Plan: 2008-09 School Year</font><font class="big" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"> </font><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><br>
+										</font></div>
+									<blockquote>
+										<div align="left">
+											<div class="noteimportant">
+												<font size="2" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">All 15 schools in the Bering Strait are required to do Site School Improvement Plans in DART, and adjust their goals each quarter. Individual BSSD teachers also use the DART SIP Module to create classroom level plans.<br>
+													<br>
+													The following District Improvement Plan data has been entered by BSSD District Office Program managers and staff, and summarizes the District's efforts for this school year. This is meant to meet the reporting requirements of the Alaska Department of Education and Early Development.</font></div>
+										</div>
+									</blockquote>
+								</td>
+								<td width="40%">
+									<div align="center">
+										<img src="http://dart.bssd.org/images/eed_logo.gif" alt="" height="168" width="182" border="0"><img src="http://dart.bssd.org/images/BSSD-logo_168.gif" alt="" height="168" width="162" border="0"></div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<div align="left">
+										<table border="0" cellpadding="2" cellspacing="2" width="1000">
+											<tbody>
+												<tr>
+													<td colspan="2" bgcolor="#ccffff">
+														<div align="left">
+															<font size="3" color="#336666" face="Arial"><b>Summary of District Improvement Plan</b></font></div>
+													</td>
+												</tr>
+												<tr>
+													<td colspan="2" valign="top">
+														<div align="center">
+															<br>
+															<table width="550" border="0" cellspacing="2" cellpadding="0">
+																<tr>
+																	<td nowrap bgcolor="#ffff99" width="50%">
+																		<div align="center">
+																			<font size="2" face="Arial"><b>Subjects in Order of Strength</b></font></div>
+																	</td>
+																	<td nowrap bgcolor="#ffff99" width="50%">
+																		<div align="center">
+																			<font size="2" face="Arial"><b>Strongest &amp; Weakest Grade Levels</b></font></div>
+																	</td>
+																</tr>
+																<tr>
+																	<td width="50%"><font face="Arial"><font size="2"><b>Reading </b>53% (472 students)</font></font></td>
+																	<td width="50%"><font face="Arial"><font size="2"><b>Reading</b> ~ Strongest 3rd <b>::</b> Weakest 10th</font></font></td>
+																</tr>
+																<tr>
+																	<td width="50%"><font face="Arial"><font size="2"><b>Writing  </b>44%(390 students)</font></font></td>
+																	<td width="50%"><font face="Arial"><font size="2"><b>Writing</b> ~ Strongest 5th<b> :: </b>Weakest 8th</font></font></td>
+																</tr>
+																<tr>
+																	<td width="50%"><font face="Arial"><font size="2"><b>Math </b> 43% (376 students)</font></font></td>
+																	<td width="50%"><font face="Arial"><font size="2"><b>Math</b> ~ Strongest 3rd<b> ::</b> Weakest 9th &amp; 10th</font></font></td>
+																</tr>
+															</table>
+														</div>
+														<div align="left">
+															<p><font size="3" color="#336666" face="Arial"><b>Specific Areas of Emphasis</b></font><font size="2" face="Arial"><br>
+																</font></p>
+														</div>
+														<div align="center">
+															<table border=1>
+																<tr>
+																	<td class=sipsubheading bgcolor="#ffff99"><font size="2" face="Arial"><b>Reading:</b></font></td>
+																	<td><font size="3" face="Arial"><input type=text name=emphasisR value="R~SC2 Forming a General Understanding" size="40"></font></td>
+																</tr>
+																<tr>
+																	<td class=sipsubheading bgcolor="#ffff99"><font size="2" face="Arial"><b>Writing:</b></font></td>
+																	<td><font size="3" face="Arial"><input type=text name=emphasisW value="W~SC3 Revising" size="40"></font></td>
+																</tr>
+																<tr>
+																	<td class=sipsubheading bgcolor="#ffff99"><font size="2" face="Arial"><b>Math:</b></font></td>
+																	<td><font size="3" face="Arial"><input type=text name=emphasisM value="M~SC5 Geometry" size="40"></font></td>
+																</tr>
+															</table>
+														</div>
+														<div align="left">
+															<p><font size="3" color="#336666" face="Arial"><b>State Questions and Responses</b></font></p>
+															<p><font size="2" face="Arial"><b>1) Check each cell in the following table to identify the areas in which the district did NOT meet AYP:</b></font></p>
+															<p><font size="2" face="Arial">Each marked cell in the following table identifies the areas in which the district did <u>NOT</u> meet AYP:&nbsp;</font></p>
+															<div align="center">
+																<div align="left">
+																	
+																</div>
+																<table width="600" border="0" cellspacing="2" cellpadding="0">
+																	<tr>
+																		<td colspan="3" bgcolor="#ffff99">
+																			<div align="center"></div>
+																		</td>
+																		<td bgcolor="#ffff99">
+																			<div align="center">
+																				<font size="2" face="Arial"><b>All Students</b></font></div>
+																		</td>
+																		<td bgcolor="#ffff99">
+																			<div align="center">
+																				<font size="2" face="Arial"><b>Ethnic Groups</b></font></div>
+																		</td>
+																		<td bgcolor="#ffff99">
+																			<div align="center">
+																				<font size="2" face="Arial"><b>SWD</b></font></div>
+																		</td>
+																		<td bgcolor="#ffff99">
+																			<div align="center">
+																				<font size="2" face="Arial"><b>LEP</b></font></div>
+																		</td>
+																		<td bgcolor="#ffff99">
+																			<div align="center">
+																				<font size="2" face="Arial"><b>Low-Income</b></font></div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td colspan="3"><font size="2" face="Arial"><b>Language Arts</b></font></td>
+																		<td>
+																			<div align="center">
+																				<font size="2" face="Arial"><b>X</b></font></div>
+																		</td>
+																		<td>
+																			<div align="center"></div>
+																		</td>
+																		<td>
+																			<div align="center"></div>
+																		</td>
+																		<td>
+																			<div align="center">
+																				<font size="2" face="Arial"><b>X</b></font></div>
+																		</td>
+																		<td>
+																			<div align="center">
+																				<font size="2" face="Arial"><b>X</b></font></div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td colspan="3"><font size="2" face="Arial"><b>Math</b></font></td>
+																		<td>
+																			<div align="center">
+																				<font size="2" face="Arial"><b>X</b></font></div>
+																		</td>
+																		<td>
+																			<div align="center"></div>
+																		</td>
+																		<td>
+																			<div align="center"></div>
+																		</td>
+																		<td>
+																			<div align="center">
+																				<font size="2" face="Arial"><b>X</b></font></div>
+																		</td>
+																		<td>
+																			<div align="center">
+																				<font size="2" face="Arial"><b>X</b></font></div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td colspan="3"><font size="2" face="Arial"><b>Participation</b></font></td>
+																		<td>
+																			<div align="center"></div>
+																		</td>
+																		<td>
+																			<div align="center"></div>
+																		</td>
+																		<td>
+																			<div align="center"></div>
+																		</td>
+																		<td>
+																			<div align="center"></div>
+																		</td>
+																		<td>
+																			<div align="center"></div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td colspan="3"><font size="2" face="Arial"><b>Graduation Rate</b></font></td>
+																		<td>
+																			<div align="center">
+																				<font size="2" face="Arial"><b>X</b></font></div>
+																		</td>
+																		<td>
+																			<div align="center"></div>
+																		</td>
+																		<td>
+																			<div align="center"></div>
+																		</td>
+																		<td>
+																			<div align="center"></div>
+																		</td>
+																		<td>
+																			<div align="center"></div>
+																		</td>
+																	</tr>
+																</table>
+															</div>
+															<p><font size="2" face="Arial"><b>2) Describe why the district&rsquo;s prior plans have not succeeded in improving student achievement.</b></font></p>
+														</div>
+														<div align="center">
+															<table width="750" border="1" cellspacing="2" cellpadding="0">
+																<tr>
+																	<td bgcolor="#ffff99">
+																		<div align="center">
+																			<font size="2" face="Arial"><b>District Response to Question 2</b></font></div>
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<div align="left">
+																			<font size="2" face="Arial">Minim ullamcorper et nisl ut, sit ullamcorper, diam feugait facilisi, tation vulputate dolor. Blandit at vero diam praesent augue iusto accumsan ea eros vero nostrud augue vel. </font>
+																			<p><font size="2" face="Arial">Augue ex consequatvel ex lorem commodo ad commodo consequat iusto vel, duis facilisis nulla quis ad delenit consectetuer blandit dolore duis wisi? Quis et, consequatvel dolore in autem augue delenit autem dignissim et duis delenit facilisi. Augue molestie consectetuer quis autem dolor ullamcorper duis eu vulputate augue ea accumsan lorem eros. Vulputate iusto accumsan, consequat in, nibh dolore hendrerit sit esse sciurus eros wisi hendrerit vero vulputate. Nonummy sciurus nulla qui dolore eu commodo delenit illum exerci in dolor iusto feugiat enim nonummy dolor, feugiat consequat, ad augue elit. </font></p>
+																			<p><font size="2" face="Arial">Feugiat autem molestie vulputate veniam crisare facilisis in consequat, dolore minim luptatum commodo vero nulla nonummy enim dolore te wisi. Et in veniam delenit, esse consectetuer tation dolor ut in ea lorem dolore ullamcorper, eros qui ad luptatum blandit. Tation dolore hendrerit qui quis eros ea qui nulla ex nostrud illum. Delenit, ea in luptatum enim praesent augue. Wisi augue eros consequatvel tation? </font></p>
+																			<p><font size="2" face="Arial">Autem esse in, dignissim eros nostrud consequat vulputate, facilisis dignissim eum dignissim in blandit wisi odio et dignissim. In nostrud ea autem, luptatum et esse blandit tincidunt augue tincidunt autem et laoreet wisi enim lobortis dolore hendrerit. Et in vero nostrud, lobortis commodo, blandit at. Eu nulla in esse ea ex? Adipiscing dolore molestie iriure aliquam nulla dolore ipsum ad magna et. Qui in tincidunt vel ut autem dolor.</font></p>
+																			<p><font size="2" face="Arial">In euismod volutpat, iusto augue euismod sit luptatum illum. Commodo aliquip duis at suscipit crisare illum. Facilisis suscipit tation commodo nulla luptatum odio augue facilisis ut autem adipiscing in suscipit. Et vel nisl in lobortis accumsan, et vulputate facilisis feugait facilisi vero esse, et esse luptatum et, laoreet in vulputate. </font></p>
+																		</div>
+																	</td>
+																</tr>
+																<tr>
+																	<td bgcolor="#ffff99">
+																		<div align="center">
+																			<font size="2" face="Arial"><b>Links to Supporting Evidence Online for Response</b></font></div>
+																	</td>
+																</tr>
+																<tr>
+																	<td></td>
+																</tr>
+															</table>
+														</div>
+														<div align="left">
+															<div align="left">
+																<p><font size="2" face="Arial"><b>3) Describe the process used to notify all parents of the district status and of their opportunities to be involved in addressing the issues that caused the district to be identified for improvement. Please provide a copy of the notification parents received.</b></font></p>
+															</div>
+														</div>
+														<div align="center">
+															<table width="750" border="1" cellspacing="2" cellpadding="0">
+																<tr>
+																	<td bgcolor="#ffff99">
+																		<div align="center">
+																			<font size="2" face="Arial"><b>District Response to Question 3</b></font></div>
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<div align="left">
+																			<font size="2" face="Arial">Consequat veniam dignissim enim qui facilisis ea dignissim consequat eum te ex? Exerci et commodo nostrud nulla commodo. Eu, nostrud duis, nulla hendrerit vel duis nulla vulputate, qui facilisis. </font>
+																			<p><font size="2" face="Arial">Wisi dolore iusto facilisis autem, vulputate ut facilisis volutpat ad nulla augue vulputate ullamcorper amet aliquip autem dignissim nibh, commodo crisare nonummy delenit velit autem tincidunt. Augue illum lobortis ullamcorper nisl consequat nostrud, dignissim consequat praesent suscipit. Lorem amet, at facilisis qui duis enim consectetuer. </font></p>
+																			<p><font size="2" face="Arial">Feugait aliquip praesent dolore veniam in ut qui velit nisl luptatum. Erat exerci quis qui quis sit dolor ut qui facilisi velit. Diam lobortis suscipit veniam, delenit duis nibh iusto facilisi ut feugiat ullamcorper facilisis ullamcorper facilisis. Autem vero dolore, accumsan ex suscipit vero illum adipiscing tation, qui eum lorem laoreet molestie duis consequat vulputate dolore ut dolor, at nulla. Lobortis dignissim ad. In ut minim, et dolore feugiat. </font></p>
+																			<p><font size="2" face="Arial">In nibh illum. Dolore aliquam, in sciurus consequatvel nisl tation, adipiscing aliquam ea, magna qui ullamcorper veniam dolor wisi. Nisl dolore autem praesent, qui enim praesent qui, duis commodo quis feugait. Magna eu minim tation vero illum wisi blandit exerci lobortis ea luptatum augue lobortis hendrerit, wisi ut nulla enim, facilisi ut nulla. Dolor te autem, in consequat vero et eu, dolor in consequatvel illum sit facilisis.</font></p>
+																			<p><font size="2" face="Arial">At iriuredolor dolor nisl et vel sciurus euismod praesent exerci feugiat vulputate iriuredolor iusto? In, sciurus tation in tation accumsan praesent quis wisi vero in ut nulla, aliquip duis amet et erat delenit. Autem tincidunt duis augue te eros ut, volutpat aliquam molestie hendrerit delenit minim. Nostrud facilisi dolore wisi illum ad accumsan consequatvel, augue illum odio dignissim vulputate dolore vel duis. </font></p>
+																			<p><font size="2" face="Arial">Vel dolore feugait adipiscing at ad augue ullamcorper te dignissim commodo, qui feugait consequat nostrud feugiat ut esse aliquam. Nulla feugait esse ullamcorper feugait ut praesent dignissim dolore accumsan. Magna velit consequat, duis accumsan consequat ad nibh odio aliquip ut consequat illum ex delenit. </font></p>
+																			<p><font size="2" face="Arial">Qui nibh, nulla ad vulputate, et velit erat minim eros te feugait et dolore. Molestie ea minim nulla dignissim esse iriure quis et ex lobortis, blandit sit. </font></p>
+																			<p><font size="2" face="Arial">Consectetuer blandit ut iriuredolor commodo lobortis. Odio tincidunt euismod sciurus nisl ut, euismod autem ea augue dolore exerci facilisis delenit lorem ea euismod eum velit in tation. Te hendrerit duis ut, sit minim ut tation iriure blandit in consequat. Ut nostrud amet vulputate lorem lobortis lorem molestie vero, autem euismod odio vulputate crisare nostrud duis. </font></p>
+																			<p><font size="2" face="Arial">Lorem nisl blandit erat vel consectetuer augue nulla nonummy, euismod dolore consectetuer velit te, consequatvel eu elit consequat illum in dolore. Qui minim dolore delenit luptatum in amet accumsan at molestie. </font></p>
+																		</div>
+																	</td>
+																</tr>
+																<tr>
+																	<td bgcolor="#ffff99">
+																		<div align="center">
+																			<font size="2" face="Arial"><b>Links to Supporting Evidence Online for Response</b></font></div>
+																	</td>
+																</tr>
+																<tr>
+																	<td><font size="2" face="Arial"><a href="http://wiki.bssd.org/sip/parent_notification.zip">http://wiki.bssd.org/sip/parent_notification.zip<br>
+																				http://www.bssd.org/strategic_plan.pdf<br>
+																			</a></font></td>
+																</tr>
+															</table>
+														</div>
+														<div align="left">
+															<div align="left">
+																<div align="left">
+																	<p><font size="2" face="Arial"><b>4) Describe the process used to notify all parents of the district status and of their opportunities to be involved in addressing the issues that caused the district to be identified for improvement. Please provide a copy of the notification parents received.</b></font></p>
+																</div>
+															</div>
+														</div>
+														<div align="center">
+															<table width="750" border="1" cellspacing="2" cellpadding="0">
+																<tr>
+																	<td bgcolor="#ffff99">
+																		<div align="center">
+																			<font size="2" face="Arial"><b>District Response to Question 4</b></font></div>
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<div align="left">
+																			<font size="2" face="Arial">Autem diam aliquip luptatum, in aliquam, magna lobortis dignissim commodo blandit eu et duis praesent iusto in. Et, sciurus quis suscipit tation euismod facilisis nibh hendrerit accumsan, facilisi ipsum duis, aliquip eros veniam. Esse accumsan, facilisi crisare commodo ullamcorper consequatvel facilisi. Consequat facilisi dolore crisare accumsan, nulla wisi, nulla dolor iriure ex enim diam nulla eros enim ut feugiat enim et, ad consequat. Aliquam nulla, enim ullamcorper duis et ad duis eros nostrud blandit odio. Consequat, luptatum consequatvel elit suscipit autem feugait elit ea molestie tincidunt facilisi facilisis enim ad, commodo te lobortis dolore. Consequat enim, facilisi dolore ullamcorper iriuredolor vulputate ullamcorper commodo.</font>
+																			<p><font size="2" face="Arial">Sciurus augue, praesent commodo dolor diam, duis ea iusto sed iusto dolor exerci duis et blandit. Facilisi nostrud autem, eu euismod, tation duis et vulputate, at diam vel dignissim qui suscipit. Augue illum suscipit eros in veniam et nibh consectetuer, dignissim qui eros, ut sciurus elit augue te? Exerci wisi nisl facilisis in nisl, ut accumsan illum at iusto commodo, luptatum qui, minim elit diam ullamcorper aliquip commodo. Molestie, praesent augue esse, wisi consequatvel veniam consequatvel feugait tincidunt, eu erat dignissim vulputate. </font></p>
+																			<p><font size="2" face="Arial">Dolor vulputate in odio dignissim te minim amet vero. Nulla molestie at eu erat illum, commodo nulla minim at minim. Aliquip in luptatum velit volutpat nisl nulla luptatum eros eu ut consequat nostrud eum ipsum odio, eu hendrerit. Nulla minim augue aliquip duis veniam dignissim molestie ut ipsum. </font></p>
+																			<p><font size="2" face="Arial">Quis delenit eu feugait exerci enim duis lorem minim nulla consectetuer nulla laoreet consequat sciurus praesent. Dolore, crisare hendrerit, iriure facilisi illum iusto praesent iusto erat luptatum hendrerit vero feugiat iriure nulla. Te feugiat, nostrud dolore accumsan luptatum ad nonummy wisi ut sit wisi commodo autem esse duis euismod exerci nulla adipiscing dolore. Exerci elit praesent augue vulputate enim dolore nisl in vulputate ex aliquip nulla. Lorem tation consequat ea vero laoreet tation consequat ex vel aliquam blandit, ullamcorper adipiscing dolore iusto at facilisis aliquam exerci. </font></p>
+																			<p><font size="2" face="Arial">Wisi dignissim ad quis, qui ut exerci eu iriure. Vel facilisi exerci crisare, duis te, lobortis iriuredolor exerci enim elit erat. Diam et, facilisis nibh erat, ex blandit in commodo vulputate illum eros duis praesent. Euismod quis vero, eum minim qui feugait nulla facilisis luptatum consectetuer sciurus iriuredolor adipiscing in, iriuredolor consequatvel, dolore feugait te. </font></p>
+																			<p><font size="2" face="Arial">Autem ad augue aliquam facilisis erat dolore ad, duis eros at? Eu autem dolore nonummy iusto nisl at euismod exerci et feugiat ut, wisi velit sciurus vel qui? Ex lobortis consequatvel volutpat facilisis odio, enim vel facilisis, sed feugiat iriuredolor quis lorem dignissim, et velit vel. Dolore eu elit consequat dolor, iusto in facilisis. Consequat, suscipit consequat nulla qui consequat, volutpat duis at enim facilisis dolore autem nulla velit, blandit ex ut nulla, ut wisi tation. </font></p>
+																			<p><font size="2" face="Arial">Et esse molestie consequatvel nulla nonummy crisare et, wisi dolore wisi nulla lobortis nibh tation? Feugiat duis commodo accumsan ut laoreet vero illum euismod. Facilisi nulla vero dolore adipiscing crisare commodo ullamcorper molestie consequat molestie illum consectetuer et, consectetuer erat magna ullamcorper. </font></p>
+																		</div>
+																	</td>
+																</tr>
+																<tr>
+																	<td bgcolor="#ffff99">
+																		<div align="center">
+																			<font size="2" face="Arial"><b>Links to Supporting Evidence Online</b></font></div>
+																	</td>
+																</tr>
+																<tr>
+																	<td><font size="2" face="Arial"><a href="http://wiki.bssd.org/sip/parent_notification.zip">http://wiki.bssd.org/sip/parent_notification.zip</a></font></td>
+																</tr>
+															</table>
+														</div>
+														<div align="left">
+															<p></p>
+															<p></p>
+															<p></p>
+														</div>
+														<div align="left">
+															<p></p>
+															<p></p>
+															<p></p>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</td></tr>
+	
+	<tr><td colspan="2" width="100"></td><td><br>
+						<div align="left">
+							<table border="0" cellpadding="0" cellspacing="2" width="34%">
+								<tbody>
+									<tr>
+										<td colspan="3"></td>
+									</tr>
+									<tr>
+										<td nowrap="nowrap"><font size="1" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><a title="DART Project Information" href="http://wiki.bssd.org/index.php/DART_System" target="_blank">DART Project Info</a> :: <a title="DART Support Information" href="http://wiki.bssd.org/index.php/DART_System#DART_Technical_Support">Support</a> :: <a title="DART Contact Information" href="http://wiki.bssd.org/index.php/DART_System#DART_Contacts" target="_blank">Contact</a></font></td>
+										<td nowrap="nowrap" valign="middle">
+											<div align="center">
+												<a title="This software is licensed under the CC-GNU GPL." href="http://creativecommons.org/licenses/GPL/2.0/" target="_blank"><img src="http://dart.bssd.org/images/somerights20.gif" alt="Attribution-NonCommercial-ShareAlike 2.5 License" align="absmiddle" border="0" height="31" width="88"></a></div>
+										</td>
+										<td nowrap="nowrap" width="667">
+											<div align="right">
+												<font size="1" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><b><i>DART: Standards tracking that is free like a puppy!</i></b></font></div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</td></tr>
+	</tbody></table>
+	</body></html>

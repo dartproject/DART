@@ -1,0 +1,62 @@
+p, body, table
+{
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 11px;
+}
+
+.noteclassic, .noteimportant, .notewarning, .notetip, .notetarget {
+  margin: 2em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70% !important;
+  min-height: 40px;
+  clear: both;
+  text-align: justify;
+  vertical-align: middle;
+  border-collapse: collapse;
+  padding: 15px 20px 15px 80px;
+  background-position: 20px 50%;
+  background-repeat: no-repeat;
+  -moz-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  border-radius: 20px;
+}
+ 
+.noteclassic  { background-color: #eef; background-image: url("dart/images/note.gif") }
+ 
+.noteimportant  { background-color: #ffc; background-image: url("dart/images/important.gif") }
+ 
+.notewarning  { background-color: #fdd; background-image: url("dart/images/warning.gif") }
+ 
+.notetip  { background-color: #dfd; background-image: url("dart/images/tip.gif") }
+
+.notetarget  { background-color: #eef; background-image: url("dart/images/bullseye_sm.gif") }
+div.preview { background: #f7f9fa; margin-left: 2em; padding: 4px; border: dashed 1px #000000 }
+div.breadcrumbs { color: #666666; font-size: 80%; background-color: #f5f5f5; padding-left: 4px }
+span.user { color: #cccccc; font-size: 90% }
+h1  
+{ 
+	font-size: 160%;
+	font-family: Verdana; 
+	font-weight: normal; 
+	margin: 0 0 1em 0; 
+	padding: 0.05em 0 0; 
+	border-bottom: 1px solid #8cacbb 
+}
+
+h1r { color: #c00; font-size: 160%; font-family: Verdana; font-weight: normal; margin-left: 0 }
+h2 { font-size: 150%; margin-left: 20px }
+h2r { color: red; font-size: 150%; margin-left: 0 }
+h3 { font-size: 140%; font-weight: bold; margin-left: 40px; border-bottom: medium none }
+h4 { font-size: 120%; font-weight: bold; margin-left: 60px; border-bottom: medium none }
+h4r { color: #c03; font-size: 120%; font-weight: bold; margin-left: 0; border-bottom: medium none }
+h5 { font-size: 100%; font-weight: bold; margin-left: 0; border-bottom: medium none }
+h5a { font-size: 100%; font-weight: bold; border-bottom: medium none }
+a { color: #436976; text-decoration: none }
+a:hover { color: #000000; text-decoration: underline }
+/* external link */
+a.urlextern  { color: #436976; text-decoration: none; background: url("dart/images/link_icon.gif") no-repeat 0 1px; padding: 1px 0 1px 16px }
+a.urlextern:visited { color: purple }
+a.urlextern:hover { text-decoration: underline }
+/*Tables */
+table1  { font-weight: bold; background-color: #ffc }

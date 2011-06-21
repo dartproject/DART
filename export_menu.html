@@ -1,0 +1,477 @@
+<html><head>
+		<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+		<title>DART - Export Customization Panel</title>
+		<link rel="stylesheet" href="indext_front_files/dart_test.css" type="text/css">
+		<script>
+
+<!--
+
+function popUp2(URL, x, y) {
+
+  	self.name = "listings"; // names current window as "listings"
+
+	newwindow = window.open(URL, 'name', 'toolbar=1,scrollbars=1,location=1,statusbar=0,menubar=0,resizable=1,width=' + x + ',height=' + y + ',left=376,top=135');
+
+	if(window.focus) {newwindow.focus()}
+
+  }
+
+
+
+function confirmMsg(msg)
+
+{
+
+  inbox = confirm(msg);
+
+  return(inbox);
+
+}
+
+
+
+function logout(skip){
+
+	window.location = 'index.php?cmd=expired&msg=Idle time exceed. You have been automatically logged out."';
+
+}
+
+
+
+function go2(skip){
+
+	if(skip == false) {
+
+		alert ("You will be automatically logged out in 2 minutes if you don't save data or refresh screen");
+
+		window.refresh();
+
+	}
+
+	window.setTimeout("go2(false)", 2400 * 1000); // 1000 is for every min or 1 sec
+
+	window.setTimeout("logout(false)", 3600 * 1000); // 1000 is for every min or 1 sec
+
+}
+
+
+
+go2(true);
+
+-->
+
+</script>
+		<script>
+
+</script>
+		<script>
+
+var countDownInterval=3600;
+
+var countDownTime=countDownInterval+1;
+
+function countDown(){
+
+countDownTime--;
+
+if (countDownTime <=0){
+
+countDownTime=countDownInterval;
+
+clearTimeout(counter)
+
+//window.location="index.php?cmd=expired&msg=Idle time exceed. You have been automatically logged out.";
+
+return
+
+}
+
+if (document.all) //if IE 4+
+
+document.all.countDownText.innerText = countDownTime+" ";
+
+else if (document.getElementById) //else if NS6+
+
+document.getElementById("countDownText").innerHTML=countDownTime+" "
+
+else if (document.layers){ //CHANGE TEXT BELOW TO YOUR OWN
+
+document.c_reload.document.c_reload2.document.write('Timing out in <b id="countDownText">'+countDownTime+' </b> seconds')
+
+document.c_reload.document.c_reload2.document.close()
+
+}
+
+counter=setTimeout("countDown()", 1000);
+
+}
+
+
+
+function startit(){
+
+if (document.all||document.getElementById) //CHANGE TEXT BELOW TO YOUR OWN
+
+document.write('Timing out in <b id="countDownText">'+countDownTime+' </b> seconds')
+
+countDown()
+
+}
+
+
+
+if (document.all||document.getElementById)
+
+startit()
+
+else
+
+window.onload=startit
+
+//setTimeout("location.href='index.php?cmd=expired&msg=Idle time exceed. You have been automatically logged out.'" , t)
+
+</script>
+	</head><body topmargin="0" vspace="0" leftmargin="0" hspace="0" style="margin: 0pt; padding: 0pt;" marginheight="0" marginwidth="0">
+	<table border="0" cellpadding="0" cellspacing="0">
+	
+	<tbody><tr><td colspan="3" nowrap="nowrap" valign="top"><br>
+<a name="top_anchor" href="(EmptyReference!)"><img src="http://dart.bssd.org/images/frontlogo.gif" alt="" border="0"></a><br>
+						<font size="1" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><a title="DART Project Information" href="http://wiki.bssd.org/index.php/DART_System" target="_blank">DART Project Info</a> :: <a title="DART Support Information" href="http://wiki.bssd.org/index.php/DART_System#DART_Technical_Support">Support</a> :: <a title="DART Contact Information" href="http://wiki.bssd.org/index.php/DART_System#DART_Contacts" target="_blank">Contact</a></font></td></tr>
+	<tr><td colspan="3" valign="top"><img src="http://dart.bssd.org/images/cleardot.gif" height="10"></td></tr>
+	
+	<tr><td width="10"http://en.wikhttp://wiki.bssd.org/images/cleardot.gif" alt="spacer" border="0" height="1" width="10">
+	</td>
+	<td valign="top" width="90">
+	<div align="left">
+							<font size="2" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><b><font color="#0066ff">Logged In As:</font></b><br>
+								<img src="http://dart.bssd.org/images/dart1.gif" alt="" border="0" height="67" width="77"><br>
+								<b><font color="#0066ff">Concilus, John</font></b><br>
+								<br>
+							</font><font size="2" face="Arial, Helvetica, Geneva, Swiss, SunSans-Regular"><img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=transcriptsDefine">Define Transcript</a><br>
+								<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=editTranscripts">Edit Transcripts</a><br>
+								<br>
+								<b><font color="#0066ff">DART Info<br>
+									</font></b><img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=logout">Log Out</a><br>
+								<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=home">Dart Home</a><br>
+								<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=editProfile">Edit Profile</a><br>
+								<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="mailto:dart@bssd.org" target="_blank">Feedback</a><br>
+								<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=search">Search</a><br>
+								<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=Dashboard">Dashboard</a><br>
+								<br>
+							</font><font size="2" color="#0066ff" face="Arial, Helvetica, Geneva, Swiss, SunSans-Regular"><b>My Groups</b></font><font size="2" face="Arial, Helvetica, Geneva, Swiss, SunSans-Regular"><br>
+								<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=showscores&amp;p1=7290">All_BSSD</a></font><font size="2" color="#0006f0" face="Arial, Helvetica, Geneva, Swiss, SunSans-Regular"><br>
+								<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=showscores&amp;p1=7391">DIO_all2</a><font color="#0006f0"><br>
+									<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=showscores&amp;p1=7252">Grads08?</a><font color="#0006f0"><br>
+										<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=showscores&amp;p1=5790">Precode</a><font color="#0006f0"><br>
+											<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=showscores&amp;p1=7624">PreCode_F08</a><font color="#0006f0"><br>
+												<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=showscores&amp;p1=6913">PSO</a><font color="#0006f0"><br>
+													<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=showscores&amp;p1=7294">SBA07</a><font color="#0006f0"><br>
+														<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=showscores&amp;p1=7754">SHH_smart*</a><font color="#0006f0"><br>
+															<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=showscores&amp;p1=7752">TLA_trans</a><font color="#0006f0"><br>
+																<br>
+																<font color="#0066ff"><b>Shared Groups<br>
+																			Admin</b></font><br>
+																<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=showscores&amp;p1=4454">NACTEC S1</a><font color="#0066ff"><br>
+																	<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=showscores&amp;p1=6429">NACTEC S10</a><font color="#0066ff"><br>
+																		<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=showscores&amp;p1=6583">NACTEC S11</a><font color="#0066ff"><br>
+																			<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=showscores&amp;p1=6686">NACTEC S12</a><font color="#0066ff"><br>
+																				<font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><br>
+																																				<font color="#0066ff"><b>Private Shared List</b></font><br>
+																																				<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=showscores&amp;p1=7731">DIO</a><font color="#0066ff"><br>
+																																					<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=showscores&amp;p1=5856">SiteAllSpEd</a><font color="#0066ff"><br>
+																																						<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=showscores&amp;p1=6876">CCLC</a><font color="#0066ff"><br>
+																																							<br>
+																																							<font color="#0066ff"><b>Manage Groups</b></font><br>
+																																							<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=newlist">New Group</a><br>
+																																							<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=editlist">Edit Groups</a><br>
+																																							<br>
+																																							<font color="#0066ff"><b>Reports</b></font><br>
+																																							<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=reportsInd">Official</a><br>
+																																							<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=pivot">Drill Down!</a><br>
+																																							<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=extraPacingReport">PASS</a><br>
+																																							<br>
+																																							<font color="#0066ff"><b>Admin Area</b></font><br>
+																																							<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=userAdmin&amp;site=Admin&amp;status=Active">Users Admin</a><br>
+																																							<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=InternalError">Internal Error</a><br>
+																																							<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=bigRed">Big Red Button</a><br>
+																																							<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=editStandards">Edit Standards</a><br>
+																																							<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=SchoolCalendar&amp;site=DIO&amp;year=2008">Edit School Cal</a><br>
+																																							<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=progress&amp;site=Admin">Progress Admin</a><br>
+																																							<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=history">History Toggle</a><br>
+																																							<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=historylogin">History Login</a><br>
+																																							<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=uploadInput">Mass Import</a><br>
+																																							<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=editNotes">Edit Notes</a><br>
+																																							<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?cmd=editRepNotes">Edit Report Notes</a><br>
+																																							<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a title="DART Enrollment Form" href="http://www.bssd.org/enrollment_form.shtml">Add Student</a><br>
+																																							<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a title="DART Drop &amp; Transfer Form" href="http://www.bssd.org/transfer_form.shtml">Drop/ Transfer</a><br>
+																																							<img src="images/10_h.gif" alt="" border="0" height="2" width="10"><a title="DART Level Adjustment Form" href="http://www.bssd.org/schedule_form.shtml">Level Change</a><br>
+																																							<br>
+																																							<b>SFA</b><br>
+																																							<img src="images/10_h.gif" alt="" border="0" height="2" width="10"> <a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?module=sfa&amp;cmd=sfahome">Home</a><br>
+																																							<img src="images/10_h.gif" alt="" border="0" height="2" width="10"> <a href="javascript:void(0);" onclick="popUp('sfa/sri.html', 550, 650);">SRI Sheet</a><br>
+																																							<br>
+																																							<script>
+
+<!-- Begin
+
+  function popUp(URL, x, y) {
+
+	newwindow = window.open(URL, 'name', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=' + x + ',height=' + y + ',left=376,top=135');
+
+	if(window.focus) {newwindow.focus();return false;}
+
+	return false
+
+  }
+
+// End -->
+
+</script>
+																																							<b>SIP</b><br>
+																																							<img src="images/10_h.gif" alt="" border="0" height="2" width="10"> <a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?module=sip&amp;cmd=siphome">Home</a><br>
+																																							<br>
+																																							<b>Special Ed</b><br>
+																																							<img src="images/10_h.gif" alt="" border="0" height="2" width="10"> <a href="../Documents/Eudora%20Folder/Attachments%20Folder/index.php?module=sped&amp;cmd=spedhome">Home</a><br>
+																																							<br>
+																																						</font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font><font color="#0006f0"><font color="#0006f0"><font color="#0006f0"><font color="#0006f0"><font color="#0006f0"><font color="#0006f0"><font color="#0006f0"><font color="#0006f0"><font color="#0006f0"><font color="#0006f0"><font color="#0006f0"><font color="#0006f0"><font color="#0006f0"><font color="#0006f0"><font color="#0006f0"><font color="#0006f0"><font color="#0006f0"><font color="#0006f0"><font color="#0006f0"><font color="#0006f0"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><font color="#0066ff"><img src="http://wiki.bssd.org/images/cleardot.gif" alt="spacer" border="0" height="1" width="100">
+</font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></div></td>
+	<td align="left" valign="top" width="600">
+						<table border="0" cellpadding="0" cellspacing="2" width="100%">
+							<tr>
+								<td>
+									<div align="left">
+										<br>
+										<font color="#cc0000" size="4" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">Export Customization Screen </font><font class="big" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">- Looking for nuggets? </font><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><br>
+										</font></div>
+									<blockquote>
+										<div align="left">
+											<div class="noteimportant">
+												<font size="2" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">The most commonly requested fields are here. The default is for all available fields, but you can select by group. <br>
+												</font></div>
+										</div>
+									</blockquote>
+								</td>
+								<td><img src="http://dart.bssd.org/images/gold_panning.gif" alt="" height="174" width="216" align="right" border="0"></td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<div align="center">
+										<br>
+										<table border="0" cellpadding="2" cellspacing="2" width="100%">
+											<tbody>
+												<tr>
+													<td colspan="2" bgcolor="#ccffff">
+														<div align="right">
+															<font class="big" size="2" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><b>Export Customization Panel</b></font></div>
+													</td>
+												</tr>
+												<tr>
+													<td colspan="2" valign="top">
+														<div align="center">
+															<p></p>
+														</div>
+														<div align="center">
+															<p></p>
+															<div align="center">
+																<font face="Arial, Helvetica, Geneva, Swiss, SunSans-Regular"><b><font color="#336666">Current Group:</font></b></font><font color="#000099" face="Arial, Helvetica, Geneva, Swiss, SunSans-Regular"> </font><font face="Arial, Helvetica, Geneva, Swiss, SunSans-Regular"><b>UNK All</b> :: <b><font color="#336666">Change Group:</font><font color="#0066ff"> </font></b><select name="p2" onchange="submit()">
+																		<option value="self" selected="selected">Select Group</option>
+																		<option value="999">Period 1 Math</option>
+																		<option value="999">New Kids</option>
+																		<option value="999">SHH All</option>
+																		<option value="999">WBB Reading</option>
+																	</select><br>
+																	<br>
+																</font>
+																<table border="0">
+																	<tbody>
+																		<tr>
+																			<td></td>
+																			<td nowrap><font face="Arial, Helvetica, Geneva, Swiss, SunSans-Regular"><b><font color="#336666">Export Name:</font></b></font><font color="#000099" face="Arial, Helvetica, Geneva, Swiss, SunSans-Regular"> </font><input name="p2" maxlength="20" size="20" value="superfine_export.csv" type="text"></td>
+																			<td nowrap></td>
+																			<td nowrap>
+																				<div align="right">
+																					<input name="save" value="Rename Export" type="submit"></div>
+																			</td>
+																		</tr>
+																	</tbody>
+																</table>
+																<font face="Arial, Helvetica, Geneva, Swiss, SunSans-Regular"><br>
+																</font>
+																<table width="100%" border="0" cellspacing="2" cellpadding="0">
+																	<tr>
+																		<td nowrap><b><font color="#336666" face="Arial, Helvetica, Geneva, Swiss, SunSans-Regular">Export Date - Begin:</font></b></td>
+																		<td nowrap><input type="text" name="textfieldName" value="2008-08-01" size="24"></td>
+																		<td nowrap><b><font color="#336666" face="Arial, Helvetica, Geneva, Swiss, SunSans-Regular">Export Date - End:</font></b></td>
+																		<td nowrap><input type="text" name="textfieldName" value="2008-10-17" size="24"></td>
+																	</tr>
+																	<tr>
+																		<td nowrap></td>
+																		<td nowrap>
+																			<div align="left">
+																				<font size="2" color="#cc3300" face="Arial, Helvetica, Geneva, Swiss, SunSans-Regular">Default = SY Start Date</font></div>
+																		</td>
+																		<td nowrap></td>
+																		<td nowrap>
+																			<div align="left">
+																				<font size="2" color="#cc3300" face="Arial, Helvetica, Geneva, Swiss, SunSans-Regular">Default = Today</font></div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td nowrap></td>
+																		<td colspan="2" nowrap>
+																			<div align="center">
+																				<input name="save" value="Specify Range" type="submit"></div>
+																		</td>
+																		<td nowrap></td>
+																	</tr>
+																	<tr>
+																		<td nowrap><font face="Arial, Helvetica, Geneva, Swiss, SunSans-Regular"><br>
+																			</font></td>
+																		<td nowrap>
+																			<div align="right">
+																				<br>
+																				<font face="Arial, Helvetica, Geneva, Swiss, SunSans-Regular"><b><font color="#336666">Select Fields:</font></b></font></div>
+																		</td>
+																		<td nowrap><br>
+																			<select name="p1" onchange="submit()">
+																				<option selected value="9999">All Fields</option>
+																				<option value="99999">Demographics</option>
+																				<option value="99999">Levels &amp; Progress</option>
+																				<option value="99999">Discipline</option>
+																				<option value="99999">Attendance</option>
+																				<option value="99999">RISC Data</option>
+																				<option value="99999">Testing Data</option>
+																				<option value="99999">Special Ed Data</option>
+																				<option value="99999">Site Specific Data</option>
+																			</select></td>
+																		<td nowrap></td>
+																	</tr>
+																	<tr>
+																		<td colspan="4">
+																			<div align="center">
+																				<br>
+																				<form name="studentform" id="studentform" method="post" action="index.php?cmd=updatelist">
+																					<input name="previoussearch" value="0" type="hidden"> <input name="id" value="7752" type="hidden">
+																					<table align="center" border="0" cellpadding="5" cellspacing="0">
+																						<tbody>
+																							<tr>
+																								<td valign="top">Current Field List</td>
+																								<td></td>
+																								<td valign="top">Potential Field Groups</td>
+																							</tr>
+																							<tr>
+																								<td valign="top"><select name="removeselect[]" size="20" id="removeselect" multiple="multiple" onfocus="document.studentform.add.disabled=true; document.studentform.remove.disabled=false; document.studentform.addselect.selectedIndex=-1;">
+																										<option value="9999">AK ID</option>
+																										<option value="9999">Status</option>
+																										<option value="9999">Last Name</option>
+																										<option value="9999">First Name</option>
+																										<option value="9999">DOB</option>
+																										<option value="9999">Grade</option>
+																										<option value="9999">Ethnicity</option>
+																										<option value="9999">Suspended - ISS</option>
+																										<option value="9999">Suspended</option>
+																										<option value="9999">IEP</option>
+																										<option value="9999">IEP Entry Date</option>
+																										<option value="9999">IEP Current Date</option>
+																										<option value="9999">Disability Code</option>
+																										<option value="9999">Re-eval Date</option>
+																									</select></td>
+																								<td valign="top"><br>
+																									<input name="add" id="add" value="&#x2190;" type="submit"><br>
+																									<input name="remove" id="remove" value="&#x2192;" type="submit"><br>
+																								</td>
+																								<td valign="top"><select name="addselect[]" size="20" id="addselect" multiple="multiple" onfocus="document.studentform.add.disabled=false; document.studentform.remove.disabled=true; document.studentform.removeselect.selectedIndex=-1;">
+																										<option value="9999">Address</option>
+																										<option value="9999">Middle Name</option>
+																										<option value="9999">City</option>
+																										<option value="9999">Zip</option>
+																										<option value="9999">Phone (parent phone)</option>
+																										<option value="9999">Gender</option>
+																										<option value="9999">LEP</option>
+																										<option value="9999">ADA - YTD</option>
+																										<option value="9999">ADA - Quarter</option>
+																										<option value="9999">Attendance Code - Today</option>
+																										<option value="9999">Present</option>
+																										<option value="9999">Late</option>
+																									</select><br>
+																									<!---
+
+         <input type="text" name="searchtext" size="30" value="" 
+
+                  onFocus ="document.studentform.add.disabled=true;
+
+                            document.studentform.remove.disabled=true;
+
+                            document.studentform.removeselect.selectedIndex=-1;
+
+                            document.studentform.addselect.selectedIndex=-1;"
+
+                  onkeydown = "var keyCode = event.which ? event.which : event.keyCode;
+
+                               if (keyCode == 13) {
+
+                                    document.studentform.previoussearch.value=1;
+
+                                    document.studentform.submit();
+
+                               } " />
+
+         <input name="search" id="search" type="submit" value="Search" />
+
+ ---></td>
+																							</tr>
+																						</tbody>
+																					</table>
+																				</form>
+																			</div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td colspan="2">
+																			<div align="center">
+																				<input name="save" value="Spit it Out!" type="submit"></div>
+																		</td>
+																		<td></td>
+																	</tr>
+																</table>
+																<p></p>
+															</div>
+															<p></p>
+															<p></p>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</td></tr>
+	
+	<tr><td colspan="2"></td><td><br><br><div align="center">
+	<table border="0" cellpadding="0" cellspacing="2" width="100%">
+		<tbody><tr>
+			<td colspan="3">
+				
+			</td>
+		</tr>
+		<tr>
+			<td nowrap="nowrap" width="33%"><font size="1" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><a title="DART Project Information" href="http://wiki.bssd.org/index.php/DART_System" target="_blank">DART Project Info</a> :: <a title="DART Support Information" href="http://wiki.bssd.org/index.php/DART_System#DART_Technical_Support">Support</a> :: <a title="DART Contact Information" href="http://wiki.bssd.org/index.php/DART_System#DART_Contacts" target="_blank">Contact</a></font></td>
+			<td nowrap="nowrap" valign="middle" width="30%">
+				<div align="center">
+					<a title="This software is licensed under the CC-GNU GPL." href="http://creativecommons.org/licenses/GPL/2.0/" target="_blank"><img src="http://dart.bssd.org/images/somerights20.gif" alt="Attribution-NonCommercial-ShareAlike 2.5 License" align="absmiddle" border="0" height="31" width="88"></a></div>
+			</td>
+			<td nowrap="nowrap" valign="middle" width="60%">
+				<div align="right">
+												<font size="1" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><b><i>
+					DART: Standards tracking that is free like a puppy!</i></b></font></div>
+			</td>
+		</tr>
+	</tbody></table>
+</div>
+</td></tr>
+	</tbody></table>
+	<script language="JavaScript" type="text/javascript" src="http://wiki.bssd.org/index.php_files/wz_tooltip.js"></script>
+	</body></html>

@@ -1,0 +1,228 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title> Porting sparklines to App Engine </title>
+    </head>
+    <body>
+        <p>
+        The title of this article is actually misleading
+        as the code isn't ported, but altered to run on both
+        App Engine and under CGI. App Engine exposes a CGI 
+        environment that your requests run under, so the real
+        challenge comes from the differences in the runtime
+        environment.
+        </p>
+        <h3>Imaging</h3>
+        <p>
+        The first big difference is that <a href="http://www.pythonware.com/products/pil/">PIL</a> (the Python Imaging
+        Library) isn't available on App Engine, and it's not possible
+        to add C extensions to your App Engine project, so we will have to find
+        a pure Python substitute. Such a substitute exists in
+        <a href="http://the.taoofmac.com/space/Projects/PNGCanvas">pngcanvas</a>, a pure Python module for creating PNG images.
+        </p>
+        <p>
+        My use of pngcanvas is actually the completion of a virtuous circle: 
+        I originally created the <a href="http://bitworking.org/projects/sparklines/">Python sparklines service</a> and
+        <a href="http://redhanded.hobix.com/inspect/sparklinesForMinimalists.html">why wanted to create one in Ruby</a> 
+        using pure Ruby and BMPs, then that was the jumping off point for some commenters to
+        do the same for PNGs, which led 
+        <a href="http://mir.aculo.us/2005/09/17/pure-ruby-sparklines">mir.aculo.us</a> to create 
+        a library for creating sparkline PNGs in pure Ruby, which 
+        <a href="http://the.taoofmac.com/space/Projects/PNGCanvas">Rui Carmo then ported to Python</a>, 
+        which I will now use in porting the original sparklines code to App Engine.
+        Small world.
+        </p>
+        <p>
+        Now you probably won't want to use pngcanvas for 
+        extensive graphics manipulation, but since sparklines
+        are small it will be just fine.
+        As a side note, I really like the simplicity of the
+        pngcanvas interface, the port actually resulted in removing
+        lines of code compared to PIL, which is always a good sign.
+        </p>
+        <p>
+        The one problem that arises in moving from PIL to pngcanvas
+        is the lack of color names. PIL allows you to specify
+        colors by name, something pngcanvas doesn't support.
+        Luckily X11 includes a convenient list of color names
+        and their equivalent in RGB triples (<code>/etc/X11/rgb.txt</code>)
+        which just needs to be converted into a form usable for
+        Python. I could write code to import <code>rgb.txt</code> via Python, but
+        since I have to upload the file to App Engine anyway, I'll 
+        exercise the macro capabilities of my text editor and
+        covert it into a Python file:
+        </p>
+
+        <pre class='prettyprint'>_colors = {
+"snow": (255, 250, 250, 255),
+"ghost white": (248, 248, 255, 255),
+"ghostwhite": (248, 248, 255, 255),
+
+# ...
+
+"light green": (144, 238, 144, 255),
+"lightgreen": (144, 238, 144, 255)
+}
+
+def colors(name):
+    name = name.strip().lower()
+    if name in _colors:
+        return _colors[name]
+    else:
+        return (0, 0, 0, 255)</pre>
+
+        <p>
+        Now I can use <code>rgb.py</code> to covert color names into RGB triples, 
+        or in this case RGBA tuples like <code>pngcanvas</code> expects. 
+        </p>
+        <h3>app.yaml</h3>
+        <p>
+        If we wanted to do the absolute minimum then
+        that would be all the changes we would need to make.
+        The only extra step needed for App Engine is to describe
+        the files we are using and their location so it knows
+        what to upload and how to direct requests, which is done
+        through the <code>app.yaml</code> file.
+        </p>
+        <pre class='prettyprint'>application: sparklines-bitworking
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /
+  static_files: index.html
+  upload: index.html
+
+- url: /spark.js
+  static_files: spark.js 
+  upload: spark.js 
+
+- url: /spark.cgi?.*
+  script: spark.py
+</pre>
+
+        <p>
+        And were done. But there are some other changes we can make
+        to take full advantage of the App Engine platform.
+        </p>
+
+        <h3>The <code>main()</code> optimization</h3>
+        <p>
+        If your handler script exports a <code>main()</code> function
+        that takes no arguments then App Engine will keep the script
+        cached and call <code>main()</code> for subsequent requests. 
+        Skipping the evaluation of the request on each
+        request improves performance, so we'll break out the code into two modules,
+        <code>main.py</code> which will be our script handler
+        and <code>script.py</code> which will contain
+        all of the sparkline drawing logic.
+        That change is now reflected in our <code>app.yaml</code>
+        file:
+        </p>
+
+<pre class='prettyprint'>application: sparklines-bitworking
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /
+  static_files: index.html
+  upload: index.html
+
+- url: /spark.js
+  static_files: spark.js 
+  upload: spark.js 
+
+- url: /spark.cgi?.*
+  script: main.py
+        </pre>
+
+        <p>And the <code>main.py</code> is very simple:</p>
+
+        <pre class='prettyprint'>from spark import plot
+
+def main():
+    plot()
+
+
+if __name__ == '__main__':
+    main()  </pre>
+
+        <h3>Memcache</h3>
+        <p>
+        Now the original sparklines code already made good use
+        HTTP caching by setting <code>ETag:</code> and <code>Cache-control:</code> headers, but
+        we can do more under App Engine by using the memcache service.
+        After drawing each sparkline we can store the PNG in 
+        memcache using a hash of the incoming request query 
+        parameters and the application version as the key 
+        and subsequently look for images in memcache when 
+        requests come in using that same hash. If there is a hit we can avoid 
+        doing any drawing at all.
+        We still want to be able to use the code on a
+        system that doesn't have memcache support so
+        we will make its use conditional.
+        </p>
+
+        <pre class='prettyprint'>try:
+    from google.appengine.api import memcache
+except:
+    memcache = None
+</pre>
+
+    <p>Check for memcached images:</p>
+    
+    <pre class='prettyprint'>def plot():
+    plot_types = {
+        'discrete': plot_sparkline_discrete, 
+        'impulse': lambda data, args: plot_sparkline_discrete(data, args, True), 
+        'smooth': plot_sparkline_smooth,
+        'error': plot_error
+    }
+
+    if not os.environ['REQUEST_METHOD'] in ['GET', 'HEAD']:
+        error("Status: 405 Method Not Allowed")
+    if_none_match = os.environ.get('HTTP_IF_NONE_MATCH', '')
+    hashkey = entity_hash()
+    if if_none_match and hashkey == if_none_match:
+        not_modified()
+    <b>if memcache:
+        image_data = memcache.get(hashkey)
+        if image_data is not None:
+            ok()
+            sys.stdout.write(image_data)
+            sys.exit()</b>
+
+    form = cgi.FieldStorage()
+    # ...
+    </pre>
+
+    <p>Populate memcache with images after drawing them:</p>
+
+
+    <pre class='prettyprint'>
+    # ...
+    image_data = plot_types[type](data, args)
+    <b>if memcache:
+        memcache.add(hashkey, image_data)</b>
+    # ... 
+    </pre>
+
+    <p>
+    By making the use of memcache conditional on it's presence
+    this code can now be used both on App Engine and also on my 
+    server which doesn't have memcache. 
+    </p>
+
+    <p>
+    This service can be found hosted at 
+    both <a href="http://bitworking.org/projects/sparklines/">http://bitworking.org/projects/sparklines/</a> 
+    and on Google App Engine at <a href="http://sparklines-bitworking.appspot.com/">http://sparklines-bitworking.appspot.com/</a>.
+    Both are running the identical code, which can be found at  
+    <a href="http://bitbucket.org/jcgregorio/sparklines/overview/">http://bitbucket.org/jcgregorio/sparklines/overview</a>.
+    </p>
+
+    </body>
+</html>

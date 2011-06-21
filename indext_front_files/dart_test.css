@@ -1,0 +1,156 @@
+p, body, table
+{
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 11px;
+}
+
+.noteclassic, .noteimportant, .notewarning, .notetip, .notetarget {
+  margin: 2em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70% !important;
+  min-height: 40px;
+  clear: both;
+  text-align: justify;
+  vertical-align: middle;
+  border-collapse: collapse;
+  padding: 15px 20px 15px 80px;
+  background-position: 20px 50%;
+  background-repeat: no-repeat;
+  -moz-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  border-radius: 20px;
+}
+ 
+.noteclassic {
+  /*border: 1px solid #99D;*/
+  background-color: #eef;
+  background-image: url(http://dart.bssd.org/images/note.gif);
+}
+ 
+.noteimportant {
+  /*border: 1px solid #ff0;*/
+  background-color: #ffc;
+  background-image: url(http://dart.bssd.org/images/important.gif);
+}
+ 
+.notewarning {
+  /*border: 1px solid #d99;*/
+  background-color: #fdd;
+  background-image: url(http://dart.bssd.org/images/warning.gif);
+}
+ 
+.notetip {
+  /*border: 1px solid #9d9;*/
+  background-color: #dfd;
+  background-image: url(http://dart.bssd.org/images/tip.gif);
+}
+
+.notetarget {
+  /*border: 1px solid #99D;*/
+  background-color: #eef;
+  background-image: url(http://dart.bssd.org/images/bullseye_sm.gif);
+}
+
+.tablehead1 {
+  /*border: 1px solid #99D;*/
+  background-color: #eef; 
+}
+
+.t1  
+{ 
+  font-size: 160%;
+  font-family: Verdana; 
+  font-weight: normal; 
+}
+
+.t1r 
+{ 
+  color: #c00;
+  font-size: 160%;
+  font-family: Verdana;
+  font-weight: normal;
+}
+
+.t2 
+{ 
+  font-size: 150%;
+  font-family: Verdana;
+}
+
+.t2r 
+{ 
+  color: red;
+  font-size: 150%;
+  font-family: Verdana;
+}
+
+.t3 
+{ 
+  font-size: 140%;
+  font-family: Verdana;
+  font-weight: bold;
+}
+
+.t4 
+{ 
+  font-size: 120%;
+  font-family: Verdana;
+  font-weight: bold;
+}
+
+.t4r 
+{ 
+  color: #c03;
+  font-size: 120%;
+  font-family: Verdana;
+  font-weight: bold;
+}
+
+.t5 
+{ 
+	font-size: 100%; 
+	font-family: Verdana;
+	font-weight: bold;
+}
+
+.t5a 
+{
+  font-size: 100%;
+  font-family: Verdana;
+  font-weight: bold;
+}
+
+a 
+{
+  color: #436976;
+  text-decoration: none;
+}
+
+a:hover
+{
+  color: #000000;
+  text-decoration: underline;
+}
+
+.big
+{
+   text-align: center;
+   font-weight: bold;
+   font-family: Verdana, Arial, Helvetica, sans-serif;
+   font-size: 14px;
+}
+
+td.leftline {
+   border-left: 2px solid;
+}
+
+td.bottomline {
+   border-bottom: 2px solid;
+}
+
+td.leftbottomline {
+   border-left: 2px solid;
+   border-bottom: 2px solid;
+}
+

@@ -1,0 +1,23 @@
+p, body, table
+{
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 11px;
+}
+
+.box
+{
+    BORDER-RIGHT: 1px solid;
+    BORDER-TOP: 1px solid;
+    BORDER-LEFT: 1px solid;
+    BORDER-BOTTOM: 1px solid;
+    WIDTH: 100%;
+ }
+
+.big
+{
+   text-align: center;
+   font-weight: bold;
+   font-family: Verdana, Arial, Helvetica, sans-serif;
+   font-size: 14px;
+}
+
