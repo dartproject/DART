@@ -5,7 +5,7 @@ $sub = $_GET['p2'];       // subject number
 $lvl = $_GET['p3'];      // level number
 
 $subject = getSubjectStandards ($sub, $lvl);
-$list = getSutdentToggleList($listID, $sub, $lvl);
+$list = getStudentToggleList($listID, $sub, $lvl);
 $student = getStudentStdScores ($listID, $sub, $lvl);
 $stdcount = count($list);
 $subInfo = getSubjectInfo ($sub);

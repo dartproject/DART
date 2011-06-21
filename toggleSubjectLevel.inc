@@ -13,7 +13,7 @@ $cellwidth = 60;
 
 $subject = getSubjectStandards ($sub, $lvl);
 $overall = getSubjectOverall ($sub, $lvl);
-$list = getSutdentToggleList($listID, $sub, $lvl);
+$list = getStudentToggleList($listID, $sub, $lvl);
 $student = getStudentStdScores ($listID, $sub, $lvl);
 $stdcount = count($list);
 $subInfo = getSubjectInfo ($sub);

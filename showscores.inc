@@ -14,8 +14,6 @@ $att_pm = $listinfo['pm'] == 1 ?
 			"<a href=index.php?cmd=AttendanceList&listid=$listID&period=1>PM</a>" :
 			"";
 $grades = getGradesList($listID);
-$stdCount = getGradesListTotal($listID);
-debugPrint ("StdCount: $stdCount");
 
 $subject = getSubjects ();
 $list = getStudentList($listID);
