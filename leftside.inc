@@ -26,7 +26,7 @@ $A6Priv = Privilege(A6);
 // Transcripts *****************************************************************
 //******************************************************************************
 
-$smarty->assign('showTranscripts', PDisplayB(B12));
+$smarty->assign('showTranscriptOptions', PDisplayB(B12));
 //$leftside .= PDisplayB(B12) ? "<br>$but3<br><img src=\"images/10_h.gif\" alt=\"\" height=\"2\" width=\"10\" border=\"0\"><a href=\"index.php?cmd=editTranscripts\">Edit Transcripts</a><br>" : "";
 
 /* * ****** Dart Home Information ******** */
@@ -53,7 +53,7 @@ $smarty->assign('showSearch', PDisplay(A27));
 // Dashboard *******************************************************************
 //******************************************************************************
 
-$smarty->assign('showDashboard' . PDisplay(B3));
+$smarty->assign('showDashboard', PDisplay(B3));
 //if(PDisplayB(B3)) {
 //  $leftside .="<img src=\"images/10_h.gif\" alt=\"\" height=\"2\" width=\"10\" border=\"0\"><a href=\"index.php?cmd=Dashboard\">Dashboard</a><br>";
 //}
@@ -77,6 +77,7 @@ if (PDisplay(A11)) {
 //*****************************************************************************
 
 $smarty->assign('showSharedGroups', PDisplay(A12));
+$smarty->assign('currentMySite', $currentMySite);
 if (PDisplay(A12)) {
     $smarty->assign('sharedGroups', getMyList($currentUserID, $currentMySite));
 //			$leftside .= "<br><font color=\"#0066ff\"><b>Shared Groups<br>$currentMySite</b></font><br>"
