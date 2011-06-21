@@ -188,7 +188,7 @@
 
     <br />
 
-{foreach $modulesLinks as $moduleLink}
+{foreach $moduleLinks as $moduleLink}
 {$moduleLink}
 {/foreach}
 </div>
