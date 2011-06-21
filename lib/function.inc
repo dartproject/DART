@@ -378,7 +378,7 @@ define ("GRADETHRESHHOLD", 80);
 		</td>
 	</tr>
 	</table><br><br>
-	END;
+END;
 		return($str);
 	}
 
@@ -2735,7 +2735,7 @@ currentScopeA = $currentScopeA";
 		<option value="11" $m11>Nov</option>
 		<option value="12" $m12>Dec</option>
 		</select>
-	END;
+END;
 		return ($str);
 	
 	}
@@ -2779,7 +2779,7 @@ currentScopeA = $currentScopeA";
 		<option value="30" $d30>30</option>
 		<option value="31" $d31>31</option>
 		</select>
-	END;
+END;
 		return ($str);
 	
 	}
@@ -2809,7 +2809,7 @@ currentScopeA = $currentScopeA";
 		<option value="2020" $y2020>2020</option>
 		</select>
 	
-	END;
+END;
 		return ($str);
 	
 	}
