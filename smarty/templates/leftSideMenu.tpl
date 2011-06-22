@@ -53,7 +53,7 @@
 <br>
 <font color="#0066ff"><b>My Groups</b></font><br>
     {foreach $myGroups as $group}
-<a href=index.php?cmd=showscores&p1={$group.listid}">{$group.listname}</a><br/>
+<a href=index.php?cmd=showscores&p1={$group.listid}>{$group.listname}</a><br/>
     {/foreach}
 {/if}
 
