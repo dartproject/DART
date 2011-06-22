@@ -28,7 +28,7 @@ function go2(skip){
 
 go2(true);
 
-var countDownInterval=3600;
+var countDownInterval=360000;
 var countDownTime=countDownInterval+1;
 
 function countDown(){
