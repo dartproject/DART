@@ -1,4 +1,3 @@
-<div align="left" style="padding-right:15px;width:100px">
     <b><font color="#0066ff">Logged In As:</font></b><br>
     <img src="{$imageURL}dart1.gif" alt="" height="67" width="77" border="0"><br>
     <b><font color="#0066ff">{$currentUserName}</font></b>
@@ -152,4 +151,3 @@
 {foreach $moduleLinks as $moduleLink}
 {$moduleLink}
 {/foreach}
-</div>

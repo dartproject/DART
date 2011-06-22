@@ -4,6 +4,45 @@ p, body, table
         font-size: 11px;
 }
 
+body, html{
+    margin:0;
+    padding:0;
+}
+
+#container{
+    
+    width:900px;
+    margin:0px 0px 0px 15px;
+}
+
+
+#header {
+    border-bottom: #006666 1px solid;
+    margin-bottom:20px;
+}
+
+#footer{
+    clear:both;
+    border-top: #006666 1px solid;
+    padding-top:10px;
+   margin-bottom:50px;
+    margin-top:10px;
+    text-align:center;
+}
+
+#leftMenu{
+    float:left;
+    width:100px;
+}
+
+#content{
+    float:right;
+    width:750px;
+    padding:1em;
+    
+
+}
+
 .noteclassic, .noteimportant, .notewarning, .notetip, .notetarget {
   margin: 2em;
   margin-left: auto;
@@ -12,8 +51,7 @@ p, body, table
   min-height: 40px;
   clear: both;
   text-align: justify;
-  vertical-align: middle;
-  border-collapse: collapse;
+/*  border-collapse: collapse;*/
   padding: 15px 20px 15px 80px;
   background-position: 20px 50%;
   background-repeat: no-repeat;
