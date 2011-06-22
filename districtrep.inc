@@ -52,8 +52,6 @@ $sip = $db->get_row("select * from sip, sipaux where kind='district'
 while (list($var, $val) = each($sip))
     ${$var} = $val;
 
-var_dump($sip);
-
 //******************************************************************************
 // Summary of District Improvement Plan ****************************************
 //******************************************************************************
