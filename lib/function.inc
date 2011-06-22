@@ -614,6 +614,20 @@ function getSubjects () {
 	return ($subject);
 }
 
+function getCoreSubjects () {
+	global $db;
+	$query = "SELECT id, name FROM subjects WHERE core = 'x' ORDER BY 'order'";
+	$subject = $db->get_results($query, ARRAY_A);
+	return $subject;
+}
+
+function getElectiveSubjects () {
+	global $db;
+	$query = "SELECT id, name FROM subjects WHERE core = '' ORDER BY 'order'";
+	$subject = $db->get_results($query, ARRAY_A);
+	return $subject;
+}
+
 /*** Access to lists table ***/
 // <editor-fold defaultstate="collapsed" desc="List">
 
@@ -797,14 +811,14 @@ function getPotentialListItems($userID, $priv="district") {
 function getStudentScores ($listID) {
 	global $debugLevel, $db;
 	$studentList = getListStudents($listID);
-	$query = "SELECT student.studentid, subject, level FROM student, studentlevel WHERE student.studentid in ($studentList) AND student.studentid = studentlevel.studentid and studentlevel.final = '00000000'";
+	$query = "SELECT studentid, subject, level FROM studentlevel WHERE studentid in ($studentList) and studentlevel.final = '00000000'";
 	$result = $db->get_results($query);
 	foreach ($result as $res) {
 		$student[$res->studentid][$res->subject] = $res->level;
 	}
-
 	return $student;
 }
+
 // </editor-fold>
 
 function getStudentOverall ($studentID) {
@@ -1567,7 +1581,6 @@ function getListName ($listID) {
 function getListInfo ($listID) {
 	global $db;
 	$query = "select * from lists where listid='$listID'";
-	debugPrint("<br>GetListName => " . $query);
 	$results = $db->get_results($query, ARRAY_A);
 
 	return ($results[0]);

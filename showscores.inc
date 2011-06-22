@@ -4,43 +4,42 @@
 //	 Web: http://wiki.bssd.org/index.php/DART_System
 // ==================================================================
 
-//include_once("template.inc");
-
 $listID = $_GET['p1'];
 $listinfo = getListInfo($listID);
 $listName = $listinfo['listname'];
 $grades = getGradesList($listID);
-$subject = getSubjects ();
+$subjects = getCoreSubjects();
+$electives = getElectiveSubjects();
 $list = getStudentList($listID);
-$student = getStudentScores ($listID);
 $stdcount = count($list);
 
 $att_am = $listinfo['am'] == 1;
 $att_pm = $listinfo['pm'] == 1;
 $tabs = getListTabs($listID);
 
+$student = getStudentScores ($listID);
+$aux = array();
+
 for ($y = 0; $y < count($list); $y++) {
 	$id = $list[$y]['studentid'];
-	for ($i = 0; $i < count($subject); $i++) {
-		if($subject[$i]['core'] == 'x') {
-			$sub = $subject[$i]['id'];
-			$lvl = $student[$id][$sub];
-			$sublvls = getSubjectStandards ($sub, $lvl);
-			foreach ($sublvls as $sublvl) {
-				$std = $sublvl['std'];
-				$stdw = strlen($std) == 1 ? "0" . $std : $std;
-				$key = $sub . "_" . $lvl . "_" . $std;
-				$value = $grades[$id][$sub][$lvl][$std];
-				$wlist2[$key]['std'] = $std;
-				$wlist2[$key]['subject'] = $sub;
-				$wlist2[$key]['level'] = $lvl;
-				$wlist2[$key]['link'] = $sublvl['link'];
-				$wlist2[$key]['shortname'] = $sublvl['shortname'];
-				$wlist2[$key]['count']++;
-				$wlist2[$key]['sum'] += getToggleValue($value);
-				$wlist2[$key]['comp'] = $wlist2[$key]['sum']/$stdcount;
-				$wlist2[$key]['sort'] = $sub . "_" . $lvl . "_" . $stdw;
-			}
+	foreach ($subjects as $s) {
+		$sub = $s['id'];
+		$lvl = $student[$id][$sub];
+		$sublvls = getSubjectStandards ($sub, $lvl);
+		foreach ($sublvls as $sublvl) {
+			$std = $sublvl['std'];
+			$stdw = strlen($std) == 1 ? "0" . $std : $std;
+			$key = $sub . "_" . $lvl . "_" . $std;
+			$value = $grades[$id][$sub][$lvl][$std];
+			$wlist2[$key]['std'] = $std;
+			$wlist2[$key]['subject'] = $sub;
+			$wlist2[$key]['level'] = $lvl;
+			$wlist2[$key]['link'] = $sublvl['link'];
+			$wlist2[$key]['shortname'] = $sublvl['shortname'];
+			$wlist2[$key]['count']++;
+			$wlist2[$key]['sum'] += getToggleValue($value);
+			$wlist2[$key]['comp'] = $wlist2[$key]['sum']/$stdcount;
+			$wlist2[$key]['sort'] = $sub . "_" . $lvl . "_" . $stdw;
 		}
 	}
 }
@@ -84,7 +83,8 @@ $smarty->assign('listName',$listName);
 $smarty->assign('stdcount',$stdcount);
 $smarty->assign('oldtabid',0);
 $smarty->assign('tabs',$tabs);
-$smarty->assign('subject',$subject);
+$smarty->assign('subjects',$subjects);
+$smarty->assign('electives',$electives);
 $smarty->assign('list',$list);
 $smarty->assign('color1',$color1);
 $smarty->assign('color2',$color2);
