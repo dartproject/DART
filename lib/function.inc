@@ -627,6 +627,7 @@ function getListStudents($lid) {
 		$sql = "select studentid from listvalues where listid = '$lid'";
 	}
 	$results = $db->get_results($sql,ARRAY_A);
+	$str = "";
 	foreach($results as $row) {
 		$id = $row['studentid'];
 		$str .= $str == '' ? "": ",";
@@ -3025,6 +3026,31 @@ function getSharedList($userID) {
 				 	where lists.listid = listshare.listid and listshare.userid = $userID and type='Private'";
     $list = $db->get_results($sql, ARRAY_A);
     return $list;
+}
+
+function getListTabs($listID) {
+	global $db;
+	$rows = $db->get_results("SELECT grp_tab.tabid, tabname, infoid, kind, value,
+				width, height FROM grp_tab,grp_info
+				WHERE listid = '$listID' and grp_tab.tabid = grp_info.tabid
+				ORDER BY grp_tab.ord, grp_info.ord", ARRAY_A);
+	$tabs = array();
+	$tabid = NULL;
+	foreach($rows as $r) {
+		if($tabid != $r['tabid']) { // new tab
+			$tabid = $r['tabid'];
+			$tabs[$tabid]['name'] = $r['tabname'];
+		}
+		$tabs[$tabid]['subtabs'][$r['infoid']]['kind'] = $r['kind'];
+		$tabs[$tabid]['subtabs'][$r['infoid']]['value'] = $r['value'];
+		if($r['kind'] == 'iframe') {
+			if($r['width'] == '0') $r['width'] = '100%';
+			if($r['height'] == '0') $r['height'] = '100%';
+			$tabs[$tabid]['subtabs'][$r['infoid']]['width'] = $r['width'];
+			$tabs[$tabid]['subtabs'][$r['infoid']]['height'] = $r['height'];
+		}
+	}
+	return $tabs;
 }
 
 ?>

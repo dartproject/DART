@@ -3,7 +3,7 @@ $subcmd = $_GET['subcmd'];
 $listid = $_GET['listid'];
 
 $body .= <<<END
-	<script language="JavaScript" type="text/javascript" src="/lib/jquery-min.js"></script>
+	<script language="JavaScript" type="text/javascript" src="js/jquery-min.js"></script>
 	<script>
 
 	function onChangeValue (id, val) {
