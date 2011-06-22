@@ -18,7 +18,7 @@
                 <br/>
                 <font color="#cc0000" size="4"
                       face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">
-                    District Improvement Plan: $timeframe School Year
+                    District Improvement Plan: {$timeframe} School Year
                 </font>
             </div>
             <blockquote>

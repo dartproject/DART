@@ -46,6 +46,8 @@ class GAPlan {
 
 $timeframe = $CurrentYear . "-" . substr($CurrentYear + 1, 2, 2);
 
+$smarty->assign('timeframe',$timeframe);
+
 $sip = $db->get_row("select * from sip, sipaux where kind='district' 
         and year = '$CurrentYear' and id = sid ");
 
