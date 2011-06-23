@@ -64,6 +64,11 @@
         </td>
     </tr>
     <tr>
+        <td>
+            {$report->intro}
+        </td>
+    </tr>
+    <tr>
         <td colspan="2">
             <div align="left">
                 <table border="0" cellpadding="2" cellspacing="2" width="1000">
