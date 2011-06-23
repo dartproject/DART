@@ -4,6 +4,8 @@
 //	 Web: http://wiki.bssd.org/index.php/DART_System
 // ==================================================================
 
+include_once 'WeightedList.php';
+
 $listID = $_GET['p1'];
 $listinfo = getListInfo($listID);
 $listName = $listinfo['listname'];
@@ -18,8 +20,13 @@ $att_pm = $listinfo['pm'] == 1;
 $tabs = getListTabs($listID);
 
 $student = getStudentScores ($listID);
-$aux = array();
 
+$weightedList = new WeightedList($list, $student, $subjects, $grades);
+$weightedStd = $weightedList->getList();
+
+$title = "Show Scores for List";
+
+/*
 for ($y = 0; $y < count($list); $y++) {
 	$id = $list[$y]['studentid'];
 	foreach ($subjects as $s) {
@@ -44,8 +51,6 @@ for ($y = 0; $y < count($list); $y++) {
 	}
 }
 
-$title = "Show Scores for List";
-
 $wlist = array_unique2($wlist2);
 $wlist = array_sort($wlist, 'comp');
 $wnum = min(30, count($wlist));
@@ -58,7 +63,6 @@ $spread = ($t - $b)/$buckets;
 $wlist = array_slice($wlist, 0, $wnum);
 $wlist = array_sort($wlist, 'sort');
 
-$weightedStd = array();
 for ($i = $start; $i <= $end; $i++) {
 	$val = $wlist[$i]['comp'];
 	$sid = $wlist[$i]['subject'] . $wlist[$i]['level'] . "." . $wlist[$i]['std'];
@@ -74,6 +78,7 @@ for ($i = $start; $i <= $end; $i++) {
 	$weightedStd[$i]['class'] = "t$loc";
 	$weightedStd[$i]['span'] = $sid."-".$wlist[$i]['shortname'];
 }
+*/
 
 $smarty->assign('pageTitle',$title);
 $smarty->assign('att_am',$att_am);
