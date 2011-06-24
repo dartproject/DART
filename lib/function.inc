@@ -3066,4 +3066,30 @@ function getListTabs($listID) {
 	return $tabs;
 }
 
+function getIndicatorInfo() {
+	$indicators = array(
+		"qpi" => array(
+			"description" => "Quarterly Performance Indicator",
+			"label" => "QPI",
+			"options" => array(
+				"", "Disengaged", "Deficient", "Acceptable", "Exemplary", "Not_Instructed"
+			)
+		),
+		"ase" => array(
+			"description" => "ASE",
+			"label" => "ASE",
+			"options" => array(
+			"", "Eligible", "Not_Eligible"
+			)
+		),
+		"prog" => array(
+			"description" => "PROGRESS",
+			"label" => "Progress",
+			"options" => array(
+			"", "On Track!", "Not On Track"
+			)
+		)
+	);
+	return $indicators;
+}
 ?>

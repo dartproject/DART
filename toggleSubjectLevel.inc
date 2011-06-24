@@ -29,29 +29,7 @@ $A3Priv = Privilege(A3);
 $TotalDisplay = 'view';
 $menuData = array("" => "Choose One","#top_anchor" => "Top of Page");
 
-$indicators = array(
-	"qpi" => array(
-		"description" => "Quarterly Performance Indicator",
-		"label" => "QPI",
-		"options" => array(
-			"", "Disengaged", "Deficient", "Acceptable", "Exemplary", "Not_Instructed"
-		)
-	),
-	"ase" => array(
-		"description" => "ASE",
-		"label" => "ASE",
-		"options" => array(
-		"", "Eligible", "Not_Eligible"
-		)
-	),
-	"prog" => array(
-		"description" => "PROGRESS",
-		"label" => "Progress",
-		"options" => array(
-		"", "On Track!", "Not On Track"
-		)
-	)
-);
+$indicators = getIndicatorInfo();
 
 $data = array();
 for ($y = 0; $y < count($list); $y++) {
@@ -79,6 +57,7 @@ for ($y = 0; $y < count($list); $y++) {
 	$menuData["#".$fname."_".$lname] = "$lname, $fname";
 
 	$data[$studentID]['std'] = array();
+	/* Standards */
 	for ($i = 0; $i < count($standards); $i++) {
 		$std = $standards[$i]['std'];
 		$value = $student[$studentID][$std];
@@ -102,7 +81,7 @@ for ($y = 0; $y < count($list); $y++) {
 		$wlist[$std]['sum'] += getToggleValue($value);
 		$wlist[$std]['comp'] = $wlist[$std]['sum']/$stdcount;
 	}
-
+	/* Overall */
 	for ($i = 0; $i < count($overall); $i++) {
 		$std = $overall[$i]['std'];
 		$des = str_replace("'", "\'", $overall[$i]['description']);
@@ -118,7 +97,7 @@ for ($y = 0; $y < count($list); $y++) {
 		$data[$studentID]['over'][$std]['options'] = $gradeSymbols;
 		$data[$studentID]['over'][$std]['selected'] = getEqGradeValue($grdtype, $value);
 	}
-
+	/* Indicators */
 	foreach($indicators as $key => $val) {
     	$value = $student[$studentID][$key];
 		$type = isset($value)? "u" : "i";
@@ -130,7 +109,6 @@ for ($y = 0; $y < count($list); $y++) {
 	$type = isset($value)? "u" : "i";
 	$data[$studentID]['comment_id'] = "gr".$type."_".$studentID."_".$sub."_".$lvl."_comment";
 	$data[$studentID]['comment'] = $value;
-	//writeFile($indicators);
 }
 $menuData["#save_changes"] = "Save All Changes";
 
@@ -183,6 +161,7 @@ $smarty->assign('totalDisplay',$TotalDisplay);
 
 $smarty->assign('menuData',$menuData);
 $smarty->assign('indicators',$indicators);
+$smarty->assign('n_ind',count($indicators));
 
 $smarty->assign('color1',$color1);
 $smarty->assign('color2',$color2);

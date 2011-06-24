@@ -1,7 +1,7 @@
 {extends file="layout.tpl"}
 {block name="title"}{$pageTitle}{/block}
 {block name="js"}
-<script language="JavaScript" type="text/javascript" src="js/toggleSubjectLevel.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/toggle.js"></script>
 {/block}
 {block name="body"}
 
@@ -61,7 +61,7 @@
 
 		<!-- Standards -->
 		{$start = 0}{$end = $width-1}
-		{while $start < $totalStd - 1}
+		{while $start < $totalStd}
 			<tr  bgcolor=#FFFFCC>
 				<th rowspan=2>{$sub} ({$lvl})</th>
 			{for $i=$start to $end max=$totalStd}
@@ -92,7 +92,7 @@
 		<table border= 1>
 		<!-- Overall -->
 		{$start = 0}{$end = $width-1}
-		{while $start < $totalOver - 1}
+		{while $start < $totalOver+$n_ind}
 			<tr  bgcolor=#FFFFCC>
 				<th rowspan=2>{$sub} ({$lvl})</th>
 			{for $i=$start to $end max=$totalOver}
@@ -143,19 +143,19 @@
 			</tr>
 		{/while}
 		</table>
-	<input type=hidden name="old_{$student.comment_id}" value="{$student.comment}">
-	<input type=hidden id="ch_{$student.comment_id}" name="ch_{$student.comment_id}" value=empty>
-	<font size="2"><b>Teacher Comments:</b></font><br/>
-	{if $student.display eq 'edit'}
-	<textarea name="comment_{$studentID}" rows="8" cols="80" wrap="physical" onChange='changeValue("{$student.comment_id}",this.value )'>{$student.comment}</textarea><br/>
-	{else}
-	{$student.comment_id}&nbsp;<br/><br/>
-	{/if}
-	{/foreach}
-	{if $totalDisplay eq 'edit'}
-		<input type=reset value=reset>
-		<input type=button onClick='handleSelection("#save_changes")' value='save all changes'>
-	{/if}
+		<input type=hidden name="old_{$student.comment_id}" value="{$student.comment}" />
+		<input type=hidden id="ch_{$student.comment_id}" name="ch_{$student.comment_id}" value=empty />
+		<font size="2"><b>Teacher Comments:</b></font><br/>
+		{if $student.display eq 'edit'}
+		<textarea name="comment_{$studentID}" rows="8" cols="80" wrap="physical" onChange='changeValue("{$student.comment_id}",this.value )'>{$student.comment}</textarea><br/>
+		{else}
+		{$student.comment}&nbsp;<br/><br/>
+		{/if}
+		{/foreach}
+		{if $totalDisplay eq 'edit'}
+			<input type=reset value=reset>
+			<input type=button onClick='handleSelection("#save_changes")' value='save all changes'>
+		{/if}
 	</form>
 	<br/>* Placing mouse over standard number will display standards descriptions.
 {/block}
