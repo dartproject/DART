@@ -59,7 +59,7 @@
 		<a href=index.php?cmd=history&student={$studentID}&subject={$sub}&lvl={$lvl}>History</a>
 		<table border= 1>
 
-		<!-- Standards -->
+		<!--  Standards -->
 		{$start = 0}{$end = $width-1}
 		{while $start < $totalStd}
 			<tr  bgcolor=#FFFFCC>
