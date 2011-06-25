@@ -123,7 +123,6 @@
 						<input type=hidden name=old_{$student.ind.{$indID}.name} value={$student.ind.{$indID}.value}> <!-- This one should be missing for "prog"... @todo -->
 						<input type=hidden id=ch_{$student.ind.{$indID}.name} name=ch_{$student.ind.{$indID}.name} value=empty>
 						{html_options name={$student.ind.{$indID}.name} values=$ind.options output=$ind.options selected="{$student.ind.{$indID}.value}" onChange="changeValue('{$student.ind.{$indID}.name}', this.value)"}
-  					&nbsp;
  				 	</td>
 				{/foreach}
 			{else}
