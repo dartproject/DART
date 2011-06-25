@@ -39,7 +39,7 @@ function countDown(){
         //window.location="index.php?cmd=expired&msg=Idle time exceed. You have been automatically logged out.";
         return
     }
-     if (document.getElementById) //else if NS6+
+     if (document.getElementById){} //else if NS6+
 //        document.getElementById("countDownText").innerHTML='Timing out in <b>'+countDownTime+' </b> seconds';
     
     counter=setTimeout("countDown()", 1000);
