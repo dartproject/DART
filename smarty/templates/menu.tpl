@@ -249,35 +249,51 @@
     {if $showAdminArea}
     <li><a href="#" class="drop">Admin</a>
         <div class="dropdown_4columns">
-            <div class="col_4">
+            <div class="col_1">
 
 
             {*******************************************************************
-                        Users & Internal Error
+                        Users
             *******************************************************************}
-            {if $showUsers}
+
+                <h3>Users</h3>
                 <ul class="vert">
+                    {if $showUsers}
                     <li>
                         <a href="index.php?cmd=userAdmin&site=$currentMySite&status=Active">
-                            <img align="absmiddle" src="{$imageURL}/icons/group_32.png" alt="" />
-                            Manage Users {$currentMySite}
+                            <img align="absmiddle" src="{$imageURL}/icons/group_16.png" alt="" />
+                            Manage {$currentMySite}
                         </a>
                     </li>
-                    <a href="index.php?cmd=InternalError">
-                        <img align="absmiddle"
-                             src="{$imageURL}/icons/bug_error_32.png" alt=""/>
-                        Internal Error
-                    </a>
-                </ul>
-            </div>
-            {/if}
+                    {/if}
+                    {if $showHistory}
+                    <li>
+                        <a href="index.php?cmd=historylogin">
+                            Login History
+                        </a>
+                    </li>
+                    {/if}
 
+                </ul>
+
+
+            </div>
             {*******************************************************************
                         Dictionaries
             *******************************************************************}
             <div class="col_1">
                 <h3>Dictionaries</h3>
                 <ul>
+                {**************************************************************
+                        Grade Setup
+                 **************************************************************}
+                 {if $showEditSchoolCal}
+                    <li>
+                        <a href="index.php?cmd=SchoolCalendar&site=DIO&year={$currentYear}">
+                            School Calendar
+                        </a>
+                    </li>
+                {/if}
                 {***************************************************************
                         Standards
                 ***************************************************************}
@@ -343,33 +359,16 @@
             </div>
             {/if}
             {*******************************************************************
-                        Site
+                        Other
             *******************************************************************}
-            {if $showEditNotes && $showEditReportNotes}
-            <div class="col_1">
-                <h3>Site</h3>
-                <ul>
-                {if $showEditReportNotes}
-                    <li>
-                        <a href="index.php?cmd=editRepNotes">
-                            <img align="absmiddle"
-                                 src="{$imageURL}/icons/note_16.png" alt=""/>
-                            Report Notes
-                        </a>
-                    </li>
-                {/if}
-                {if $showEditNotes}
-                    <li>
-                        <a href="index.php?cmd=editNotes">
-                            <img align="absmiddle"
-                                 src="{$imageURL}/icons/note_16.png" alt=""/>
-                            Site Notes
-                        </a>
-                    </li>
-                {/if}
-                </ul>
-            </div>
-            {/if}
+{*
+                        <a href="index.php?cmd=InternalError">
+                        <img align="absmiddle"
+                             src="{$imageURL}/icons/bug_error_32.png" alt=""/>
+                        Internal Error
+                    </a>
+
+*}
         </div>
     </li>
     {/if}
