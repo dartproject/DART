@@ -183,7 +183,7 @@ function addChecked ($val, $priv, $scope, $kind) {
 function debugPrint ($str, $group="") {
 	global $debug;
 
-	if ($_SESSION['debug'] == "on") {
+	if (isset($_SESSION['debug']) && $_SESSION['debug'] == "on") {
 		echo ($group == "" ? "<br>" : "");
 		echo ("$str");
 	}
@@ -3067,7 +3067,7 @@ function getListTabs($listID) {
 }
 
 function getSummaryInfo() {
-	$sumary = array(
+	$summary = array(
 		"qpi" => array(
 			"description" => "Quarterly Performance Indicator",
 			"label" => "QPI",
@@ -3193,7 +3193,7 @@ function getSubjectLevelInfo($studentsID, $subject, $level) {
 
 */
 	$summary = $db->get_results($query, ARRAY_A);
-	$n2 = count($res);
+	$n2 = count($summary);
 	$student = NULL;
 	$s = -1;
 	$j = 0;
@@ -3220,7 +3220,7 @@ function getSubjectLevelInfo($studentsID, $subject, $level) {
 
 			// Search for student in $summary
 			for($k = $j; $k < $n2; $k++) {
-				if($summary[$k]['studentid'] = $student)
+				if($summary[$k]['studentid'] == $student)
 					break;
 			}
 			// Retrieve each summary record 
@@ -3242,6 +3242,26 @@ function getSubjectLevelInfo($studentsID, $subject, $level) {
 		);
 	}
 	return $data;
+}
+
+function getSubjectStandardsArray ($sub, $level) {
+	global $db;
+	$query = "SELECT std, description, link, shortname FROM standards WHERE subject='$sub' AND level='$level' AND type='std' ORDER BY standards.order ASC";
+	$res = $db->get_results($query, ARRAY_A);
+	for($i = 0; $i < count($res);$i++) {
+		$res[$i]['description'] = str_replace("'", "\'", htmlentities($res[$i]['description']));
+	}
+	return $res;
+}
+
+	function getSubjectOverallArray ($sub, $level) {
+	global $db;
+	$query = "SELECT std, description FROM standards WHERE subject='$sub' AND level='$level' AND type='over' ORDER BY standards.order ASC";
+	$res = $db->get_results($query, ARRAY_A);
+	for($i = 0; $i < count($res);$i++) {
+		$res[$i]['description'] = str_replace("'", "\'", htmlentities($res[$i]['description']));
+	}
+	return $res;
 }
 
 ?>
