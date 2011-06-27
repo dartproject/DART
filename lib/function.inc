@@ -1035,14 +1035,14 @@ function getSubjectInfo ($sub, $lvl='') {
 
 function getSubjectStandards ($sub, $level) {
 	global $db;
-	$query = "select std, description, link, shortname from standards where subject='$sub' and level='$level' and type='std' order by standards.order asc";
+	$query = "SELECT std, description, link, shortname FROM standards WHERE subject='$sub' AND level='$level' AND type='std' ORDER BY standards.order ASC";
 	$subject = $db->get_results($query, ARRAY_A);
 	return $subject;
 }
 
 function getSubjectOverall ($sub, $level) {
 	global $db;
-	$query = "select std, description from standards where subject='$sub' and level='$level' and type='over' order by standards.order asc";
+	$query = "SELECT std, description FROM standards WHERE subject='$sub' AND level='$level' AND type='over' ORDER BY standards.order ASC";
 	$subject = $db->get_results($query, ARRAY_A);
 
 	return $subject;
@@ -3066,8 +3066,8 @@ function getListTabs($listID) {
 	return $tabs;
 }
 
-function getIndicatorInfo() {
-	$indicators = array(
+function getSummaryInfo() {
+	$sumary = array(
 		"qpi" => array(
 			"description" => "Quarterly Performance Indicator",
 			"label" => "QPI",
@@ -3090,6 +3090,158 @@ function getIndicatorInfo() {
 			)
 		)
 	);
-	return $indicators;
+	return $summary;
 }
+
+function getSubjectLevelInfo($studentsID, $subject, $level) {
+	global $db;
+	$data = array();
+	$students = implode(",",$studentsID);
+
+	$query = "SELECT 
+		s.studentid, 
+		s.fname, 
+		s.lname, 
+		sl.change_username, 
+		sl.change_timestamp, 
+		sl.progress, 
+		s.site, 
+		s.grade, 
+		gsid AS gradetype, 
+		gs.name AS gradetypename, 
+		st.type, 
+		st.std, 
+		g.value, 
+		su.name, 
+		su.gradLevel, 
+		su.core 
+		FROM (
+			student AS s, 
+			studentlevel AS sl, 
+			standards AS st, 
+			grades AS g, 
+			subjects AS su, 
+			gs_select AS gss, 
+			gs) 
+		WHERE 
+			s.studentid in ($students) AND 
+			sl.studentid = s.studentid AND 
+			sl.level = '$level' AND 
+			sl.subject = '$subject' AND 
+			sl.final = '00000000' AND 
+			st.subject = sl.subject AND 
+			st.level = sl.level AND 
+			st.type in ('std','over') AND 
+			st.std = g.std AND 
+			g.subject = sl.subject AND 
+			g.level = sl.level AND 
+			s.studentid = g.studentid AND 
+			su.id = sl.subject AND 
+			gs.id = gss.gsid AND 
+			s.site = gss.siteid AND 
+			s.grade BETWEEN gss.lowgrade AND gss.highgrade 
+		ORDER BY 
+			s.lname, 
+			s.studentid, 
+			st.order";
+
+	$res = $db->get_results($query, ARRAY_A);
+	$n = count($res);
+
+	$query = "SELECT 
+		g.studentid, 
+		g.value, 
+		lower(g.std) AS std   
+		FROM (
+			studentlevel AS sl, 
+			student AS s, 
+			grades AS g
+		) 
+		WHERE 
+			s.studentid in ($students) AND 
+			sl.studentid = g.studentid AND 
+			sl.level = '$level' AND 
+			sl.subject = '$subject' AND 
+			sl.final = '00000000' AND 
+			s.studentid = g.studentid AND 
+			g.std in ('comment','QPI','prog','ase') AND 
+			g.subject = sl.subject AND 
+			g.level = sl.level 
+		ORDER BY 
+			s.lname, 
+			g.studentid";
+/*
+            [studentid] => 11167
+            [fname] => Earl
+            [lname] => Annogiyuk
+            [change_username] => Melo, Christina
+            [change_timestamp] => 1308865071
+            [progress] => DEV
+            [site] => GAM
+            [grade] => 4
+            [gradetype] => 1
+            [gradetypename] => Standards
+            [std] => 4
+            [type] => std
+            [description] => (A3.3.5) Recognizes fractional forms of common decimals (e.g. 1/4=. 25). (GLE [5] N-5)
+            [link] => http://wiki.bssd.org/index.php/NUM:_Fractional_forms
+            [shortname] => NUM: Fractional Forms
+            [value] => 86
+            [name] => Mathematics
+            [gradLevel] => 9
+            [core] => x
+
+*/
+	$summary = $db->get_results($query, ARRAY_A);
+	$n2 = count($res);
+	$student = NULL;
+	$s = -1;
+	$j = 0;
+	$types = array("std" => "standards", "over" => "overall", "qpi" => "summary",
+			"ase" => "summary", "prog" => "summary", "comment" => "comment");
+	for($i = 0; $i < $n; $i++) {
+		$this_student = $res[$i]['studentid'];
+		if($this_student != $student) {
+			$student = $this_student;
+			$data[++$s] = array();	
+			$data[$s]['studentID'] = $student;
+			$data[$s]['fname'] = $res[$i]['fname'];
+			$data[$s]['lname'] = $res[$i]['lname'];
+			$data[$s]['progress'] = $res[$i]['progress'];
+			$data[$s]['change_username'] = $res[$i]['change_username'];
+			$data[$s]['change_timestamp'] = $res[$i]['change_timestamp'];
+			$data[$s]['site'] = $res[$i]['site'];
+			$data[$s]['grade'] = $res[$i]['grade'];
+			$data[$s]['gradetype'] = $res[$i]['gradetype'];
+			$data[$s]['gradetypename'] = $res[$i]['gradetypename'];
+			$data[$s]['standards'] = array();
+			$data[$s]['overall'] = array();
+			$data[$s]['summary'] = array();
+
+			// Search for student in $summary
+			for($k = $j; $k < $n2; $k++) {
+				if($summary[$k]['studentid'] = $student)
+					break;
+			}
+			// Retrieve each summary record 
+			for($j = $k; $j < $n2; $j++) {
+				if($summary[$j]['studentid'] != $student)
+					break;
+				$type = $types[$summary[$j]['std']];
+
+				$data[$s][$type][$summary[$j]['std']] = array(
+					'value' => $summary[$j]['value']
+				);
+			}
+		}
+
+		$type = $types[$res[$i]['type']];
+
+		$data[$s][$type][$res[$i]['std']] = array(
+			'value' => $res[$i]['value']
+		);
+	}
+	return $data;
+}
+
 ?>

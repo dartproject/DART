@@ -42,7 +42,7 @@ $reportNames = $reportPrivileges->getNames();
 array_unshift($reportLinks, "");
 array_unshift($reportNames, "None");
 
-$indicators = getIndicatorInfo();
+$indicators = getSummaryInfo();
 
 $subjects = getStudentLevels($studentID);
 

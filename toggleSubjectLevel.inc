@@ -29,7 +29,10 @@ $A3Priv = Privilege(A3);
 $TotalDisplay = 'view';
 $menuData = array("" => "Choose One","#top_anchor" => "Top of Page");
 
-$indicators = getIndicatorInfo();
+$indicators = getSummaryInfo();
+
+//$aux = getSubjectLevelInfo(array(10025,650236), 'MA', '8');
+//writeFile($aux);
 
 $data = array();
 for ($y = 0; $y < count($list); $y++) {

@@ -68,7 +68,6 @@ class WeightedList {
 			//$this->list[$i]['class'] = "t".rand(1,4);
 			$this->list[$i]['span'] = $sid."-".$wlist[$i]['shortname'];
 		}
-		writeFile($this->list);
 		return $this->list;
 	}
 }
