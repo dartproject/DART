@@ -44,11 +44,11 @@
 	{/foreach}
 	</div>
 
-	{foreach $data as $studentID => $student}
+	{foreach $data as $student}
 		<a name="{$student.anchor}"></a>
 		<b><font color='#cc0000' class=big>
-			<a href=index.php?cmd=toggleStudent&p1={$studentID}>{$student.text}</a>
-			<a href=index.php?cmd=updateSingleLevelScore&id={$studentI}&subject={$sub}&level={$lvl}
+			<a href=index.php?cmd=toggleStudent&p1={$student.studentID}>{$student.text}</a>
+			<a href=index.php?cmd=updateSingleLevelScore&id={$student.studentID}&subject={$sub}&level={$lvl}
 			   onMouseOver="return escape('Update score for saved values. NOTE: THIS WILL RESET ANY TOGGLE/COMMENT CHANGES NOT SAVED.')">.</a>
 			- <font color=#cc0000>{$student.progress}</font>
 		</font></b><br/>
@@ -56,7 +56,7 @@
 		{html_options name=pullDownMenu options=$menuData selected='' onChange="handleSelection(this.value)"}
 		</b><br />
 		<b>Last Change:</b> {$student.change} -
-		<a href=index.php?cmd=history&student={$studentID}&subject={$sub}&lvl={$lvl}>History</a>
+		<a href=index.php?cmd=history&student={$student.studentID}&subject={$sub}&lvl={$lvl}>History</a>
 		<table border= 1>
 
 		<!-- Standards -->
@@ -72,17 +72,19 @@
 			<tr>
 			{if $student.display eq 'edit'}
 				{for $i=$start to $end max=$totalStd}
-					{$std = $standards.{$i}}
+					{$stdID = $standards.{$i}.std}
+					{$std = $student.standards.{$stdID}}
 					<td>
-						<input type=hidden name="old_{$student.std.{$std.std}.name}" value="{$student.std.{$std.std}.value}" />
-						<input type=hidden id="ch_{$student.std.{$std.std}.name}" name="ch_{$student.std.{$std.std}.name}" value=empty />
-						{html_options name="{$student.std.{$std.std}.name}" options=$student.std.{$std.std}.options selected=$student.std.{$std.std}.selected title ="test_{$studentID}_{$i}" onChange="changeValue('{$student.std.{$std.std}.name}',this.value)"}
+						<input type=hidden name="old_{$std.name}" value="{$std.value}" />
+						<input type=hidden id="ch_{$std.name}" name="ch_{$std.name}" value=empty />
+						{html_options name="{$std.name}" options=$student.gradeSymbols selected=$std.selected title ="test_{$student.studentID}_{$i}" onChange="changeValue('{$std.name}',this.value)"}
 					</td>
 				{/for}
 			{else}
 				{for $i=$start to $end max=$totalStd}
-					{$std = $standards.{$i}}
-					<td align=center>&nbsp;{$student.std.{$std.std}.value}&nbsp;</td>
+					{$stdID = $standards.{$i}.{std}}
+					{$std = $student.standards.{$stdID}}
+					<td align=center>&nbsp;{$std.value}&nbsp;</td>
 				{/for}
 			{/if}
 			</tr>
@@ -92,7 +94,7 @@
 		<table border= 1>
 		<!-- Overall -->
 		{$start = 0}{$end = $width-1}
-		{while $start < $totalOver+$n_ind}
+		{while $start < $totalOver+$n_sum}
 			<tr  bgcolor=#FFFFCC>
 				<th rowspan=2>{$sub} ({$lvl})</th>
 			{for $i=$start to $end max=$totalOver}
@@ -100,9 +102,9 @@
 				<th width={$cellwidth} onMouseOver="return escape('{$over.description}')">{$over.std}</th>
 			{/for}
 			{if $end+1 >= $totalOver - 1} {* Last row *}
-			<!-- Indicators -->
-				{foreach $indicators as $indID => $ind}
-					<th width={$cellwidth} onMouseOver="return escape('{$ind.description}')">{$ind.label}</th>
+			<!-- Summary -->
+				{foreach $summary as $sumID => $sum}
+					<th width={$cellwidth} onMouseOver="return escape('{$sum.description}')">{$sum.label}</th>
 				{/foreach}
 			{/if}
 			</tr>
@@ -110,30 +112,33 @@
 			{if $student.display eq 'edit'}
 				<!-- Overall -->
 				{for $i=$start to $end max=$totalOver}
-					{$over = $overall.{$i}}
+					{$overID = $overall.{$i}.std}
+					{$over = $student.overall.{$overID}}
 					<td>
-						<input type=hidden name="old_{$student.over.{$over.std}.name}" value="{$student.over.{$over.std}.value}" />
-						<input type=hidden id="ch_{$student.over.{$over.std}.name}" name="ch_{$student.over.{$over.std}.name}" value=empty />
-						{html_options name="{$student.over.{$over.std}.name}" options=$student.over.{$over.std}.options selected={$student.over.{$over.std}.selected} title ="test_{$studentID}_{$i}" onChange="changeValue('{$student.over.{$over.std}.name}',this.value)"}
+						<input type=hidden name="old_{$over.name}" value="{$over.value}" />
+						<input type=hidden id="ch_{$over.name}" name="ch_{$over.name}" value=empty />
+						{html_options name="{$over.name}" options=$student.gradeSymbols selected={$over.selected} title ="test_{$student.studentID}_{$i}" onChange="changeValue('{$over.name}',this.value)"}
 					</td>
 				{/for}
-				<!-- Indicators -->
-				{foreach $indicators as $indID => $ind}
+				<!-- Summary -->
+				{foreach $summary as $sumID => $sum}
+					{$student_sum = $student.summary.{$sumID}}
 					<td>
-						<input type=hidden name=old_{$student.ind.{$indID}.name} value={$student.ind.{$indID}.value}> <!-- This one should be missing for "prog"... @todo -->
-						<input type=hidden id=ch_{$student.ind.{$indID}.name} name=ch_{$student.ind.{$indID}.name} value=empty>
-						{html_options name={$student.ind.{$indID}.name} values=$ind.options output=$ind.options selected="{$student.ind.{$indID}.value}" onChange="changeValue('{$student.ind.{$indID}.name}', this.value)"}
+						<input type=hidden name=old_{$student_sum.name} value={$student_sum.value}> <!-- This one should be missing for "prog"... @todo -->
+						<input type=hidden id=ch_{$student_sum.name} name=ch_{$student_sum.name} value=empty>
+						{html_options name={$student_sum.name} values=$sum.options output=$sum.options selected="{$student_sum.value}" onChange="changeValue('{$student_sum.name}', this.value)"}
  				 	</td>
 				{/foreach}
 			{else}
 				<!-- Overall -->
 				{for $i=$start to $end  max=$totalOver}
-					{$over = $overall.{$i}}
-					<td align=center>&nbsp;{$student.over.{$over.std}.value}&nbsp;</td>
+					{$overID = $overall.{$i}.std}
+					{$over = $student.overall.{$overID}}
+					<td align=center>&nbsp;{$over.value}&nbsp;</td>
 				{/for}
-				<!-- Indicators -->
-				<td align=center>&nbsp;{$indicators.qpi.value}&nbsp;</td>
-				<td align=center>&nbsp;{$indicators.ase.value}&nbsp;</td>
+				<!-- Summary -->
+				<td align=center>&nbsp;{$student.summary.qpi.value}&nbsp;</td>
+				<td align=center>&nbsp;{$student.summary.ase.value}&nbsp;</td>
 				<!-- Nothing for "prog", @todo -->
 			{/if}
 			{$start = $end+1}{$end = $end+$width}{if $end > $totalOver}{$end = $totalOver-1}{/if}
@@ -142,11 +147,11 @@
 			</tr>
 		{/while}
 		</table>
-		<input type=hidden name="old_{$student.comment_id}" value="{$student.comment}" />
-		<input type=hidden id="ch_{$student.comment_id}" name="ch_{$student.comment_id}" value=empty />
+		<input type=hidden name="old_{$student.comment.comment_id}" value="{$student.comment.value}" />
+		<input type=hidden id="ch_{$student.comment.comment_id}" name="ch_{$student.comment.comment_id}" value=empty />
 		<font size="2"><b>Teacher Comments:</b></font><br/>
 		{if $student.display eq 'edit'}
-		<textarea name="comment_{$studentID}" rows="8" cols="80" wrap="physical" onChange='changeValue("{$student.comment_id}",this.value )'>{$student.comment}</textarea><br/>
+		<textarea name="comment_{$student.studentID}" rows="8" cols="80" wrap="physical" onChange='changeValue("{$student.comment.comment_id}",this.value )'>{$student.comment.value}</textarea><br/>
 		{else}
 		{$student.comment}&nbsp;<br/><br/>
 		{/if}

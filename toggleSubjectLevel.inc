@@ -4,7 +4,6 @@
 //	 Web: http://wiki.bssd.org/index.php/DART_System
 // ==================================================================
 include_once("lib/functions_gs.inc");
-include_once 'WeightedList.php';
 
 $listID = $_GET['p1'];    // list id
 $sub = $_GET['p2'];       // subject number
@@ -12,13 +11,9 @@ $lvl = $_GET['p3'];      // level number
 $width = 9;
 $cellwidth = 60;
 
-$standards = getSubjectStandards ($sub, $lvl);
-$overall = getSubjectOverall ($sub, $lvl);
-$list = getStudentToggleList($listID, $sub, $lvl);
-$student = getStudentStdScores ($listID, $sub, $lvl);
-$stdcount = count($list);
+$standards = getSubjectStandardsArray ($sub, $lvl);
+$overall = getSubjectOverallArray ($sub, $lvl);
 $subInfo = getSubjectInfo ($sub);
-$total = $stdcount * count($standards);
 
 $subName =  $subInfo[0]['name'];
 $gradlvl = $subInfo[0]['gradLevel']; /* @todo: is this variable used? */
@@ -29,90 +24,79 @@ $A3Priv = Privilege(A3);
 $TotalDisplay = 'view';
 $menuData = array("" => "Choose One","#top_anchor" => "Top of Page");
 
-$indicators = getSummaryInfo();
+$summary = getSummaryInfo();
 
-//$aux = getSubjectLevelInfo(array(10025,650236), 'MA', '8');
-//writeFile($aux);
+$data = getSubjectLevelInfo(explode(",", getListStudents($listID)), $sub, $lvl);
+$stdcount = count($data);
+$total = $stdcount * count($standards);
 
-$data = array();
-for ($y = 0; $y < count($list); $y++) {
-	$studentID = $list[$y]['studentid'];
-	$fname = $list[$y]['fname'];
-	$lname = $list[$y]['lname'];
-	$site = $list[$y]['site'];
-	$grade = $list[$y]['grade'];
-	$grdtype = $list[$y]['gradetype'];
-	$grdtypename = $list[$y]['gradetypename'];
-	$ch_name = $list[$y]['change_username'];
-	$ch_time = date($dateSettings, $list[$y]['change_timestamp']);
-	$siteEqual = $currentMySite == $site;
+for($i = 0; $i < count($data); $i++) {
+	$student = $data[$i];
+	$studentID = $student['studentID'];
+	$ch_time = date($dateSettings, $student['change_timestamp']);
+	$siteEqual = $currentMySite == $student['site'];
 	$idEqual = isset($currentAffiliatedID) && $currentAffiliatedID == $studentID; /* is $currentAffiliatedID always null? */
 	$Display =  checkStudent($idEqual, $siteEqual, $A2Priv, $A3Priv);
 	$TotalDisplay = (($TotalDisplay == 'edit') or ($Display == 'edit')) ? 'edit':'view';
-	$gradeSymbols = getGradeSymbols($grdtype);
 
-	$data[$studentID]['anchor'] = $fname ."_" . $lname;
-	$data[$studentID]['progress'] = $list[$y]['progress'];
-	$data[$studentID]['text'] = "$lname, $fname ($grade:$site - $grdtypename)";
-	$data[$studentID]['change'] = "$ch_name ($ch_time)"; /* pullDownMenu */
-	$data[$studentID]['display'] = $Display;
+	$student['gradeSymbols'] = getGradeSymbols($student['gradetype']);
+	$student['anchor'] = $student['fname'] ."_" . $student['lname'];
+	$student['text'] = $student['lname'].", ".$student['fname']." (".$student['grade'].":".$student['site']." - ".$student['gradetypename'].")";
+	$student['change'] = $student['change_username']." (".$ch_time.")";
+	$student['display'] = $Display;
 
-	$menuData["#".$fname."_".$lname] = "$lname, $fname";
+	$menuData["#".$student['fname']."_".$student['lname']] = $student['lname'].", ".$student['fname'];
 
-	$data[$studentID]['std'] = array();
 	/* Standards */
-	for ($i = 0; $i < count($standards); $i++) {
-		$std = $standards[$i]['std'];
-		$value = $student[$studentID][$std];
+	for($j = 0; $j < count($standards); $j++) {
+		$std = $standards[$j]['std'];
+		if(!isset($student['standards'][$std]))
+			$student['standards'][$std] = array("value" => NULL);
+		$student_std = $student['standards'][$std];
 
-		$des = htmlentities($standards[$i]['description']);
-		$des = str_replace("'", "\'", $des );
-		$standards[$i]['description'] = $des;
+		$type = isset($student_std['value'])? "u" : "i";
+		$student['standards'][$std]['name'] =
+					"gr".$type."_".$studentID."_".$sub."_".$lvl."_".$std;
+		$student['standards'][$std]['selected'] = getEqGradeValue($student['gradetype'], $student_std['value']);
 
-		$type = isset($value)? "u" : "i";
-
-		$data[$studentID]['std'][$std]['name'] =
-				"gr".$type."_".$studentID."_".$sub."_".$lvl."_".$standards[$i]['std'];
-		$data[$studentID]['std'][$std]['value'] = $value;
-		$data[$studentID]['std'][$std]['options'] = $gradeSymbols;
-		$data[$studentID]['std'][$std]['selected'] = getEqGradeValue($grdtype, $value);
-
+		if(!isset($wlist[$std]))
+			$wlist[$std] = array("std" => $std, 'link' => '', 'shortname' => '', 'count' => 0, 'sum' => 0, 'comp' => 0);
 		$wlist[$std]['std'] = $std;
-		$wlist[$std]['link'] = $standards[$i]['link'];
-		$wlist[$std]['shortname'] = $standards[$i]['shortname'];
+		$wlist[$std]['link'] = $standards[$j]['link'];
+		$wlist[$std]['shortname'] = $standards[$j]['shortname'];
 		$wlist[$std]['count']++;
-		$wlist[$std]['sum'] += getToggleValue($value);
+		$wlist[$std]['sum'] += getToggleValue($student_std['value']);
 		$wlist[$std]['comp'] = $wlist[$std]['sum']/$stdcount;
 	}
 	/* Overall */
-	for ($i = 0; $i < count($overall); $i++) {
-		$std = $overall[$i]['std'];
-		$des = str_replace("'", "\'", $overall[$i]['description']);
-		$overall[$i]['description'] = $des;
-		$value = $student[$studentID][$std];
+	for($j = 0; $j < count($overall); $j++) {
+		$std = $overall[$j]['std'];
+		if(!isset($student['overall'][$std]))
+			$student['overall'][$std] = array("value" => NULL);
+		
+		$student_over = $student['overall'][$std];
 
-		$type = isset($value)? "u" : "i";
-
-		$data[$studentID]['over'][$std]['name'] =
+		$type = isset($student_over['value'])? "u" : "i";
+		$student['overall'][$std]['name'] =
 			"gr".$type."_".$studentID."_".$sub."_".$lvl."_".$std;
-
-		$data[$studentID]['over'][$std]['value'] = $student[$studentID][$std];
-		$data[$studentID]['over'][$std]['options'] = $gradeSymbols;
-		$data[$studentID]['over'][$std]['selected'] = getEqGradeValue($grdtype, $value);
+		$student['overall'][$std]['selected'] = getEqGradeValue($student['gradetype'], $student_over['value']);
 	}
-	/* Indicators */
-	foreach($indicators as $key => $val) {
-    	$value = $student[$studentID][$key];
-		$type = isset($value)? "u" : "i";
-		$data[$studentID]['ind'][$key]["name"] = "gr".$type."_".$studentID."_".$sub."_".$lvl."_".$key;
-		$data[$studentID]['ind'][$key]["value"] = $value;
+	/* Summary */
+	foreach($summary as $key => $val) {
+		if(!isset($student['summary'][$key]))
+			$student['summary'][$key] = array("value" => NULL);
+		$student_sum = $student['summary'][$key];
+
+		$type = isset($student_sum['value'])? "u" : "i";
+		$student['summary'][$key]['name'] = "gr".$type."_".$studentID."_".$sub."_".$lvl."_".$key;
 	}
 
-	$value = $student[$studentID]['comment'];
-	$type = isset($value)? "u" : "i";
-	$data[$studentID]['comment_id'] = "gr".$type."_".$studentID."_".$sub."_".$lvl."_comment";
-	$data[$studentID]['comment'] = $value;
+	$student['comment'] = $student['comment']['comment'];
+	$type = isset($student['comment']['value'])? "u" : "i";
+	$student['comment']['comment_id'] = "gr".$type."_".$studentID."_".$sub."_".$lvl."_comment";
+	$data[$i] = $student;
 }
+
 $menuData["#save_changes"] = "Save All Changes";
 
 $title = "Show Scores for List";
@@ -151,20 +135,19 @@ $smarty->assign('lvl',$lvl);
 $smarty->assign('subName',$subName);
 $smarty->assign('listName',$listName);
 $smarty->assign('stdcount',$stdcount);
-$smarty->assign('list',$list);
 $smarty->assign('data',$data);
 $smarty->assign('standards',$standards);
 $smarty->assign('overall',$overall);
+$smarty->assign('summary',$summary);
 $smarty->assign('totalStd',count($standards));
 $smarty->assign('totalOver',count($overall));
+$smarty->assign('n_sum',count($summary));
 
 $smarty->assign('cellwidth',$cellwidth);
 $smarty->assign('width',$width);
 $smarty->assign('totalDisplay',$TotalDisplay);
 
 $smarty->assign('menuData',$menuData);
-$smarty->assign('indicators',$indicators);
-$smarty->assign('n_ind',count($indicators));
 
 $smarty->assign('color1',$color1);
 $smarty->assign('color2',$color2);
