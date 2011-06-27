@@ -94,9 +94,9 @@
                 <ul>
                     <ul >
                     {foreach $privateSharedGroups as $group}
-                    <li><a href=index.php?cmd=showscores&p1={$group.listid}>{$group.listname}</a></li>
+                        <li><a href=index.php?cmd=showscores&p1={$group.listid}>{$group.listname}</a></li>
                     {/foreach}
-                </ul>
+                    </ul>
                 </ul>
 
             </div>
@@ -104,160 +104,401 @@
         </div>
     </li>
 
+{*******************************************************************************
+********************** Students ************************************************
+*******************************************************************************}
+
+    <li><a href="#" class="drop">Students</a>
+        <div class="dropdown_3columns">
+            <div class="col_3">
+                <ul class="vert">
+
+                  {*************************************************************
+                        Search Students
+                  *************************************************************}
+
+                    {if $showSearch}
+                    <li>
+                        <a href="index.php?cmd=search">
+                            <img align="absmiddle" src="{$imageURL}/icons/google_custom_search_32.png" alt="" />
+                            Search for Students
+                        </a>
+                    </li>
+                    {/if}
+                 {**************************************************************
+                        Progress
+                 **************************************************************}
+                 {if $showProgress}
+                    <li>
+                        <a href="index.php?cmd=progress&site=$currentMySite">
+                            <img align="absmiddle" src="{$imageURL}/icons/chart_up_color_32.png" alt="" />
+                            Progress
+                        </a>
+                    </li>
+                  {/if}
+                </ul>
+            </div>
+
+{*******************************************************************************
+                        Transcript Menu
+*******************************************************************************}
+
+        {if $showTranscriptOptions}
+            <div class="col_1">
+                <h3>Transcripts</h3>
+                <ul>
+                    <li>
+                        <a href="index.php?cmd=transcriptsDefine">
+                            <img align="absmiddle" src="{$imageURL}/icons/document_copies_16.png" alt="" />
+                            Define
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.php?cmd=editTranscripts">
+                            <img align="absmiddle" src="{$imageURL}/icons/vcard_edit_16.png" alt="" />
+                            Edit
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        {/if}
+
+{******************************************************************************
+                        Reports
+*******************************************************************************}
+        {if $showReports}
+            <div class="col_1">
+                <h3>Reports</h3>
+                <ul>
+        {******************************************************************************
+                                Official Report
+        *******************************************************************************}
+                   {if $showOfficialReport}
+                    <li>
+                        <a href="index.php?cmd=pivot">
+                            {*<img align="absmiddle" src="{$imageURL}/icons/document_copies_16.png" alt="" />*}
+                            Official
+                        </a>
+                    </li>
+                    {/if}
+        {******************************************************************************
+                                Drill Down & Pass
+        *******************************************************************************}
+                    {if $showDrillDown}
+                    <li>
+                        <a href="index.php?cmd=pivot">
+                            {*<img align="absmiddle" src="{$imageURL}/icons/vcard_edit_16.png" alt="" />*}
+                            Drill Down
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.php?cmd=extraPacingReport">
+                            {*<img align="absmiddle" src="{$imageURL}/icons/vcard_edit_16.png" alt="" />*}
+                            Pass
+                        </a>
+                    </li>
+                    {/if}
+                </ul>
+            </div>
+        {/if}
+
+ {******************************************************************************
+                        Manage Students
+*******************************************************************************}
+
+          {if $showStudentManagement}
+            <div class="col_1">
+                <h3>Manage</h3>
+                <ul>
+                    <li>
+                        <a href="enrollment_form.shtml">
+                            <img align="absmiddle" src="{$imageURL}/icons/user_add_16.png" alt="" />
+                            Add Student
+                        </a>
+                    </li>
+                    <li>
+                        <a href="transfer_form.shtml">
+<!--                            <img align="absmiddle" src="{$imageURL}/icons/vcard_edit_16.png" alt="" />-->
+                            Drop/Transfer
+                        </a>
+                    </li>
+                    <li>
+                        <a href="schedule_form.shtml">
+<!--                            <img align="absmiddle" src="{$imageURL}/icons/vcard_edit_16.png" alt="" />-->
+                            Level Change
+                        </a>
+                    </li>
+                    <li>
+                        <a href="forms/elective_form.shtml">
+                            {*<img align="absmiddle" src="{$imageURL}/icons/vcard_edit_16.png" alt="" />*}
+                            Add Elective
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        {/if}
+
+
+
+        </div>
+    </li>
+{*******************************************************************************
+********************** Admin ***************************************************
+*******************************************************************************}
+
+    {if $showAdminArea}
+    <li><a href="#" class="drop">Admin</a>
+        <div class="dropdown_4columns">
+            <div class="col_1">
+
+
+            {*******************************************************************
+                        Users
+            *******************************************************************}
+
+                <h3>Users</h3>
+                <ul class="vert">
+                    {if $showUsers}
+                    <li>
+                        <a href="index.php?cmd=userAdmin&site=$currentMySite&status=Active">
+                            <img align="absmiddle" src="{$imageURL}/icons/group_16.png" alt="" />
+                            Manage {$currentMySite}
+                        </a>
+                    </li>
+                    {/if}
+                    {if $showHistory}
+                    <li>
+                        <a href="index.php?cmd=historylogin">
+                            Login History
+                        </a>
+                    </li>
+                    {/if}
+
+                </ul>
+
+
+            </div>
+            {*******************************************************************
+                        Dictionaries
+            *******************************************************************}
+            <div class="col_1">
+                <h3>Dictionaries</h3>
+                <ul>
+                {**************************************************************
+                        Grade Setup
+                 **************************************************************}
+                 {if $showEditSchoolCal}
+                    <li>
+                        <a href="index.php?cmd=SchoolCalendar&site=DIO&year={$currentYear}">
+                            School Calendar
+                        </a>
+                    </li>
+                {/if}
+                {***************************************************************
+                        Standards
+                ***************************************************************}
+                {if $showEditStandards}
+                    <li>
+                        <a href="index.php?cmd=extraPacingReport">
+                            Standards
+                        </a>
+                    </li>
+                {/if}
+
+
+                 {**************************************************************
+                        Test Levels
+                 **************************************************************}
+                 {if $showRedButton_Grd_Test}
+                    <li>
+                        <a href="index.php?cmd=extraPacingReport">
+                            Test Levels
+                        </a>
+                    </li>
+                {/if}
+
+                {**************************************************************
+                        Grade Setup
+                 **************************************************************}
+                 {if $showRedButton_Grd_Test}
+                    <li>
+                        <a href="index.php?cmd=editgs">
+                            Grades
+                        </a>
+                    </li>
+                {/if}
+                </ul>
+            </div>
+
+            {*******************************************************************
+                        Notes
+            *******************************************************************}
+            {if $showEditNotes && $showEditReportNotes}
+            <div class="col_1">
+                <h3>Notes</h3>
+                <ul>
+                {if $showEditReportNotes}
+                    <li>
+                        <a href="index.php?cmd=editRepNotes">
+                            <img align="absmiddle"
+                                 src="{$imageURL}/icons/note_16.png" alt=""/>
+                            Report Notes
+                        </a>
+                    </li>
+                {/if}
+                {if $showEditNotes}
+                    <li>
+                        <a href="index.php?cmd=editNotes">
+                            <img align="absmiddle"
+                                 src="{$imageURL}/icons/note_16.png" alt=""/>
+                            Site Notes
+                        </a>
+                    </li>
+                {/if}
+                </ul>
+            </div>
+            {/if}
+            {*******************************************************************
+                        Other
+            *******************************************************************}
+{*
+                        <a href="index.php?cmd=InternalError">
+                        <img align="absmiddle"
+                             src="{$imageURL}/icons/bug_error_32.png" alt=""/>
+                        Internal Error
+                    </a>
+
+*}
+        </div>
+    </li>
+    {/if}
+
+
+
     <li class="menu_right"><a href="#" class="drop">
             <img align="absmiddle" src="{$imageURL}/icons/help_16.png" alt="" />DART</a>
 
         <div class="dropdown_1column align_right">
             <p>
                 <a href="http://wiki.bssd.org/index.php/DART_System#DART_Technical_Support">
-            <img align="absmiddle" src="{$imageURL}/icons/support_32.png" alt=""/>Support</a>
+                    <img align="absmiddle" src="{$imageURL}/icons/support_32.png" alt=""/>Support</a>
             </p>
-             <p>
+            <p>
                 <a href="http://wiki.bssd.org/index.php/DART_System#DART_Contacts">
-            <img align="absmiddle" src="{$imageURL}/icons/contact_email_32.png" alt=""/>Contact</a>
+                    <img align="absmiddle" src="{$imageURL}/icons/contact_email_32.png" alt=""/>Contact</a>
             </p>
-           <p>
+            <p>
                 <a href="http://wiki.bssd.org/index.php/DART_System">
-            <img align="absmiddle" src="{$imageURL}/icons/information_32.png" alt=""/>Project Info</a>
+                    <img align="absmiddle" src="{$imageURL}/icons/information_32.png" alt=""/>Project Info</a>
             </p>
 
         </div>
     </li>
     <!-- End Home Item -->
 
-<!--          <li><a href="#" class="drop">5 Columns</a>
+    <!--          <li><a href="#" class="drop">5 Columns</a>
 
-                <div class="dropdown_5columns"> Begin 5 columns container
+                    <div class="dropdown_5columns"> Begin 5 columns container
 
-                    <div class="col_5">
-                        <h2>This is an example of a large container with 5 columns</h2>
-                    </div>
+                        <div class="col_5">
+                            <h2>This is an example of a large container with 5 columns</h2>
+                        </div>
 
-                    <div class="col_1">
-                        <p class="black_box">This is a dark grey box text. Fusce in metus at enim porta lacinia vitae a arcu. Sed sed lacus nulla mollis porta quis.</p>
-                    </div>
+                        <div class="col_1">
+                            <p class="black_box">This is a dark grey box text. Fusce in metus at enim porta lacinia vitae a arcu. Sed sed lacus nulla mollis porta quis.</p>
+                        </div>
 
-                    <div class="col_1">
-                        <p>Phasellus vitae sapien ac leo mollis porta quis sit amet nisi. Mauris hendrerit, metus cursus accumsan tincidunt.</p>
-                    </div>
+                        <div class="col_1">
+                            <p>Phasellus vitae sapien ac leo mollis porta quis sit amet nisi. Mauris hendrerit, metus cursus accumsan tincidunt.</p>
+                        </div>
 
-                    <div class="col_1">
-                        <p class="italic">This is a sample of an italic text. Consequat scelerisque. Fusce sed lectus at arcu mollis accumsan at nec nisi porta quis sit amet.</p>
-                    </div>
+                        <div class="col_1">
+                            <p class="italic">This is a sample of an italic text. Consequat scelerisque. Fusce sed lectus at arcu mollis accumsan at nec nisi porta quis sit amet.</p>
+                        </div>
 
-                    <div class="col_1">
-                        <p>Curabitur euismod gravida ante nec commodo. Nunc dolor nulla, semper in ultricies vitae, vulputate porttitor neque.</p>
-                    </div>
+                        <div class="col_1">
+                            <p>Curabitur euismod gravida ante nec commodo. Nunc dolor nulla, semper in ultricies vitae, vulputate porttitor neque.</p>
+                        </div>
 
-                    <div class="col_1">
-                        <p class="strong">This is a sample of a bold text. Aliquam sodales nisi nec felis hendrerit ac eleifend lectus feugiat scelerisque.</p>
-                    </div>
+                        <div class="col_1">
+                            <p class="strong">This is a sample of a bold text. Aliquam sodales nisi nec felis hendrerit ac eleifend lectus feugiat scelerisque.</p>
+                        </div>
 
-                    <div class="col_5">
-                        <h2>Here is some content with side images</h2>
-                    </div>
+                        <div class="col_5">
+                            <h2>Here is some content with side images</h2>
+                        </div>
 
-                    <div class="col_3">
+                        <div class="col_3">
 
-                        <img src="img/01.jpg" width="70" height="70" class="img_left imgshadow" alt="" />
-                        <p>Maecenas eget eros lorem, nec pellentesque lacus. Aenean dui orci, rhoncus sit amet tristique eu, tristique sed odio. Praesent ut interdum elit. Sed in sem mauris. Aenean a commodo mi. Praesent augue lacus.<a href="#">Read more...</a></p>
+                            <img src="img/01.jpg" width="70" height="70" class="img_left imgshadow" alt="" />
+                            <p>Maecenas eget eros lorem, nec pellentesque lacus. Aenean dui orci, rhoncus sit amet tristique eu, tristique sed odio. Praesent ut interdum elit. Sed in sem mauris. Aenean a commodo mi. Praesent augue lacus.<a href="#">Read more...</a></p>
 
-                        <img src="img/02.jpg" width="70" height="70" class="img_left imgshadow" alt="" />
-                        <p>Aliquam elementum felis quis felis consequat scelerisque. Fusce sed lectus at arcu mollis accumsan at nec nisi. Aliquam pretium mollis fringilla. Nunc in leo urna, eget varius metus. Aliquam sodales nisi.<a href="#">Read more...</a></p>
+                            <img src="img/02.jpg" width="70" height="70" class="img_left imgshadow" alt="" />
+                            <p>Aliquam elementum felis quis felis consequat scelerisque. Fusce sed lectus at arcu mollis accumsan at nec nisi. Aliquam pretium mollis fringilla. Nunc in leo urna, eget varius metus. Aliquam sodales nisi.<a href="#">Read more...</a></p>
 
-                    </div>
+                        </div>
 
-                    <div class="col_2">
+                        <div class="col_2">
 
-                        <p class="black_box">This is a black box, you can use it to highligh some content. Sed sed lacus nulla, et lacinia risus. Phasellus vitae sapien ac leo mollis porta quis sit amet nisi. Mauris hendrerit, metus cursus accumsan tincidunt.Quisque vestibulum nisi non nunc blandit placerat. Mauris facilisis, risus ut lobortis posuere, diam lacus congue lorem, ut condimentum ligula est vel orci. Donec interdum lacus at velit varius gravida. Nulla ipsum risus.</p>
+                            <p class="black_box">This is a black box, you can use it to highligh some content. Sed sed lacus nulla, et lacinia risus. Phasellus vitae sapien ac leo mollis porta quis sit amet nisi. Mauris hendrerit, metus cursus accumsan tincidunt.Quisque vestibulum nisi non nunc blandit placerat. Mauris facilisis, risus ut lobortis posuere, diam lacus congue lorem, ut condimentum ligula est vel orci. Donec interdum lacus at velit varius gravida. Nulla ipsum risus.</p>
 
-                    </div>
-
-                </div> 
-
-            </li> End 5 columns Item
-
-            <li><a href="#" class="drop">4 Columns</a> Begin 4 columns Item
-
-                <div class="dropdown_4columns"> Begin 4 columns container
-
-                    <div class="col_4">
-                        <h2>This is a heading title</h2>
-                    </div>
-
-                    <div class="col_1">
-
-                        <h3>Some Links</h3>
-                        <ul>
-                            <li><a href="#">ThemeForest</a></li>
-                            <li><a href="#">GraphicRiver</a></li>
-                            <li><a href="#">ActiveDen</a></li>
-                            <li><a href="#">VideoHive</a></li>
-                            <li><a href="#">3DOcean</a></li>
-                        </ul>
+                        </div>
 
                     </div>
 
-                    <div class="col_1">
+                </li> End 5 columns Item
 
-                        <h3>Useful Links</h3>
-                        <ul>
-                            <li><a href="#">NetTuts</a></li>
-                            <li><a href="#">VectorTuts</a></li>
-                            <li><a href="#">PsdTuts</a></li>
-                            <li><a href="#">PhotoTuts</a></li>
-                            <li><a href="#">ActiveTuts</a></li>
-                        </ul>
+                <li><a href="#" class="drop">4 Columns</a> Begin 4 columns Item
 
-                    </div>
+                    <div class="dropdown_4columns"> Begin 4 columns container
 
-                    <div class="col_1">
-
-                        <h3>Other Stuff</h3>
-                        <ul>
-                            <li><a href="#">FreelanceSwitch</a></li>
-                            <li><a href="#">Creattica</a></li>
-                            <li><a href="#">WorkAwesome</a></li>
-                            <li><a href="#">Mac Apps</a></li>
-                            <li><a href="#">Web Apps</a></li>
-                        </ul>
-
-                    </div>
-
-                    <div class="col_1">
-
-                        <h3>Misc</h3>
-                        <ul>
-                            <li><a href="#">Design</a></li>
-                            <li><a href="#">Logo</a></li>
-                            <li><a href="#">Flash</a></li>
-                            <li><a href="#">Illustration</a></li>
-                            <li><a href="#">More...</a></li>
-                        </ul>
-
-                    </div>
-
-                </div> End 4 columns container
-
-            </li> End 4 columns Item
-
-	<li class="menu_right"><a href="#" class="drop">1 Column</a>
-
-		<div class="dropdown_1column align_right">
+                        <div class="col_4">
+                            <h2>This is a heading title</h2>
+                        </div>
 
                         <div class="col_1">
 
-                            <ul class="simple">
-                                <li><a href="#">FreelanceSwitch</a></li>
-                                <li><a href="#">Creattica</a></li>
-                                <li><a href="#">WorkAwesome</a></li>
-                                <li><a href="#">Mac Apps</a></li>
-                                <li><a href="#">Web Apps</a></li>
+                            <h3>Some Links</h3>
+                            <ul>
+                                <li><a href="#">ThemeForest</a></li>
+                                <li><a href="#">GraphicRiver</a></li>
+                                <li><a href="#">ActiveDen</a></li>
+                                <li><a href="#">VideoHive</a></li>
+                                <li><a href="#">3DOcean</a></li>
+                            </ul>
+
+                        </div>
+
+                        <div class="col_1">
+
+                            <h3>Useful Links</h3>
+                            <ul>
                                 <li><a href="#">NetTuts</a></li>
                                 <li><a href="#">VectorTuts</a></li>
                                 <li><a href="#">PsdTuts</a></li>
                                 <li><a href="#">PhotoTuts</a></li>
                                 <li><a href="#">ActiveTuts</a></li>
+                            </ul>
+
+                        </div>
+
+                        <div class="col_1">
+
+                            <h3>Other Stuff</h3>
+                            <ul>
+                                <li><a href="#">FreelanceSwitch</a></li>
+                                <li><a href="#">Creattica</a></li>
+                                <li><a href="#">WorkAwesome</a></li>
+                                <li><a href="#">Mac Apps</a></li>
+                                <li><a href="#">Web Apps</a></li>
+                            </ul>
+
+                        </div>
+
+                        <div class="col_1">
+
+                            <h3>Misc</h3>
+                            <ul>
                                 <li><a href="#">Design</a></li>
                                 <li><a href="#">Logo</a></li>
                                 <li><a href="#">Flash</a></li>
@@ -267,69 +508,99 @@
 
                         </div>
 
+                    </div> End 4 columns container
+
+                </li> End 4 columns Item
+
+	<li class="menu_right"><a href="#" class="drop">1 Column</a>
+
+		<div class="dropdown_1column align_right">
+
+                            <div class="col_1">
+
+                                <ul class="simple">
+                                    <li><a href="#">FreelanceSwitch</a></li>
+                                    <li><a href="#">Creattica</a></li>
+                                    <li><a href="#">WorkAwesome</a></li>
+                                    <li><a href="#">Mac Apps</a></li>
+                                    <li><a href="#">Web Apps</a></li>
+                                    <li><a href="#">NetTuts</a></li>
+                                    <li><a href="#">VectorTuts</a></li>
+                                    <li><a href="#">PsdTuts</a></li>
+                                    <li><a href="#">PhotoTuts</a></li>
+                                    <li><a href="#">ActiveTuts</a></li>
+                                    <li><a href="#">Design</a></li>
+                                    <li><a href="#">Logo</a></li>
+                                    <li><a href="#">Flash</a></li>
+                                    <li><a href="#">Illustration</a></li>
+                                    <li><a href="#">More...</a></li>
+                                </ul>
+
+                            </div>
+
 		</div>
 
 	</li>
 
-            <li class="menu_right"><a href="#" class="drop">3 columns</a> Begin 3 columns Item
+                <li class="menu_right"><a href="#" class="drop">3 columns</a> Begin 3 columns Item
 
-                <div class="dropdown_3columns align_right"> Begin 3 columns container
+                    <div class="dropdown_3columns align_right"> Begin 3 columns container
 
-                    <div class="col_3">
-                        <h2>Lists in Boxes</h2>
-                    </div>
+                        <div class="col_3">
+                            <h2>Lists in Boxes</h2>
+                        </div>
 
-                    <div class="col_1">
+                        <div class="col_1">
 
-                        <ul class="greybox">
-                            <li><a href="#">FreelanceSwitch</a></li>
-                            <li><a href="#">Creattica</a></li>
-                            <li><a href="#">WorkAwesome</a></li>
-                            <li><a href="#">Mac Apps</a></li>
-                            <li><a href="#">Web Apps</a></li>
-                        </ul>
+                            <ul class="greybox">
+                                <li><a href="#">FreelanceSwitch</a></li>
+                                <li><a href="#">Creattica</a></li>
+                                <li><a href="#">WorkAwesome</a></li>
+                                <li><a href="#">Mac Apps</a></li>
+                                <li><a href="#">Web Apps</a></li>
+                            </ul>
 
-                    </div>
+                        </div>
 
-                    <div class="col_1">
+                        <div class="col_1">
 
-                        <ul class="greybox">
-                            <li><a href="#">ThemeForest</a></li>
-                            <li><a href="#">GraphicRiver</a></li>
-                            <li><a href="#">ActiveDen</a></li>
-                            <li><a href="#">VideoHive</a></li>
-                            <li><a href="#">3DOcean</a></li>
-                        </ul>
+                            <ul class="greybox">
+                                <li><a href="#">ThemeForest</a></li>
+                                <li><a href="#">GraphicRiver</a></li>
+                                <li><a href="#">ActiveDen</a></li>
+                                <li><a href="#">VideoHive</a></li>
+                                <li><a href="#">3DOcean</a></li>
+                            </ul>
 
-                    </div>
+                        </div>
 
-                    <div class="col_1">
+                        <div class="col_1">
 
-                        <ul class="greybox">
-                            <li><a href="#">Design</a></li>
-                            <li><a href="#">Logo</a></li>
-                            <li><a href="#">Flash</a></li>
-                            <li><a href="#">Illustration</a></li>
-                            <li><a href="#">More...</a></li>
-                        </ul>
+                            <ul class="greybox">
+                                <li><a href="#">Design</a></li>
+                                <li><a href="#">Logo</a></li>
+                                <li><a href="#">Flash</a></li>
+                                <li><a href="#">Illustration</a></li>
+                                <li><a href="#">More...</a></li>
+                            </ul>
 
-                    </div>
+                        </div>
 
-                    <div class="col_3">
-                        <h2>Here are some image examples</h2>
-                    </div>
+                        <div class="col_3">
+                            <h2>Here are some image examples</h2>
+                        </div>
 
-                    <div class="col_3">
-                        <img src="img/02.jpg" width="70" height="70" class="img_left imgshadow" alt="" />
-                        <p>Maecenas eget eros lorem, nec pellentesque lacus. Aenean dui orci, rhoncus sit amet tristique eu, tristique sed odio. Praesent ut interdum elit. Maecenas imperdiet, nibh vitae rutrum vulputate, lorem sem condimentum.<a href="#">Read more...</a></p>
+                        <div class="col_3">
+                            <img src="img/02.jpg" width="70" height="70" class="img_left imgshadow" alt="" />
+                            <p>Maecenas eget eros lorem, nec pellentesque lacus. Aenean dui orci, rhoncus sit amet tristique eu, tristique sed odio. Praesent ut interdum elit. Maecenas imperdiet, nibh vitae rutrum vulputate, lorem sem condimentum.<a href="#">Read more...</a></p>
 
-                        <img src="img/01.jpg" width="70" height="70" class="img_left imgshadow" alt="" />
-                        <p>Aliquam elementum felis quis felis consequat scelerisque. Fusce sed lectus at arcu mollis accumsan at nec nisi. Aliquam pretium mollis fringilla. Vestibulum tempor facilisis malesuada. <a href="#">Read more...</a></p>
-                    </div>
+                            <img src="img/01.jpg" width="70" height="70" class="img_left imgshadow" alt="" />
+                            <p>Aliquam elementum felis quis felis consequat scelerisque. Fusce sed lectus at arcu mollis accumsan at nec nisi. Aliquam pretium mollis fringilla. Vestibulum tempor facilisis malesuada. <a href="#">Read more...</a></p>
+                        </div>
 
-                </div> End 3 columns container
+                    </div> End 3 columns container
 
-            </li> End 3 columns Item -->
+                </li> End 3 columns Item -->
 
 
 </ul>

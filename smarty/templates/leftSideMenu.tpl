@@ -1,30 +1,30 @@
 {******************************************************************************
                         User Information
 *******************************************************************************}
-
+{*
 <b><font color="#0066ff">Logged In As:</font></b><br>
 <img src="{$imageURL}dart1.gif" alt="" height="67" width="77" border="0"><br/>
 <b><font color="#0066ff">{$currentUserName}</font></b>
-
+*}
 {******************************************************************************
                         Transcript Menu
 *******************************************************************************}
-
+{*
 {if $showTranscriptOptions}
 <br/>
 <a href="index.php?cmd=transcriptsDefine">Define Transcript</a><br/>
 <a href="index.php?cmd=editTranscripts">Edit Transcripts</a><br/>
 {/if}
-
+*}
 {******************************************************************************
                         DART Home Information
 *******************************************************************************}
 
 <br><b><font color="#0066ff">DART Info<br></font></b>
-<a href="index.php?cmd=logout">Log Out</a><br/>
-<a href="index.php?cmd=home">Dart Home</a><br/>
-<a href="index.php?cmd=editProfile">Edit Profile</a><br/>
-<a href="mailto:dart@bssd.org" target=_blank>Feedback</a><br/>
+{*<a href="index.php?cmd=logout">Log Out</a><br/>*}
+{*<a href="index.php?cmd=home">Dart Home</a><br/>*}
+{*<a href="index.php?cmd=editProfile">Edit Profile</a><br/>*}
+{*<a href="mailto:dart@bssd.org" target=_blank>Feedback</a><br/>*}
 <a href="index.php?cmd=districtrep" target=_blank>SIP Plan</a><br/>
 <a href="index.php?cmd=siterep" target=_blank>Site SIP Plan</a><br/>
 <a href="index.php?cmd=teacherrep" target=_blank>Teacher SIP Plan</a><br/>
@@ -32,11 +32,11 @@
 {******************************************************************************
                         Search Students
 *******************************************************************************}
-
+{*
 {if $showSearch}
 <a href="index.php?cmd=search">Search</a><br>
 {/if}
-
+*}
 {******************************************************************************
                         Dashboard
 *******************************************************************************}
@@ -48,7 +48,7 @@
 {******************************************************************************
                         My Groups
 *******************************************************************************}
-
+{*
 {if $showMyGroups}
 <br>
 <font color="#0066ff"><b>My Groups</b></font><br>
@@ -56,11 +56,11 @@
 <a href=index.php?cmd=showscores&p1={$group.listid}>{$group.listname}</a><br/>
     {/foreach}
 {/if}
-
+*}
 {******************************************************************************
                         Shared Groups
 *******************************************************************************}
-
+{*
 {if $showSharedGroups}
 <br><font color="#0066ff">
     <b>Shared Groups<br>
@@ -70,11 +70,11 @@
 <a href=index.php?cmd=showscores&p1={$group.listid}">{$group.listname}</a>
     {/foreach}
 {/if}
-
+*}
 {******************************************************************************
                         Private Shared Groups
 *******************************************************************************}
-
+{*
 {if $privateSharedGroups !=null}
 <br><font color="#0066ff"><b>Private Shared List</b></font><br/>
 
@@ -82,17 +82,17 @@
 <a href=index.php?cmd=showscores&p1="{$group.listid}">{$group.listname}</a><br/>
     {/foreach}
  {/if}
-
+*}
 {******************************************************************************
                         Manage Groups
 *******************************************************************************}
-
+{*
 {if $showManageGroups}
 <br><font color="#0066ff"><b>Manage Groups</b></font><br>
 <a href="index.php?cmd=newlist">New Group</a><br>
 <a href="index.php?cmd=editlist">Edit Groups</a><br>
 {/if}
-
+*}
 {******************************************************************************
                         Reports
 *******************************************************************************}
@@ -104,20 +104,20 @@
 {******************************************************************************
                         Official Report
 *******************************************************************************}
-
+{*
  {if $showOfficialReport}
 <a href="index.php?cmd=reportsInd">Official</a><br>
  {/if}
-
+*}
 {******************************************************************************
                         Drill Down
 *******************************************************************************}
-
+{*
  {if $showDrillDown}
 <a href="index.php?cmd=pivot">Drill Down!</a><br>
 <a href="index.php?cmd=extraPacingReport">PASS</a><br>
  {/if}
-
+*}
 {******************************************************************************
                         Admin Area
 *******************************************************************************}
@@ -129,30 +129,30 @@
 {******************************************************************************
                         Users & Internal Error
 *******************************************************************************}
-
+{*
  {if $showUsers}
 <a href="index.php?cmd=userAdmin&site=$currentMySite&status=Active">
     Users {$currentMySite}</a><br>
 <a href="index.php?cmd=InternalError">Internal Error</a><br>
  {/if}
-
+*}
 {******************************************************************************
                         Big Red Button, Test & Grd
 *******************************************************************************}
 
  {if $showRedButton_Grd_Test}
 <a href="index.php?cmd=bigRed">Big Red Button</a><br>
-<a href="index.php?cmd=edittestlevel">Edit Test Level</a><br>
-<a href="index.php?cmd=editgs">Edit Grd Setup</a><br>
+{*<a href="index.php?cmd=edittestlevel">Edit Test Level</a><br>*}
+{*<a href="index.php?cmd=editgs">Edit Grd Setup</a><br>*}
  {/if}
 
 {******************************************************************************
                         Standards
 *******************************************************************************}
 
- {if $showEditStandards}
+ {*{if $showEditStandards}
 <a href="index.php?cmd=editStandards">Edit Standards</a><br>
- {/if}
+ {/if}*}
 
 {******************************************************************************
                         School Calendar
@@ -166,12 +166,12 @@
 {******************************************************************************
                         Progress
 *******************************************************************************}
-
+{*
 {if $showProgress}
 <a href="index.php?cmd=progress&site=$currentMySite">
     Progress {$currentMySite}</a><br/>
 {/if}
-
+*}
 {******************************************************************************
                         History
 *******************************************************************************}
@@ -192,23 +192,23 @@
 {******************************************************************************
                         Notes
 *******************************************************************************}
-
+{*
 {if $showEditNotes}
 <a href="index.php?cmd=editNotes">Edit Notes</a><br/>
 {/if}
-
+*}
 {******************************************************************************
                         Report Notes
 *******************************************************************************}
-
+{*
 {if $showEditReportNotes}
 <a href="index.php?cmd=editRepNotes">Edit Report Notes</a><br/>
 {/if}
-
+*}
 {******************************************************************************
                         Student Management
 *******************************************************************************}
-
+{*
 {if $showStudentManagement}
 <a title="DART Enrollment Form" href="enrollment_form.shtml">
     Add Student</a><br/>
@@ -220,7 +220,7 @@
     Add Elective</a><br/>
 {/if}
 <br />
-
+*}
 {******************************************************************************
                         Module Links
 *******************************************************************************}
