@@ -3,23 +3,23 @@
 //  Author: Robert Joseph (dart@vizmotion.com)
 //	 Web: http://wiki.bssd.org/index.php/DART_System
 // ==================================================================
- 
+
 include_once("lib/functions_gs.inc");
 include_once("ReportPrivileges.php");
 
 $cellwidth = 60;
-$studentID = ($currentStudentID == '') ? $_GET['p1'] : $currentStudentID;
+$studentID = (!isset($currentStudentID) || $currentStudentID == '') ? $_GET['p1'] : $currentStudentID;
 $studentInfo = getStudentInfo($studentID);
 $site = $studentInfo['site'];
 $g1 = $studentInfo['grade'];
 
-$siteEqual = $currentMySite == $site;
+$siteEqual = isset($currentMySite) && $currentMySite == $site;
 $idEqual = $currentAffiliatedID == $studentID;
 //$idEqual = 0;
 $A2Priv = Privilege(A2);
 $A3Priv = Privilege(A3);
 
-if($currentStudentID == '') {
+if(!isset($currentStudentID) || $currentStudentID == '') {
 	$edit = true;
 	$Display = checkStudent($idEqual, $siteEqual, $A2Priv, $A3Priv);
 	if ($Display == 'no') {
@@ -42,13 +42,13 @@ $reportNames = $reportPrivileges->getNames();
 array_unshift($reportLinks, "");
 array_unshift($reportNames, "None");
 
-$indicators = getSummaryInfo();
+$summary = getSummaryInfo();
 
 $subjects = getStudentLevels($studentID);
 
 $subjectMenu = array(
-"" => "Choose One",
-"#top_anchor" => "Top of Page"
+		"" => "Choose One",
+		"#top_anchor" => "Top of Page"
 );
 $subjectSelected = "";
 
@@ -56,7 +56,7 @@ foreach ($subjects as $rec) {
 	$anchor = $rec['subject'];
 	$subjectMenu["#$anchor"] = $anchor;
 }
-if($Display == 'edit') {				
+if($Display == 'edit') {
 	$subjectMenu["#save_changes"] = "Save All Changes";
 }
 
@@ -113,12 +113,12 @@ foreach ($subjects as $rec) {
 		$type = isset($value)? "u" : "i";
 
 		$des = str_replace("'", "\'", $des );
-		
+
 		$data[$sub]["std"][$i]["std"] = $std;
 		$data[$sub]["std"][$i]["description"] = $des;
 		$data[$sub]["std"][$i]["link"] = $link;
 		$data[$sub]["std"][$i]["name"] =
-			"gr".$type."_".$studentID."_".$sub."_".$lvl."_".$std;
+				"gr".$type."_".$studentID."_".$sub."_".$lvl."_".$std;
 		$data[$sub]["std"][$i]["value"] = getStdValue($std, $scores);
 		$data[$sub]["std"][$i]["selected"] = getEqGradeValue($grdtype, $value);
 		$data[$sub]["std"][$i]["symbol"] = getGradeSymbol($grdtype, $value);
@@ -136,7 +136,7 @@ foreach ($subjects as $rec) {
 		$type = isset($value)? "u" : "i";
 
 		$data[$sub]["over"][$i]["name"] =
-			"gr".$type."_".$studentID."_".$sub."_".$lvl."_".$std;
+				"gr".$type."_".$studentID."_".$sub."_".$lvl."_".$std;
 
 		$data[$sub]["over"][$i]["std"] = $std;
 		$data[$sub]["over"][$i]["description"] = $des;
@@ -144,10 +144,10 @@ foreach ($subjects as $rec) {
 		$data[$sub]["over"][$i]["options"] = $gradeSymbols;
 		$data[$sub]["over"][$i]["selected"] = getEqGradeValue($grdtype, $value);
 	}
-	/* Indicators */
+	/* Summary */
 	$data[$sub]['ind'] = array();
-	foreach($indicators as $key => $val) {
-    	$value = getStdValue($key, $scores);
+	foreach($summary as $key => $val) {
+		$value = getStdValue($key, $scores);
 		$type = isset($value)? "u" : "i";
 		$data[$sub]['ind'][$key]["name"] = "gr".$type."_".$studentID."_".$sub."_".$lvl."_".$key;
 		$data[$sub]['ind'][$key]["value"] = $value;
@@ -175,19 +175,24 @@ $spread = ($t - $b)/$buckets;
 //$wlist = $wlist2;
 $wlist = array_slice($wlist2, 0, $wnum);
 $wlist = array_sort($wlist, 'sort');
-$weight = "<div class=\"notetarget\">";
+$weightedStd = array();
 for ($i = 0; $i < $wnum; $i++) {
-   $val = $wlist[$i]['num'];
-   $sid = $wlist[$i]['subject'] . $wlist[$i]['level'] . "." . $wlist[$i]['std'];
-   if($spread==0) {
-     $tmpnum = 0;
-    } else { $tmpnum = floor(($val - $b)/$spread);}
-   $loc = $buckets - min($buckets-1, $tmpnum);
-   $weight .= "<a href=\"" . $wlist[$i]['link'] . "\" target=_blank><span class=t$loc>" . $sid . "-" . $wlist[$i]['shortname'] . "</span></a> :: ";
-}
-$weight .= "</div>";
+	$val = $wlist[$i]['num'];
+	$sid = $wlist[$i]['subject'] . $wlist[$i]['level'] . "." . $wlist[$i]['std'];
+	if($spread==0) {
+		$tmpnum = 0;
+	} else {
+		$tmpnum = floor(($val - $b)/$spread);
+	}
+	$loc = $buckets - min($buckets-1, $tmpnum);
+	$weightedStd[$i] = array();
+	$weightedStd[$i]['link'] = $wlist[$i]['link'];
+	$weightedStd[$i]['class'] = "t$loc";
+	$weightedStd[$i]['span'] = $sid."-".$wlist[$i]['shortname'];
 
-$body .= $body_pre . $weight . $body_post;
+}
+
+writeFile($data);
 
 $smarty->assign('pageTitle',$title);
 $smarty->assign('studentID',$studentID);
@@ -198,20 +203,18 @@ $smarty->assign('subjectMenu',$subjectMenu);
 $smarty->assign('Display',$Display);
 $smarty->assign('gradeSymbols',$gradeSymbols);
 
-$smarty->assign('stdcount',$stdcount);
-$smarty->assign('list',$list);
 $smarty->assign('data',$data);
 
 $smarty->assign('cellwidth',$cellwidth);
 $smarty->assign('width',$width);
 $smarty->assign('color1',$color1);
-$smarty->assign('totalDisplay',$TotalDisplay);
 
-$smarty->assign('menuData',$menuData);
-$smarty->assign('indicators',$indicators);
-$smarty->assign('n_ind',count($indicators));
+$smarty->assign('summary',$summary);
+$smarty->assign('n_ind',count($summary));
 
 $smarty->assign('weightedStd',$weightedStd);
+$smarty->assign('studentName',$studentName);
+$smarty->assign('subjectSelected',$subjectSelected);
 
 //set flag to indicate that smarty template exists for this page
 $isSmarty=true;

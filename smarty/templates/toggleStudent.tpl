@@ -39,7 +39,11 @@ common relative weaknesses of the student.</font>
 	<font size="2">: </font>
 </p>
 
-{* ToDo: Weighted List *}
+<div class="notetarget">
+{foreach $weightedStd as $w}
+	<a href="{$w.link}" target=_blank><span class="{$w.class}">{$w.span}</span></a> ::
+{/foreach}
+</div>
 
 <div align="left">
 	<ul>
@@ -136,8 +140,8 @@ common relative weaknesses of the student.</font>
 			{/for}
 			{if $end+1 >= $subject.totalOver - 1} {* Last row *}
 
-			<!-- Indicators -->
-				{foreach $indicators as $indID => $ind}
+			<!-- Summary -->
+				{foreach $summary as $indID => $ind}
 					<th width={$cellwidth} onMouseOver="return escape('{$ind.description}')">{$ind.label}</th>
 				{/foreach}
 			{/if}
@@ -154,8 +158,8 @@ common relative weaknesses of the student.</font>
 					</td>
 				{/for}
 
-				<!-- Indicators -->
-				{foreach $indicators as $indID => $val}
+				<!-- Summary -->
+				{foreach $summary as $indID => $val}
 					{$ind = $subject.ind.{$indID}}
 					<td>
 						<input type=hidden name=old_{$ind.name} value={$ind.value}> <!-- This one should be missing for "prog"... @todo -->
@@ -169,9 +173,9 @@ common relative weaknesses of the student.</font>
 					{$over = $subject.over.{$i}}
 					<td align=center>&nbsp;{$over.symbol}&nbsp;</td>
 				{/for}
-				<!-- Indicators -->
-				<td align=center>&nbsp;{$indicators.qpi.value}&nbsp;</td>
-				<td align=center>&nbsp;{$indicators.ase.value}&nbsp;</td>
+				<!-- Summary -->
+				<td align=center>&nbsp;{$summary.qpi.value}&nbsp;</td>
+				<td align=center>&nbsp;{$summary.ase.value}&nbsp;</td>
 				<!-- Nothing for "prog", @todo -->
 			{/if}
 			{$start = $end+1}{$end = $end+$width}{if $end > $subject.totalOver}{$end = $subject.totalOver-1}{/if}
@@ -180,7 +184,7 @@ common relative weaknesses of the student.</font>
 			</tr>
 		{/while}
 		</table>
-		<input type=hidden name="old_{$subject.comment_id}" value="{$student.esc_comment}">
+		<input type=hidden name="old_{$subject.comment_id}" value="{$subject.esc_comment}">
 		<input type=hidden id="ch_{$subject.comment_id}" name="ch_{$subject.comment_id}" value=empty>
 		<font size="2"><b>Teacher Comments:</b></font><br/>
 		{if $Display eq 'edit'}
