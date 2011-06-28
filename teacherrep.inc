@@ -7,21 +7,35 @@
 $site = $_GET['site'];
 $test = $_GET['test'] == '' ? 'Q1' : $_GET['test'];
 ${"test_" . $test} = "selected";
-$sites = getSites('');   
+$sites = getSites('');
+
+
+
+
+$sitelist = array();
+
 foreach ($sites as $s) {
+
 	$id = $s['siteid']; $name=$s['name'];
-	$siteList .= "<option value =\"$id\" " . selected($id, $site) . ">$name</option>\n";    
+	 $sitelist[$id] = $name;
 }
-$body .= "<form action=index.php method=get>
-					<input type=hidden name=cmd value=teacherrep>
-					<select name=\"site\" id=\"site\" onChange=\"submit()\">
-						<option value=''>-select-</option> 
-						$siteList
-					</select>
-					
-				 </form>";
+
+$smarty->assign("sitelist", $sitelist);
+$smarty->assign("selectedSite", $site);
+
+//$body .= "<form action=index.php method=get>
+//					<input type=hidden name=cmd value=teacherrep>
+//					<select name=\"site\" id=\"site\" onChange=\"submit()\">
+//						<option value=''>-select-</option>
+//						$siteList
+//					</select>
+//
+//				 </form>";
 				 
 $s = getTeacherActionPlans ($site, $CurrentYear, 'teacher', $test);			
+
+
+$teacherActionPlans = array();
 
 // echo count($s) . "-";
 for($i = 0; $i < count($s) ; $i++) {
@@ -33,25 +47,37 @@ for($i = 0; $i < count($s) ; $i++) {
 	$eval = $s[$i]['eval'];
 	$final = $s[$i]['final'];
 	$teacher = $s[$i]['user_name'];
-//	echo $teacher;
+
 	if ($teacher != $oldteacher) {
-		$body .= "<strong>$teacher</strong><br><table border=1>
-		<tr><th>Smart Plan</th><th>Evaluation</th></tr>";
+            if(isset($teacherActionPlan)){
+                array_push ($teacherActionPlans, $teacherActionPlan);
+            }
+                $teacherActionPlan["teacher"] = $teacher;
+                $teacherActionPlan["actionPlans"] = array();
 		$oldteacher = $teacher;
 	}
-	$body .= "<tr>
-				<td width=50%>$action</td>
-				<td>$eval &nbsp;</td>
-			</tr>
-			";
-	if($s[$i]['user_name'] != $s[$i+1]['user_name'] and $s[$i+1]['user_name'] != '') {
-		$body .= "</table><br>";
-	}
+
+        $actionPlan["action"] = $action;
+        $actionPlan["eval"] = $eval;
+
+        array_push($teacherActionPlan["actionPlans"], $actionPlan);
+//	$body .= "<tr>
+//				<td width=50%>$action</td>
+//				<td>$eval &nbsp;</td>
+//			</tr>
+//			";
+//	if($s[$i]['user_name'] != $s[$i+1]['user_name'] and $s[$i+1]['user_name'] != '') {
+//		$body .= "</table><br>";
+//	}
 }
-	$body .= "</table><br>";
+	//$body .= "</table><br>";
+$smarty->assign("teacherActionPlans",$teacherActionPlans);
 
-
+$isSmarty = true;
 include("template.inc");
+
+$smarty->display("teacherrep.tpl");
+
 
 function getTeacherActionPlans ($site='', $year='', $type ='teacher', $test='') {
 	global $db;
