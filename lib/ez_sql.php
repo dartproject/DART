@@ -15,8 +15,12 @@
 	// User Settings -- CHANGE HERE
 
 	define("EZSQL_DB_USER", $dbuser);			// <-- mysql db user
-	define("EZSQL_DB_PASSWORD", $dbpassword);		// <-- mysql db password
-	define("EZSQL_DB_NAME", $dbname);		// <-- mysql db pname
+
+        if(isset($dbapassword))
+            define("EZSQL_DB_PASSWORD", $dbpassword);		// <-- mysql db password
+	else
+            define("EZSQL_DB_PASSWORD", "");
+        define("EZSQL_DB_NAME", $dbname);		// <-- mysql db pname
 	define("EZSQL_DB_HOST", $dbhose);	// <-- mysql server host
 
 	// ==================================================================
