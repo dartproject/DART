@@ -18,7 +18,7 @@
 	if(isset($dbpassword))
 		define("EZSQL_DB_PASSWORD", $dbpassword);		// <-- mysql db password
 	else
-	define("EZSQL_DB_PASSWORD", "");
+		define("EZSQL_DB_PASSWORD", "");
 	define("EZSQL_DB_NAME", $dbname);		// <-- mysql db pname
 	define("EZSQL_DB_HOST", $dbhose);	// <-- mysql server host
 
