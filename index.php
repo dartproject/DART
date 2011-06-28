@@ -1,4 +1,5 @@
 <?php
+
 // ==================================================================
 //  Author: Robert Joseph (dart@vizmotion.com)
 //	 Web: http://wiki.bssd.org/index.php/DART_System
@@ -6,75 +7,108 @@
 
 include_once("lib/YearQuarter.inc");
 
-  if(isset($_GET['debug']))	$debugflag = $_GET['debug'];
+if (isset($_GET['debug']))
+    $debugflag = $_GET['debug'];
 //  $debugflag="on";
-  $currentUser = "";
-  $currentUserID = "";
-  $currentUserName = "";
-  $currentMySite = "";
-  $currentSite = "";
-  $currentPriv = "";
-  $currentPrivB = "";
-  $currentScopeA = "";
-  $currentScopeB = "";
-  
-  session_start();
-  
-//  error_reporting (0);
-error_reporting(E_ERROR);
+$currentUser = "";
+$currentUserID = "";
+$currentUserName = "";
+$currentMySite = "";
+$currentSite = "";
+$currentPriv = "";
+$currentPrivB = "";
+$currentScopeA = "";
+$currentScopeB = "";
 
-  include_once ("lib/machine.config.php");
-  include_once ("lib/config.inc");
-  include_once ("lib/ez_sql.php");
-  include_once ("lib/function.inc");
-  
-  debugPrint("DebugFlag before session: $debugflag<br>");
+session_start();
 
-  getMyGlobals();
+error_reporting(1);
+error_reporting(E_ALL);
 
-  foreach($modules as $module) {
-     include_once("$module/config.inc");
-  }
+include_once ("lib/machine.config.php");
+include_once ("lib/config.inc");
+include_once ("lib/ez_sql.php");
+include_once ("lib/function.inc");
 
-  debugPrint("Debug Flag right after session_start: $debugflag<br>");
- 
- 
-  //$userID =  $currentUserID;
-  debugPrint("Debug Flag before SiteID: $debugflag<br>");
-  //$siteID = getSite();
-  debugPrint("Debug Flag after SiteID: $debugflag<br>");
-  
-  $cmd = $_GET['cmd'];
-  $p1 = $_GET['p1'];
-  $p2 = $_GET['p2'];
-  $p3 = $_GET['p3'];
-  $module = $_GET['module'];
-  if(isset($module)) {
-     $mcmd = $cmd;
-     $cmd = "module";
-  }
-  
+if (isset($debugflag))
+    debugPrint("DebugFlag before session: $debugflag<br>");
+else
+    debugPrint("DebugFlag before session: DebugFlag is not initiated <br>");
 
-  if(isset($debugflag) and ($debugflag <> "")) { setDebug($debugflag);}
+getMyGlobals();
 
-  debugPrint ("<b>CMD=> $cmd USERID - $currentUserID SITEID - $currentMySite P1=>$p1 P2=>$p2 P3=>$p3</b><br>");
+foreach ($modules as $module) {
+    include_once("$module/config.inc");
+}
+
+if (isset($debugflag))
+    debugPrint("Debug Flag right after session_start: $debugflag<br>");
+else
+    debugPrint("Debug Flag right after session_start: DebugFlag is not initiated <br>");
+
+//$userID =  $currentUserID;
+
+if (isset($debugflag))
+    debugPrint("Debug Flag before SiteID: $debugflag<br>");
+else
+    debugPrint("Debug Flag before SiteID: \$debugflag not initiated<br>");
+//$siteID = getSite();
+
+if(isset($debugflag))
+    debugPrint("Debug Flag after SiteID: $debugflag<br>");
+else
+    debugPrint("Debug Flag after SiteID: \$debugflag not initiated<br>");
+
+if(isset($_GET['cmd']))
+    $cmd = $_GET['cmd'];
+else
+    $cmd="";
+
+if(isset($_GET['p1]']))
+    $p1 = $_GET['p1'];
+else
+    $p1="";
+
+if(isset($_GET['p2']))
+    $p2 = $_GET['p2'];
+else
+    $p2="";
+
+if(isset($_GET['p3']))
+    $p3 = $_GET['p3'];
+else
+    $p3="";
+
+
+if (isset($_GET['module'])) {
+    $mcmd = $cmd;
+    $cmd = "module";
+    $module = $_GET['module'];
+}
+
+
+if (isset($debugflag) and ($debugflag <> "")) {
+    setDebug($debugflag);
+}
+
+debugPrint("<b>CMD=> $cmd USERID - $currentUserID SITEID - $currentMySite P1=>$p1 P2=>$p2 P3=>$p3</b><br>");
 /*
   $loggedIn = checkLogon();
 
   if( $loggedIn != "" and $cmd != 'processLogon' and $cmd != 'getPwd' and $cmd != 'expired' and $cmd != 'logon' and $cmd != 'forget') {
-   if($loggedIn != "") {
-   		$_GET['msg'] = $loggedIn;
-   }
-   $cmd = 'logon';
-  }  
-*/
-  if( checkLogon() == FALSE and $cmd != 'processLogon' and $cmd != 'getPwd' and $cmd != 'expired' and $cmd != 'logon' and $cmd != 'forget') {
-   if($loggedIn != "") {
-   		$_GET['msg'] = $loggedIn;
-   }
-   $cmd = 'logon';
-  }  
-  switch($cmd) {
+  if($loggedIn != "") {
+  $_GET['msg'] = $loggedIn;
+  }
+  $cmd = 'logon';
+  }
+ */
+if (checkLogon() == FALSE and $cmd != 'processLogon' and $cmd != 'getPwd' and $cmd != 'expired' and $cmd != 'logon' and $cmd != 'forget') {
+    if ($loggedIn != "") {
+        $_GET['msg'] = $loggedIn;
+    }
+    $cmd = 'logon';
+}
+switch ($cmd) {
     case "districtrep":
         include("districtrep.inc");
         break;
@@ -84,7 +118,7 @@ error_reporting(E_ERROR);
     case "siterep":
         include("siterep.inc");
         break;
-   case "fixProgress":
+    case "fixProgress":
         include("fixProgress.inc");
         break;
     case "module":
@@ -280,41 +314,41 @@ error_reporting(E_ERROR);
         break;
     case "logon":
         include("logon.inc");
-        break;    
+        break;
     case "modifyLevelState":
         include("modifyLevelState.inc");
         break;
     case "noPrivilege":
         include("noPrivilege.inc");
         break;
-/*
-// UNDER REPAIR
-    case "transcriptsDefine":
-        include("underrepair.inc");
-        break;
-    case "transcriptsProduce":
-        include("underrepair.inc");
-        break;
-    case "transcriptInternals":
-        include("underrepair.inc");
-        break;
-    case "transcriptDL":
-        include("underrepair.inc");
-        break;
-    case "transcriptGrades":
-        include("underrepair.inc");
-        break;
-    case "transcript2006":
-        include("underrepair.inc");
-        break;
-    case "transcriptLoad":
-        include("underrepair.inc");
-        break;
-    case "transcriptComputeNames":
-        include("underrepair.inc");
-        break;
-// ------ END UNDER REPAIR
-*/    case "transcriptsDefine":
+    /*
+      // UNDER REPAIR
+      case "transcriptsDefine":
+      include("underrepair.inc");
+      break;
+      case "transcriptsProduce":
+      include("underrepair.inc");
+      break;
+      case "transcriptInternals":
+      include("underrepair.inc");
+      break;
+      case "transcriptDL":
+      include("underrepair.inc");
+      break;
+      case "transcriptGrades":
+      include("underrepair.inc");
+      break;
+      case "transcript2006":
+      include("underrepair.inc");
+      break;
+      case "transcriptLoad":
+      include("underrepair.inc");
+      break;
+      case "transcriptComputeNames":
+      include("underrepair.inc");
+      break;
+      // ------ END UNDER REPAIR
+     */ case "transcriptsDefine":
         include("transcriptsDefine.inc");
         break;
     case "transcriptsProduce":
@@ -354,205 +388,202 @@ error_reporting(E_ERROR);
         include("transcript_ERR_Fix.inc");
         break;
     case "AttendanceCalendar":
-		include("attendanceCalendar.inc");
-		break;
+        include("attendanceCalendar.inc");
+        break;
     case "AttendanceCalendarEdit":
-		include("attendanceCalEdit.inc");
-		break;
-	case "SchoolCalendar":
-		include("schoolCalendar.inc");
-		break;
+        include("attendanceCalEdit.inc");
+        break;
+    case "SchoolCalendar":
+        include("schoolCalendar.inc");
+        break;
     case "SchoolCalendarEdit":
-		include("schoolCalendarEdit.inc");
-		break;
+        include("schoolCalendarEdit.inc");
+        break;
     case "AttendanceList":
-		include("attendanceList.inc");
-		break;
+        include("attendanceList.inc");
+        break;
     case "AttendanceListRecord":
-		include("attendanceListRecord.inc");
-		break;
+        include("attendanceListRecord.inc");
+        break;
     case "EnrollmentStudent":
-		include("enrollmentStudent.inc");
-		break;
+        include("enrollmentStudent.inc");
+        break;
     case "ChangeExitCode":
-		include("changeExitCode.inc");
-		break;
+        include("changeExitCode.inc");
+        break;
     case "ChangeEnterCode":
-		include("changeEnterCode.inc");
-		break;
+        include("changeEnterCode.inc");
+        break;
     case "Movement":
-		include("movement.inc");
-		break;
+        include("movement.inc");
+        break;
     case "MovementSave":
-		include("movementsave.inc");
-		break;
+        include("movementsave.inc");
+        break;
     case "MovementView":
-		include("movementview.inc");
-		break;
+        include("movementview.inc");
+        break;
     case "StudentEdit":
-		include("studentEdit.inc");
-		break;
+        include("studentEdit.inc");
+        break;
     case "NewStudentMovement":
-		include("newStudentMovement.inc");
-		break;
-   case "StudentEnter":
-		include("studentEnter.inc");
-		break;
-   case "StudentExit":
-		include("studentExit.inc");
-		break;
-   case "StudentShowDates":
-		include("studentShowDates.inc");
-		break;
-   case "InternalError":
-		include("internalerror.inc");
-		break;
-   case "Dashboard":
-		include("dashboard.inc");
-		break;
-   case "AttendanceDrillDown":
-		include("attendanceDrillDown.inc");
-		break;
-   case "HandleAttendanceGroup":
-		include("handleAttendanceGroup.inc");
-		break;
-   case "ImportInterface":
-		include("importInterface.inc");
-		break;
-   case "ImportFile":
-		include("importFile.inc");
-		break;
-   case "StudentTranscriptEdit":
-		include("studentTranscriptEdit.inc");
-		break;
-   case "bigRed":
-		include("bigRed.inc");
-		break;
-   case "editStandards":
-		include("editStandards.inc");
-		break;
-   case "standardManipulation":
-		include("standardManipulation.inc");
-		break;
-   case "nextLevelEdit":
-		include("nextLevelEdit.inc");
-		break;
-   case "standardOrder":
-		include("standardOrder.inc");
-		break;
-   case "editQuarter":
-		include("editQuarter.inc");
-		break;
-   case "saveSearchGroup":
-		include("saveSearchGroup.inc");
-		break;
-   case "extraPacingReport":
-		include("extraPacingReport.inc");
-		break;
-   case "editTranscripts":
-		include("editTranscripts.inc");
-		break;
-   case "importWin":
-		include("./lib/import/importWin.inc");
-		break;
-   case "importHTML":
-		include("./lib/import/importHTML.inc");
-		break;
-   case "importCSV":
-		include("./lib/import/importCSV.inc");
-		break;
-   case "preview":
-		include("./lib/import/preview.inc");
-		break;
-   case "fixtestinglevel":
-		include("fixtestinglevel.inc");
-		break;
-   case "edittestlevel":
-		include("editTestLevel.inc");
-		break;
-   case "createsubject":
-		include("createsubject.inc");
-		break;
-   case "createlevels":
-		include("createlevels.inc");
-		break;
-   case "groupmanage":
-		include("groupmanage.inc");
-		break;
-   case "graduation_report":
-		include("graduation_report.inc");
-		break;
-   case "count":
-		include("count.inc");
-		break;
-   case "updateTranscripts":
-		include("updateTranscripts.inc");
-		break;
-   case "editsite":
-		include("editsite.inc");
-		break;
-   case "editgs":
-		include("editgs.inc");
-		break;
-   case "repcurrentcreate":
-		include("repcurrentcreate.inc");
-		break;
-   case "update":
-		include("Update.inc");
-		break;
-   case "gb":
-		include("gb.inc");
-		break;
-   case "gb_edit":
-		include("gb_edit.inc");
-		break;
-   case "gb_save":
-		include("gb_save.inc");
-		break;
-   case "gb_save_edit":
-		include("gb_save_edit.inc");
-		break;
-   case "gb_assignstd":
-		include("gb_assignstd.inc");
-		break;
-   case "updateAll":
-   		set_time_limit(900);
-   		$results = $db->get_results("SELECT * FROM studentlevel where final = '0000-00-00 00:00:00' ", ARRAY_A);
-		$i=0;
-		$starttime = microtime(true);
-		$prev = $startime;
-		$num = $db->num_rows;
-		echo "Start Update All (" . $num . ")";
-		flush();
-		ob_flush();
-		foreach($results as $r) {
-			if (fmod($i++, 1000) == 0) {
-				$time = round(microtime(true) - $prev, 2);
-				$elapse = microtime(true) - $starttime;
-				$prev = microtime(true);
-				echo "<br>$i) $time - $elapse<br><br>";
-				flush();
-				ob_flush();
-			}
+        include("newStudentMovement.inc");
+        break;
+    case "StudentEnter":
+        include("studentEnter.inc");
+        break;
+    case "StudentExit":
+        include("studentExit.inc");
+        break;
+    case "StudentShowDates":
+        include("studentShowDates.inc");
+        break;
+    case "InternalError":
+        include("internalerror.inc");
+        break;
+    case "Dashboard":
+        include("dashboard.inc");
+        break;
+    case "AttendanceDrillDown":
+        include("attendanceDrillDown.inc");
+        break;
+    case "HandleAttendanceGroup":
+        include("handleAttendanceGroup.inc");
+        break;
+    case "ImportInterface":
+        include("importInterface.inc");
+        break;
+    case "ImportFile":
+        include("importFile.inc");
+        break;
+    case "StudentTranscriptEdit":
+        include("studentTranscriptEdit.inc");
+        break;
+    case "bigRed":
+        include("bigRed.inc");
+        break;
+    case "editStandards":
+        include("editStandards.inc");
+        break;
+    case "standardManipulation":
+        include("standardManipulation.inc");
+        break;
+    case "nextLevelEdit":
+        include("nextLevelEdit.inc");
+        break;
+    case "standardOrder":
+        include("standardOrder.inc");
+        break;
+    case "editQuarter":
+        include("editQuarter.inc");
+        break;
+    case "saveSearchGroup":
+        include("saveSearchGroup.inc");
+        break;
+    case "extraPacingReport":
+        include("extraPacingReport.inc");
+        break;
+    case "editTranscripts":
+        include("editTranscripts.inc");
+        break;
+    case "importWin":
+        include("./lib/import/importWin.inc");
+        break;
+    case "importHTML":
+        include("./lib/import/importHTML.inc");
+        break;
+    case "importCSV":
+        include("./lib/import/importCSV.inc");
+        break;
+    case "preview":
+        include("./lib/import/preview.inc");
+        break;
+    case "fixtestinglevel":
+        include("fixtestinglevel.inc");
+        break;
+    case "edittestlevel":
+        include("editTestLevel.inc");
+        break;
+    case "createsubject":
+        include("createsubject.inc");
+        break;
+    case "createlevels":
+        include("createlevels.inc");
+        break;
+    case "groupmanage":
+        include("groupmanage.inc");
+        break;
+    case "graduation_report":
+        include("graduation_report.inc");
+        break;
+    case "count":
+        include("count.inc");
+        break;
+    case "updateTranscripts":
+        include("updateTranscripts.inc");
+        break;
+    case "editsite":
+        include("editsite.inc");
+        break;
+    case "editgs":
+        include("editgs.inc");
+        break;
+    case "repcurrentcreate":
+        include("repcurrentcreate.inc");
+        break;
+    case "update":
+        include("Update.inc");
+        break;
+    case "gb":
+        include("gb.inc");
+        break;
+    case "gb_edit":
+        include("gb_edit.inc");
+        break;
+    case "gb_save":
+        include("gb_save.inc");
+        break;
+    case "gb_save_edit":
+        include("gb_save_edit.inc");
+        break;
+    case "gb_assignstd":
+        include("gb_assignstd.inc");
+        break;
+    case "updateAll":
+        set_time_limit(900);
+        $results = $db->get_results("SELECT * FROM studentlevel where final = '0000-00-00 00:00:00' ", ARRAY_A);
+        $i = 0;
+        $starttime = microtime(true);
+        $prev = $startime;
+        $num = $db->num_rows;
+        echo "Start Update All (" . $num . ")";
+        flush();
+        ob_flush();
+        foreach ($results as $r) {
+            if (fmod($i++, 1000) == 0) {
+                $time = round(microtime(true) - $prev, 2);
+                $elapse = microtime(true) - $starttime;
+                $prev = microtime(true);
+                echo "<br>$i) $time - $elapse<br><br>";
+                flush();
+                ob_flush();
+            }
 //			echo "{$r['studentid']}-{$r['subject']}-{$r['level']};";
-			flush();
-			updateChange($r['studentid'], $r['subject'], $r['level']);
-		}
-		$final = microtime(true) - $starttime;
-		echo "<br><br>Final Elaspe Time: $final<br><br>";
-		echo round($final/($num/1000), 2) . " time per 100";
-		break;
-   case "showscoresEditInfo":
-		include("showscoresEditInfo.inc");
-		break;
-   case "saveDB":
-		include("saveDB.inc");
-		break;
-   default:
+            flush();
+            updateChange($r['studentid'], $r['subject'], $r['level']);
+        }
+        $final = microtime(true) - $starttime;
+        echo "<br><br>Final Elaspe Time: $final<br><br>";
+        echo round($final / ($num / 1000), 2) . " time per 100";
+        break;
+    case "showscoresEditInfo":
+        include("showscoresEditInfo.inc");
+        break;
+    case "saveDB":
+        include("saveDB.inc");
+        break;
+    default:
         include("home.inc");
         break;
-  }
-  
-  
-
+}
 ?>
