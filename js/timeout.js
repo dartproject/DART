@@ -14,7 +14,7 @@ function confirmMsg(msg)
 }
 
 function logout(skip){
-    window.location = 'index.php?cmd=expired&msg=Idle time exceed. You have been automatically logged out."';
+    window.location = 'index.php?cmd=expired&msg=Idle time exceed. You have been automatically logged out.';
 }
 
 function go2(skip){
