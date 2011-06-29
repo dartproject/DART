@@ -192,8 +192,6 @@ for ($i = 0; $i < $wnum; $i++) {
 
 }
 
-writeFile($data);
-
 $smarty->assign('pageTitle',$title);
 $smarty->assign('studentID',$studentID);
 $smarty->assign('reportLinks',$reportLinks);
