@@ -18,13 +18,17 @@ include("leftside.inc");
 
 //is smarty template doesn't exist set $body
 if ($isSmarty != true) {
+    $isSmarty = false;
     if (isset($head))
         $smarty->assign('head', $head);
 
     if (isset($js))
         $smarty->assign('js', $js);
-
+    $smarty->assign('isSmarty', $isSmarty);
     $smarty->assign('body', $body);
     $smarty->display('layout.tpl');
 }
+
+$smarty->assign('isSmarty',$isSmarty);
+
 ?>

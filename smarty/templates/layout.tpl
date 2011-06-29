@@ -104,7 +104,10 @@
                         Content
 *******************************************************************************}
             <div id="content">
-
+                {if $isSmarty}
+                <img alt="smarty template" src="{$imageURL}smarty_logo.png" align="right" />
+                
+                {/if}
                     {block name=body}{/block}
                     {$body}
             </div>

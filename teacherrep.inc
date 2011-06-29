@@ -9,11 +9,10 @@ $test = $_GET['test'] == '' ? 'Q1' : $_GET['test'];
 ${"test_" . $test} = "selected";
 $sites = getSites('');
 
-
-
-
 $sitelist = array();
 
+
+//create site list
 foreach ($sites as $s) {
 
 	$id = $s['siteid']; $name=$s['name'];
