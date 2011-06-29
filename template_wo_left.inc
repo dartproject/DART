@@ -24,6 +24,6 @@ marginwidth="0" leftmargin="0" hspace="0" style="margin:0; padding:0">
 
 <tr><td colspan=2></td><td><?php include("footer.inc") ?></td></tr>
 </table>
-<script language="JavaScript" type="text/javascript" src="wz_tooltip.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/wz_tooltip.js"></script>
 </body>
 </html>
