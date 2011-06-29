@@ -69,7 +69,7 @@ if (isset($_GET['cmd']))
 else
     $cmd="";
 
-if (isset($_GET['p1]']))
+if (isset($_GET['p1']))
     $p1 = $_GET['p1'];
 else
     $p1="";
