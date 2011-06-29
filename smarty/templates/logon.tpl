@@ -2,6 +2,7 @@
     <head>
         <meta http-equiv="Content-Language" content="en-us">
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <link rel="shortcut icon" type="image/ico" href="{$imageURL}favicon.ico" />
         <title>Login to DART</title>
     </head>
     <body>

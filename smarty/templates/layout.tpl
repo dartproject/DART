@@ -20,6 +20,7 @@
 <!doctype html> 
 <html>
     <head>
+        <link rel="shortcut icon" type="image/ico" href="{$imageURL}favicon.ico" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>{block name=title}{/block}</title>
         <link rel="stylesheet" href="dart_test.css" type="text/css" media="screen">
