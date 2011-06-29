@@ -160,12 +160,15 @@ $smarty->assign('showUsers',PDisplay(A30));
 // Red Button, Grd, Test *******************************************************
 //******************************************************************************
 
-if (PrivilegeB(B10) != 'none') {
+if (PrivilegeB(B10) != 'none') 
     $smarty->assign('showRedButton_Grd_Test',1);
+else
+    $smarty->assign('showRedButton_Grd_Test',0);
+
 //    $leftside .= "<img src=\"images/10_h.gif\" alt=\"\" height=\"2\" width=\"10\" border=\"0\"><a href=\"index.php?cmd=bigRed\">Big Red Button</a><br>";
 //    $leftside .= "<img src=\"images/10_h.gif\" alt=\"\" height=\"2\" width=\"10\" border=\"0\"><a href=\"index.php?cmd=edittestlevel\">Edit Test Level</a><br>";
 //    $leftside .= "<img src=\"images/10_h.gif\" alt=\"\" height=\"2\" width=\"10\" border=\"0\"><a href=\"index.php?cmd=editgs\">Edit Grd Setup</a><br>";
-}
+
 
 //******************************************************************************
 // Edit Standards **************************************************************
@@ -180,7 +183,7 @@ if (PrivilegeB(B11) != 'none') {
 // Edit School Calendar ********************************************************
 //******************************************************************************
 
-$smarty->assign('showSchoolCal',PDisplay(A19));
+$smarty->assign('showEditSchoolCal',PDisplay(A19));
 $smarty->assign('currentYear',$CurrentYear);
 //if (PDisplay(A19)) {
 //

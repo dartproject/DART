@@ -10,6 +10,10 @@ include_once("lib/YearQuarter.inc");
 if (isset($_GET['debug']))
     $debugflag = $_GET['debug'];
 //  $debugflag="on";
+//For Chrome PHPConsole
+require_once('debugTools/PhpConsole.php');
+PhpConsole::start();
+
 $currentUser = "";
 $currentUserID = "";
 $currentUserName = "";
@@ -35,6 +39,7 @@ if (isset($debugflag))
 else
     debugPrint("DebugFlag before session: DebugFlag is not initiated <br>");
 
+
 getMyGlobals();
 
 foreach ($modules as $module) {
@@ -54,27 +59,27 @@ else
     debugPrint("Debug Flag before SiteID: \$debugflag not initiated<br>");
 //$siteID = getSite();
 
-if(isset($debugflag))
+if (isset($debugflag))
     debugPrint("Debug Flag after SiteID: $debugflag<br>");
 else
     debugPrint("Debug Flag after SiteID: \$debugflag not initiated<br>");
 
-if(isset($_GET['cmd']))
+if (isset($_GET['cmd']))
     $cmd = $_GET['cmd'];
 else
     $cmd="";
 
-if(isset($_GET['p1]']))
+if (isset($_GET['p1]']))
     $p1 = $_GET['p1'];
 else
     $p1="";
 
-if(isset($_GET['p2']))
+if (isset($_GET['p2']))
     $p2 = $_GET['p2'];
 else
     $p2="";
 
-if(isset($_GET['p3']))
+if (isset($_GET['p3']))
     $p3 = $_GET['p3'];
 else
     $p3="";
@@ -103,9 +108,10 @@ debugPrint("<b>CMD=> $cmd USERID - $currentUserID SITEID - $currentMySite P1=>$p
   }
  */
 if (checkLogon() == FALSE and $cmd != 'processLogon' and $cmd != 'getPwd' and $cmd != 'expired' and $cmd != 'logon' and $cmd != 'forget') {
-    if ($loggedIn != "") {
-        $_GET['msg'] = $loggedIn;
-    }
+    if (isset($loggedIn))
+        if ($loggedIn != "") {
+            $_GET['msg'] = $loggedIn;
+        }
     $cmd = 'logon';
 }
 switch ($cmd) {

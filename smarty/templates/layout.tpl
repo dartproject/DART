@@ -33,10 +33,10 @@
 <![endif]-->{/literal}
 
 {block name=head}{/block}
-        {$head}
+        {$head|default:''}
 
         <script type="text/javascript" >
-    {$js}
+            {$js|default:''}
         </script>
     </head>
     <body>

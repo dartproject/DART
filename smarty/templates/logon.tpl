@@ -14,7 +14,9 @@
                             <table border="1" cellpadding="5" cellspacing="0"
                                    bordercolorlight="#000000" bordercolordark="#FFFFFF"
                                    bgcolor="#C0C0C0">
-                            {if $msg != ''}
+                            
+                            
+                            {if $msg|default:'' != ''}
                                 <tr>
                                     <td colspan=3 bgcolor=pink>
                             {$msg}

@@ -7,11 +7,10 @@
 //  Web: http://wiki.bssd.org/index.php/DART_System
 // ==================================================================
 
-$msg = $_GET['msg'];
 
-$smarty->assign('msg',$msg);
+if (isset($_GET['msg']))
+    $smarty->assign('msg', $_GET['msg']);
 $smarty->assign('imageURL', $imageURL);
 
 $smarty->display('logon.tpl');
-
 ?>
