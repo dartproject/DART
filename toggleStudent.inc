@@ -90,7 +90,8 @@ foreach ($subjects as $rec) {
 	$data[$sub]["studentText"] = "$studentName ($g1: $site)";
 	$data[$sub]["changeText"] = "$ch_name ($ch_time)";
 	$data[$sub]["totalStd"] = count($standards);
-	$data[$sub]["std"] = array();
+	$data[$sub]["std"] = array(); // Standard info
+	$data[$sub]["standards"] = array(); // Student's score info
 
 	for ($i = 0; $i < count($standards); $i++) {
 		$std = $standards[$i]['std'];
@@ -117,17 +118,18 @@ foreach ($subjects as $rec) {
 		$data[$sub]["std"][$i]["std"] = $std;
 		$data[$sub]["std"][$i]["description"] = $des;
 		$data[$sub]["std"][$i]["link"] = $link;
-		$data[$sub]["std"][$i]["name"] =
+		$data[$sub]["standards"][$std]["name"] =
 				"gr".$type."_".$studentID."_".$sub."_".$lvl."_".$std;
-		$data[$sub]["std"][$i]["value"] = getStdValue($std, $scores);
-		$data[$sub]["std"][$i]["selected"] = getEqGradeValue($grdtype, $value);
-		$data[$sub]["std"][$i]["symbol"] = getGradeSymbol($grdtype, $value);
+		$data[$sub]["standards"][$std]["value"] = getStdValue($std, $scores);
+		$data[$sub]["standards"][$std]["selected"] = getEqGradeValue($grdtype, $value);
+		$data[$sub]["standards"][$std]["symbol"] = getGradeSymbol($grdtype, $value);
 
 	}
 
 	/* Overall */
 	$data[$sub]["totalOver"] = count($overall);
 	$data[$sub]["over"] = array();
+	$data[$sub]["overall"] = array();
 	for ($i = 0; $i < count($overall); $i++) {
 		$std = $overall[$i]['std'];
 		$value = getStdValue($std, $scores);
@@ -135,29 +137,32 @@ foreach ($subjects as $rec) {
 
 		$type = isset($value)? "u" : "i";
 
-		$data[$sub]["over"][$i]["name"] =
-				"gr".$type."_".$studentID."_".$sub."_".$lvl."_".$std;
-
 		$data[$sub]["over"][$i]["std"] = $std;
 		$data[$sub]["over"][$i]["description"] = $des;
-		$data[$sub]["over"][$i]["value"] = getStdValue($std, $scores);
 		$data[$sub]["over"][$i]["options"] = $gradeSymbols;
-		$data[$sub]["over"][$i]["selected"] = getEqGradeValue($grdtype, $value);
+
+		$data[$sub]["overall"][$std]["name"] =
+				"gr".$type."_".$studentID."_".$sub."_".$lvl."_".$std;
+		$data[$sub]["overall"][$std]["value"] = getStdValue($std, $scores);
+		$data[$sub]["overall"][$std]["selected"] = getEqGradeValue($grdtype, $value);
+		$data[$sub]["overall"][$std]["symbol"] = getGradeSymbol($grdtype, $value);
 	}
 	/* Summary */
-	$data[$sub]['ind'] = array();
+	$data[$sub]["summary"] = array();
 	foreach($summary as $key => $val) {
 		$value = getStdValue($key, $scores);
 		$type = isset($value)? "u" : "i";
-		$data[$sub]['ind'][$key]["name"] = "gr".$type."_".$studentID."_".$sub."_".$lvl."_".$key;
-		$data[$sub]['ind'][$key]["value"] = $value;
+		$data[$sub]['summary'][$key]["name"] = "gr".$type."_".$studentID."_".$sub."_".$lvl."_".$key;
+		$data[$sub]['summary'][$key]["value"] = $value;
 	}
 	/* Comment */
 	$value = getStdValue('comment', $scores);
 	$type = isset($value)? "u" : "i";
-	$data[$sub]['comment_id'] = "gr".$type."_".$studentID."_".$sub."_".$lvl."_comment";
-	$data[$sub]['comment'] = $value;
-	$data[$sub]['esc_comment'] = htmlspecialchars($value);
+	$data[$sub]['comment'] = array(
+		"comment_id" => "gr".$type."_".$studentID."_".$sub."_".$lvl."_comment",
+		"value"  => $value,
+		"esc_comment" => htmlspecialchars($value)
+	);
 }
 
 
@@ -208,7 +213,7 @@ $smarty->assign('width',$width);
 $smarty->assign('color1',$color1);
 
 $smarty->assign('summary',$summary);
-$smarty->assign('n_ind',count($summary));
+$smarty->assign('n_sum',count($summary));
 
 $smarty->assign('weightedStd',$weightedStd);
 $smarty->assign('studentName',$studentName);

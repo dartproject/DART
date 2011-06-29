@@ -92,118 +92,19 @@ common relative weaknesses of the student.</font>
 	<b>Student:</b>{$subject.studentText}
 	<b>Last Change:</b> {$subject.changeText} -
 	<a href=index.php?cmd=history&student={$studentID}&subject={$sub}&lvl={$subject.lvl}>History</a>
-
-	<table border=1>
-
-	<!-- Standards -->
-		{$start = 0}{$end = $width-1}
-		{while $start < $subject.totalStd}
-			{$max = $subject.totalStd - $start} 
-			<tr rowspan=2 bgcolor={$color1}>
-				<th rowspan=2>{$sub} ({$subject.lvl})<br />{$subject.levelName}</th>
-			{for $i=$start to $end max=$max}
-				{$standard = $subject.std.{$i}}
-				<th width={$cellwidth} onMouseOver="return escape('{$standard.description}')">&nbsp;&nbsp;
-					<a href={$standard.link}>{$standard.std}</a>&nbsp;&nbsp;
-				</th>
-			{/for}
-			</tr>
-			<tr>
-			{if $Display eq 'edit'}
-				{for $i=$start to $end max=$max}
-					{$standard = $subject.std.{$i}}
-					<td>
-						<input type=hidden name="old_{$standard.name}" value="{$standard.value}" />
-						<input type=hidden name="ch_{$standard.name}" value=empty />
-						{html_options name="{$standard.name}" options=$gradeSymbols selected={$standard.selected} onChange="changeValue('{$standard.name}',this.value)"}
-					</td>
-				{/for}
-			{else}
-				{for $i=$start to $end max=$max}
-					{$standard = $subject.std.{$i}}
-					<td align=center>&nbsp;{$standard.symbol}&nbsp;</td>
-				{/for}
-			{/if}
-			</tr>
-			{$start = $end+1}{$end = $end+$width}{if $end > $subject.totalStd}{$end = $subject.totalStd-1}{/if}
-		{/while}
-		</table>
-		<table border= 1>
-
-		<!-- Overall -->
-		{$start = 0}{$end = $width-1}
-		{while $start < $subject.totalOver+$n_ind}
-			{$max = $subject.totalOver - $start} 
-			<tr rowspan=2 bgcolor={$color1}>
-				<th rowspan=2>{$sub} ({$subject.lvl})<br />{$subject.levelName}</th>
-			{for $i=$start to $end max=$max}
-				{$over = $subject.over.{$i}}
-				<th width={$cellwidth} onMouseOver="return escape('{$over.description}')">{$over.std}</th>
-			{/for}
-			{if $end >= $subject.totalOver - 1} {* Last row *}
-				<!-- Summary -->
-				{foreach $summary as $indID => $ind}
-					<th width={$cellwidth} onMouseOver="return escape('{$ind.description}')">{$ind.label}</th>
-				{/foreach}
-			{/if}
-			</tr>
-			<tr>
-			{if $Display eq 'edit'}
-				<!-- Overall -->
-				{for $i=$start to $end max=$max}
-					{$over = $subject.over.{$i}}
-					<td>
-						<input type=hidden name="old_{$over.name}" value="{$over.value}" />
-						<input type=hidden id="ch_{$over.name}" name="ch_{$over.name}" value=empty />
-						{html_options name="{$over.name}" options=$gradeSymbols selected={$over.selected} title ="test_{$studentID}_over_{$i}" onChange="changeValue('{$over.name}',this.value)"}
-					</td>
-				{/for}
-
-				{if $end >= $subject.totalOver - 1} {* Last row *}
-					<!-- Summary -->
-					{foreach $summary as $indID => $val}
-						{$ind = $subject.ind.{$indID}}
-						<td>
-							<input type=hidden name=old_{$ind.name} value={$ind.value}> <!-- This one should be missing for "prog"... @todo -->
-							<input type=hidden id=ch_{$ind.name} name=ch_{$ind.name} value=empty>
-							{html_options name={$ind.name} values=$val.options output=$val.options selected="{$ind.value}" onChange="changeValue('{$ind.name}', this.value)"}
-						</td>
-					{/foreach}
-				{/if}
-			{else}
-				<!-- Overall -->
-				{for $i=$start to $end  max=$max}
-					{$over = $subject.over.{$i}}
-					<td align=center>&nbsp;{$over.symbol}&nbsp;</td>
-				{/for}
-				{if $end >= $subject.totalOver - 1} {* Last row *}
-					<!-- Summary -->
-					<td align=center>&nbsp;{$summary.qpi.value}&nbsp;</td>
-					<td align=center>&nbsp;{$summary.ase.value}&nbsp;</td>
-					<!-- Nothing for "prog", @todo -->
-				{/if}
-			{/if}
-			{$start = $end+1}{$end = $end+$width}
-			{if $end >= $subject.totalOver - 1} {* Last row *}
-				{$end = $subject.totalOver+$n_ind}
-			{/if}
-			</tr>
-		{/while}
-		</table>
-		<input type=hidden name="old_{$subject.comment_id}" value="{$subject.esc_comment}">
-		<input type=hidden id="ch_{$subject.comment_id}" name="ch_{$subject.comment_id}" value=empty>
-		<font size="2"><b>Teacher Comments:</b></font><br/>
-		{if $Display eq 'edit'}
-		<textarea name="comment_{$studentID}" rows="8" cols="80" wrap="physical" onChange='changeValue("{$subject.comment_id}",this.value )'>{$subject.comment}</textarea><br/>
-		{else}
-		&nbsp;{$subject.comment}&nbsp;
-		{/if}
-		<br /><br />
-		{/foreach}
-		{if $Display eq 'edit'}
-			<input type=reset value=reset>
-			<input type=button onClick='handleSelection("#save_changes")' value='save all changes'>
-		{/if}
-	</form>
-	<br/>* Placing mouse over standard number will display standards descriptions.
+	{$totalStd = $subject.totalStd}
+	{$totalOver = $subject.totalOver}
+	{$lvl = $subject.lvl}
+	{$levelName = $subject.levelName}
+	{$standards = $subject.std}
+	{$overall = $subject.over}
+	{$student = $subject}
+	{include 'comp/toggle.tpl'}
+{/foreach}
+{if $Display eq 'edit'}
+	<input type=reset value=reset>
+	<input type=button onClick='handleSelection("#save_changes")' value='save all changes'>
+{/if}
+</form>
+<br/>* Placing mouse over standard number will display standards descriptions.
 {/block}

@@ -58,6 +58,7 @@ for($i = 0; $i < count($data); $i++) {
 		$student['standards'][$std]['name'] =
 					"gr".$type."_".$studentID."_".$sub."_".$lvl."_".$std;
 		$student['standards'][$std]['selected'] = getEqGradeValue($student['gradetype'], $student_std['value']);
+		$student['standards'][$std]['symbol'] = getGradeSymbol($student['gradetype'], $student_std['value']);
 
 		if(!isset($wlist[$std]))
 			$wlist[$std] = array("std" => $std, 'link' => '', 'shortname' => '', 'count' => 0, 'sum' => 0, 'comp' => 0);
@@ -80,6 +81,7 @@ for($i = 0; $i < count($data); $i++) {
 		$student['overall'][$std]['name'] =
 			"gr".$type."_".$studentID."_".$sub."_".$lvl."_".$std;
 		$student['overall'][$std]['selected'] = getEqGradeValue($student['gradetype'], $student_over['value']);
+		$student['overall'][$std]['symbol'] = getGradeSymbol($student['gradetype'], $student_over['value']);
 	}
 	/* Summary */
 	foreach($summary as $key => $val) {
@@ -94,6 +96,7 @@ for($i = 0; $i < count($data); $i++) {
 	$student['comment'] = $student['comment']['comment'];
 	$type = isset($student['comment']['value'])? "u" : "i";
 	$student['comment']['comment_id'] = "gr".$type."_".$studentID."_".$sub."_".$lvl."_comment";
+	$student['comment']['esc_comment'] = htmlspecialchars($student['comment']['value']);
 	$data[$i] = $student;
 }
 
