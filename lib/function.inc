@@ -1750,15 +1750,12 @@ function getEntries ($start=0, $limit=30, $student="", $user="", $subject="", $l
 	$clause = comparisonClause("timestamp", $clause, $starttime,">", "'");
 	$clause = comparisonClause("timestamp", $clause, $endtime,"<", "'");
 	$sqlcount = "select count(*) as num from history2, user where $clause";
-	debugPrint ("SQL Count: " . $sqlcount . "<br>");
 	$res1 = $db->get_results($sqlcount);
 	$total = $res1[0]->num;
-	debugPrint ("SQL Total: " . $total . "<br>");
 	$sql = "select *, history2.studentID from (history2, user)
 				LEFT JOIN student ON history2.studentID = student.studentid
 				WHERE $clause";
 	$sql .= " order by timestamp desc LIMIT $start, $limit";
-	debugPrint ("SQL LIMIT: " . $sql . "<br>");
 	$res2 = $db->get_results($sql, ARRAY_A);
 	$results['list'] = $res2;
 	$results['total'] = $total;
@@ -3262,6 +3259,22 @@ function getSubjectStandardsArray ($sub, $level) {
 		$res[$i]['description'] = str_replace("'", "\'", htmlentities($res[$i]['description']));
 	}
 	return $res;
+}
+
+function getCoreLevels() {
+	global $db;
+	$query = "SELECT DISTINCT level FROM level, subjects WHERE subjects.id = level.subject AND subjects.core = 'x'  ORDER BY CAST(level AS SIGNED)";
+	$res = $db->get_results($query, ARRAY_A);
+	return $res;
+}
+
+function getValue ($arr, $key, $default = NULL) {
+	if(isset($arr[$key]) && $arr[$key]  != "" ) {
+		return $arr[$key];
+	}
+	else {
+		return $default;
+	}
 }
 
 ?>
