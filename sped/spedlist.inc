@@ -768,13 +768,13 @@ $body = <<<END
 
 		<style type="text/css">
 
-		@import "$base/jquery.datepick.package/jquery.datepick.css";
-
+		@import " $rootURL /js/jquery.datepick.package/jquery.datepick.css";
+URL /jquery.datepick.pa
 		</style>
 
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 
-		<script type="text/javascript" src="$base/jquery.datepick.package/js/jquery.datepick.js"></script>
+		<script type="text/javascript" src=" $rootURL /js/jquery.datepick.package/jquery.datepick.js"></script>
 
 		<style type="text/css">
 

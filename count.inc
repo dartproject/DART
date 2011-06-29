@@ -26,15 +26,14 @@ if($Display != 'none') {
 function queryToggle($start, $end, $site, $toggle) {
 
 	${"toggle_".$_GET['toggle']} = 'selected';
-	$base = "https://dart.bssd.org/";
 	$options = getSitesOptions($site);
 
 	$str = <<<END
 	<style type="text/css">
-		@import "$base/jquery.datepick.package/jquery.datepick.css";
+		@import " $rootURL js/jquery.datepick.package/jquery.datepick.css";
 	</style>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-	<script type="text/javascript" src="$base/jquery.datepick.package/js/jquery.datepick.js"></script>
+	<script type="text/javascript" src=" $rootURL js/jquery.datepick.package/jquery.datepick.js"></script>
 	<style type="text/css">
 		@import "http://keith-wood.name/css/jquery.datepick.css";
 	</style>
