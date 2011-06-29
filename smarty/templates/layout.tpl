@@ -123,6 +123,11 @@
         <script language="JavaScript" type="text/javascript" src="wz_tooltip.js"></script>
         <script language="JavaScript" type="text/javascript" src="js/timeout.js"></script>
     </body>
+
+{******************************************************************************
+                        CSS files
+*******************************************************************************}
+        {block name=css}{/block}
 </html>
 
 
