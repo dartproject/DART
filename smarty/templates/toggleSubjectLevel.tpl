@@ -4,7 +4,6 @@
 <script language="JavaScript" type="text/javascript" src="js/toggle.js"></script>
 {/block}
 {block name="body"}
-
 <form name=toggle method=post action=index.php?cmd=saveToggle>
 	<input type=hidden name=loc />
 	<input type=hidden name=listID value={$listID} />
@@ -57,104 +56,11 @@
 		</b><br />
 		<b>Last Change:</b> {$student.change} -
 		<a href=index.php?cmd=history&student={$student.studentID}&subject={$sub}&lvl={$lvl}>History</a>
-		<table border= 1>
 
-		<!-- Standards -->
-		{$start = 0}{$end = $width-1}
-		{while $start < $totalStd}
-			<tr  bgcolor=#FFFFCC>
-				<th rowspan=2>{$sub} ({$lvl})</th>
-			{for $i=$start to $end max=$totalStd}
-				{$std = $standards.{$i}}
-				<th width={$cellwidth} onMouseOver="return escape('{$std.description}')"> <a href="{$std.link}">{$std.std}</a></th>
-			{/for}
-			</tr>
-			<tr>
-			{if $student.display eq 'edit'}
-				{for $i=$start to $end max=$totalStd}
-					{$stdID = $standards.{$i}.std}
-					{$std = $student.standards.{$stdID}}
-					<td>
-						<input type=hidden name="old_{$std.name}" value="{$std.value}" />
-						<input type=hidden id="ch_{$std.name}" name="ch_{$std.name}" value=empty />
-						{html_options name="{$std.name}" options=$student.gradeSymbols selected=$std.selected title ="test_{$student.studentID}_{$i}" onChange="changeValue('{$std.name}',this.value)"}
-					</td>
-				{/for}
-			{else}
-				{for $i=$start to $end max=$totalStd}
-					{$stdID = $standards.{$i}.{std}}
-					{$std = $student.standards.{$stdID}}
-					<td align=center>&nbsp;{$std.value}&nbsp;</td>
-				{/for}
-			{/if}
-			</tr>
-			{$start = $end+1}{$end = $end+$width}{if $end > $totalStd}{$end = $totalStd-1}{/if}
-		{/while}
-		</table>
-		<table border= 1>
-		<!-- Overall -->
-		{$start = 0}{$end = $width-1}
-		{while $start < $totalOver+$n_sum}
-			<tr  bgcolor=#FFFFCC>
-				<th rowspan=2>{$sub} ({$lvl})</th>
-			{for $i=$start to $end max=$totalOver}
-				{$over = $overall.{$i}}
-				<th width={$cellwidth} onMouseOver="return escape('{$over.description}')">{$over.std}</th>
-			{/for}
-			{if $end+1 >= $totalOver - 1} {* Last row *}
-			<!-- Summary -->
-				{foreach $summary as $sumID => $sum}
-					<th width={$cellwidth} onMouseOver="return escape('{$sum.description}')">{$sum.label}</th>
-				{/foreach}
-			{/if}
-			</tr>
-			<tr>
-			{if $student.display eq 'edit'}
-				<!-- Overall -->
-				{for $i=$start to $end max=$totalOver}
-					{$overID = $overall.{$i}.std}
-					{$over = $student.overall.{$overID}}
-					<td>
-						<input type=hidden name="old_{$over.name}" value="{$over.value}" />
-						<input type=hidden id="ch_{$over.name}" name="ch_{$over.name}" value=empty />
-						{html_options name="{$over.name}" options=$student.gradeSymbols selected={$over.selected} title ="test_{$student.studentID}_{$i}" onChange="changeValue('{$over.name}',this.value)"}
-					</td>
-				{/for}
-				<!-- Summary -->
-				{foreach $summary as $sumID => $sum}
-					{$student_sum = $student.summary.{$sumID}}
-					<td>
-						<input type=hidden name=old_{$student_sum.name} value={$student_sum.value}> <!-- This one should be missing for "prog"... @todo -->
-						<input type=hidden id=ch_{$student_sum.name} name=ch_{$student_sum.name} value=empty>
-						{html_options name={$student_sum.name} values=$sum.options output=$sum.options selected="{$student_sum.value}" onChange="changeValue('{$student_sum.name}', this.value)"}
- 				 	</td>
-				{/foreach}
-			{else}
-				<!-- Overall -->
-				{for $i=$start to $end  max=$totalOver}
-					{$overID = $overall.{$i}.std}
-					{$over = $student.overall.{$overID}}
-					<td align=center>&nbsp;{$over.value}&nbsp;</td>
-				{/for}
-				<!-- Summary -->
-				<td align=center>&nbsp;{$student.summary.qpi.value}&nbsp;</td>
-				<td align=center>&nbsp;{$student.summary.ase.value}&nbsp;</td>
-				<!-- Nothing for "prog", @todo -->
-			{/if}
-			{$start = $end+1}{$end = $end+$width}{if $end > $totalOver}{$end = $totalOver-1}{/if}
-			{if $end+1 >= $totalOver - 1} {* Last row *}
-			{/if}
-			</tr>
-		{/while}
-		</table>
-		<input type=hidden name="old_{$student.comment.comment_id}" value="{$student.comment.value}" />
-		<input type=hidden id="ch_{$student.comment.comment_id}" name="ch_{$student.comment.comment_id}" value=empty />
-		<font size="2"><b>Teacher Comments:</b></font><br/>
-		{if $student.display eq 'edit'}
-		<textarea name="comment_{$student.studentID}" rows="8" cols="80" wrap="physical" onChange='changeValue("{$student.comment.comment_id}",this.value )'>{$student.comment.value}</textarea><br/>
-		{else}
-		{$student.comment}&nbsp;<br/><br/>
-		{/if}
+		{$Display = $student.display}
+		{$gradeSymbols = $student.gradeSymbols}
+		{$studentID = $student.studentID}
+		{include 'comp/toggle.tpl'}
 		{/foreach}
 		{if $totalDisplay eq 'edit'}
 			<input type=reset value=reset>
