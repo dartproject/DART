@@ -44,14 +44,14 @@
         <div id="header">
             <div id="banner" style="height:auto;">
                 <div style="width:auto; display:inline; height: auto; float:left; margin-right: 10px ">
-                    <img align="absmiddle" src="{$imageURL}bssd_logo.png" alt=""/>
+                    <img align="absmiddle" src="{$imageURL}delta_logo_small.gif" alt=""/>
                 </div>
                 <div style="display:inline;height:auto; vertical-align: middle">
                     <div style="font-size: 20pt; color:white;">
-                        Bering Strait School District
+                        Delta School District
                     </div>
                     <div style="color:white;">
-                        Building bridges between tomorrow and today
+                        Inspired Learning
                     </div>
                 </div>
 

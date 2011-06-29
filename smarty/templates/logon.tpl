@@ -35,8 +35,8 @@
                                                             <tr>
                                                                 <td bgcolor="white" width="100%">
                                                                     <div align="center">
-                                                                        <font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">Bering Strait School District</font><br>
-                                                                        <img src="{$imageURL}logo_sm2.gif" alt="BSSD Logo" width="85" height="88"><br>
+                                                                        <font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">Delta School District</font><br>
+                                                                        <img src="{$imageURL}delta_logo.gif" alt="Delta Logo" width="85" height="88"><br>
                                                                         <font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">DART: Data Analysis &amp; Reporting Toolkit</font>
                                                                     </div>
                                                                 </td>
