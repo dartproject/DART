@@ -98,9 +98,10 @@ common relative weaknesses of the student.</font>
 	<!-- Standards -->
 		{$start = 0}{$end = $width-1}
 		{while $start < $subject.totalStd}
+			{$max = $subject.totalStd - $start} 
 			<tr rowspan=2 bgcolor={$color1}>
 				<th rowspan=2>{$sub} ({$subject.lvl})<br />{$subject.levelName}</th>
-			{for $i=$start to $end max=$subject.totalStd}
+			{for $i=$start to $end max=$max}
 				{$standard = $subject.std.{$i}}
 				<th width={$cellwidth} onMouseOver="return escape('{$standard.description}')">&nbsp;&nbsp;
 					<a href={$standard.link}>{$standard.std}</a>&nbsp;&nbsp;
@@ -109,7 +110,7 @@ common relative weaknesses of the student.</font>
 			</tr>
 			<tr>
 			{if $Display eq 'edit'}
-				{for $i=$start to $end max=$subject.totalStd}
+				{for $i=$start to $end max=$max}
 					{$standard = $subject.std.{$i}}
 					<td>
 						<input type=hidden name="old_{$standard.name}" value="{$standard.value}" />
@@ -118,7 +119,7 @@ common relative weaknesses of the student.</font>
 					</td>
 				{/for}
 			{else}
-				{for $i=$start to $end max=$subject.totalStd}
+				{for $i=$start to $end max=$max}
 					{$standard = $subject.std.{$i}}
 					<td align=center>&nbsp;{$standard.symbol}&nbsp;</td>
 				{/for}
@@ -132,15 +133,15 @@ common relative weaknesses of the student.</font>
 		<!-- Overall -->
 		{$start = 0}{$end = $width-1}
 		{while $start < $subject.totalOver+$n_ind}
+			{$max = $subject.totalOver - $start} 
 			<tr rowspan=2 bgcolor={$color1}>
 				<th rowspan=2>{$sub} ({$subject.lvl})<br />{$subject.levelName}</th>
-			{for $i=$start to $end max=$subject.totalOver}
+			{for $i=$start to $end max=$max}
 				{$over = $subject.over.{$i}}
 				<th width={$cellwidth} onMouseOver="return escape('{$over.description}')">{$over.std}</th>
 			{/for}
-			{if $end+1 >= $subject.totalOver - 1} {* Last row *}
-
-			<!-- Summary -->
+			{if $end >= $subject.totalOver - 1} {* Last row *}
+				<!-- Summary -->
 				{foreach $summary as $indID => $ind}
 					<th width={$cellwidth} onMouseOver="return escape('{$ind.description}')">{$ind.label}</th>
 				{/foreach}
@@ -149,7 +150,7 @@ common relative weaknesses of the student.</font>
 			<tr>
 			{if $Display eq 'edit'}
 				<!-- Overall -->
-				{for $i=$start to $end max=$subject.totalOver}
+				{for $i=$start to $end max=$max}
 					{$over = $subject.over.{$i}}
 					<td>
 						<input type=hidden name="old_{$over.name}" value="{$over.value}" />
@@ -158,28 +159,33 @@ common relative weaknesses of the student.</font>
 					</td>
 				{/for}
 
-				<!-- Summary -->
-				{foreach $summary as $indID => $val}
-					{$ind = $subject.ind.{$indID}}
-					<td>
-						<input type=hidden name=old_{$ind.name} value={$ind.value}> <!-- This one should be missing for "prog"... @todo -->
-						<input type=hidden id=ch_{$ind.name} name=ch_{$ind.name} value=empty>
-						{html_options name={$ind.name} values=$val.options output=$val.options selected="{$ind.value}" onChange="changeValue('{$ind.name}', this.value)"}
- 				 	</td>
-				{/foreach}
+				{if $end >= $subject.totalOver - 1} {* Last row *}
+					<!-- Summary -->
+					{foreach $summary as $indID => $val}
+						{$ind = $subject.ind.{$indID}}
+						<td>
+							<input type=hidden name=old_{$ind.name} value={$ind.value}> <!-- This one should be missing for "prog"... @todo -->
+							<input type=hidden id=ch_{$ind.name} name=ch_{$ind.name} value=empty>
+							{html_options name={$ind.name} values=$val.options output=$val.options selected="{$ind.value}" onChange="changeValue('{$ind.name}', this.value)"}
+						</td>
+					{/foreach}
+				{/if}
 			{else}
 				<!-- Overall -->
-				{for $i=$start to $end  max=$subject.totalOver}
+				{for $i=$start to $end  max=$max}
 					{$over = $subject.over.{$i}}
 					<td align=center>&nbsp;{$over.symbol}&nbsp;</td>
 				{/for}
-				<!-- Summary -->
-				<td align=center>&nbsp;{$summary.qpi.value}&nbsp;</td>
-				<td align=center>&nbsp;{$summary.ase.value}&nbsp;</td>
-				<!-- Nothing for "prog", @todo -->
+				{if $end >= $subject.totalOver - 1} {* Last row *}
+					<!-- Summary -->
+					<td align=center>&nbsp;{$summary.qpi.value}&nbsp;</td>
+					<td align=center>&nbsp;{$summary.ase.value}&nbsp;</td>
+					<!-- Nothing for "prog", @todo -->
+				{/if}
 			{/if}
-			{$start = $end+1}{$end = $end+$width}{if $end > $subject.totalOver}{$end = $subject.totalOver-1}{/if}
-			{if $end+1 >= $subject.totalOver - 1} {* Last row *}
+			{$start = $end+1}{$end = $end+$width}
+			{if $end >= $subject.totalOver - 1} {* Last row *}
+				{$end = $subject.totalOver+$n_ind}
 			{/if}
 			</tr>
 		{/while}
