@@ -19,16 +19,20 @@
 $(document).ready(function(){
     $("select.multipleSelect").multiselect({
         selectedList: 3,
-        minWidth:210
+        minWidth:210,
+        position: {
+            my: 'center',
+            at: 'center'
+        }
     });
 
-//    $("select.singleSelect").multiselect({
-//        multiple: false,
-//        noneSelectedText: "Select an Option",
-//        selectedList: 1,
-//        header: false,
-//        minWidth: 155
-//    });
+    //    $("select.singleSelect").multiselect({
+    //        multiple: false,
+    //        noneSelectedText: "Select an Option",
+    //        selectedList: 1,
+    //        header: false,
+    //        minWidth: 155
+    //    });
 
     $( "input:submit", "#content" ).button();
    

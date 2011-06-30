@@ -144,7 +144,7 @@
                                 <td width="15%"><font size="2" color="#cc0000"><b>Suspensions:</b></font></td>
                                 <td width="15%">
                                     <select name="suspension" class="singleSelect" >
-                                        {html_options options=$suspensionList}
+                                        {html_options options=$suspensionList selected=""}
                                     </select>
                                 </td>
                                 <td width="15%"></td>
@@ -270,7 +270,7 @@
                                 </td>
                                 <td valign="top" width="12%">
                                     <select name="locationids[]" multiple="multiple" class="multipleSelect">
-                                        {html_options options=$sitelist}
+                                        {html_options options=$sitelist selected=""}
                                     </select>
                                 </td>
                                 <td width="15%"></td>
@@ -279,16 +279,16 @@
                                 <td width="15%"></td>
                             </tr>
                             <tr>
-                                <td valign="top" width="15%">
+                                <td width="15%">
                                     <font size="2" color="#cc0000"><b>Content Area:</b></font><br>
                                 </td>
-                                <td valign="top" width="12%"><select name="areas[]" multiple="multiple" class="multipleSelect">
-                                        {html_options options=$coreSubjectList}
+                                <td width="12%"><select name="areas[]" multiple="multiple" class="multipleSelect">
+                                        {html_options options=$coreSubjectList selected=""}
                                     </select></td>
-                                <td valign="top" width="15%">
+                                <td width="15%">
                                     <font size="2" color="#cc0000"><b>Level:</b></font><br>
                                 </td>
-                                <td valign="top" width="15%">
+                                <td width="15%">
                                     <select name="level[]" multiple="multiple" class="multipleSelect">
                                         <option value="" selected >All Levels</option>
                                         <option value="0">0</option>
@@ -333,10 +333,10 @@
                                         <option value="12">12</option>
                                     </select>
                                 </td>
-                                <td valign="top" width="15%">
+                                <td width="15%">
                                     <font size="2" color="#cc0000"><b>Overall:</b></font><br>
                                 </td>
-                                <td valign="top" width="15%"><select name="overall[]" multiple="multiple" class="multipleSelect">
+                                <td width="15%"><select name="overall[]" multiple="multiple" class="multipleSelect">
                                         <option selected value="">All Toggles</option>
                                         <option value="EMG">EMG</option>
                                         <option value="DEV">DEV</option>
@@ -346,11 +346,11 @@
                                     </select></td>
                             </tr>
                             <tr>
-                                <td colspan="4"><b>After selecting your variables, please push the &quot"Search" button below. You results will load on another page that will allow you to create groups, view individual user files, or select that group for exporting data.</b></td>
-                                <td valign="top" width="15%">
+                                <td colspan="4"></td>
+                                <td width="15%">
                                     <font size="2" color="#cc0000"><b>QPI:</b></font><br>
                                 </td>
-                                <td valign="top" width="15%"><select name="QPIs[]" multiple="multiple" class="multipleSelect">
+                                <td width="15%"><select name="QPIs[]" multiple="multiple" class="multipleSelect">
                                         <option selected value="">All QPIs</option>
                                         <option value="Exemplary">Exemplary</option>
                                         <option value="Acceptable">Acceptable</option>
@@ -390,14 +390,15 @@
                             <tr>
                                 <td width="15%"></td>
                                 <td colspan="4">
-
                                 </td>
                                 <td width="15%"></td>
                             </tr>
+                            <tr>
+                                <td colspan="6" align="center" style="border-top: solid 1px; padding-top: 10px">
+                                    <input type="submit" name="cmdSearch" value="Search" style="width:300px" />
+                                </td>
+                            </tr>
                         </table>
-                        <div style="float:left">
-                            <input type="submit" name="cmdSearch" value="Search" style="width:250px">
-                        </div>
                     </div>
                 </td>
             </tr>
