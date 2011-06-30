@@ -25,21 +25,30 @@
 {/block}
 
 {block name="js"}
-<script language="JavaScript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+
 <script language="JavaScript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
 <script language="JavaScript" type="text/javascript" src="js/jquery/jquery.multiselect.min.js"></script>
 <script language="JavaScript" type="text/javascript" src="js/search.js"></script>
 {/block}
 
 {block name="body"}
+<style type="text/css">
+    select.singleSelect {
+        width:155px;
+    }
 
+    input.text {
+        width:155px;
+    }
+
+</style>
 
 <div align="center">
     <div align="left">
         <font size="4" color="#cc0000">DART System Search</font><br>
     </div>
     <form method="POST" action="index.php?cmd=searchResults" name='search'>
-        <table width="100%" border="0" cellspacing="2" cellpadding="0">
+        <table width="100%" border="0" cellspacing="2" cellpadding="0" >
             {*<tr>
                 <td>
                     <div align="left">
@@ -51,13 +60,18 @@
             </tr>*}
             <tr>
                 <td>
-                    <div align="center">
+                    <div style="text-align: center">
+                        <input type="submit" name="cmdSearch" value="Search" style="width:300px">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="left">
                         {*<br>
                         <font size="4" color="#cc0000">Looking for Someone? </font><br>
                         <br>*}
-                        <div style="float:left">
-                                    <input type="submit" name="cmdSearch" value="Search" style="width:250px">
-                                    </div>
+
                         <table width="100%" border="0" cellspacing="2" cellpadding="0">
                             {*<tr>
                                 <td colspan="6">
@@ -74,24 +88,24 @@
                             </tr>*}
                             <tr>
                                 <td colspan="6" bgcolor="#ccffff">
-                                    
-                                    
                                     <div align="right" style="float:right;">
                                         <b>Specify User Variables</b>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
-                                <td nowrap width="15%"><font size="2"><b>Time Frame:</b></font></td>
+                                <td nowrap width="15%">
+                                    <font size="2"><b>Time Frame:</b></font>
+                                </td>
                                 <td width="12%">
-                                    <select class="singleSelect" name="tframe">
+                                    <select class="singleSelect" name="tframe" style="width:155px">
                                         <option value="#" selected>Current Quarter</option>
                                         <option value="all">All Time Frames</option>
                                     </select>
                                 </td>
                                 <td width="15%"><font size="2"><b>Status:</b></font></td>
                                 <td width="15%">
-                                    <select class="singleSelect" name="status">
+                                    <select class="singleSelect" name="status" style="width:155px">
                                         <option value="Active" selected>Active</option>
                                         <option value="Inactive">Inactive</option>
                                         <option value="">Both</option>
@@ -101,14 +115,18 @@
                                 <td width="15%"></td>
                             </tr>
                             <tr>
-                                <td width="15%"><font size="2" color="#cc0000"><b>Last Name:</b></font></td>
-                                <td width="12%"><input type="text" name="lname" size="20"></td>
+                                <td width="15%">
+                                    <font size="2" color="#cc0000"><b>Last Name:</b></font>
+                                </td>
+                                <td width="12%">
+                                    <input type="text" name="lname" class="text">
+                                </td>
                                 <td colspan="3">Students who are currently in school are "Active". All others are considered "Inactive".  </td>
                                 <td width="15%"></td>
                             </tr>
                             <tr>
                                 <td width="15%"><font size="2"><b>First Name:</b></font></td>
-                                <td width="12%"><input type="text" name="fname"  size="20"></td>
+                                <td width="12%"><input type="text" name="fname"  class="text"></td>
                                 <td width="15%"><font size="2" color="#cc0000"><b>Gender:</b></font></td>
                                 <td width="15%">
                                     <select class="singleSelect" name="gender">
@@ -122,7 +140,7 @@
                             </tr>
                             <tr>
                                 <td width="15%"><font size="2" color="#cc0000"><b>Student Number:</b></font></td>
-                                <td width="12%"><input type="text" name="studentnumber"  size="20"></td>
+                                <td width="12%"><input type="text" name="studentnumber"  class="text"></td>
                                 <td width="15%"><font size="2" color="#cc0000"><b>Suspensions:</b></font></td>
                                 <td width="15%">
                                     <select name="suspension" class="singleSelect" >
@@ -134,7 +152,7 @@
                             </tr>
                             <tr>
                                 <td width="15%"><font size="2" color="#cc0000"><b>AK Student ID:</b></font></td>
-                                <td width="12%"><input type="text" name="aid" size="20"></td>
+                                <td width="12%"><input type="text" name="aid" class="text"></td>
                                 <td width="15%" valign = top rowspan = 4>
                                     <font size="2" color="#cc0000"><b>Testing Level:</b></font><br>
                                 </td>
@@ -162,7 +180,7 @@
                             </tr>
                             <tr>
                                 <td nowrap width="15%"><font size="2" color="#cc0000"><b>PowerSchool ID:</b></font></td>
-                                <td width="12%"><input type="text" name="psid" size="20"></td>
+                                <td width="12%"><input type="text" name="psid" class="text"></td>
                                 <td width="15%"></td>
                                 <td width="15%"></td>
                             </tr>
@@ -372,21 +390,19 @@
                             <tr>
                                 <td width="15%"></td>
                                 <td colspan="4">
-                                   
+
                                 </td>
                                 <td width="15%"></td>
                             </tr>
                         </table>
-                         <div style="float:left">
-                             <input type="submit" name="cmdSearch" value="Search" style="width:250px">
-                         </div>
+                        <div style="float:left">
+                            <input type="submit" name="cmdSearch" value="Search" style="width:250px">
+                        </div>
                     </div>
                 </td>
             </tr>
         </table>
     </form>
 </div>
-
-
 {/block}
 

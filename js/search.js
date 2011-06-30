@@ -16,21 +16,20 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-
 $(document).ready(function(){
     $("select.multipleSelect").multiselect({
         selectedList: 3,
         minWidth:210
     });
 
-    $("select.singleSelect").multiselect({
-        multiple: false,
-        noneSelectedText: "Select an Option",
-        selectedList: 1,
-        header: false,
-        minWidth: 155
-    });
+//    $("select.singleSelect").multiselect({
+//        multiple: false,
+//        noneSelectedText: "Select an Option",
+//        selectedList: 1,
+//        header: false,
+//        minWidth: 155
+//    });
 
     $( "input:submit", "#content" ).button();
-
+   
 });

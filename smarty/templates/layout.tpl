@@ -17,15 +17,18 @@
 *}
 
 {*{literal}<?xml version="1.0" encoding="iso-8859-1"?>{/literal}*}
-<!doctype html> 
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
     <head>
         <link rel="shortcut icon" type="image/ico" href="{$imageURL}favicon.ico" />
-        
+
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>{block name=title}{/block}</title>
-       
-        <link rel="stylesheet" href="dart_test.css" type="text/css" media="screen">
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="dart_test.css" type="text/css" media="screen" />
        {***********************************************************************
                         CSS files
         ***********************************************************************}
@@ -45,6 +48,8 @@
         {$head|default:''}
 
         <script type="text/javascript" >
+            
+
             {$js|default:''}
         </script>
     </head>
@@ -70,10 +75,6 @@
 
             {include file="menu.tpl"}
         </div>
-
-
-
-
         <div id="container">
 {******************************************************************************
                         HEADER
@@ -112,12 +113,22 @@
                         Content
 *******************************************************************************}
             <div id="content">
+                <script type="text/javascript" >
+                    document.getElementById("content").style.display = "none";
+                </script>
+
                 {if $isSmarty}
-                <img alt="smarty template" src="{$imageURL}smarty_logo.png" align="right" />
-                
+                    <img alt="smarty template" src="{$imageURL}smarty_logo.png" align="right" />
                 {/if}
-                    {block name=body}{/block}
-                    {$body}
+
+                {block name=body}{/block}
+                {$body}
+                    
+                <script type="text/javascript" >
+                    $(document).ready(function(){
+                        document.getElementById("content").style.display = "block";
+                    });
+                </script>
             </div>
 
 {******************************************************************************
@@ -131,10 +142,10 @@
 {******************************************************************************
                         Javascript files
 *******************************************************************************}
-        {block name=js}{/block}
         <script language="JavaScript" type="text/javascript" src="js/wz_tooltip.js"></script>
         <script language="JavaScript" type="text/javascript" src="js/timeout.js"></script>
-         
+
+        {block name=js}{/block}
     </body>
 
 

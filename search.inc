@@ -59,6 +59,7 @@ $smarty->assign('coreSubjectList', $coreSubjectList);
  ******************************************************************************/
 $suspensionList=array();
 
+$suspensionList[""]="Any Number";
 $suspensionList["1-3"]="1-3 Days";
 $suspensionList["4-5"]="4-5 Days";
 $suspensionList["6-9"]="6-9 Days";

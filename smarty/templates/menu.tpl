@@ -394,7 +394,7 @@
 
         </div>
     </li>
-    <!-- End Home Item -->
+    {*<!-- End Home Item -->
 
     <!--          <li><a href="#" class="drop">5 Columns</a>
 
@@ -600,7 +600,5 @@
 
                     </div> End 3 columns container
 
-                </li> End 3 columns Item -->
-
-
+                </li> End 3 columns Item -->*}
 </ul>
