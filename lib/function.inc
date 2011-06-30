@@ -3313,10 +3313,13 @@ function getValue ($arr, $key, $default = NULL) {
 function getStudentToggles($start, $end, $site='') {
 	global $db;
 
+	$data = array();
+
 	$query = ($site == '' )? '' : " and student.site = '$site'";
 	$sql = "SELECT
-			fname,lname, count(history2.studentid) as c, student.studentid as sid,
-			site from history2, student
+			concat(fname, ' ', lname, ' (', student.studentid, ')') AS name, count(history2.studentid) AS toggle,
+			concat('student=', student.studentid) AS filter, student.studentid AS my_id,
+			site, 0 AS comments from history2, student
 		WHERE
 			history2.type = 'toggle' and
 			history2.timestamp > '$start' and
@@ -3327,48 +3330,51 @@ function getStudentToggles($start, $end, $site='') {
 		GROUP BY history2.studentid
 		ORDER BY site, student.lname, student.fname";
 
-	$r1 = $db->get_results($sql, ARRAY_A);
-	foreach($r1 as $row) {
-		$persons[$row['sid']]['toggle'] = $row['c'];
-		$persons[$row['sid']]['name'] = "{$row['fname']} {$row['lname']} ({$row['studentid']})";
-		$persons[$row['sid']]['site'] = $row['site'];
-		$persons[$row['sid']]['studentid'] = $row['sid'];
-		$persons[$row['sid']]['comments'] = 0;
+	$res1 = $db->get_results($sql, ARRAY_A);
+	writeFile($sql);
+	foreach($res1 as $row) {
+		$id = $row['my_id'];
+		unset($row['my_id']);
+			$data[$id] = $row;
 	}
+
 	$sql = "SELECT
-		fname,lname, count(history2.studentid) as c, student.studentid as sid, 
-		site from history2, student
+			concat(fname, ' ', lname, ' (', student.studentid, ')') AS name, count(history2.studentid) AS comments,
+			concat('student=', student.studentid) AS filter, student.studentid AS my_id,
+			site, 0 AS toggle from history2, student
 		WHERE
 			history2.type = 'toggle' and
 			history2.timestamp > '$start' and
 			history2.timestamp < '$end' and
 			student.studentid = history2.studentid and
 			history2.std = 'comment'
-			$query
+		$query
 		GROUP BY history2.studentid
 		ORDER BY site, student.lname, student.fname";
 
-	$r2 = $db->get_results($sql, ARRAY_A);
-	foreach($r2 as $row) {
-		$persons[$row['sid']]['comments'] = $row['c'];
-	}
-	return $persons;
-/*
-		$p['studentid']
-		$p['userid']
-		$p['toggle']
-		$p['comments']
-		$p['name']
-		$p['site']
+	$res2 = $db->get_results($sql, ARRAY_A);
 
-*/
+	foreach($res2 as $row) {
+		$id = $row['my_id'];
+		unset($row['my_id']);
+		if(isset($data[ $id]))
+			$data[$id]["comments"] = $row["comments"];
+		else
+			$data[$id] = $row;
+	}
+
+	return $data;
 }
 
 function getTeacherToggles($start, $end, $site='') {
+	global $db;
 
+	$data = array();
+	
 	$query = ($site == '' )? '' : " and user.site = '$site'";
 	$sql = "SELECT
-		name, count(history2.type) as c, user.userid, site from history2, user
+		name, count(history2.type) AS toggle, concat('user=', user.userid) AS filter, user.userid AS my_id, site, 0 AS comments
+		FROM history2, user
 		WHERE
 			history2.type = 'toggle' and
 			history2.timestamp > '$start' and
@@ -3376,34 +3382,41 @@ function getTeacherToggles($start, $end, $site='') {
 			user.userid = history2.userid and
 			history2.std != 'comment'
 			$query
-		GROUP BY userid
+		GROUP BY user.userid
 		ORDER BY site, user.name";
 
-	$r1 = $db->get_results($sql, ARRAY_A);
-	foreach($r1 as $row) {
-		$persons[$row['userid']]['toggle'] = $row['c'];
-		$persons[$row['userid']]['name'] = $row['name'];
-		$persons[$row['userid']]['site'] = $row['site'];
-		$persons[$row['userid']]['userid'] = $row['userid'];
-		$persons[$row['userid']]['comments'] = 0;
+	$res1 = $db->get_results($sql, ARRAY_A);
+	foreach($res1 as $row) {
+		$id = $row['my_id'];
+		unset($row['my_id']);
+			$data[$id] = $row;
 	}
-	$sql = "SELECT
-		count(*) as c, user.userid from history2, user
+
+	$sql = "SELECT 
+		name, count(history2.type) AS comments, concat('user=', user.userid) AS filter, user.userid AS my_id, site, 0 AS toggle
+		FROM history2, user
 		WHERE
 			history2.type = 'toggle' and
 			history2.timestamp > '$start' and
 			history2.timestamp < '$end' and
 			user.userid = history2.userid and
 			history2.std = 'comment'
-		$query
-		GROUP BY userid
+			$query
+		GROUP BY user.userid
 		ORDER BY site, user.name";
 
-	$r2 = $db->get_results($sql, ARRAY_A);
-	foreach($r2 as $row) {
-		$persons[$row['userid']]['comments'] = $row['c'];
+	$res2 = $db->get_results($sql, ARRAY_A);
+
+	foreach($res2 as $row) {
+		$id = $row['my_id'];
+		unset($row['my_id']);
+		if(isset($data[ $id]))
+			$data[$id]["comments"] = $row["comments"];
+		else
+			$data[$id] = $row;
 	}
-	return $persons;
+
+	return $data;
 }
 
 ?>
