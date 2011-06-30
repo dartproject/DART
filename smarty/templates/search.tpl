@@ -19,35 +19,44 @@
 {extends file="layout.tpl"}
 {block name="title"}{/block}
 
+{block name="css"}
+<link rel="stylesheet" href="js/jquery/jquery.multiselect.css" type="text/css" media="screen">
+<link rel="stylesheet" type="text/css" href="css/cupertino/jquery-ui-1.8.14.custom.css">
+{/block}
 
 {block name="js"}
+<script language="JavaScript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/jquery/jquery.multiselect.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/search.js"></script>
 {/block}
 
 {block name="body"}
 
 
 <div align="center">
+    <div align="left">
+        <font size="4" color="#cc0000">DART System Search</font><br>
+    </div>
     <form method="POST" action="index.php?cmd=searchResults" name='search'>
         <table width="100%" border="0" cellspacing="2" cellpadding="0">
-            <tr>
+            {*<tr>
                 <td>
                     <div align="left">
                         <br>
-                        <div align="left">
-                            <font size="4" color="#cc0000">DART System Search</font><br>
-                        </div>
+                        
                         <div class="noteimportant">Looking for someone? This is the area you use to find him or her. After entering information in any of the spaces below, press "Search" to look at all current and historical records that you have access to in the DART system, form new groups based on these criteria, or proceed to an export area for data exporting.  </div>
                     </div>
                 </td>
-            </tr>
+            </tr>*}
             <tr>
                 <td>
                     <div align="center">
-                        <br>
+                        {*<br>
                         <font size="4" color="#cc0000">Looking for Someone? </font><br>
-                        <br>
+                        <br>*}
                         <table width="100%" border="0" cellspacing="2" cellpadding="0">
-                            <tr>
+                            {*<tr>
                                 <td colspan="6">
                                     <div align="center">
                                         <font face="Arial,Helvetica" color="#000000"><b>* Specify your record search criteria below, and click the "Search" button to see the results.<br>
@@ -55,46 +64,32 @@
 
 																* The more criteria you enter, the narrower your search results will be..so use caution!<br>
                                                 <br>
-                                            </b></font></div>
+                                            </b>
+                                        </font>
+                                    </div>
                                 </td>
-                            </tr>
+                            </tr>*}
                             <tr>
-
-
-
                                 <td colspan="6" bgcolor="#ccffff">
-                                    <div align="left">
+                                    <div align="right">
                                         <b>Specify User Variables</b></div>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Active:</td>
-                                <td><select name="status">
+                                <td nowrap width="15%"><font size="2"><b>Time Frame:</b></font></td>
+                                <td width="12%">
+                                    <select class="singleSelect" name="tframe">
+                                        <option value="#" selected>Current Quarter</option>
+                                        <option value="all">All Time Frames</option>
+                                    </select>
+                                </td>
+                                <td width="15%"><font size="2"><b>Status:</b></font></td>
+                                <td width="15%">
+                                    <select class="singleSelect" name="status">
                                         <option value="Active" selected>Active</option>
                                         <option value="Inactive">Inactive</option>
                                         <option value="">Both</option>
                                     </select>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>Last Name:</td>
-
-                            </tr>
-
-
-                            <tr>
-                                <td nowrap width="15%"><font size="2" color="#cc0000"><b>Time Frame:</b></font></td>
-                                <td width="12%">
-                                    <select name="tframe">
-                                        <option value="#" selected>Current Quarter</option>
-                                        <option value="all">All Time Frames</option>
-                                    </select>
-
-                                </td>
-                                <td width="15%"><font size="2" color="#cc0000"><b>Status:</b></font></td>
-                                <td width="15%">
-
                                 </td>
                                 <td width="15%"></td>
                                 <td width="15%"></td>
@@ -108,9 +103,9 @@
                             <tr>
                                 <td width="15%"><font size="2" color="#cc0000"><b>First Name:</b></font></td>
                                 <td width="12%"><input type="text" name="fname"  size="20"></td>
-                                <td width="15%"><font size="2" color="#cc0000"><b>Gender:</b></td>
+                                <td width="15%"><font size="2" color="#cc0000"><b>Gender:</b></font></td>
                                 <td width="15%">
-                                    <select name="gender">
+                                    <select class="singleSelect" name="gender">
                                         <option value="" selected>Male or Female</option>
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
@@ -124,12 +119,8 @@
                                 <td width="12%"><input type="text" name="studentnumber"  size="20"></td>
                                 <td width="15%"><font size="2" color="#cc0000"><b>Suspensions:</b></font></td>
                                 <td width="15%">
-                                    <select name="suspension" >
-                                        <option value="" selected>Any Number</option>
-                                        <option value="1-3">1-3 Days</option>
-                                        <option value="4-5">4-5 Days</option>
-                                        <option value="6-9">6-9 Days</option>
-                                        <option value="10+">10+ Days</option>
+                                    <select name="suspension" class="singleSelect" >
+                                        {html_options options=$suspensionList}
                                     </select>
                                 </td>
                                 <td width="15%"></td>
@@ -138,10 +129,11 @@
                             <tr>
                                 <td width="15%"><font size="2" color="#cc0000"><b>AK Student ID:</b></font></td>
                                 <td width="12%"><input type="text" name="aid" size="20"></td>
-                                <td width="15%" valign = top rowspan = 4><font size="2" color="#cc0000"><b>Testing Level:</b></font><br>
-                                    <font face="verdana">(To choose multiple items hold the Apple or CTRL key while selecting.)</font></td>
                                 <td width="15%" valign = top rowspan = 4>
-                                    <select name="grade[]" multiple size=7>
+                                    <font size="2" color="#cc0000"><b>Testing Level:</b></font><br>
+                                </td>
+                                <td width="15%" valign = top rowspan = 4>
+                                    <select class="multipleSelect" name="grade[]" multiple="multiple" size="5">
                                         <option value="" selected>All Testing Levels</option>
                                         <option value="PK">PK</option>
                                         <option value="K">K</option>
@@ -171,7 +163,7 @@
                             <tr>
                                 <td width="15%"><font size="2" color="#cc0000"><b>Age:</b></font></td>
                                 <td width="12%">
-                                    <select name="age" >
+                                    <select name="age" class="singleSelect">
                                         <option value="" selected>All Ages</option>
                                         <option value="18">18+</option>
                                         <option value="17">17</option>
@@ -197,7 +189,7 @@
                             <tr>
                                 <td width="15%"><font size="2" color="#cc0000"><b>Attendance </b></font></td>
                                 <td width="12%">
-                                    <select name="attendance" >
+                                    <select name="attendance" class="singleSelect">
                                         <option value="" selected>All Rates</option>
                                         <option value="100">100%</option>
                                         <option value="95-99">95% - 99%</option>
@@ -213,7 +205,7 @@
                             <tr>
                                 <td width="15%"><font size="2" color="#cc0000"><b>Eligibility:</b></font></td>
                                 <td width="12%">
-                                    <select name="Eligibility" >
+                                    <select name="Eligibility" class="singleSelect">
                                         <option value="" selected>Select Eligibility</option>
                                         <option value="Eligible">Eligible</option>
                                         <option value="Not Eligible - Academic">Not Eligible - Academic</option>
@@ -226,15 +218,15 @@
                                 <td width="15%" valign = top><font size="2" color="#cc0000"><b>Special Ed Status:</b></font></td>
 
                                 <td width="15%">
-                                    <select name="sped" >
+                                    <select name="sped" class="singleSelect">
                                         <option value="" selected>All</option>
                                         <option value="Y">Yes</option>
                                         <option value="N">No</option>
                                     </select>
                                 </td><td>
-                                    <font size="2" color="#cc0000"><b>LEP Status</b></font>
+                                    <font size="2" color="#cc0000" ><b>LEP Status</b></font>
                                 </td><td>
-                                    <select name="LEPstatus" >
+                                    <select name="LEPstatus" class="singleSelect">
                                         <option value="" selected>All</option>
                                         <option value="Y">Yes</option>
                                         <option value="N">No</option>
@@ -250,36 +242,30 @@
                             </tr>
                             <tr>
                                 <td valign="top" width="15%"><font size="2" color="#cc0000"><b>Location:</b></font><font face="Arial,Helvetica" size="2" color="#000000"><strong><br>
-                                        </strong></font><font face="verdana">(To choose multiple items hold the Apple or CTRL key while selecting.)</font></td>
+                                        </strong></font>
+                                </td>
                                 <td valign="top" width="12%">
-                                    <select name="locationids[]" multiple size="5">
+                                    <select name="locationids[]" multiple="multiple" class="multipleSelect">
                                         {html_options options=$sitelist}
-                                       
-                                    </select></td>
+                                    </select>
+                                </td>
                                 <td width="15%"></td>
                                 <td width="15%"></td>
                                 <td width="15%"></td>
                                 <td width="15%"></td>
                             </tr>
                             <tr>
-                                <td valign="top" width="15%"><font size="2" color="#cc0000"><b>Content Area:</b></font><br>
-                                    <font face="verdana">(To choose multiple items hold the Apple or CTRL key while selecting.)</font></td>
-                                <td valign="top" width="12%"><select name="areas[]" multiple size="5">
-                                        <option selected value="">All Content Areas</option>
-                                        <option value="CS">Career Skills</option>
-                                        <option value="CA">Cultural Awareness</option>
-                                        <option value="LS">Life Skills</option>
-                                        <option value="MA">Math</option>
-                                        <option value="RE">Reading</option>
-                                        <option value="SC">Science</option>
-                                        <option value="SS">Social Studies</option>
-                                        <option value="TE">Technology</option>
-                                        <option value="WR">Writing</option>
-                                    </select></td>
-                                <td valign="top" width="15%"><font size="2" color="#cc0000"><b>Level:</b></font><br>
-                                    <font face="verdana">(To choose multiple items hold the Apple or CTRL key while selecting.)</font></td>
                                 <td valign="top" width="15%">
-                                    <select name="level[]" multiple size="5">
+                                    <font size="2" color="#cc0000"><b>Content Area:</b></font><br>
+                                </td>
+                                <td valign="top" width="12%"><select name="areas[]" multiple="multiple" class="multipleSelect">
+                                        {html_options options=$coreSubjectList}
+                                    </select></td>
+                                <td valign="top" width="15%">
+                                    <font size="2" color="#cc0000"><b>Level:</b></font><br>
+                                </td>
+                                <td valign="top" width="15%">
+                                    <select name="level[]" multiple="multiple" class="multipleSelect">
                                         <option value="" selected >All Levels</option>
                                         <option value="0">0</option>
                                         <option value="1">1</option>
@@ -323,8 +309,9 @@
                                         <option value="12">12</option>
                                     </select>
                                 </td>
-                                <td valign="top" width="15%"><font size="2" color="#cc0000"><b>Overall:</b></font><br>
-                                    <font face="verdana">(To choose multiple items hold the Apple or CTRL key while selecting.)</font></td>
+                                <td valign="top" width="15%">
+                                    <font size="2" color="#cc0000"><b>Overall:</b></font><br>
+                                </td>
                                 <td valign="top" width="15%"><select name="overall[]" multiple size="5">
                                         <option selected value="">All Toggles</option>
                                         <option value="EMG">EMG</option>
@@ -336,8 +323,9 @@
                             </tr>
                             <tr>
                                 <td colspan="4"><b>After selecting your variables, please push the &quot"Search" button below. You results will load on another page that will allow you to create groups, view individual user files, or select that group for exporting data.</b></td>
-                                <td valign="top" width="15%"><font size="2" color="#cc0000"><b>QPI:</b></font><br>
-                                    <font face="verdana">(To choose multiple items hold the Apple or CTRL key while selecting.)</font></td>
+                                <td valign="top" width="15%">
+                                    <font size="2" color="#cc0000"><b>QPI:</b></font><br>
+                                </td>
                                 <td valign="top" width="15%"><select name="QPIs[]" multiple size="5">
                                         <option selected value="">All QPIs</option>
                                         <option value="Exemplary">Exemplary</option>
@@ -373,7 +361,7 @@
                                         <option value="Y">Yes</option>
                                         <option value="N">No</option>
                                     </select>
-                                    </csobj></td>
+                                </td>
                             </tr>
                             <tr>
                                 <td width="15%"></td>
@@ -385,8 +373,6 @@
                                 <td width="15%"></td>
                             </tr>
                         </table>
-                        <p></p>
-                        <br>
                     </div>
                 </td>
             </tr>
@@ -396,3 +382,4 @@
 
 
 {/block}
+

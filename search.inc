@@ -18,6 +18,9 @@
  */
 
 
+/******************************************************************************
+ * Get Site list
+ ******************************************************************************/
 $availableSites = array();
 
 if (Privilege(A27) == 'site') {
@@ -34,7 +37,35 @@ if (Privilege(A27) == 'site') {
 }
 
 $smarty->assign("sitelist", $availableSites);
-$isSmarty=true;
+
+/******************************************************************************
+ * Get Core Subject List
+ ******************************************************************************/
+
+$coreSubjects = getCoreSubjects();
+
+$coreSubjectList=array();
+$coreSubjectList[""]="All Content Areas";
+foreach($coreSubjects as $cs){
+    $coreSubjectList[$cs["id"]] = $cs["name"];
+}
+
+$smarty->assign('coreSubjectList', $coreSubjectList);
+
+
+
+/******************************************************************************
+ * Suspension List
+ ******************************************************************************/
+$suspensionList=array();
+
+$suspensionList["1-3"]="1-3 Days";
+$suspensionList["4-5"]="4-5 Days";
+$suspensionList["6-9"]="6-9 Days";
+$suspensionList["10+"]="10+ Days";
+
+$smarty->assign('suspensionList',$suspensionList);
+
 
 
 //$body = "	<div align=\"center\">
@@ -406,6 +437,9 @@ $isSmarty=true;
 //							</table>
 //						</form>
 //					</div>";
+
+
+$isSmarty=true;
 
 include ("template.inc");
 

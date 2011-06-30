@@ -24,6 +24,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>{block name=title}{/block}</title>
         <link rel="stylesheet" href="dart_test.css" type="text/css" media="screen">
+       {***********************************************************************
+                        CSS files
+        ***********************************************************************}
+        {block name=css}{/block}
+
+
         {literal}
         <!--        <link rel="stylesheet" href="menu.css" type="text/css" media="screen" />-->
         <!--[if IE 6]>
@@ -128,10 +134,7 @@
         <script language="JavaScript" type="text/javascript" src="js/timeout.js"></script>
     </body>
 
-{******************************************************************************
-                        CSS files
-*******************************************************************************}
-        {block name=css}{/block}
+
 </html>
 
 
