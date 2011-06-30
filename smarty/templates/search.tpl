@@ -21,7 +21,7 @@
 
 {block name="css"}
 <link rel="stylesheet" href="js/jquery/jquery.multiselect.css" type="text/css" media="screen">
-<link rel="stylesheet" type="text/css" href="css/cupertino/jquery-ui-1.8.14.custom.css">
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css">
 {/block}
 
 {block name="js"}
@@ -101,7 +101,7 @@
                                 <td width="15%"></td>
                             </tr>
                             <tr>
-                                <td width="15%"><font size="2" color="#cc0000"><b>First Name:</b></font></td>
+                                <td width="15%"><font size="2" "><b>First Name:</b></font></td>
                                 <td width="12%"><input type="text" name="fname"  size="20"></td>
                                 <td width="15%"><font size="2" color="#cc0000"><b>Gender:</b></font></td>
                                 <td width="15%">
