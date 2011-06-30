@@ -3149,8 +3149,55 @@ function getSubjectLevelInfo($studentsID, $subject, $level) {
 			st.order";
 
     $res = $db->get_results($query, ARRAY_A);
+
+	if($res == NULL) { // Student with no toggles
+
+		$query = "SELECT
+			s.studentid,
+			s.fname,
+			s.lname,
+			sl.change_username,
+			sl.change_timestamp,
+			sl.progress,
+			s.site,
+			s.grade,
+			gsid AS gradetype,
+			gs.name AS gradetypename,
+			st.type,
+			st.std,
+			su.name,
+			su.gradLevel,
+			su.core
+			FROM (
+				student AS s,
+				studentlevel AS sl,
+				standards AS st,
+				subjects AS su,
+				gs_select AS gss,
+				gs)
+			WHERE
+				s.studentid in ($students) AND
+				sl.studentid = s.studentid AND
+				sl.level = '$level' AND
+				sl.subject = '$subject' AND
+				sl.final = '00000000' AND
+				st.subject = sl.subject AND
+				st.level = sl.level AND
+				st.type in ('std','over') AND
+				su.id = sl.subject AND
+				gs.id = gss.gsid AND
+				s.site = gss.siteid AND
+				s.grade BETWEEN gss.lowgrade AND gss.highgrade
+			ORDER BY
+				s.lname,
+				s.studentid,
+				st.order";
+
+		$res = $db->get_results($query, ARRAY_A);
+	}
     $n = count($res);
 
+	// Get Summary Indicators: 'comment','QPI','prog','ase'
     $query = "SELECT
 		g.studentid, 
 		g.value, 
@@ -3173,28 +3220,7 @@ function getSubjectLevelInfo($studentsID, $subject, $level) {
 		ORDER BY 
 			s.lname, 
 			g.studentid";
-    /*
-      [studentid] => 11167
-      [fname] => Earl
-      [lname] => Annogiyuk
-      [change_username] => Melo, Christina
-      [change_timestamp] => 1308865071
-      [progress] => DEV
-      [site] => GAM
-      [grade] => 4
-      [gradetype] => 1
-      [gradetypename] => Standards
-      [std] => 4
-      [type] => std
-      [description] => (A3.3.5) Recognizes fractional forms of common decimals (e.g. 1/4=. 25). (GLE [5] N-5)
-      [link] => http://wiki.bssd.org/index.php/NUM:_Fractional_forms
-      [shortname] => NUM: Fractional Forms
-      [value] => 86
-      [name] => Mathematics
-      [gradLevel] => 9
-      [core] => x
 
-     */
     $summary = $db->get_results($query, ARRAY_A);
     $n2 = count($summary);
     $student = NULL;
@@ -3239,9 +3265,10 @@ function getSubjectLevelInfo($studentsID, $subject, $level) {
         }
 
         $type = $types[$res[$i]['type']];
+		$value = isset($res[$i]['value']) ? $res[$i]['value'] : "";
 
         $data[$s][$type][$res[$i]['std']] = array(
-            'value' => $res[$i]['value']
+            'value' => $value
         );
     }
     return $data;
@@ -3281,6 +3308,115 @@ function getValue ($arr, $key, $default = NULL) {
 	else {
 		return $default;
 	}
+}
+
+function getStudentToggles($start, $end, $site='') {
+	global $db;
+
+	$data = array();
+
+	$query = ($site == '' )? '' : " and student.site = '$site'";
+	$sql = "SELECT
+			concat(fname, ' ', lname, ' (', student.studentid, ')') AS name, count(history2.studentid) AS toggle,
+			concat('student=', student.studentid) AS filter, student.studentid AS my_id,
+			site, 0 AS comments from history2, student
+		WHERE
+			history2.type = 'toggle' and
+			history2.timestamp > '$start' and
+			history2.timestamp < '$end' and
+			student.studentid = history2.studentid and
+			history2.std != 'comment'
+		$query
+		GROUP BY history2.studentid
+		ORDER BY site, student.lname, student.fname";
+
+	$res1 = $db->get_results($sql, ARRAY_A);
+	writeFile($sql);
+	foreach($res1 as $row) {
+		$id = $row['my_id'];
+		unset($row['my_id']);
+			$data[$id] = $row;
+	}
+
+	$sql = "SELECT
+			concat(fname, ' ', lname, ' (', student.studentid, ')') AS name, count(history2.studentid) AS comments,
+			concat('student=', student.studentid) AS filter, student.studentid AS my_id,
+			site, 0 AS toggle from history2, student
+		WHERE
+			history2.type = 'toggle' and
+			history2.timestamp > '$start' and
+			history2.timestamp < '$end' and
+			student.studentid = history2.studentid and
+			history2.std = 'comment'
+		$query
+		GROUP BY history2.studentid
+		ORDER BY site, student.lname, student.fname";
+
+	$res2 = $db->get_results($sql, ARRAY_A);
+
+	foreach($res2 as $row) {
+		$id = $row['my_id'];
+		unset($row['my_id']);
+		if(isset($data[ $id]))
+			$data[$id]["comments"] = $row["comments"];
+		else
+			$data[$id] = $row;
+	}
+
+	return $data;
+}
+
+function getTeacherToggles($start, $end, $site='') {
+	global $db;
+
+	$data = array();
+	
+	$query = ($site == '' )? '' : " and user.site = '$site'";
+	$sql = "SELECT
+		name, count(history2.type) AS toggle, concat('user=', user.userid) AS filter, user.userid AS my_id, site, 0 AS comments
+		FROM history2, user
+		WHERE
+			history2.type = 'toggle' and
+			history2.timestamp > '$start' and
+			history2.timestamp < '$end' and
+			user.userid = history2.userid and
+			history2.std != 'comment'
+			$query
+		GROUP BY user.userid
+		ORDER BY site, user.name";
+
+	$res1 = $db->get_results($sql, ARRAY_A);
+	foreach($res1 as $row) {
+		$id = $row['my_id'];
+		unset($row['my_id']);
+			$data[$id] = $row;
+	}
+
+	$sql = "SELECT 
+		name, count(history2.type) AS comments, concat('user=', user.userid) AS filter, user.userid AS my_id, site, 0 AS toggle
+		FROM history2, user
+		WHERE
+			history2.type = 'toggle' and
+			history2.timestamp > '$start' and
+			history2.timestamp < '$end' and
+			user.userid = history2.userid and
+			history2.std = 'comment'
+			$query
+		GROUP BY user.userid
+		ORDER BY site, user.name";
+
+	$res2 = $db->get_results($sql, ARRAY_A);
+
+	foreach($res2 as $row) {
+		$id = $row['my_id'];
+		unset($row['my_id']);
+		if(isset($data[ $id]))
+			$data[$id]["comments"] = $row["comments"];
+		else
+			$data[$id] = $row;
+	}
+
+	return $data;
 }
 
 ?>

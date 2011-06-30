@@ -3,12 +3,10 @@
 {block name="js"}
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.datepick.package/jquery.datepick.js"></script>
-<script type="text/javascript" src="http://keith-wood.name/js/jquery.datepick.js"></script>
 <script language="JavaScript" type="text/javascript" src="js/history.js"></script>
 {/block}
 {block name="css"}
 <link rel="stylesheet" type="text/css" href="js/jquery.datepick.package/jquery.datepick.css" />
-<link rel="stylesheet" type="text/css" href="http://keith-wood.name/css/jquery.datepick.css" />
 {/block}
 
 {block name="body"}
