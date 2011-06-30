@@ -18,11 +18,9 @@
 
 
 $(document).ready(function(){
-
     $("select.multipleSelect").multiselect({
         selectedList: 3,
         minWidth:210
-
     });
 
     $("select.singleSelect").multiselect({
@@ -31,6 +29,8 @@ $(document).ready(function(){
         selectedList: 1,
         header: false,
         minWidth: 155
-
     });
+
+    $( "input:submit", "#content" ).button();
+
 });

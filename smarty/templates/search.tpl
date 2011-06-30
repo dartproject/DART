@@ -20,13 +20,13 @@
 {block name="title"}{/block}
 
 {block name="css"}
-<link rel="stylesheet" href="js/jquery/jquery.multiselect.css" type="text/css" media="screen">
+<link rel="stylesheet" href="js/jquery/jquery.multiselect.css" type="text/css" media="screen" >
 <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css">
 {/block}
 
 {block name="js"}
 <script language="JavaScript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-<script language="JavaScript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
 <script language="JavaScript" type="text/javascript" src="js/jquery/jquery.multiselect.min.js"></script>
 <script language="JavaScript" type="text/javascript" src="js/search.js"></script>
 {/block}
@@ -55,6 +55,9 @@
                         {*<br>
                         <font size="4" color="#cc0000">Looking for Someone? </font><br>
                         <br>*}
+                        <div style="float:left">
+                                    <input type="submit" name="cmdSearch" value="Search" style="width:250px">
+                                    </div>
                         <table width="100%" border="0" cellspacing="2" cellpadding="0">
                             {*<tr>
                                 <td colspan="6">
@@ -71,8 +74,11 @@
                             </tr>*}
                             <tr>
                                 <td colspan="6" bgcolor="#ccffff">
-                                    <div align="right">
-                                        <b>Specify User Variables</b></div>
+                                    
+                                    
+                                    <div align="right" style="float:right;">
+                                        <b>Specify User Variables</b>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
@@ -101,7 +107,7 @@
                                 <td width="15%"></td>
                             </tr>
                             <tr>
-                                <td width="15%"><font size="2" "><b>First Name:</b></font></td>
+                                <td width="15%"><font size="2"><b>First Name:</b></font></td>
                                 <td width="12%"><input type="text" name="fname"  size="20"></td>
                                 <td width="15%"><font size="2" color="#cc0000"><b>Gender:</b></font></td>
                                 <td width="15%">
@@ -312,7 +318,7 @@
                                 <td valign="top" width="15%">
                                     <font size="2" color="#cc0000"><b>Overall:</b></font><br>
                                 </td>
-                                <td valign="top" width="15%"><select name="overall[]" multiple size="5">
+                                <td valign="top" width="15%"><select name="overall[]" multiple="multiple" class="multipleSelect">
                                         <option selected value="">All Toggles</option>
                                         <option value="EMG">EMG</option>
                                         <option value="DEV">DEV</option>
@@ -326,7 +332,7 @@
                                 <td valign="top" width="15%">
                                     <font size="2" color="#cc0000"><b>QPI:</b></font><br>
                                 </td>
-                                <td valign="top" width="15%"><select name="QPIs[]" multiple size="5">
+                                <td valign="top" width="15%"><select name="QPIs[]" multiple="multiple" class="multipleSelect">
                                         <option selected value="">All QPIs</option>
                                         <option value="Exemplary">Exemplary</option>
                                         <option value="Acceptable">Acceptable</option>
@@ -340,7 +346,7 @@
                             <tr>
                                 <td nowrap width="15%"><font size="2" color="#cc0000"><b>HSGQE Reading:</b></font></td>
                                 <td width="12%">
-                                    <select name="HSGQEReading" >
+                                    <select name="HSGQEReading" class="singleSelect">
                                         <option value="" selected>Either Y or N</option>
                                         <option value="Y">Yes</option>
                                         <option value="N">No</option>
@@ -348,7 +354,7 @@
                                 </td>
                                 <td nowrap width="15%"><font size="2" color="#cc0000"><b>HSGQE  Math:</b></font></td>
                                 <td width="15%">
-                                    <select name="HSGQEMath">
+                                    <select name="HSGQEMath" class="singleSelect">
                                         <option value="" selected>Either Y or N</option>
                                         <option value="Y">Yes</option>
                                         <option value="N">No</option>
@@ -356,7 +362,7 @@
                                 </td>
                                 <td nowrap width="15%"><font size="2" color="#cc0000"><b>HSGQE Writing</b></font></td>
                                 <td width="15%">
-                                    <select name="HSGQEWriting">
+                                    <select name="HSGQEWriting" class="singleSelect">
                                         <option value="" selected>Either Y or N</option>
                                         <option value="Y">Yes</option>
                                         <option value="N">No</option>
@@ -366,13 +372,14 @@
                             <tr>
                                 <td width="15%"></td>
                                 <td colspan="4">
-                                    <div align="center">
-                                        <br>
-                                        <input type="submit" name="cmdSearch" value=" Search!"></div>
+                                   
                                 </td>
                                 <td width="15%"></td>
                             </tr>
                         </table>
+                         <div style="float:left">
+                             <input type="submit" name="cmdSearch" value="Search" style="width:250px">
+                         </div>
                     </div>
                 </td>
             </tr>
