@@ -145,7 +145,7 @@
                                             </td>
                                             <td align="center">
                                                 <div align="center">
-						{$student.age}
+						{$student.bday|age}
                                                 </div>
                                             </td>
                                             <td align="center">
@@ -198,14 +198,17 @@
                                         <tr>
                                             <td valign="middle" nowrap>
                                                 <div align="left">
-                                                    <table ><tr><td>
+                                                    <table>
+                                                        <tr>
+                                                            <td>
                                                                 &nbsp;<a href="javascript: ;" onclick="setCheckboxes('fieldsForm', true); return false;" class="action">Check All</a>&nbsp;/&nbsp;<a href="javascript: ;" onclick="setCheckboxes('fieldsForm', false); return false;" class="action">UnCheck All</a>
                                                                 <i> &nbsp;&nbsp; with selected &nbsp;&nbsp;</i>
-                                                            </td><td>
+                                                            </td>
+                                                            <td>
                                                                 <input type=submit name=Go value=Go onClick='javascript: return checkChecks();'>
                                                             </td>
                                                             <td>
-                                                                <select name=cmd2 >
+                                                                <select name=cmd2>
                                                                     <option value=Export>Export</option>
                                                                     <option value=Group>Group</option>
                                                                      {html_options options=$showExportOptions}

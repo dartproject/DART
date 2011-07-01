@@ -122,7 +122,7 @@
                 {/if}
 
                 {block name=body}{/block}
-                {$body}
+                {$body|default:""}
                     
                 <script type="text/javascript" >
                     $(document).ready(function(){
