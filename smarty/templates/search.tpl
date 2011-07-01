@@ -26,9 +26,9 @@
 
 {block name="js"}
 
-<script language="JavaScript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
-<script language="JavaScript" type="text/javascript" src="js/jquery/jquery.multiselect.min.js"></script>
-<script language="JavaScript" type="text/javascript" src="js/search.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/jquery/jquery.multiselect.min.js"></script>
+<script type="text/javascript" src="js/search.js"></script>
 {/block}
 
 {block name="body"}
@@ -394,8 +394,10 @@
                                 <td width="15%"></td>
                             </tr>
                             <tr>
-                                <td colspan="6" align="center" style="border-top: solid 1px; padding-top: 10px">
-                                    <input type="submit" name="cmdSearch" value="Search" style="width:300px" />
+                                <td colspan="6" style="border-top: solid 1px; padding-top: 10px">
+                                    <div style="text-align:center">
+                                        <input type="submit" name="cmdSearch" value="Search" style="width:300px" />
+                                    </div>
                                 </td>
                             </tr>
                         </table>

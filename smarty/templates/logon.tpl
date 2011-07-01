@@ -75,6 +75,9 @@
                                                                                 </div>
                                                                             </td>
                                                                         </tr>
+                                                                        <tr>
+                                                                            <td colspan="2">Optional Demo credentials: <br/>Username: demo Password: demo</td>
+                                                                        </tr>
                                                                     </table>
                                                                 </td>
                                                             </tr>
