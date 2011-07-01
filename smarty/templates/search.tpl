@@ -21,12 +21,12 @@
 
 {block name="css"}
 <link rel="stylesheet" href="js/jquery/jquery.multiselect.css" type="text/css" media="screen" >
-<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css">
+
 {/block}
 
 {block name="js"}
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
+
 <script type="text/javascript" src="js/jquery/jquery.multiselect.min.js"></script>
 <script type="text/javascript" src="js/search.js"></script>
 {/block}

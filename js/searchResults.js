@@ -60,3 +60,7 @@ function nextSubmit() {
 function prevSubmit() {
     document.prevForm.submit();
 }
+
+$(document).ready(function(){
+    $( "input:submit, button", "#content" ).button();
+});

@@ -27,7 +27,10 @@
 
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>{block name=title}{/block}</title>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+        <script type="text/javascript"
+        src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css"
+              href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css" />
         <link rel="stylesheet" href="dart_test.css" type="text/css" media="screen" />
        {***********************************************************************
                         CSS files
@@ -118,12 +121,12 @@
                 </script>
 
                 {if $isSmarty}
-                    <img alt="smarty template" src="{$imageURL}smarty_logo.png" align="right" />
+                <img alt="smarty template" src="{$imageURL}smarty_logo.png" align="right" />
                 {/if}
 
                 {block name=body}{/block}
                 {$body|default:""}
-                    
+
                 <script type="text/javascript" >
                     $(document).ready(function(){
                         document.getElementById("content").style.display = "block";
@@ -142,9 +145,9 @@
 {******************************************************************************
                         Javascript files
 *******************************************************************************}
-        <script language="JavaScript" type="text/javascript" src="js/wz_tooltip.js"></script>
-        <script language="JavaScript" type="text/javascript" src="js/timeout.js"></script>
-
+        <script type="text/javascript" src="js/wz_tooltip.js"></script>
+        <script type="text/javascript" src="js/timeout.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
         {block name=js}{/block}
     </body>
 
