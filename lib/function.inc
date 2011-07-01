@@ -3310,113 +3310,154 @@ function getValue ($arr, $key, $default = NULL) {
 	}
 }
 
-function getStudentToggles($start, $end, $site='') {
+function getStudentToggles($startdate, $enddate, $site='', $start = 0, $limit = 30) {
 	global $db;
 
 	$data = array();
-
-	$query = ($site == '' )? '' : " and student.site = '$site'";
-	$sql = "SELECT
-			concat(fname, ' ', lname, ' (', student.studentid, ')') AS name, count(history2.studentid) AS toggle,
-			concat('student=', student.studentid) AS filter, student.studentid AS my_id,
-			site, 0 AS comments from history2, student
-		WHERE
-			history2.type = 'toggle' and
-			history2.timestamp > '$start' and
-			history2.timestamp < '$end' and
-			student.studentid = history2.studentid and
-			history2.std != 'comment'
-		$query
-		GROUP BY history2.studentid
-		ORDER BY site, student.lname, student.fname";
-
-	$res1 = $db->get_results($sql, ARRAY_A);
-	writeFile($sql);
-	foreach($res1 as $row) {
-		$id = $row['my_id'];
-		unset($row['my_id']);
-			$data[$id] = $row;
-	}
-
-	$sql = "SELECT
-			concat(fname, ' ', lname, ' (', student.studentid, ')') AS name, count(history2.studentid) AS comments,
-			concat('student=', student.studentid) AS filter, student.studentid AS my_id,
-			site, 0 AS toggle from history2, student
-		WHERE
-			history2.type = 'toggle' and
-			history2.timestamp > '$start' and
-			history2.timestamp < '$end' and
-			student.studentid = history2.studentid and
-			history2.std = 'comment'
-		$query
-		GROUP BY history2.studentid
-		ORDER BY site, student.lname, student.fname";
-
-	$res2 = $db->get_results($sql, ARRAY_A);
-
-	foreach($res2 as $row) {
-		$id = $row['my_id'];
-		unset($row['my_id']);
-		if(isset($data[ $id]))
-			$data[$id]["comments"] = $row["comments"];
-		else
-			$data[$id] = $row;
-	}
-
-	return $data;
-}
-
-function getTeacherToggles($start, $end, $site='') {
-	global $db;
-
-	$data = array();
-	
-	$query = ($site == '' )? '' : " and user.site = '$site'";
-	$sql = "SELECT
-		name, count(history2.type) AS toggle, concat('user=', user.userid) AS filter, user.userid AS my_id, site, 0 AS comments
-		FROM history2, user
-		WHERE
-			history2.type = 'toggle' and
-			history2.timestamp > '$start' and
-			history2.timestamp < '$end' and
-			user.userid = history2.userid and
-			history2.std != 'comment'
-			$query
-		GROUP BY user.userid
-		ORDER BY site, user.name";
-
-	$res1 = $db->get_results($sql, ARRAY_A);
-	foreach($res1 as $row) {
-		$id = $row['my_id'];
-		unset($row['my_id']);
-			$data[$id] = $row;
+	$res = array();
+	if($site != '' ) {
+		$joinClause = "AND h.studentid = s.studentid";
+		$siteClause = "AND s.site = '$site'";
+		$tables = ", student AS s";
+	} else {
+		$joinClause = "";
+		$siteClause = "";
+		$tables = "";
 	}
 
 	$sql = "SELECT 
-		name, count(history2.type) AS comments, concat('user=', user.userid) AS filter, user.userid AS my_id, site, 0 AS toggle
-		FROM history2, user
+		COUNT(DISTINCT h.studentid) AS n 
+		FROM history2 AS h $tables 
+		WHERE 
+			h.type = 'toggle' and
+			h.timestamp > '$startdate' and
+			h.timestamp < '$enddate' 
+			$joinClause 
+			$siteClause";
+
+	$total = $db->get_var($sql);
+
+	$sql = "SELECT
+			CONCAT(fname, ' ', lname, ' (', s.studentid, ')') AS name, 
+			CONCAT('student=', s.studentid) AS filter, 
+			t.toggle, c.comments, site  
+		FROM 
+			history2 AS h JOIN student AS s ON h.studentid = s.studentid
+			LEFT JOIN (
+			SELECT 
+				studentid, COUNT(history2.type) AS comments 
+			FROM 
+				history2 
+			WHERE 
+				type = 'toggle' and
+				timestamp > '$startdate' and
+				timestamp < '$enddate' and
+				std = 'comment'
+			GROUP BY 
+				studentid
+			) AS c 
+		ON 
+			c.studentid = h.studentid LEFT JOIN (
+			SELECT 
+				studentid, COUNT(history2.type) AS toggle 
+			FROM 
+				history2 
+			WHERE 
+				type = 'toggle' and
+				timestamp > '$startdate' and
+				timestamp < '$enddate' and
+				std != 'comment'
+			GROUP BY 
+				studentid
+			) AS t 
+		ON 
+			t.studentid = h.studentid 
 		WHERE
-			history2.type = 'toggle' and
-			history2.timestamp > '$start' and
-			history2.timestamp < '$end' and
-			user.userid = history2.userid and
-			history2.std = 'comment'
-			$query
-		GROUP BY user.userid
-		ORDER BY site, user.name";
+			h.type = 'toggle' and
+			h.timestamp > '$startdate' and
+			h.timestamp < '$enddate' 
+			$siteClause
+		GROUP BY h.studentid
+		ORDER BY s.site, s.lname, s.fname 
+		LIMIT $start, $limit";
 
-	$res2 = $db->get_results($sql, ARRAY_A);
+	$res = $db->get_results($sql, ARRAY_A);
 
-	foreach($res2 as $row) {
-		$id = $row['my_id'];
-		unset($row['my_id']);
-		if(isset($data[ $id]))
-			$data[$id]["comments"] = $row["comments"];
-		else
-			$data[$id] = $row;
+	return array("total" => $total, "data" => $res);
+}
+
+function getTeacherToggles($startdate, $enddate, $site='', $start = 0, $limit = 30) {
+	global $db;
+
+	$data = array();
+	$res = array();
+	if($site != '' ) {
+		$joinClause = "AND h.userid = u.userid";
+		$siteClause = "AND u.site = '$site'";
+		$tables = ", user AS u";
+	} else {
+		$joinClause = "";
+		$siteClause = "";
+		$tables = "";
 	}
 
-	return $data;
+	$sql = "SELECT 
+		COUNT(DISTINCT h.userid) AS n 
+		FROM history2 AS h $tables 
+		WHERE 
+			h.type = 'toggle' and
+			h.timestamp > '$startdate' and
+			h.timestamp < '$enddate' 
+			$joinClause 
+			$siteClause";
+
+	$total = $db->get_var($sql);
+
+	$sql = "SELECT
+		u.name, t.toggle, c.comments, CONCAT('user=', u.userid) AS filter, site  
+		FROM 
+			history2 AS h JOIN user AS u ON h.userid = u.userid  
+			LEFT JOIN (
+			SELECT 
+				userid, COUNT(history2.type) AS comments 
+			FROM 
+				history2 
+			WHERE 
+				type = 'toggle' and
+				timestamp > '$startdate' and
+				timestamp < '$enddate' and
+				std = 'comment'
+			GROUP BY 
+				userid
+			) AS c 
+		ON 
+			c.userid = h.userid LEFT JOIN (
+			SELECT 
+				userid, COUNT(history2.type) AS toggle 
+			FROM 
+				history2 
+			WHERE 
+				type = 'toggle' and
+				timestamp > '$startdate' and
+				timestamp < '$enddate' and
+				std != 'comment'
+			GROUP BY 
+				userid
+			) AS t 
+		ON 
+			t.userid = h.userid 
+		WHERE
+			h.type = 'toggle' and
+			h.timestamp > '$startdate' and
+			h.timestamp < '$enddate' 
+			$siteClause
+		GROUP BY h.userid
+		ORDER BY u.site, u.name 
+		LIMIT $start, $limit";
+
+	$res = $db->get_results($sql, ARRAY_A);
+
+	return array("total" => $total, "data" => $res);
 }
 
 ?>

@@ -3,7 +3,7 @@
 {block name="js"}
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.datepick.package/jquery.datepick.js"></script>
-<script language="JavaScript" type="text/javascript" src="js/count.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/history.js"></script>
 {/block}
 {block name="css"}
 <link rel="stylesheet" type="text/css" href="js/jquery.datepick.package/jquery.datepick.css" />
@@ -15,19 +15,19 @@
 	<form method=get action="index.php?cmd=count">
 		<input type=hidden name=cmd value=count />
 		Start:
-		<input id=start type=text name=start value='{$start}' />
-		<input id=startOutput type=hidden name=startOutput  value='{$startOutput}'>
+		<input id=startdate type=text name=startdate value='{$searchParameters.startdate}' />
+		<input id=startOutput type=hidden name=startOutput  value='{$searchParameters.startOutput}'>
 		End:
-		<input id=end type=text name=end value='{$end}'>
-		<input id=endOutput type=hidden name=endOutput  value='{$endOutput}'>
+		<input id=enddate type=text name=enddate value='{$searchParameters.enddate}'>
+		<input id=endOutput type=hidden name=endOutput  value='{$searchParameters.endOutput}'>
 		Site:
-		{html_options name="site" options=$siteMenu selected=$site}
+		{html_options name="site" options=$siteMenu selected=$searchParameters.site}
 		Type:
-		{html_options name="toggle" options=$toggleMenu selected=$toggle}
+		{html_options name="toggle" options=$toggleMenu selected=$searchParameters.toggle}
 		<input type=submit name=button value=go />
 	</form>
 	{if $isGET}
-	<p>Show data from {$start} - {$end} for {$get_site}</p>
+	<p>Show data from {$searchParameters.startdate} - {$searchParameters.enddate} for {$get_site}</p>
 	<table border=1>
 	<tr>
 		<th>Name</th>
@@ -39,15 +39,18 @@
 		<tr>
 			<td>{$person.name}</td>
 			<td>{$person.site}</td>
-			<td>
-				<a href=index.php?cmd=history&toggletype=std&{$person.filter}&startdate={$start}&startOutput={$startOutput}&enddate={$end}&endOutput={$endOutput}&site={$site}>{$person.toggle}</a>
+			<td>{if $person.toggle}
+				<a href=index.php?cmd=history&toggle=std&{$person.filter}&startdate={$startdate}&startOutput={$startOutput}&enddate={$enddate}&endOutput={$endOutput}&site={$site}>{$person.toggle}</a>
+				{else}0{/if}
 			</td>
-			<td>
-				<a href=index.php?cmd=history&toggletype=comment&{$person.filter}&startdate={$start}&startOutput={$startOutput}&enddate={$end}&endOutput={$endOutput}&site={$site}>{$person.comments}</a>
+			<td>{if $person.comments}
+				<a href=index.php?cmd=history&toggle=comment&{$person.filter}&startdate={$startdate}&startOutput={$startOutput}&enddate={$enddate}&endOutput={$endOutput}&site={$site}>{$person.comments}</a>
+				{else}0{/if}
 			</td>
 		</tr>
 	{/foreach}
 	</table>
+	{include 'comp/pagination.tpl'}
 	{/if}
 {/if}
 {/block}

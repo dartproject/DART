@@ -16,7 +16,7 @@ $limit = getValue($_GET, 'limit', 50);
 $startOutput = getValue($_GET, 'startOutput');
 $endOutput = getValue($_GET, 'endOutput');
 $site = getValue($_GET, 'site');
-$toggletype = getValue($_GET, 'toggletype');
+$toggle = getValue($_GET, 'toggle');
 $startdate = getValue($_GET, 'startdate');
 $enddate = getValue($_GET, 'enddate');
 $userMenu = NULL;
@@ -74,7 +74,7 @@ if($Display != 'none') {
 
 $title = "History";
 
-$historyObj = getEntries($start, $limit, $student, $user, $subject, $level, $site, $startOutput, $endOutput, $toggletype);
+$historyObj = getEntries($start, $limit, $student, $user, $subject, $level, $site, $startOutput, $endOutput, $toggle);
 $total = $historyObj['total'];
 $history = $historyObj['list'];
 for ($i = 0; $i < count($history); $i++) {
@@ -103,8 +103,9 @@ $smarty->assign('levelMenu',$levelMenu);
 $smarty->assign('studentMenu',$studentMenu);
 $smarty->assign('siteMenu',$siteMenu);
 $smarty->assign('typeMenu',$typeMenu);
+$smarty->assign('cmd',"history");
 
-$searchParameters = compact("start", "limit", "startOutput", "endOutput", "startdate", "enddate", "student", "user", "subject", "level", "site", "toggletype");
+$searchParameters = compact("start", "limit", "startOutput", "endOutput", "startdate", "enddate", "student", "user", "subject", "level", "site", "toggle");
 
 $smarty->assign('searchParameters',$searchParameters);
 
