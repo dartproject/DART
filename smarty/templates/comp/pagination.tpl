@@ -1,3 +1,6 @@
+{if $total eq 0}
+<p>No results</p>
+{else}
 <table>
 	<tr>
 		<td>
@@ -25,4 +28,4 @@
 		</td>
 	</tr>
 </table>
-
+{/if}

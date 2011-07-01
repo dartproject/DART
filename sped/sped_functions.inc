@@ -365,4 +365,44 @@ function getMyListSped($userID) {
 return $list2;
 }
 
+function getSpedEntries ($start=0, $limit=30, $student="", $user="", $site="", $starttime="",$endtime="", $toggletype='') {
+	global $db;
+	if($endtime != '') $endtime = "$endtime 23:59:59";
+
+	$clause2 = "history.p1 = s.studentid ";
+	$clause = "";
+	$clause = whereClause("history.userID", $clause, $user, "'");
+	$clause = whereClause("history.p1", $clause, $student, "'");
+	$clause = whereClause("history.userID", $clause, "u.userid");
+	$clause = comparisonClause("history.type", $clause, $toggletype,"=", "'");
+	$clause = comparisonClause("timestamp", $clause, $starttime,">", "'");
+	$clause = comparisonClause("timestamp", $clause, $endtime,"<=", "'");
+	$clause = whereClause("s.site", $clause, $site, "'");
+
+	if($site != '' ) {
+		$joinClause = "AND $clause2";
+		$tables = ", student AS s";
+	} else {
+		$joinClause = "";
+		$tables = "";
+	}
+	$sqlcount = "select count(*) as num from history, user AS u $tables where $clause $joinClause";
+
+	$res1 = $db->get_results($sqlcount);
+
+	$total = $res1[0]->num;
+
+	$sql = "select s.fname, s.lname, timestamp, p2 AS value, u.userid, u.name, u.type, s.site, history.p1 as studentID from (history, user AS u)
+			LEFT JOIN student AS s ON  $clause2
+			WHERE $clause";
+
+	$sql .= " order by timestamp desc LIMIT $start, $limit";
+
+	$res2 = $db->get_results($sql, ARRAY_A);
+
+	$results['list'] = $res2;
+	$results['total'] = $total;
+	return ($results);
+}
+
 ?>

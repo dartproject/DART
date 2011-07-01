@@ -1776,13 +1776,10 @@ function getLoginEntries($start=0, $limit=30, $user="", $site="") {
     $clause = whereClause("history.userid", $clause, "user.userid");
     $clause = whereClause("user.site", $clause, $site, "'");
     $sqlcount = "select count(*) as num from history, user where $clause";
-    debugPrint("SQL Total:  $sqlcount <br>");
     $res1 = $db->get_results($sqlcount);
     $total = $res1[0]->num;
-    debugPrint("SQL Total: " . $total . "<br>");
     $sql = "select *, history.type from history, user where $clause";
     $sql .= " order by timestamp desc LIMIT $start, $limit";
-    debugPrint("SQL LIMIT: " . $sql . "<br>");
     $res2 = $db->get_results($sql, ARRAY_A);
     $results['list'] = $res2;
     $results['total'] = $total;
