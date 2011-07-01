@@ -22,7 +22,7 @@ DART Home Page
         {/if}
     {/if}
 
-    {if $showSiteReminders}
+    {if $showSiteReminders|default:0}
 <font size="4" color="#cc0000">DART Site {$currentMySite} System Status &amp; Reminders</font>
 
         {if $site_important!=""}
