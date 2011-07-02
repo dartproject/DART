@@ -3252,11 +3252,12 @@ function getSubjectLevelInfo($studentsID, $subject, $level) {
         }
 
         $type = $types[$res[$i]['type']];
-		$value = isset($res[$i]['value']) ? $res[$i]['value'] : "";
 
-        $data[$s][$type][$res[$i]['std']] = array(
-            'value' => $value
-        );
+        if(isset($res[$i]['value'])) {
+            $data[$s][$type][$res[$i]['std']] = array(
+                'value' => $res[$i]['value'] 
+            );
+        }
     }
     return $data;
 }

@@ -4,16 +4,16 @@
 <script language="JavaScript" type="text/javascript" src="js/toggle.js"></script>
 {/block}
 {block name="body"}
-<form name=toggle method=post action=index.php?cmd=saveToggle>
-	<input type=hidden name=loc />
-	<input type=hidden name=listID value={$listID} />
-	<input type=hidden name=sub value={$sub} />
-	<input type=hidden name=lvl value={$lvl} />
+<form name="toggle" method="post" action=index.php?cmd=saveToggle>
+	<input type="hidden" name="loc" />
+	<input type="hidden" name="listID" value={$listID} />
+	<input type="hidden" name="sub" value={$sub} />
+	<input type="hidden" name="lvl" value={$lvl} />
 	<div align='left'>
 		<br/>
 		<font size='4'>{$stdcount} Student(s) - {$subName} {$lvl} - {$listName} Group<br/></font>
 		<font size='2'>
-			{html_options name=pullDownMenu options=$menuData selected='' onChange="handleSelection(this.value)"}
+			{html_options name="pullDownMenu" options=$menuData selected='' onChange="handleSelection(this.value)"}
 		</font>
 		<ul>
 			<li type='circle'><font size='2'><b>Note:</b> Roll over each standard number to read its short name!</font></li>
@@ -39,20 +39,20 @@
 	</div>
 	<div class="notetarget">
 	{foreach $weightedStd as $w}
-		<a href="{$w.link}" target=_blank><span class="{$w.class}">{$w.span}</span></a> ::
+		<a href="{$w.link}" target="_blank"><span class="{$w.class}">{$w.span}</span></a> ::
 	{/foreach}
 	</div>
 
 	{foreach $data as $student}
 		<a name="{$student.anchor}"></a>
-		<b><font color='#cc0000' class=big>
+		<b><font color='#cc0000' class="big">
 			<a href=index.php?cmd=toggleStudent&p1={$student.studentID}>{$student.text}</a>
 			<a href=index.php?cmd=updateSingleLevelScore&id={$student.studentID}&subject={$sub}&level={$lvl}
 			   onMouseOver="return escape('Update score for saved values. NOTE: THIS WILL RESET ANY TOGGLE/COMMENT CHANGES NOT SAVED.')">.</a>
 			- <font color=#cc0000>{$student.progress}</font>
 		</font></b><br/>
 		<b>{$subName} {$lvl} Students
-		{html_options name=pullDownMenu options=$menuData selected='' onChange="handleSelection(this.value)"}
+		{html_options name="pullDownMenu" options=$menuData selected='' onChange="handleSelection(this.value)"}
 		</b><br />
 		<b>Last Change:</b> {$student.change} -
 		<a href=index.php?cmd=history&student={$student.studentID}&subject={$sub}&lvl={$lvl}>History</a>
@@ -63,8 +63,8 @@
 		{include 'comp/toggle.tpl'}
 		{/foreach}
 		{if $totalDisplay eq 'edit'}
-			<input type=reset value=reset>
-			<input type=button onClick='handleSelection("#save_changes")' value='save all changes'>
+			<input type="reset" value="reset">
+			<input type="button" onClick='handleSelection("#save_changes")' value='save all changes'>
 		{/if}
 	</form>
 	<br/>* Placing mouse over standard number will display standards descriptions.

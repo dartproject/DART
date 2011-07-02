@@ -4,6 +4,7 @@ function changeValue(name,newval) {
 }
 
 function handleSelection(value) {
+	toggle = document.getElementsByName("toggle")[0];
 	if (value == "#save_changes") {
 		toggle.loc.value = location.href;
 		toggle.submit();
