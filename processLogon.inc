@@ -4,7 +4,8 @@
 //	 Web: http://wiki.bssd.org/index.php/DART_System
 // ==================================================================
         $user=$_POST['user'];;
-        $pwd=$_POST['password'];
+        if(isset($_POST['password']))
+            $pwd=$_POST['password'];
         $id = logon($user, $pwd);
         debugPrint("Process Login ID: $id<br>");
         if ($id != "0") {

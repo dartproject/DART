@@ -36,9 +36,11 @@
                     <div align="left">
                         <br>
                         <div align="left">
-                            <font size="4" color="#cc0000">DART Search Results</font><br>
+                            <font size="4" color="#cc0000">DART Search Results - here is what we found</font><br>
+                            <a href="index.php?cmd=search"><button style="width:300px">New Search</button></a>
                         </div>
-                        <div class="noteimportant">These are the records in the system that match your search query.  By using the links below you can select individuals to form new groups based on these criteria, add a person to an existing group you have access to, view his or her acount details, print reports, or export their data. You can resort the results by clicking the top of each column, and use the controls at the bottom of the screen to perform actions or change how many records you view on a screen.  </div>
+                        {*<div class="noteimportant">These are the records in the system that match your search query.  By using the links below you can select individuals to form new groups based on these criteria, add a person to an existing group you have access to, view his or her acount details, print reports, or export their data. You can resort the results by clicking the top of each column, and use the controls at the bottom of the screen to perform actions or change how many records you view on a screen.
+                        </div> *}
                     </div>
                 </td>
             </tr>
@@ -46,20 +48,12 @@
                 <td>
                     <div align="center">
                         <br>
-                        <font size="4" color="#cc0000">Here's What I Found... </font><br>
+                                          
                         <table border="0" cellspacing="0" cellpadding="0" width="100%">
                             <tr>
                                 <td width="100%">
                                     <table width="100%" cellpadding="1" cellspacing="1" border="0" class="listtable">
-                                        <tr>
-                                            <td colspan="9" bgcolor="#FFFFFF"><img src="http://dart.bssd.org/images/1pix.gif" width="1" height="5" border="0" alt=""></td>
-                                        </tr>
-                                        <tr bgcolor="#FFFFFF">
-                                            <td colspan="9" align="right" class="searchhead" nowrap></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="9" bgcolor="#FFFFFF"><img src="http://dart.bssd.org/images/1pix.gif" width="1" height="5" border="0" alt=""></td>
-                                        </tr>
+                                        
                                         <tr class="listhead">
                                             <td width="2%"></td>
                                             <td align="center" nowrap><a href="(EmptyReference!)">&nbsp;Name&nbsp;</a></td>
