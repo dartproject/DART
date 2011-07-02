@@ -877,7 +877,6 @@ function overallScore($sub, $lvl, $over) {
 
 function updateOverall2($studentID, $subject, $level) {
     global $db;
-    echo ("HERE");
     exit();
     $sql = "SELECT gradetype, gsid FROM gs, student as st, gs_select
 			WHERE st.site = gs_select.siteid and grade >= lowgrade and grade <= highgrade and
@@ -2050,7 +2049,6 @@ function getSearchSQL($values) {
     }
 
     $sql = "select *, (CURDATE() - bday) as age from $tables student where $wherestudent $wherelevel $wheregrades $wheresite $other 1 group by student.studentid";
-//echo $sql;
     return $sql;
 }
 
@@ -2538,7 +2536,6 @@ function UpdateStudents() {
     global $db;
 
     $sql = "select * from loadtable";
-//		  echo ("UPDATE: $sql");
     $results = $db->get_results($sql);
     $i = 0;
     foreach ($results as $res) {
@@ -2548,7 +2545,6 @@ function UpdateStudents() {
         $p4 = $res->param4;
         $sql2 = "update student set user='$p2', pwd='$p3', email='$p4'
 					 where studentid = '$p1'";
-//			echo ("$sql2<br>");
         $db->get_results($sql2);
 //			if($i++ == 10) { break; }
     }
@@ -2776,7 +2772,6 @@ function emptyAlertTable() {
 }
 
 function defaultValue($first, $second) {
-    //	echo $first . "--" . $second . "<br>";
     return($first == '' || !isset($first) ? $second : $first);
 }
 
@@ -2824,7 +2819,6 @@ function saveEntry($studentid, $enterCode, $enterSite, $date, $aid, $comments=""
 				kind = 'enter',
 				comment = '$comments'
 			";
-    //	echo $sql;
     $db->get_results($sql);
     $sql = "UPDATE student
 			SET alaskaid = $aid
@@ -2849,7 +2843,6 @@ function saveEnter($id, $enterCode, $enterSite, $date, $comments) {
     $db->get_results($sql);
     $scomments = addslashes($comments);
     $sql = "insert studentmovement set studentid = '$id', code = '$enterCode', date = '$date', comment = '$scomments', kind = 'enter', site='$enterSite'";
-    echo $sql;
     $db->get_results($sql);
 }
 
@@ -2858,7 +2851,6 @@ function saveExit($id, $exitCode, $site, $date, $comments) {
 
     $sql = "update student set status = 'Inactive' where studentid = '$id'";
     $db->get_results($sql);
-    echo "$sql";
     $scomments = addslashes($comments);
     $sql = "insert studentmovement set studentid = '$id', code = '$exitCode', date = '$date', comment = '$scomments', kind = 'exit', site='$site'";
     $db->get_results($sql);
@@ -2983,7 +2975,6 @@ function SpEdStudent($id) {
     global $db;
 
     $value = $db->get_var("SELECT entrysped > exitdate from speddata where studentid = '$id' ");
-    //	echo "--$value--";
     if ($value)
         return('Yes'); else
         return('No');
@@ -3006,7 +2997,6 @@ function cleanupInternalErrors($sid, $sub, $lvl) {
     for ($i = 0; $i < count($grades); $i++) {
         if (($subject == $grades[$i]['subject']) and ($level == $grades[$i]['level']) and ($std == $grades[$i]['std'])) {
             $sql = "UPDATE grades SET subject = 'old{$grades[$i]['subject']}' where gradeid = '{$grades[$i]['gradeid']}' ";
-            echo "$sql<br>";
             $db->get_results($sql);
         } else {
             $subject = $grades[$i]['subject'];
