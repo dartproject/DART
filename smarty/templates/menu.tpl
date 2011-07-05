@@ -299,7 +299,7 @@
                 ***************************************************************}
                 {if $showEditStandards}
                     <li>
-                        <a href="index.php?cmd=extraPacingReport">
+                        <a href="index.php?cmd=editStandards">
                             Standards
                         </a>
                     </li>
@@ -311,7 +311,7 @@
                  **************************************************************}
                  {if $showRedButton_Grd_Test}
                     <li>
-                        <a href="index.php?cmd=extraPacingReport">
+                        <a href="index.php?cmd=edittestlevel">
                             Test Levels
                         </a>
                     </li>
