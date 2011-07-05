@@ -54,6 +54,7 @@ for($i = 0; $i < count($data); $i++) {
 			$student['standards'][$std] = array("value" => NULL);
 		$student_std = $student['standards'][$std];
 
+		// i: insert; u: update
 		$type = isset($student_std['value'])? "u" : "i";
 		$student['standards'][$std]['name'] =
 					"gr".$type."_".$studentID."_".$sub."_".$lvl."_".$std;

@@ -5,10 +5,10 @@
 {/block}
 {block name="body"}
 
-<font class=big>Individual View - All Content Areas - {$studentName}</font>
+<font class="big">Individual View - All Content Areas - {$studentName}</font>
 <br /><br />
-<form name=reports method=get action=''>
-	{html_options name=reportMenu values=$reportLinks output=$reportNames
+<form name="reports" method="get" action=''>
+	{html_options name="reportMenu" values=$reportLinks output=$reportNames
 	onChange='window.location=this.value'}
 	Go To Report
 </form>
@@ -41,7 +41,7 @@ common relative weaknesses of the student.</font>
 
 <div class="notetarget">
 {foreach $weightedStd as $w}
-	<a href="{$w.link}" target=_blank><span class="{$w.class}">{$w.span}</span></a> ::
+	<a href="{$w.link}" target="_blank"><span class="{$w.class}">{$w.span}</span></a> ::
 {/foreach}
 </div>
 
@@ -73,20 +73,20 @@ common relative weaknesses of the student.</font>
 	</ul>
 </div>
 
-<form name=toggle method=post action=index.php?cmd=saveStudentToggle>
-	<input type=hidden name=studentid value={$studentID}>
-	<input type=hidden name=loc>
+<form name="toggle" method="post" action=index.php?cmd=saveStudentToggle>
+	<input type="hidden" name="studentid" value={$studentID}>
+	<input type="hidden" name="loc">
 
 {foreach $data as $sub => $subject}
 
-	<font size=2>
+	<font size="2">
 		<b>{$subject.subName}
 			<a href=index.php?cmd=updateSingleLevelScore&id={$studentID}&subject={$sub}&level={$subject.lvl} onMouseOver="return escape('Update score for saved values. NOTE: THIS WILL RESET ANY TOGGLE/COMMENT CHANGES NOT SAVED.')">.</a>
 			- <font color=#cc0000>{$subject.progress}</font>
 		</b>
 	</font>
 	<br /><a name="{$sub}"></a>
-	{html_options name=subjectMenu options=$subjectMenu
+	{html_options name="subjectMenu" options=$subjectMenu
 	selected={$subjectSelected} onChange='handleSelection(this.value)'}
 	<br />
 	<b>Student:</b>{$subject.studentText}
@@ -102,8 +102,8 @@ common relative weaknesses of the student.</font>
 	{include 'comp/toggle.tpl'}
 {/foreach}
 {if $Display eq 'edit'}
-	<input type=reset value=reset>
-	<input type=button onClick='handleSelection("#save_changes")' value='save all changes'>
+	<input type="reset" value="reset">
+	<input type="button" onClick='handleSelection("#save_changes")' value='save all changes'>
 {/if}
 </form>
 <br/>* Placing mouse over standard number will display standards descriptions.
