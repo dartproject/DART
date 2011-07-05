@@ -282,7 +282,10 @@ function getMyGlobals() {
             $currentScopeA = $res[0]->scopeA;
             $currentScopeB = $res[0]->scopeB;
             $currentMySite = $res[0]->site;
-            $currentAffiliatedID = $res[0]->affiliated;
+            if(isset($res[0]->affiliated))
+                $currentAffiliatedID = $res[0]->affiliated;
+            else
+                $currentAffiliatedID = -1;
         }
     }
 }
