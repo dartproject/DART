@@ -10,10 +10,11 @@
         debugPrint("Process Login ID: $id<br>");
         if ($id != "0") {
              setLogon ();
-             logHistory("Login", $user, $password, "", $id);
+             
+             logHistory("Login", $user, "", "", $id);
              echo("<META HTTP-EQUIV=\"Refresh\" CONTENT=\"1; URL=index.php?cmd=home\">");
         } else {
-             logHistory("Bad Login", $user, $password, "");
+             logHistory("Bad Login", $user, "", "");
              echo("<META HTTP-EQUIV=\"Refresh\" CONTENT=\"1; URL=index.php?cmd=logon\">");
         }
 ?>
