@@ -26,7 +26,7 @@
         <link rel="shortcut icon" type="image/ico" href="{$imageURL}favicon.ico" />
 
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>{block name=title}{/block}</title>
+        <title>DSD DART: {block name=title}{/block}</title>
         <script type="text/javascript"
         src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css"

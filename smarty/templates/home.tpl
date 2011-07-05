@@ -1,7 +1,7 @@
 {debug}
 {extends file="layout.tpl"}
 {block name="title"}
-DART Home Page
+Home Page
 {/block}
 
 {block name="body"}
