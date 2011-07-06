@@ -57,7 +57,7 @@ $sections["Attendance"][] = array(
 	"day" => array(
 		"label" => "Today's Rate",
 		"value" => $attendance["day"]."%",
-		"param" => "year=$year&quarter=$quarter"),
+		"param" => "cdate=$curdate"),
 	"absent" => array(
 		"label" => "Absent",
 		"value" => $attendance["absent"],
@@ -71,7 +71,7 @@ $sections["Attendance"][] = array(
 	"" => array(
 		"label" => "",
 		"value" => ""),
-	"absent" => array(
+	"late" => array(
 		"label" => "Late",
 		"value" => $attendance["late"],
 		"param" => "cdate=$curdate")
@@ -172,23 +172,6 @@ function getYearOption () {
 	global $db, $CurrentYear;
 	$years = $db->get_results("SELECT DISTINCT(year) as curr, (year+1) AS next FROM quarters WHERE year <> 0 ORDER BY year DESC");
   	return $years;	
-}
-
-function getDates($year, $quarter) {
-	global $db;
-	$sql = "select * from quarters where year = '$year' order by quarter ";
-	$res = $db->get_results($sql, ARRAY_A);
-	$startQ = $res[$quarter-1]['start'];
-	$endQ = $res[$quarter-1]['finish'];
-	$startY = $res[0]['start'];
-	$endY = $res[3]['finish'];
-	$curdate = date('Y-m-d');
-	$dates = array(
-		"quarter" => array($res[$quarter-1]['start'], $res[$quarter-1]['finish']),
-		"year" => array($res[0]['start'], $res[3]['finish']),
-		"day" => array($curdate, $curdate)
-	);
-	return $dates;
 }
 
 function getAttendanceSummary($site, $dates) {

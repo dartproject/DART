@@ -2835,7 +2835,7 @@ function MySQLDate($month, $day, $year) {
 }
 
 function PHPDate($format, $d) {
-    $ans = date($format, mktime(0, 0, 0, substr($d, 5, 2), substr($d, 7, 2), substr($d, 0, 4)));
+    $ans = date($format, mktime(0, 0, 0, substr($d, 5, 2), substr($d, 8, 2), substr($d, 0, 4)));
     return($ans);
 }
 
@@ -2888,7 +2888,6 @@ function exportText($text) {
     set_time_limit(0);
     $fnname = "export_" . logonID() . ".xls";
     $fn = $exportDIR . $fnname;
-
 
     $fp = fopen($fn, 'w');
 
@@ -2943,11 +2942,11 @@ function exportSQL($sql) {
 function getStudentIn($sql) {
     global $db;
 
-    $results = $db->get_results($sql, ARRAY_A);
-    foreach ($results as $stu) {
-        $ret .= $stu['id'] . " ";
-    }
-    return($ret);
+    $results = $db->get_col($sql);
+	$ret = NULL;
+	if($results != NULL)
+		$ret = implode(",", $results);
+    return $ret;
 }
 
 function quarterBetweenDates($date1, $date2) {
@@ -3449,6 +3448,23 @@ function getTeacherToggles($startdate, $enddate, $site='', $start = 0, $limit = 
 	$res = $db->get_results($sql, ARRAY_A);
 
 	return array("total" => $total, "data" => $res);
+}
+
+function getDates($year, $quarter) {
+	global $db;
+	$sql = "select * from quarters where year = '$year' order by quarter ";
+	$res = $db->get_results($sql, ARRAY_A);
+	$startQ = $res[$quarter-1]['start'];
+	$endQ = $res[$quarter-1]['finish'];
+	$startY = $res[0]['start'];
+	$endY = $res[3]['finish'];
+	$curdate = date('Y-m-d');
+	$dates = array(
+		"quarter" => array($res[$quarter-1]['start'], $res[$quarter-1]['finish']),
+		"year" => array($res[0]['start'], $res[3]['finish']),
+		"day" => array($curdate, $curdate)
+	);
+	return $dates;
 }
 
 ?>
