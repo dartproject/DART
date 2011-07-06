@@ -71,7 +71,7 @@
 
             <div class="col_1" >
                 <p class="black_box">My Groups</p>
-                <ul class style="max-height: 250px; overflow:auto">
+                <ul class style="max-height: 200px; overflow:auto">
                             {foreach $myGroups as $group}
                     <li><a href=index.php?cmd=showscores&p1={$group.listid}>{$group.listname}</a></li>
                             {/foreach}
@@ -79,9 +79,9 @@
 
             </div>
 
-            <div class="col_1" style="max-height: 250px; overflow:auto">
+            <div class="col_1" >
                 <p class="black_box">Private Groups {$currentMySite}</p>
-                <ul >
+                <ul style="max-height: 200px; overflow:auto">
                     {foreach $sharedGroups as $group}
                     <li><a href=index.php?cmd=showscores&p1={$group.listid}>{$group.listname}</a></li>
                     {/foreach}
@@ -89,9 +89,9 @@
 
             </div>
 
-            <div class="col_1" style="max-height: 250px; overflow:auto">
+            <div class="col_1" >
                 <p class="black_box">Private Shared</p>
-                <ul>
+                <ul style="max-height: 200px; overflow:auto">
                     <ul >
                     {foreach $privateSharedGroups as $group}
                         <li><a href=index.php?cmd=showscores&p1={$group.listid}>{$group.listname}</a></li>
