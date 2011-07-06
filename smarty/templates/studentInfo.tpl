@@ -172,7 +172,7 @@
                         <tr>
                             <td nowrap bgcolor="#ccccff" width="15%">
                                 <font size="2"><b>
-                                        <a href="javascript:editValue('NSLP_Eligible:','NSLP_Eligible','{$student.NSLPEligible}');">NSLPEligible: </a>
+                                        <a href="javascript:editValue('NSLPEligible:','NSLPEligible','{$student.NSLPEligible}');">NSLPEligible: </a>
                                     </b></font>
                             </td>
                             <td width="35%">{$student.NSLPEligible}</td>

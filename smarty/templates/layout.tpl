@@ -24,7 +24,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
     <head>
         <link rel="shortcut icon" type="image/ico" href="{$imageURL}favicon.ico" />
-
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>DSD DART: {block name=title}{/block}</title>
         <script type="text/javascript"
@@ -127,11 +126,13 @@
                 {block name=body}{/block}
                 {$body|default:""}
 
+                {literal}
                 <script type="text/javascript" >
                     $(document).ready(function(){
                         document.getElementById("content").style.display = "block";
                     });
                 </script>
+                {/literal}
             </div>
 
 {******************************************************************************
