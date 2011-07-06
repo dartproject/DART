@@ -156,6 +156,7 @@ $smarty->assign('menuData',$menuData);
 $smarty->assign('color1',$color1);
 $smarty->assign('color2',$color2);
 $smarty->assign('weightedStd',$weightedStd);
+$smarty->assign('levelName',""); // Just for using the toggle component
 
 //set flag to indicate that smarty template exists for this page
 $isSmarty=true;
