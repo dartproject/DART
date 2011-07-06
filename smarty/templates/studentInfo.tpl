@@ -17,7 +17,7 @@
 *}
 
 {extends file="layout.tpl"}
-{block name="title"}User Management{/block}
+{block name="title"}Student Information{/block}
 
 {block name=css}
 {/block}

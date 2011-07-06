@@ -1,0 +1,12 @@
+Parameters are stored in a JSON key-value format:
+
+"Key":"Value"
+
+Please remember that changing Keys is not recommended in live production and 
+should be done cautiously.
+
+********************************************************************************
+Parameters:
+********************************************************************************
+
+Ethnicity   (ethnicity.json) - ethnicity options (e.g. White (Caucasian))

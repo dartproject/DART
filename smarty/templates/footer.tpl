@@ -17,5 +17,5 @@
              height="31" width="88" align="absmiddle" border="0"></a>
 </div>
 <div style="float:right;width:300px; text-align: center">
-    DART: Standards tracking that is free like a puppy!
+    DART: An Open Source student information system (SIS) that is free like a puppy!
 </div>

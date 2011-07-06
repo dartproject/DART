@@ -17,7 +17,7 @@
 *}
 
 {extends file="layout.tpl"}
-{block name="title"}{/block}
+{block name="title"}Search Students{/block}
 
 {block name="css"}
 <link rel="stylesheet" href="js/jquery/jquery.multiselect.css" type="text/css" media="screen" >

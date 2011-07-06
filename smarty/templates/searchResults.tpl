@@ -17,7 +17,7 @@
 *}
 
 {extends file="layout.tpl"}
-{block name="title"}{/block}
+{block name="title"}Search Results{/block}
 
 {block name=css}
 {/block}
