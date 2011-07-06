@@ -2886,7 +2886,6 @@ function exportText($text) {
     $fnname = "export_" . logonID() . ".xls";
     $fn = $exportDIR . $fnname;
 
-
     $fp = fopen($fn, 'w');
 
     fwrite($fp, $text);
@@ -3446,6 +3445,23 @@ function getTeacherToggles($startdate, $enddate, $site='', $start = 0, $limit = 
 	$res = $db->get_results($sql, ARRAY_A);
 
 	return array("total" => $total, "data" => $res);
+}
+
+function getDates($year, $quarter) {
+	global $db;
+	$sql = "select * from quarters where year = '$year' order by quarter ";
+	$res = $db->get_results($sql, ARRAY_A);
+	$startQ = $res[$quarter-1]['start'];
+	$endQ = $res[$quarter-1]['finish'];
+	$startY = $res[0]['start'];
+	$endY = $res[3]['finish'];
+	$curdate = date('Y-m-d');
+	$dates = array(
+		"quarter" => array($res[$quarter-1]['start'], $res[$quarter-1]['finish']),
+		"year" => array($res[0]['start'], $res[3]['finish']),
+		"day" => array($curdate, $curdate)
+	);
+	return $dates;
 }
 
 ?>
