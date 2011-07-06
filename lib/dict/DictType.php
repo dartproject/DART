@@ -20,11 +20,16 @@
 
 /**
  * Description of DictType
- *
+ * Specifies types of dictionaries and their json file (stored in /config/dict)
+ * 
  * @author Bolek Kurowski (bkurowsk@andrew.cmu.edu)
  */
 class DictType {
-    CONST ETHNICITY = "ethnicity.json";
+    CONST ETHNICITY             = "ethnicity.json";
+    CONST TESTING_LEVELS        = "testingLevels.json";
+    CONST GENDER                = "gender.json";
+    CONST STATUS                = "status.json";
+    CONST PARENT_WITH_STUDENT   = "parentwstudent.json";
 }
 
 ?>
