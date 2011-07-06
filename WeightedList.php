@@ -13,6 +13,7 @@ class WeightedList {
 		$this->classes = $classes;
 		$this->subjects = $subjects;
 		$this->grades = $grades;
+		$this->stdcount = count($this->students);
 	}
 
 	public function getList() {
@@ -23,11 +24,14 @@ class WeightedList {
 				$sub = $s['id'];
 				$lvl = $this->classes[$studentID][$sub];
 				$sublvls = getSubjectStandards ($sub, $lvl);
+				if($sublvls == NULL) $sublvls = array(); 
 				foreach ($sublvls as $sublvl) {
 					$std = $sublvl['std'];
 					$stdw = strlen($std) == 1 ? "0" . $std : $std;
 					$key = $sub . "_" . $lvl . "_" . $std;
 					$value = $this->grades[$studentID][$sub][$lvl][$std];
+					if(!isset($wlist2[$key]))
+						$wlist2[$key] = array("count" => 0, "sum" => 0);
 					$wlist2[$key]['std'] = $std;
 					$wlist2[$key]['subject'] = $sub;
 					$wlist2[$key]['level'] = $lvl;
@@ -35,7 +39,7 @@ class WeightedList {
 					$wlist2[$key]['shortname'] = $sublvl['shortname'];
 					$wlist2[$key]['count']++; /* Not used */
 					$wlist2[$key]['sum'] += getToggleValue($value);
-					$wlist2[$key]['comp'] = $wlist2[$key]['sum']/$stdcount;
+					$wlist2[$key]['comp'] = $wlist2[$key]['sum']/$this->stdcount;
 					$wlist2[$key]['sort'] = $sub . "_" . $lvl . "_" . $stdw;
 				}
 			}

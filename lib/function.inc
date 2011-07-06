@@ -3039,22 +3039,24 @@ function getListTabs($listID) {
 				ORDER BY grp_tab.ord, grp_info.ord", ARRAY_A);
     $tabs = array();
     $tabid = NULL;
-    foreach ($rows as $r) {
-        if ($tabid != $r['tabid']) { // new tab
-            $tabid = $r['tabid'];
-            $tabs[$tabid]['name'] = $r['tabname'];
-        }
-        $tabs[$tabid]['subtabs'][$r['infoid']]['kind'] = $r['kind'];
-        $tabs[$tabid]['subtabs'][$r['infoid']]['value'] = $r['value'];
-        if ($r['kind'] == 'iframe') {
-            if ($r['width'] == '0')
-                $r['width'] = '100%';
-            if ($r['height'] == '0')
-                $r['height'] = '100%';
-            $tabs[$tabid]['subtabs'][$r['infoid']]['width'] = $r['width'];
-            $tabs[$tabid]['subtabs'][$r['infoid']]['height'] = $r['height'];
-        }
-    }
+    if($rows != NULL) {
+         foreach ($rows as $r) {
+             if ($tabid != $r['tabid']) { // new tab
+                 $tabid = $r['tabid'];
+                 $tabs[$tabid]['name'] = $r['tabname'];
+             }
+             $tabs[$tabid]['subtabs'][$r['infoid']]['kind'] = $r['kind'];
+             $tabs[$tabid]['subtabs'][$r['infoid']]['value'] = $r['value'];
+             if ($r['kind'] == 'iframe') {
+                 if ($r['width'] == '0')
+                     $r['width'] = '100%';
+                 if ($r['height'] == '0')
+                     $r['height'] = '100%';
+                 $tabs[$tabid]['subtabs'][$r['infoid']]['width'] = $r['width'];
+                 $tabs[$tabid]['subtabs'][$r['infoid']]['height'] = $r['height'];
+             }
+         }
+     }
     return $tabs;
 }
 
