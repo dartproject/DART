@@ -57,7 +57,7 @@ $sections["Attendance"][] = array(
 	"day" => array(
 		"label" => "Today's Rate",
 		"value" => $attendance["day"]."%",
-		"param" => "year=$year&quarter=$quarter"),
+		"param" => "cdate=$curdate"),
 	"absent" => array(
 		"label" => "Absent",
 		"value" => $attendance["absent"],
@@ -71,7 +71,7 @@ $sections["Attendance"][] = array(
 	"" => array(
 		"label" => "",
 		"value" => ""),
-	"absent" => array(
+	"late" => array(
 		"label" => "Late",
 		"value" => $attendance["late"],
 		"param" => "cdate=$curdate")

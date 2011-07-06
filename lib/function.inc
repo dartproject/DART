@@ -2835,7 +2835,7 @@ function MySQLDate($month, $day, $year) {
 }
 
 function PHPDate($format, $d) {
-    $ans = date($format, mktime(0, 0, 0, substr($d, 5, 2), substr($d, 7, 2), substr($d, 0, 4)));
+    $ans = date($format, mktime(0, 0, 0, substr($d, 5, 2), substr($d, 8, 2), substr($d, 0, 4)));
     return($ans);
 }
 
@@ -2942,11 +2942,11 @@ function exportSQL($sql) {
 function getStudentIn($sql) {
     global $db;
 
-    $results = $db->get_results($sql, ARRAY_A);
-    foreach ($results as $stu) {
-        $ret .= $stu['id'] . " ";
-    }
-    return($ret);
+    $results = $db->get_col($sql);
+	$ret = NULL;
+	if($results != NULL)
+		$ret = implode(",", $results);
+    return $ret;
 }
 
 function quarterBetweenDates($date1, $date2) {
