@@ -1,4 +1,5 @@
 <?php
+
 /*
  *  Copyright (C) 2011 Bolek Kurowski (bkurowsk@andrew.cmu.edu)
  *
@@ -18,9 +19,13 @@
  */
 
 
-/******************************************************************************
+require_once 'lib/dict/Dict.php';
+require_once 'lib/dict/DictType.php';
+
+
+/* * ****************************************************************************
  * Get Site list
- ******************************************************************************/
+ * **************************************************************************** */
 $availableSites = array();
 
 if (Privilege(A27) == 'site') {
@@ -36,37 +41,38 @@ if (Privilege(A27) == 'site') {
     }
 }
 
-$smarty->assign("sitelist", $availableSites);
 
-/******************************************************************************
+
+/* * ****************************************************************************
  * Get Core Subject List
- ******************************************************************************/
+ * **************************************************************************** */
 
 $coreSubjects = getCoreSubjects();
 
-$coreSubjectList=array();
-$coreSubjectList[""]="All Content Areas";
-foreach($coreSubjects as $cs){
+$coreSubjectList = array();
+$coreSubjectList[""] = "All Content Areas";
+foreach ($coreSubjects as $cs) {
     $coreSubjectList[$cs["id"]] = $cs["name"];
 }
 
+/* * ****************************************************************************
+ * Get Dictionaries
+ * **************************************************************************** */
+$suspensionList = Dict::getDict(DictType::SEARCH_SUSPENSIONS);
+$attendanceRates = Dict::getDict(DictType::SEARCH_ATTENDANCE);
+$testingLevels = Dict::getDict(DictType::TESTING_LEVELS);
+$qpi = Dict::getDict(DictType::QPIs);
+
+//var_dump($testingLevels);
+
+$smarty->assign('suspensionList', $suspensionList);
+$smarty->assign('attendanceRates', $attendanceRates);
+$smarty->assign('testingLevels', $testingLevels);
+$smarty->assign('qpis', $qpi);
+
 $smarty->assign('coreSubjectList', $coreSubjectList);
 
-
-
-/******************************************************************************
- * Suspension List
- ******************************************************************************/
-$suspensionList=array();
-
-$suspensionList[""]="Any Number";
-$suspensionList["1-3"]="1-3 Days";
-$suspensionList["4-5"]="4-5 Days";
-$suspensionList["6-9"]="6-9 Days";
-$suspensionList["10+"]="10+ Days";
-
-$smarty->assign('suspensionList',$suspensionList);
-
+$smarty->assign("sitelist", $availableSites);
 
 
 //$body = "	<div align=\"center\">
@@ -440,11 +446,10 @@ $smarty->assign('suspensionList',$suspensionList);
 //					</div>";
 
 
-$isSmarty=true;
+$isSmarty = true;
 
 include ("template.inc");
 
 $smarty->display("search.tpl");
-
 ?>      
 

@@ -106,6 +106,7 @@
                                 <td width="15%"><font size="2"><b>Status:</b></font></td>
                                 <td width="15%">
                                     <select class="singleSelect" name="status" style="width:155px">
+                                        
                                         <option value="Active" selected>Active</option>
                                         <option value="Inactive">Inactive</option>
                                         <option value="">Both</option>
@@ -159,23 +160,10 @@
                                 <td width="15%" valign = top rowspan = 4>
                                     <select class="multipleSelect" name="grade[]" multiple="multiple" size="5">
                                         <option value="" selected>All Testing Levels</option>
-                                        <option value="PK">PK</option>
-                                        <option value="K">K</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                        <option value="13">13</option>
+                                        {html_options options=$testingLevels}
                                     </select>
-                                </td>													<td width="15%"></td>
+                                </td>													
+                                <td width="15%"></td>
                                 <td width="15%"></td>
                             </tr>
                             <tr>
@@ -214,13 +202,7 @@
                                 <td width="15%"><font size="2" color="#cc0000"><b>Attendance </b></font></td>
                                 <td width="12%">
                                     <select name="attendance" class="singleSelect">
-                                        <option value="" selected>All Rates</option>
-                                        <option value="100">100%</option>
-                                        <option value="95-99">95% - 99%</option>
-                                        <option value="90-94">90% - 94%</option>
-                                        <option value="85-89">85% - 89%</option>
-                                        <option value="80-84">80%- 84%</option>
-                                        <option value="other">Other</option>
+                                        {html_options options=$attendanceRates selected=""}
                                     </select>
                                 </td>
                                 <td width="15%"></td>
@@ -352,11 +334,7 @@
                                 </td>
                                 <td width="15%"><select name="QPIs[]" multiple="multiple" class="multipleSelect">
                                         <option selected value="">All QPIs</option>
-                                        <option value="Exemplary">Exemplary</option>
-                                        <option value="Acceptable">Acceptable</option>
-                                        <option value="Disengaged">Disengaged</option>
-                                        <option value="Not Instructed">Not Instructed</option>
-                                        <option value="Deficient">Deficient</option>
+                                        {html_options options=$qpis}
                                     </select><br>
                                     <br>
                                 </td>
