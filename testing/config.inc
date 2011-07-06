@@ -6,4 +6,4 @@ $moduleleft .= (PDisplayB(B13) or PDisplayB(B14)) ? "<br><b>TESTING</b><br>
   <a href=index.php?module=testing&cmd=testingHome>Home</a><br>" : "";
   
 //$moduleleft = "-$A7Priv- SFA<br>";
-?>
+?>
