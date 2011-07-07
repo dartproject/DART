@@ -9,7 +9,9 @@ include_once 'WeightedList.php';
 $listID = $_GET['p1'];
 $listinfo = getListInfo($listID);
 $listName = $listinfo['listname'];
-$grades = getGradesList($listID);
+//TODO: WeightedList doesn't work right now, so grades is not needed 
+//$grades = getGradesList($listID); 
+$grades = array();
 $subjects = getCoreSubjects();
 $electives = getElectiveSubjects();
 $list = getStudentList($listID);
