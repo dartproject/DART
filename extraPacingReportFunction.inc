@@ -55,7 +55,7 @@ function linkSubmit(name) {
 </script>
 
 
-<link rel=\"stylesheet\" href=\"dart_pacing.css\" type=\"text/css\">
+<link rel=\"stylesheet\" href=\"css/dart_pacing.css\" type=\"text/css\">
 <div align=\"center\">
 			<p><font size=\"4\" color=\"#cc0000\" face=\"Arial,Helvetica,Geneva,Swiss,SunSans-Regular\">$sname</font>
          <font size=\"4\" face=\"Arial,Helvetica,Geneva,Swiss,SunSans-Regular\"><br>

@@ -17,7 +17,7 @@ debugPrint("Names: " . print_r($names, true));
 $body = "<html>
 <head>
 <title>Multiple Reports Page</title>
-<link rel=\"stylesheet\" href=\"dart_test.css\" type=\"text/css\">
+<link rel=\"stylesheet\" href=\"css/dart.css\" type=\"text/css\">
 <body>";
 
 foreach ($names as $stu) {

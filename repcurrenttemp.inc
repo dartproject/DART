@@ -6,7 +6,7 @@
 		<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
 		<meta name="generator" content="Adobe GoLive">
 		<title>Current Progress Report</title>
-		<link rel="stylesheet" href="https://dart.bssd.org/dart_test.css" type="text/css">
+		<link rel="stylesheet" href="css/dart.css" type="text/css">
 	</head>
 
 	<body bgcolor="#ffffff">

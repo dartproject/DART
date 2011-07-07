@@ -30,14 +30,14 @@
         src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>-->
         <script type="text/javascript"
         src="js/jquery/jquery-1.6.2.min.js"></script>
-        
+
         <link rel="stylesheet" type="text/css"
               href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css" />
-        
-        <link rel="stylesheet" href="dart_test.css" type="text/css" media="screen" />
+
+        <link rel="stylesheet" href="css/dart.css" type="text/css" media="screen" />
         {***********************************************************************
                         CSS files
-        ***********************************************************************}
+        *********************************************c**************************}
         {block name=css}{/block}
 
 
@@ -58,27 +58,27 @@
         </head>
         <body>
 
-           
-                <div id="banner">
-                    <div style="width:auto; display:inline; height: auto; float:left; margin-right: 10px ">
-                        <img align="absmiddle" src="{$imageURL}delta_logo_small.gif" alt=""/>
+
+            <div id="banner">
+                <div style="width:auto; display:inline; height: auto; float:left; margin-right: 10px ">
+                    <img align="absmiddle" src="{$imageURL}delta_logo_small.gif" alt=""/>
+                </div>
+                <div style="display:inline;height:auto; vertical-align: middle">
+                    <div style="font-size: 20pt; color:white;">
+                        Delta School District
                     </div>
-                    <div style="display:inline;height:auto; vertical-align: middle">
-                        <div style="font-size: 20pt; color:white;">
-                            Delta School District
-                        </div>
-                        <div style="color:white;">
-                            Inspired Learning
-                        </div>
+                    <div style="color:white;">
+                        Inspired Learning
                     </div>
-
-
-
                 </div>
 
-                {include file="menu.tpl"}
-                
-            
+
+
+            </div>
+
+            {include file="menu.tpl"}
+
+
             <div id="container">
                 {******************************************************************************
                         HEADER
@@ -136,21 +136,22 @@
                         </script>
                     {/literal}
                 </div>
-
-                {******************************************************************************
+            </div>
+            {******************************************************************************
                         Footer
-                *******************************************************************************}
-                <div id="footer">
-                    {include file="footer.tpl"}
-                </div>
+            *******************************************************************************}
+
+
+            <div id="footer">
+                {include file="footer.tpl"}
             </div>
 
             {******************************************************************************
                         Javascript files
             *******************************************************************************}
             <script type="text/javascript" src="js/wz_tooltip.js"></script>
-            
-            
+
+
             <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
             <script type="text/javascript" src="js/timeout.js"></script>
             <script type="text/javascript" src="js/main.js"></script>

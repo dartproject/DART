@@ -10,7 +10,7 @@
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="Refresh" content="<?php echo $expireTime ?>;URL=index.php?cmd=expired&msg=Idle time exceed. You have been automatically logged out.">
 <title><?php echo $title ?></title>
-<link rel="stylesheet" href="../dart_test.css" type="text/css">
+<link rel="stylesheet" href="../css/dart.css" type="text/css">
 <script>
 <?php echo $js ?>
 </script>

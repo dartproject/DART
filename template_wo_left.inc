@@ -1,7 +1,7 @@
 <html>
 <head>
 <title><?php echo $title ?></title>
-<link rel="stylesheet" href="dart_test.css" type="text/css">
+<link rel="stylesheet" href="css/dart.css" type="text/css">
 <script>
 <?php echo $js ?>
 </script>
