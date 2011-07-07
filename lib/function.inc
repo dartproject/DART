@@ -282,7 +282,7 @@ function getMyGlobals() {
             $currentScopeA = $res[0]->scopeA;
             $currentScopeB = $res[0]->scopeB;
             $currentMySite = $res[0]->site;
-            if(isset($res[0]->affiliated))
+            if (isset($res[0]->affiliated))
                 $currentAffiliatedID = $res[0]->affiliated;
             else
                 $currentAffiliatedID = -1;
@@ -657,13 +657,15 @@ function getListStudents($lid) {
         $sql = "select studentid from listvalues where listid = '$lid'";
     }
     $results = $db->get_results($sql, ARRAY_A);
-    
+
     $str = "";
-    foreach ($results as $row) {
-        $id = $row['studentid'];
-        $str .= $str == '' ? "" : ",";
-        $str .= "$id";
-    }
+
+    if ($results != null)
+        foreach ($results as $row) {
+            $id = $row['studentid'];
+            $str .= $str == '' ? "" : ",";
+            $str .= "$id";
+        }
     return($str);
 }
 
@@ -791,8 +793,8 @@ function getStudentList($listID) {
     global $debugLevel, $db;
 
     $studentlist = getListStudents($listID);
-    
-    
+
+
     $query = "select student.studentid, fname, lname from student
 				WHERE student.studentid in ($studentlist) order by lname ASC, fname ASC";
     $list = $db->get_results($query, ARRAY_A);
@@ -2944,9 +2946,9 @@ function getStudentIn($sql) {
     global $db;
 
     $results = $db->get_col($sql);
-	$ret = NULL;
-	if($results != NULL)
-		$ret = implode(",", $results);
+    $ret = NULL;
+    if ($results != NULL)
+        $ret = implode(",", $results);
     return $ret;
 }
 
@@ -3040,24 +3042,24 @@ function getListTabs($listID) {
 				ORDER BY grp_tab.ord, grp_info.ord", ARRAY_A);
     $tabs = array();
     $tabid = NULL;
-    if($rows != NULL) {
-         foreach ($rows as $r) {
-             if ($tabid != $r['tabid']) { // new tab
-                 $tabid = $r['tabid'];
-                 $tabs[$tabid]['name'] = $r['tabname'];
-             }
-             $tabs[$tabid]['subtabs'][$r['infoid']]['kind'] = $r['kind'];
-             $tabs[$tabid]['subtabs'][$r['infoid']]['value'] = $r['value'];
-             if ($r['kind'] == 'iframe') {
-                 if ($r['width'] == '0')
-                     $r['width'] = '100%';
-                 if ($r['height'] == '0')
-                     $r['height'] = '100%';
-                 $tabs[$tabid]['subtabs'][$r['infoid']]['width'] = $r['width'];
-                 $tabs[$tabid]['subtabs'][$r['infoid']]['height'] = $r['height'];
-             }
-         }
-     }
+    if ($rows != NULL) {
+        foreach ($rows as $r) {
+            if ($tabid != $r['tabid']) { // new tab
+                $tabid = $r['tabid'];
+                $tabs[$tabid]['name'] = $r['tabname'];
+            }
+            $tabs[$tabid]['subtabs'][$r['infoid']]['kind'] = $r['kind'];
+            $tabs[$tabid]['subtabs'][$r['infoid']]['value'] = $r['value'];
+            if ($r['kind'] == 'iframe') {
+                if ($r['width'] == '0')
+                    $r['width'] = '100%';
+                if ($r['height'] == '0')
+                    $r['height'] = '100%';
+                $tabs[$tabid]['subtabs'][$r['infoid']]['width'] = $r['width'];
+                $tabs[$tabid]['subtabs'][$r['infoid']]['height'] = $r['height'];
+            }
+        }
+    }
     return $tabs;
 }
 
@@ -3142,9 +3144,8 @@ function getSubjectLevelInfo($studentsID, $subject, $level) {
 
     $res = $db->get_results($query, ARRAY_A);
 
-	if($res == NULL) { // Student with no toggles
-
-		$query = "SELECT
+    if ($res == NULL) { // Student with no toggles
+        $query = "SELECT
 			s.studentid,
 			s.fname,
 			s.lname,
@@ -3185,11 +3186,11 @@ function getSubjectLevelInfo($studentsID, $subject, $level) {
 				s.studentid,
 				st.order";
 
-		$res = $db->get_results($query, ARRAY_A);
-	}
+        $res = $db->get_results($query, ARRAY_A);
+    }
     $n = count($res);
 
-	// Get Summary Indicators: 'comment','QPI','prog','ase'
+    // Get Summary Indicators: 'comment','QPI','prog','ase'
     $query = "SELECT
 		g.studentid, 
 		g.value, 
@@ -3258,9 +3259,9 @@ function getSubjectLevelInfo($studentsID, $subject, $level) {
 
         $type = $types[$res[$i]['type']];
 
-        if(isset($res[$i]['value'])) {
+        if (isset($res[$i]['value'])) {
             $data[$s][$type][$res[$i]['std']] = array(
-                'value' => $res[$i]['value'] 
+                'value' => $res[$i]['value']
             );
         }
     }
@@ -3288,37 +3289,36 @@ function getSubjectOverallArray($sub, $level) {
 }
 
 function getCoreLevels() {
-	global $db;
-	$query = "SELECT DISTINCT level FROM level, subjects WHERE subjects.id = level.subject AND subjects.core = 'x'  ORDER BY CAST(level AS SIGNED)";
-	$res = $db->get_results($query, ARRAY_A);
-	return $res;
+    global $db;
+    $query = "SELECT DISTINCT level FROM level, subjects WHERE subjects.id = level.subject AND subjects.core = 'x'  ORDER BY CAST(level AS SIGNED)";
+    $res = $db->get_results($query, ARRAY_A);
+    return $res;
 }
 
-function getValue ($arr, $key, $default = NULL) {
-	if(isset($arr[$key]) && $arr[$key]  != "" ) {
-		return $arr[$key];
-	}
-	else {
-		return $default;
-	}
+function getValue($arr, $key, $default = NULL) {
+    if (isset($arr[$key]) && $arr[$key] != "") {
+        return $arr[$key];
+    } else {
+        return $default;
+    }
 }
 
 function getStudentToggles($startdate, $enddate, $site='', $start = 0, $limit = 30) {
-	global $db;
+    global $db;
 
-	$data = array();
-	$res = array();
-	if($site != '' ) {
-		$joinClause = "AND h.studentid = s.studentid";
-		$siteClause = "AND s.site = '$site'";
-		$tables = ", student AS s";
-	} else {
-		$joinClause = "";
-		$siteClause = "";
-		$tables = "";
-	}
+    $data = array();
+    $res = array();
+    if ($site != '') {
+        $joinClause = "AND h.studentid = s.studentid";
+        $siteClause = "AND s.site = '$site'";
+        $tables = ", student AS s";
+    } else {
+        $joinClause = "";
+        $siteClause = "";
+        $tables = "";
+    }
 
-	$sql = "SELECT 
+    $sql = "SELECT 
 		COUNT(DISTINCT h.studentid) AS n 
 		FROM history2 AS h $tables 
 		WHERE 
@@ -3328,9 +3328,9 @@ function getStudentToggles($startdate, $enddate, $site='', $start = 0, $limit = 
 			$joinClause 
 			$siteClause";
 
-	$total = $db->get_var($sql);
+    $total = $db->get_var($sql);
 
-	$sql = "SELECT
+    $sql = "SELECT
 			CONCAT(fname, ' ', lname, ' (', s.studentid, ')') AS name, 
 			CONCAT('student=', s.studentid) AS filter, 
 			t.toggle, c.comments, site  
@@ -3374,27 +3374,27 @@ function getStudentToggles($startdate, $enddate, $site='', $start = 0, $limit = 
 		ORDER BY s.site, s.lname, s.fname 
 		LIMIT $start, $limit";
 
-	$res = $db->get_results($sql, ARRAY_A);
+    $res = $db->get_results($sql, ARRAY_A);
 
-	return array("total" => $total, "data" => $res);
+    return array("total" => $total, "data" => $res);
 }
 
 function getTeacherToggles($startdate, $enddate, $site='', $start = 0, $limit = 30) {
-	global $db;
+    global $db;
 
-	$data = array();
-	$res = array();
-	if($site != '' ) {
-		$joinClause = "AND h.userid = u.userid";
-		$siteClause = "AND u.site = '$site'";
-		$tables = ", user AS u";
-	} else {
-		$joinClause = "";
-		$siteClause = "";
-		$tables = "";
-	}
+    $data = array();
+    $res = array();
+    if ($site != '') {
+        $joinClause = "AND h.userid = u.userid";
+        $siteClause = "AND u.site = '$site'";
+        $tables = ", user AS u";
+    } else {
+        $joinClause = "";
+        $siteClause = "";
+        $tables = "";
+    }
 
-	$sql = "SELECT 
+    $sql = "SELECT 
 		COUNT(DISTINCT h.userid) AS n 
 		FROM history2 AS h $tables 
 		WHERE 
@@ -3404,9 +3404,9 @@ function getTeacherToggles($startdate, $enddate, $site='', $start = 0, $limit = 
 			$joinClause 
 			$siteClause";
 
-	$total = $db->get_var($sql);
+    $total = $db->get_var($sql);
 
-	$sql = "SELECT
+    $sql = "SELECT
 		u.name, t.toggle, c.comments, CONCAT('user=', u.userid) AS filter, site  
 		FROM 
 			history2 AS h JOIN user AS u ON h.userid = u.userid  
@@ -3448,26 +3448,26 @@ function getTeacherToggles($startdate, $enddate, $site='', $start = 0, $limit = 
 		ORDER BY u.site, u.name 
 		LIMIT $start, $limit";
 
-	$res = $db->get_results($sql, ARRAY_A);
+    $res = $db->get_results($sql, ARRAY_A);
 
-	return array("total" => $total, "data" => $res);
+    return array("total" => $total, "data" => $res);
 }
 
 function getDates($year, $quarter) {
-	global $db;
-	$sql = "select * from quarters where year = '$year' order by quarter ";
-	$res = $db->get_results($sql, ARRAY_A);
-	$startQ = $res[$quarter-1]['start'];
-	$endQ = $res[$quarter-1]['finish'];
-	$startY = $res[0]['start'];
-	$endY = $res[3]['finish'];
-	$curdate = date('Y-m-d');
-	$dates = array(
-		"quarter" => array($res[$quarter-1]['start'], $res[$quarter-1]['finish']),
-		"year" => array($res[0]['start'], $res[3]['finish']),
-		"day" => array($curdate, $curdate)
-	);
-	return $dates;
+    global $db;
+    $sql = "select * from quarters where year = '$year' order by quarter ";
+    $res = $db->get_results($sql, ARRAY_A);
+    $startQ = $res[$quarter - 1]['start'];
+    $endQ = $res[$quarter - 1]['finish'];
+    $startY = $res[0]['start'];
+    $endY = $res[3]['finish'];
+    $curdate = date('Y-m-d');
+    $dates = array(
+        "quarter" => array($res[$quarter - 1]['start'], $res[$quarter - 1]['finish']),
+        "year" => array($res[0]['start'], $res[3]['finish']),
+        "day" => array($curdate, $curdate)
+    );
+    return $dates;
 }
 
 ?>

@@ -69,7 +69,7 @@
                                             </option>
 
                                             {/foreach}
-                                            {$studentlist}
+                                           
                                         </select></div>
                                 </td>
                             </tr>
