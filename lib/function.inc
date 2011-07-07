@@ -623,7 +623,7 @@ function getSubjectOption($subject='') {
 
 function getSubjects() {
     global $db;
-    $query = "select * from subjects order by 'order'";
+    $query = "select * from subjects order by subjects.order";
     debugPrint("GetSubjects: $query");
     $subject = $db->get_results($query, ARRAY_A);
     return ($subject);
@@ -631,14 +631,14 @@ function getSubjects() {
 
 function getCoreSubjects() {
     global $db;
-    $query = "SELECT id, name FROM subjects WHERE core = 'x' ORDER BY 'order'";
+    $query = "SELECT id, name FROM subjects WHERE core = 'x' ORDER BY subjects.order";
     $subject = $db->get_results($query, ARRAY_A);
     return $subject;
 }
 
 function getElectiveSubjects() {
     global $db;
-    $query = "SELECT id, name FROM subjects WHERE core = '' ORDER BY 'order'";
+    $query = "SELECT id, name FROM subjects WHERE core = '' ORDER BY subjects.order";
     $subject = $db->get_results($query, ARRAY_A);
     return $subject;
 }
@@ -650,13 +650,18 @@ function getElectiveSubjects() {
 function getListStudents($lid) {
     global $db;
 
-    $list = $db->get_results("select 'kind', 'sql' from lists where listid = '$lid' ", ARRAY_A);
+    $list = $db->get_results("select kind, lists.sql from lists where listid = '$lid' ", ARRAY_A);
     if ($list[0]['kind'] == 'search') {
         $sql = $list[0]['sql'];
     } else {
         $sql = "select studentid from listvalues where listid = '$lid'";
     }
     $results = $db->get_results($sql, ARRAY_A);
+    
+    var_dump($list);
+    var_dump($sql);
+    var_dump($lid);
+    
     $str = "";
     foreach ($results as $row) {
         $id = $row['studentid'];
@@ -790,11 +795,11 @@ function getStudentList($listID) {
     global $debugLevel, $db;
 
     $studentlist = getListStudents($listID);
-
+    
+    
     $query = "select student.studentid, fname, lname from student
 				WHERE student.studentid in ($studentlist) order by lname ASC, fname ASC";
     $list = $db->get_results($query, ARRAY_A);
-
     return $list;
 }
 
