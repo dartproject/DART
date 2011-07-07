@@ -26,13 +26,6 @@ $(document).ready(function(){
         }
     });
 
-    //    $("select.singleSelect").multiselect({
-    //        multiple: false,
-    //        noneSelectedText: "Select an Option",
-    //        selectedList: 1,
-    //        header: false,
-    //        minWidth: 155
-    //    });
 
     $( "input:submit", "#content" ).button();
    

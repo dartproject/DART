@@ -47,7 +47,8 @@
     <div align="left">
         <font size="4" color="#cc0000">DART System Search</font><br>
     </div>
-    <form method="POST" action="index.php?cmd=searchResults" name='search'>
+    <form id="searchForm" method="POST" action="index.php?cmd=searchResults" name='search'>
+       
         <table width="100%" border="0" cellspacing="2" cellpadding="0" >
             {*<tr>
                 <td>
@@ -61,7 +62,7 @@
             <tr>
                 <td>
                     <div style="text-align: center">
-                        <input type="submit" name="cmdSearch" value="Search" style="width:300px">
+                        <input id="submitBtn" class="jq" type="submit" name="cmdSearch" value="Search" style="width:300px">
                     </div>
                 </td>
             </tr>

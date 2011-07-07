@@ -25,7 +25,7 @@ if(!isset($currentStudentID) || $currentStudentID == '') {
 	if ($Display == 'no') {
 		$type = "denied toggleStudent";
 		$notes = "page=toggleStudent;site=$site;studentID=$studentID;currentSite=$currentMySite;idEqual=$idEqual;siteEqual=$siteEqual;A2Priv=$A2Priv;A3Priv=$A3Priv";
-		echo("<META HTTP-EQUIV=\"Refresh\" CONTENT=\"1; URL=index.php?cmd=noPrivilege&type=$type&notes=$notes\"> ");
+		//echo("<META HTTP-EQUIV=\"Refresh\" CONTENT=\"1; URL=index.php?cmd=noPrivilege&type=$type&notes=$notes\"> ");
 	}
 } else {
 	$edit = false;

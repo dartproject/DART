@@ -11,13 +11,13 @@ p, body, table
 
 a img {
     border:0px;
-    margin-right: 2px;
+    padding-right: 2px;
 }
 
 #container{
 
     width:900px;
-    margin:0px 0px 0px 15px;
+    margin:100px 0px 0px 15px;
 }
 
 #container.sticky{
@@ -28,9 +28,10 @@ a img {
     padding:10px;
 
     height: auto;
-    position:relative;
+    position:fixed;
     top:0px;
     right:0px;
+    left:0px;
     /* Background color and gradients */
 
     background: #014464;
@@ -47,6 +48,10 @@ a img {
 
     /*margin-bottom:20px;*/
 
+}
+
+#banner.sticky{
+    display:none;
 }
 
 #footer{
@@ -73,6 +78,8 @@ a img {
 
 
 #menu {
+    position:fixed;
+    top:69px;
     background:#013953;
     left:0px;
     right:0px;
@@ -534,3 +541,21 @@ td.leftbottomline {
 #simplemodal-container a {color:#ddd;}
 #simplemodal-container a.modalCloseImg {background:url(images/icons/x.png) no-repeat; width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:-15px; right:-16px; cursor:pointer;}
 #simplemodal-container h3 {color:#84b8d9;}
+
+.ui-autocomplete {
+    
+    border: 2px solid #2191c0;
+    max-height: 200px;
+    position:absolute;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+    /* add padding to account for vertical scrollbar */
+    padding-right: 20px;
+}
+/* IE 6 doesn't support max-height
+	 * we use height instead, but this forces the menu to always be this tall
+	 */
+* html .ui-autocomplete {
+    height: 100px;
+}

@@ -18,15 +18,48 @@
 
 
 (function($) {
+    var availableTags = [
+			"ActionScript",
+			"AppleScript",
+			"Asp",
+			"BASIC",
+			"C",
+			"C++",
+			"Clojure",
+			"COBOL",
+			"ColdFusion",
+			"Erlang",
+			"Fortran",
+			"Groovy",
+			"Haskell",
+			"Java",
+			"JavaScript",
+			"Lisp",
+			"Perl",
+			"PHP",
+			"Python",
+			"Ruby",
+			"Scala",
+			"Scheme"
+		];
+            
+    $("#quickSearch").autocomplete({
+        source: availableTags,
+        minLength: 2,
+        appendTo: "#quickSeachDiv"
+    });
+    
     $.fn.extend({
         sticky: function() {
             var header = $(this),
             origTop = header.offset().top,
             content = header.add("#container");
+            content = header.add("#banner");
 
             $(window).scroll(function(e) {
-                if ($(this).scrollTop() > origTop) {
+                if ($(this).scrollTop() > 5) {
                     content.addClass("sticky");
+                    
                 } else if ($(this).scrollTop() < origTop) {
                     content.removeClass("sticky");
                 }
@@ -34,8 +67,8 @@
         }
     });
 
-  $(function() {
-    $('#menu').sticky();
-  });
+    $(function() {
+        $('#menu').sticky();
+    });
 }(jQuery));
 

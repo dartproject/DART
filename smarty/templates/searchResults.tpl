@@ -55,7 +55,8 @@
                                     <table width="100%" cellpadding="1" cellspacing="1" border="0" class="listtable">
                                         
                                         <tr class="listhead">
-                                            <td width="2%"></td>
+                                            <td width="2%"></td>                                            
+                                            <td></td>                          
                                             <td align="center" nowrap><a href="(EmptyReference!)">&nbsp;Name&nbsp;</a></td>
                                             <td align="center">
                                                 <div align="center">
@@ -94,10 +95,7 @@
                                                     &nbsp;Action&nbsp;
                                                 </div>
                                             </td>
-                                            {if $showEdit}
-                                            <td>Edit</td>
-                                            {/if}
-                                                {$advHeader}
+                                            
                                         </tr>
 {* results*}
                                         {foreach $students as $student}
@@ -107,6 +105,13 @@
                                         <tr bgcolor=#E5E5E5>
                                             {/if}
                                             <td align="center" nowrap><input type="checkbox" name="studentID[]" value="{$student.studentid}" class="radio"></td>
+                                            {if $showEdit}
+                                            <td style="text-align:center">
+                                                <a href="index.php?cmd=StudentEdit&id={$student.studentid}">
+                                                    <img alt="EditStudent" src="{$imageURL}icons/user_edit_16.png" title="Edit student's information" style="padding:2px; vertical-align: middle" />
+                                                </a>
+                                            </td>
+                                            {/if}
                                             <td nowrap>
                                                 <a href="index.php?cmd=toggleStudent&p1={$student.studentid}">
                                                     {$student.fname} {$student.lname}
@@ -176,14 +181,7 @@
                                                     <a href="http://www.bssd.org/enrollment_form.shtml" target=_blank>Enroll</a>
                                                      {/if}
                                                 </div>
-                                            </td>
-                                            {if $showEdit}
-                                            <td>
-                                                <a href="index.php?cmd=StudentEdit&id={$student.studentid}">
-                                                    >>Edit
-                                                </a>
-                                            </td>
-                                            {/if}
+                                            </td>                                            
                                         </tr>
                                         {/foreach}
 {* results --end*}
