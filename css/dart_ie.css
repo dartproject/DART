@@ -1,0 +1,29 @@
+/* 
+    Document   : dart_ie
+    Created on : Jul 6, 2011, 3:00:37 PM
+    Author     : Bolek Kurowski
+    Description:
+        IE hacks
+*/
+
+/* 
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+body {behavior: url("csshover3.htc");}
+
+/*
+ * SimpleModal Basic Modal Dialog
+ * http://www.ericmmartin.com/projects/simplemodal/
+ * http://code.google.com/p/simplemodal/
+ *
+ * Copyright (c) 2010 Eric Martin - http://ericmmartin.com
+ *
+ * Licensed under the MIT license:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *
+ * Revision: $Id: basic_ie.css 238 2010-03-11 05:56:57Z emartin24 $
+ *
+ */
+
+#simplemodal-container a.modalCloseImg {background:none; right:-14px; width:22px; height:26px; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='img/basic/x.png',sizingMethod='scale');}

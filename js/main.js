@@ -16,33 +16,28 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-function changeValue(name,newval) {
-    obj = document.getElementsByName("new_" + name)[0];
-    obj.value = newval;
-}
-
-function changeToggle(name,newval) {
-    obj = document.getElementsByName("ch_" + name)[0];
-    obj.value = newval;
-}
-
-function confirm_delete(prompt)
-{
-    input_box=confirm(prompt);
-    if (input_box==true)
-    { 
-        return true;
-    } else {
-        return false;
-    }
-}
 
 $(document).ready(function(){
-    $( "input:submit", "#content" ).button();
-    
-    $('#page_help').click(function (e) {
-        $('#page_modal_help').modal();
+   
+    $.fn.extend({
+        sticky: function() {
+            var header = $(this),
+            origTop = header.offset().top,
+            content = header.add("#container");
 
-        return false;
+            $(window).scroll(function(e) {
+                if ($(this).scrollTop() > origTop) {
+                    content.addClass("sticky");
+                } else if ($(this).scrollTop() < origTop) {
+                    content.removeClass("sticky");
+                }
+            });
+        }
     });
+
+    $(function() {
+        $('#menu').sticky();
+    });
+   
+   
 });

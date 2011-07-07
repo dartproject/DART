@@ -1,5 +1,5 @@
 {*
- *  Copyright (C) 2011 Bolek Kurowski (bkurowsk@andrew.cmu.edu)
+*  Copyright (C) 2011 Bolek Kurowski (bkurowsk@andrew.cmu.edu)
  *
  *  This program is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU General Public License
@@ -26,12 +26,16 @@
         <link rel="shortcut icon" type="image/ico" href="{$imageURL}favicon.ico" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>DSD DART: {block name=title}{/block}</title>
+<!--        <script type="text/javascript"
+        src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>-->
         <script type="text/javascript"
-        src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+        src="js/jquery/jquery-1.6.2.min.js"></script>
+        
         <link rel="stylesheet" type="text/css"
               href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css" />
+        
         <link rel="stylesheet" href="dart_test.css" type="text/css" media="screen" />
-       {***********************************************************************
+        {***********************************************************************
                         CSS files
         ***********************************************************************}
         {block name=css}{/block}
@@ -40,54 +44,52 @@
         {literal}
         <!--        <link rel="stylesheet" href="menu.css" type="text/css" media="screen" />-->
         <!--[if IE 6]>
-        <style>
-        body {behavior: url("csshover3.htc");}
-        #menu li .drop {background:url("img/drop.gif") no-repeat right 8px;
-</style>
+        <link type='text/css' href='css/dart_ie.css' rel='stylesheet' media='screen' />
 <![endif]-->{/literal}
 
-{block name=head}{/block}
-        {$head|default:''}
+            {block name=head}{/block}
+            {$head|default:''}
 
-        <script type="text/javascript" >
+            <script type="text/javascript" >
             
 
-            {$js|default:''}
-        </script>
-    </head>
-    <body>
+                {$js|default:''}
+            </script>
+        </head>
+        <body>
 
-        <div id="header">
-            <div id="banner" style="height:auto;">
-                <div style="width:auto; display:inline; height: auto; float:left; margin-right: 10px ">
-                    <img align="absmiddle" src="{$imageURL}delta_logo_small.gif" alt=""/>
-                </div>
-                <div style="display:inline;height:auto; vertical-align: middle">
-                    <div style="font-size: 20pt; color:white;">
-                        Delta School District
+           
+                <div id="banner">
+                    <div style="width:auto; display:inline; height: auto; float:left; margin-right: 10px ">
+                        <img align="absmiddle" src="{$imageURL}delta_logo_small.gif" alt=""/>
                     </div>
-                    <div style="color:white;">
-                        Inspired Learning
+                    <div style="display:inline;height:auto; vertical-align: middle">
+                        <div style="font-size: 20pt; color:white;">
+                            Delta School District
+                        </div>
+                        <div style="color:white;">
+                            Inspired Learning
+                        </div>
                     </div>
+
+
+
                 </div>
 
-
-
-            </div>
-
-            {include file="menu.tpl"}
-        </div>
-        <div id="container">
-{******************************************************************************
+                {include file="menu.tpl"}
+                
+            
+            <div id="container">
+                {******************************************************************************
                         HEADER
-*******************************************************************************}
-{*            <div id="banner">
+                *******************************************************************************}
+                {*            <div id="banner">
                 <a name='top_anchor'>
-<!--                    <img src="{$imageURL}frontlogo.gif" alt="" />-->
+                <!--                    <img src="{$imageURL}frontlogo.gif" alt="" />-->
                 </a>
                 <div id="top_menu" style="margin:0px;padding:0px;">
-                    <div id="countDownText" style="float:left; margin:0px; padding:0px;width:180px;"></div>
-{*                    <div>
+                <div id="countDownText" style="float:left; margin:0px; padding:0px;width:180px;"></div>
+                {*                    <div>
                         <a href="http://wiki.bssd.org/index.php/DART_System" target="_blank">
                             DART Project Info</a> ::
                         <a title="DART Support Information"
@@ -102,58 +104,61 @@
                 </div>
             </div>
 
-*}
-{******************************************************************************
+                *}
+                {******************************************************************************
                         Left Side Menu
-*******************************************************************************}
+                *******************************************************************************}
 
-            <div id="leftMenu">
-               {include file="leftSideMenu.tpl"}  
-            </div>
+                <div id="leftMenu">
+                    {include file="leftSideMenu.tpl"}  
+                </div>
 
-{******************************************************************************
+                {******************************************************************************
                         Content
-*******************************************************************************}
-            <div id="content">
-                <script type="text/javascript" >
-                    document.getElementById("content").style.display = "none";
-                </script>
+                *******************************************************************************}
+                <div id="content">
+                    <script type="text/javascript" >
+                        document.getElementById("content").style.display = "none";
+                    </script>
 
-                {if $isSmarty}
-                <img alt="smarty template" src="{$imageURL}smarty_logo.png" align="right" />
-                {/if}
+                    {if $isSmarty}
+                        <img alt="smarty template" src="{$imageURL}smarty_logo.png" align="right" />
+                    {/if}
 
-                {block name=body}{/block}
-                {$body|default:""}
+                    {block name=body}{/block}
+                    {$body|default:""}
 
-                {literal}
-                <script type="text/javascript" >
-                    $(document).ready(function(){
-                        document.getElementById("content").style.display = "block";
-                    });
-                </script>
-                {/literal}
-            </div>
+                    {literal}
+                        <script type="text/javascript" >
+                            $(document).ready(function(){
+                                document.getElementById("content").style.display = "block";
+                            });
+                        </script>
+                    {/literal}
+                </div>
 
-{******************************************************************************
+                {******************************************************************************
                         Footer
-*******************************************************************************}
-            <div id="footer">
-        {include file="footer.tpl"}
+                *******************************************************************************}
+                <div id="footer">
+                    {include file="footer.tpl"}
+                </div>
             </div>
-        </div>
 
-{******************************************************************************
+            {******************************************************************************
                         Javascript files
-*******************************************************************************}
-        <script type="text/javascript" src="js/wz_tooltip.js"></script>
-        <script type="text/javascript" src="js/timeout.js"></script>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
-        {block name=js}{/block}
-    </body>
+            *******************************************************************************}
+            <script type="text/javascript" src="js/wz_tooltip.js"></script>
+            
+            
+            <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
+            <script type="text/javascript" src="js/timeout.js"></script>
+            <script type="text/javascript" src="js/main.js"></script>
+            {block name=js}{/block}
+        </body>
 
 
-</html>
+    </html>
 
 
 

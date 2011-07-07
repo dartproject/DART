@@ -26,6 +26,12 @@ $weightedStd = $weightedList->getList();
 
 $title = "Show Scores for List";
 
+if (Privilege(A6) == 'district')
+    $showEdit = 1;
+else
+    $showEdit = 0;
+
+
 /*
 for ($y = 0; $y < count($list); $y++) {
 	$id = $list[$y]['studentid'];
@@ -95,6 +101,7 @@ $smarty->assign('color1',$color1);
 $smarty->assign('color2',$color2);
 $smarty->assign('weightedStd',$weightedStd);
 $smarty->assign('student',$student);
+$smarty->assign('showEdit',$showEdit);
 
 //set flag to indicate that smarty template exists for this page
 $isSmarty=true;

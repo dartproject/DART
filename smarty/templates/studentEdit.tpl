@@ -24,6 +24,7 @@ a{*
 
 {block name="js"}
 <script type="text/javascript" src="js/studentEdit.js"></script>
+<script type="text/javascript" src="js/jquery/jquery.simplemodal.1.4.1.min.js"></script>
 {/block}
 
 {block name="body"}
@@ -37,14 +38,20 @@ a{*
                     <br />
                     <font color="#cc0000" size="4" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">
                     Add/Edit Student </font><font class="big" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">- {$student.fname|cat:' '|cat:$student.lname} 
-                    </font><br />
+                    </font>
+                    <br />
+                    <a id="page_help" href="#" onclick="" style="font-size: 8pt; color: #006FEB">
+                        <img alt="help" src="{$imageURL}icons/help_16.png" style="vertical-align: middle"/> About this page
+                    </a>
                 </div>
 
                 <blockquote>
-                    <div align="left">
-                        <div class="noteimportant">
-                            <font size="2" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">This screen adds a new student to DART.  You begin here for students who have not ever been in DART before.  If you are looking for a former BSSD student, always <a title="Search DART" href="https://dart.bssd.org/index.php?cmd=search"><b>search</b></a> for them first in our database.<i> </i>If a student exists in the system, just activate them, and assign them to the correct school. Field names in red are required, and those in black are optional.</font></div>
-                    </div>
+                    
+                        <div id="page_modal_help" style="display:none">
+                            <font size="2" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">This screen adds a new student to DART.  You begin here for students who have not ever been in DART before.  If you are looking for a former BSSD student, always 
+                            <a title="Search DART" href="index.php?cmd=search"><b>search</b></a> for them first in our database.<i> </i>If a student exists in the system, just activate them, and assign them to the correct school. Field names in red are required, and those in black are optional.</font>
+                        </div>
+                    
                 </blockquote>
             </td>
         </tr>
@@ -392,16 +399,12 @@ a{*
                                 <td width="15%"></td>
                             </tr>
                             <tr>
-                                <td width="15%"></td>
-
-                                <td colspan="2">
+                                <td colspan="5">
                                     <div align="center">
                                         <br>
-                                        <input name="cmdSearch" value="Save &amp; Exit" type="submit"></div>
-                                </td>
-                                <td colspan="2"><br>
-                                    <input name="cmdSearch" value="Cancel" type="submit"></td>
-                                <td width="15%"></td>
+                                        <input name="cmdSearch" value="Save &amp; Exit" type="submit" style="width:240px; height:50px">
+                                        <input name="cmdSearch" value="Cancel" type="submit" style="width:120px; height:40px"></div>
+                                </td> 
                             </tr>
                         </tbody>
                     </table>
@@ -467,8 +470,8 @@ a{*
         <input type=submit name=submit value='Save Level Information'>
     </form>
 
-    {/if}
+{/if}
 
 
 
-    {/block}
+{/block}
