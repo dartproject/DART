@@ -658,10 +658,6 @@ function getListStudents($lid) {
     }
     $results = $db->get_results($sql, ARRAY_A);
     
-    var_dump($list);
-    var_dump($sql);
-    var_dump($lid);
-    
     $str = "";
     foreach ($results as $row) {
         $id = $row['studentid'];
