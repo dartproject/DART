@@ -17,9 +17,8 @@
  */
 
 
-$(document).ready(function(){
-   
-    $().fn.extend({
+(function($) {
+    $.fn.extend({
         sticky: function() {
             var header = $(this),
             origTop = header.offset().top,
@@ -35,9 +34,8 @@ $(document).ready(function(){
         }
     });
 
-    $(function() {
-        $('#menu').sticky();
-    });
-   
-   
-});
+  $(function() {
+    $('#menu').sticky();
+  });
+}(jQuery));
+
