@@ -665,7 +665,7 @@ function getListStudents($lid) {
             $id = $row['studentid'];
             $str .= $str == '' ? "" : ",";
             $str .= "$id";
-        }
+    } else $str = "(NULL)";
     return($str);
 }
 
