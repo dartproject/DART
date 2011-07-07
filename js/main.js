@@ -19,7 +19,7 @@
 
 $(document).ready(function(){
    
-    $.fn.extend({
+    $().fn.extend({
         sticky: function() {
             var header = $(this),
             origTop = header.offset().top,
