@@ -46,11 +46,9 @@ function countDown(){
 
 if (document.all||document.getElementById){
     countDown();
-    alert('WTF');
 }
 else{
     window.onload=countDown();
-    alert('WTF');
 }
 
     
