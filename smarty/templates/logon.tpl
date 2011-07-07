@@ -89,8 +89,7 @@
                                                         <table border="1" cellpadding="5" cellspacing="0" bordercolorlight="#000000" bordercolordark="#FFFFFF" bgcolor="#C0C0C0" width="100%">
                                                             <tr>
                                                                 <td bgcolor="white" width="100%" valign="middle" align="center">
-                                                                    <input type="submit" value="Login" name="B1" style="background-color:#eeeeee;font:verdana;font-weight:bold;color:#000080;font-size:10pt;" />
-                                                                    <img border="0" src="http://dart.bssd.org/images//cleardot.gif" width="1" height="1" />
+                                                                    <input type="submit" value="Login" name="B1" style="background-color:#eeeeee;font-family: verdana;font-weight:bold;color:#000080;font-size:10pt;" />
                                                                 </td>
                                                             </tr>
                                                         </table>
