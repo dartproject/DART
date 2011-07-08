@@ -385,11 +385,11 @@
 
         <div class="dropdown_1column align_right">
             <p>
-                <a href="http://wiki.bssd.org/index.php/DART_System#DART_Technical_Support">
+                <a href="http://wiki.bssd.org/index.php/DART_System#DART_Support">
                     <img align="absmiddle" src="{$imageURL}/icons/support_32.png" alt=""/>Support</a>
             </p>
             <p>
-                <a href="http://wiki.bssd.org/index.php/DART_System#DART_Contacts">
+                <a href="http://wiki.bssd.org/index.php/DART_System#Getting_Involved_with_the_DART_Project">
                     <img align="absmiddle" src="{$imageURL}/icons/contact_email_32.png" alt=""/>Contact</a>
             </p>
             <p>
