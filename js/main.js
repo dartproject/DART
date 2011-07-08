@@ -44,9 +44,8 @@
 		];
             
     $("#quickSearch").autocomplete({
-        source: availableTags,
-        minLength: 2,
-        appendTo: "#quickSeachDiv"
+        source: "quickSearch.php",
+        minLength: 2
     });
     
     $.fn.extend({

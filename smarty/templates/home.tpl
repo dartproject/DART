@@ -5,7 +5,9 @@ Home Page
 {/block}
 
 {block name="body"}
-
+    
+      
+    
     {if $showDistrictReminders}
 <font size="4" color="#cc0000">DART System Status &amp; Reminders</font>
 

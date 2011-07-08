@@ -24,6 +24,10 @@ body {behavior: url("csshover3.htc");}
  *
  * Revision: $Id: basic_ie.css 238 2010-03-11 05:56:57Z emartin24 $
  *
- */
+*/
 
 #simplemodal-container a.modalCloseImg {background:none; right:-14px; width:22px; height:26px; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='img/basic/x.png',sizingMethod='scale');}
+
+* html .ui-autocomplete {
+    height: 100px;
+}
