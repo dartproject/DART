@@ -44,8 +44,8 @@ if (Privilege(A27) == 'site') {
 }
 
 if (isset($_GET['term']))
-    $sql .= ' (student.fname LIKE "%' . $_GET['term'] . '%" OR 
-            student.lname LIKE "%' . $_GET['term'] . '%") ';
+    $sql .= ' (student.fname LIKE "' . $_GET['term'] . '%" OR 
+            student.lname LIKE "' . $_GET['term'] . '%") ';
 
 $sql .= "order by 2 asc;";
 

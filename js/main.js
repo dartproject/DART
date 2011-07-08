@@ -21,7 +21,7 @@
             
     $("#quickSearch").autocomplete({
         source: "quickSearch.php",
-        minLength: 2,
+        minLength: 3,
         select: function(event, ui) {
             $('#qs_StudentID').val(ui.item.studentID);
             $('#qs_navDIV').css('display','none');
