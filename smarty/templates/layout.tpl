@@ -30,81 +30,46 @@
         src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>-->
         <script type="text/javascript"
         src="js/jquery/jquery-1.6.2.min.js"></script>
-<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/base/jquery-ui.css" type="text/css" media="all">
-        <link rel="stylesheet" type="text/css"
-              href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css" />
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/base/jquery-ui.css" type="text/css" media="all">
+            <link rel="stylesheet" type="text/css"
+                  href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css" />
 
-        <link rel="stylesheet" href="css/dart.css" type="text/css" media="screen" />
-        {***********************************************************************
+            <link rel="stylesheet" href="css/dart.css" type="text/css" media="screen" />
+            {***********************************************************************
                         CSS files
-        *********************************************c**************************}
-        {block name=css}{/block}
+            *********************************************c**************************}
+            {block name=css}{/block}
 
 
-        {literal}
-        <!--        <link rel="stylesheet" href="menu.css" type="text/css" media="screen" />-->
-        <!--[if IE 6]>
-        <link type='text/css' href='css/dart_ie.css' rel='stylesheet' media='screen' />
-<![endif]-->{/literal}
+            {literal}
+            <!--        <link rel="stylesheet" href="menu.css" type="text/css" media="screen" />-->
+            <!--[if IE 6]>
+            <link type='text/css' href='css/dart_ie.css' rel='stylesheet' media='screen' />
+    <![endif]-->{/literal}
 
-            {block name=head}{/block}
-            {$head|default:''}
+                {block name=head}{/block}
+                {$head|default:''}
 
-            <script type="text/javascript" >
+                <script type="text/javascript" >
             
 
-                {$js|default:''}
-            </script>
+                    {$js|default:''}
+                </script>
         </head>
         <body>
+            {*******************************************************************
+                Header
+             ******************************************************************}
+            
+            {include file="header.tpl"}
 
-
-            <div id="banner">
-                <div style="width:auto; display:inline; height: auto; float:left; margin-right: 10px ">
-                    <img align="absmiddle" src="{$imageURL}delta_logo_small.gif" alt=""/>
-                </div>
-                <div style="display:inline;height:auto; vertical-align: middle">
-                    <div style="font-size: 20pt; color:white;">
-                        Delta School District
-                    </div>
-                    <div style="color:white;">
-                        Inspired Learning
-                    </div>
-                </div>
-
-
-
-            </div>
-
+            {*******************************************************************
+                Top Menu
+             *******************************************************************}
+            
             {include file="menu.tpl"}
 
-
             <div id="container">
-                {******************************************************************************
-                        HEADER
-                *******************************************************************************}
-                {*            <div id="banner">
-                <a name='top_anchor'>
-                <!--                    <img src="{$imageURL}frontlogo.gif" alt="" />-->
-                </a>
-                <div id="top_menu" style="margin:0px;padding:0px;">
-                <div id="countDownText" style="float:left; margin:0px; padding:0px;width:180px;"></div>
-                {*                    <div>
-                        <a href="http://wiki.bssd.org/index.php/DART_System" target="_blank">
-                            DART Project Info</a> ::
-                        <a title="DART Support Information"
-                           href="http://wiki.bssd.org/index.php/DART_System#DART_Technical_Support">
-                            Support</a> ::
-                        <a title="DART Contact Information"
-                           href="http://wiki.bssd.org/index.php/DART_System#DART_Contacts"
-                           target="_blank">Contact
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-
-                *}
                 {******************************************************************************
                         Left Side Menu
                 *******************************************************************************}
@@ -140,7 +105,6 @@
             {******************************************************************************
                         Footer
             *******************************************************************************}
-
 
             <div id="footer">
                 {include file="footer.tpl"}

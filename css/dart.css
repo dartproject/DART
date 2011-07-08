@@ -24,7 +24,7 @@ a img {
     margin: 28px 0px 0px 15px;
 }
 
-#banner {
+#header {
     padding:10px;
 
     height: auto;
@@ -50,7 +50,7 @@ a img {
 
 }
 
-#banner.sticky{
+#header.sticky{
     display:none;
 }
 

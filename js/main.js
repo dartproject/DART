@@ -18,30 +18,6 @@
 
 
 (function($) {
-    var availableTags = [
-			"ActionScript",
-			"AppleScript",
-			"Asp",
-			"BASIC",
-			"C",
-			"C++",
-			"Clojure",
-			"COBOL",
-			"ColdFusion",
-			"Erlang",
-			"Fortran",
-			"Groovy",
-			"Haskell",
-			"Java",
-			"JavaScript",
-			"Lisp",
-			"Perl",
-			"PHP",
-			"Python",
-			"Ruby",
-			"Scala",
-			"Scheme"
-		];
             
     $("#quickSearch").autocomplete({
         source: "quickSearch.php",
@@ -53,7 +29,7 @@
             var header = $(this),
             origTop = header.offset().top,
             content = header.add("#container");
-            content = header.add("#banner");
+            content = header.add("#header");
 
             $(window).scroll(function(e) {
                 if ($(this).scrollTop() > 5) {

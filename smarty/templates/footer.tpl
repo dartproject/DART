@@ -5,9 +5,9 @@
        href="http://wiki.bssd.org/index.php/DART_System"
        target="_blank">DART Project Info</a> ::
     <a title="DART Support Information"
-       href="http://wiki.bssd.org/index.php/DART_System#DART_Technical_Support">Support</a>
+       href="http://wiki.bssd.org/index.php/DART_System#DART_Support">Support</a>
     :: <a title="DART Contact Information"
-          href="http://wiki.bssd.org/index.php/DART_System#DART_Contacts"
+          href="http://wiki.bssd.org/index.php/DART_System#Getting_Involved_with_the_DART_Project"
           target="_blank">Contact</a>
 </div>
 <div style="float:right;width:33%;text-align: center">
