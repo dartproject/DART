@@ -21,7 +21,19 @@
             
     $("#quickSearch").autocomplete({
         source: "quickSearch.php",
-        minLength: 2
+        minLength: 2,
+        select: function(event, ui) {
+            $('#qs_StudentID').val(ui.item.studentID);
+            $('#qs_navDIV').css('display','none');
+            var studentID = $("#qs_StudentID").val();
+            $('#qs_navDIV').load('studentNavLinks.php', 'studentID='+studentID, function(response){
+                if(response){
+                    $('#qs_navDIV').css('display','');
+                }else{
+                    $('#qs_navDIV').css('display','none');
+                }
+            });
+        }
     });
     
     $.fn.extend({

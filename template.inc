@@ -11,8 +11,38 @@
 // Times arein seconds; 
 //$timeout = 3600; Set in js/timeout.js
 
+
+
+require_once("ReportPrivileges.php");
+
+
 $smarty->assign('imageURL', $imageURL);
+
+if (isset($_SESSION['currentStudentName']))
+    $smarty->assign('currentStudentName', $_SESSION['currentStudentName']);
+if (isset($_SESSION['currentStudentID'])) {
+    $smarty->assign('currentStudentID', $_SESSION['currentStudentID']);
+
+    $studentInfo = getStudentInfo($_SESSION['currentStudentID']);
+    $site = $studentInfo['site'];
+
+    $siteEqual = isset($currentMySite) && $currentMySite == $site;
+    $idEqual = true;
+
+    if (!isset($currentStudentID) || $currentStudentID == '') {
+        $edit = true;
+    } else {
+        $edit = false;
+    }
+
+    $reportPrivileges = new ReportPrivileges($idEqual, $siteEqual, $_SESSION['currentStudentID'], $edit, $CurrentYear);
+
+    $smarty->assign('studentReports', $reportPrivileges);
+}
+
 $smarty->assign('currentUserName', $currentUserName);
+
+
 
 include("leftside.inc");
 
@@ -29,6 +59,5 @@ if ($isSmarty != true) {
     $smarty->display('layout.tpl');
 }
 
-$smarty->assign('isSmarty',$isSmarty);
-
+$smarty->assign('isSmarty', $isSmarty);
 ?>

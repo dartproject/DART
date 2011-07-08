@@ -28,35 +28,38 @@ $currentPrivB = "";
 $currentScopeA = "";
 $currentScopeB = "";
 
+include_once("lib/YearQuarter.inc");
 include_once ("lib/machine.config.php");
 include_once ("lib/config.inc");
 include_once ("lib/ez_sql.php");
 include_once ("lib/function.inc");
+require_once("ReportPrivileges.php");
 
 
 getMyGlobals();
 
-$res2 = array();
-$sql = "SELECT studentid, student.fname, student.lname  FROM student WHERE ";
+$studentID = $_GET['studentID'];
 
-if (Privilege(A27) == 'site') {
-    $sql .= "site='" . $currentMySite . "' AND";
+$studentInfo = getStudentInfo($studentID);
+$site = $studentInfo['site'];
+
+$siteEqual = isset($currentMySite) && $currentMySite == $site;
+$idEqual = true;
+
+if (!isset($currentStudentID) || $currentStudentID == '') {
+    $edit = true;
+} else {
+    $edit = false;
 }
 
-if (isset($_GET['term']))
-    $sql .= ' (student.fname LIKE "%' . $_GET['term'] . '%" OR 
-            student.lname LIKE "%' . $_GET['term'] . '%") ';
-
-$sql .= "order by 2 asc;";
 
 
-$results = $db->get_results($sql, ARRAY_A);
-$res2=array();
-foreach ($results as $i) {
-    $k['value'] = $i['fname'] . ' ' . $i['lname'];
-    $k['studentID'] = $i['studentid'];
-    array_push($res2, $k);
-}
+$reportPrivileges = new ReportPrivileges($idEqual, $siteEqual, $studentID, $edit, $CurrentYear);
 
-echo json_encode($res2);
+$smarty->assign('studentReports',$reportPrivileges);
+
+$smarty->display('comp/studentNavLinks.tpl');
+
+
 ?>
+

@@ -373,12 +373,28 @@
         </li>
     {/if}
 
-    <div class="quickSearchDIV">
-        <img alt="QuickSearch" src="{$imageURL}icons/google_custom_search_16.png"
-             style="vertical-align: middle"/>
-        <input id="quickSearch" type="text" title="Quick student search"  />
-    </div>
+    <li class="menu_item">
+        <div style="float:left;">
 
+
+            <img alt="QuickSearch" src="{$imageURL}icons/google_custom_search_16.png"
+                 style="vertical-align: middle"/>
+            <input id="quickSearch" type="text" title="Quick student search"
+                   value='{$currentStudentName|default:''}'
+                   />
+            <input id="qs_StudentID" type="hidden" value='{$currentStudentID|default:''}' />
+        </div>
+        <div id="qs_navDIV" style="float:left;   {if $currentStudentID eq ''} 
+             display:none; {/if} width:50px">
+            {if $currentStudentID <>''}
+                {include file="comp/studentNavLinks.tpl"}
+            {/if}
+        </div>
+
+
+
+
+    </li>
 
     <li class="menu_right"><a href="#">
             <img align="absmiddle" src="{$imageURL}/icons/help_16.png" alt="" />DART</a>

@@ -14,6 +14,8 @@ $color1 = "#FFFFCC";
 $color2 = "WHITE";
 $width = 9;
 $dateSettings = 'm/d/y-H:i';
+$timezone = 'US/Alaska';
+
 $dartEmail = "dart@vizmotion.com";
 $modules[0] = "sfa";
 $modules[1] = "sip";

@@ -34,6 +34,8 @@ include_once ("lib/config.inc");
 include_once ("lib/ez_sql.php");
 include_once ("lib/function.inc");
 
+date_default_timezone_set($timezone);
+
 if (isset($debugflag))
     debugPrint("DebugFlag before session: $debugflag<br>");
 else
