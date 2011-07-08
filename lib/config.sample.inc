@@ -13,17 +13,22 @@ $expireTime = 1200; // in seconds
 $color1 = "#FFFFCC";
 $color2 = "WHITE";
 $width = 9;
+
+//Datetime Settings
 $dateSettings = 'm/d/y-H:i';
 $timezone = 'US/Alaska';
 
+//Email
 $dartEmail = "dart@vizmotion.com";
+
+
+//Modules
 $modules[0] = "sfa";
 $modules[1] = "sip";
 $modules[2] = "sped";
 $modules[3] = "testing";
 
 //Smarty Setup
-
 $smarty = new Smarty();
 $smarty->setTemplateDir($rootPATH . 'smarty/templates');
 $smarty->setCompileDir($rootPATH . 'smarty/templates_c');

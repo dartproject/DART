@@ -39,6 +39,7 @@ getMyGlobals();
 $res2 = array();
 $sql = "SELECT studentid, student.fname, student.lname  FROM student WHERE ";
 
+//limit search to site if user not district wide
 if (Privilege(A27) == 'site') {
     $sql .= "site='" . $currentMySite . "' AND";
 }
@@ -49,14 +50,16 @@ if (isset($_GET['term']))
 
 $sql .= "order by 2 asc;";
 
+//run query
+$query_results = $db->get_results($sql, ARRAY_A);
 
-$results = $db->get_results($sql, ARRAY_A);
-$res2=array();
+//read results
+$result=array();
 foreach ($results as $i) {
     $k['value'] = $i['fname'] . ' ' . $i['lname'];
     $k['studentID'] = $i['studentid'];
     array_push($res2, $k);
 }
 
-echo json_encode($res2);
+echo json_encode($result);
 ?>
