@@ -133,7 +133,7 @@ function computeTotal (field) {
 }
 function saveUpdateChanges(name) {
 	val = $('#'+name).val();
-	window.location = "/?cmd=gb_edit&val="+name+'{$sep}'+val+"&subcmd=save&gid=$gid";
+	window.location = "?cmd=gb_edit&val="+name+'{$sep}'+val+"&subcmd=save&gid=$gid";
 	
 //	alert(name+'_'+val);
 

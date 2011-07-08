@@ -11,11 +11,6 @@ $A17Priv = Privilege(A17);
 
 if($A11Priv == 'none') { NoPriv("denied Ad Hoc List", ""); }
 
-/*
-$head = "<SCRIPT LANGUAGE=\"JavaScript\" SRC=\"lib/multiselect.js\"></SCRIPT>
-	<SCRIPT LANGUAGE=\"JavaScript\">
-";
-*/
 $mylists = getMyList($currentUserID, 'all');
 if($p1 == "") {
   $p1 = $mylists[0]['listid'];
@@ -28,118 +23,89 @@ $listInfo = getListInfo($p1);
 $listname = $listInfo['listname'];
 $listType = $listInfo['type'];
 $listKind = $listInfo['kind'];
-debugPrint("LIST TYPE: " . $listType);
 $dates = getQuarterDates();
 $qstart = $dates['start'];
 $qend = $dates['stop'];
-$exportTypes = (PDisplay(B5) or PDisplay(B6) or PDisplay(B7) or PDisplay(B8)) ? "
-<b>Export Presets</b><br>
-<form action=index.php?cmd=handleGroup method=post>
-<input type=hidden name=cmd value=handleGroup>
-<input type=hidden name=listid value=$p1>
-<table><tr><td>
-		<input type=text name=startdate size=10 value=$qstart>
-	</td><td>
-		<input type=text name=enddate  size=10 value=$qend>
-	</td><td>
-		<select name=cmd2>" .
-			makePrivOption(B5, 'Discipline', 'Discipline Export') .
-			makePrivOption(B6, 'Attendance', 'Attendance Export') .
-			makePrivOption(B7, 'EnterExit', 'Enter Exit Export') .
-			makePrivOption(B8, 'FallOasis', 'Fall Oasis Export') .
-			makePrivOption(B8, 'SummerOasis', 'Summer Oasis Export') .
-			makePrivOption(B8, 'AllAttendance', 'All Attendance Export') .
-		"</select>
-	</td><td>
-		<input type=submit name=Go value=Go>
-	</td>
-</tr>
-</table>
-</form>":
-"";
 
-$sfaexport .= $A7Priv == 'none' ? '' : "<td>
-			<form name=\"exportlist\" id=\"exportlist\" method=\"post\" action=\"index.php?cmd=exportlist&listid=$p1&type=sfa\">
-			<input name=\"export\" type=\"submit\" id=\"export\" value=\"SFA Export\">
-			</form>
-		</td>";
+//*****************************************************************************
+// Set Export Options
+//*****************************************************************************
+$exportMenu = array();
+if (PrivilegeB(B5) == 'district') {
+    $exportMenu["Discipline"] = "Discipline Export";
+}
 
+if (PrivilegeB(B6) == 'district') {
+    $exportMenu["Attendance"] = "Attendance Export";
+}
+
+if (PrivilegeB(B7) == 'district') {
+    $exportMenu["EnterExit"] = "Enter Exit Export";
+}
+
+if (PrivilegeB(B8) == 'district') {
+    $exportMenu["FallOasis"] = "Fall Oasis Export";
+}
+
+if (PrivilegeB(B8) == 'district') {
+    $exportMenu["SummerOasis"] = "Summer Oasis Export";
+}
+
+if (PrivilegeB(B8) == 'district') {
+    $exportMenu["AllAttendance"] = "All Attendance Export";
+}
+$showExport = (PDisplay(B5) or PDisplay(B6) or PDisplay(B7) or PDisplay(B8));
+
+$showSFA = $A7Priv != 'none';
 
 function getShared($listid) {
 	global $db;
 
 	$sql = "select user.userid, name from user, listshare where listid=$listid and user.userid = listshare.userid";
-//	echo $sql;
 	$results = $db->get_results ($sql, ARRAY_A);
 	return($results);
 }
-if ($A17Priv <> 'none' and $listType == 'Private') {
-	if($_GET['attSubmit'] <> "") {
-		$am = $_GET['am'];
-		$pm = $_GET['pm'];
+
+$showAttendance = $A17Priv <> 'none' && $listType == 'Private'; 
+if ($showAttendance) {
+	if(getValue($_GET, 'attSubmit') != NULL) {
+		$am = getValue($_GET,'am',0);
+		$pm = getValue($_GET,'pm',0);
 		$db->get_results ("Update lists set am = '$am', pm = '$pm' where listid = '$p1'");
+		$listInfo['am'] = $am;
+		$listInfo['pm'] = $pm;
 		$db->get_results ("Delete from listshare where listid = '$p1'");
 		foreach ($_GET['test'] as $selection) {
-//			echo $selection , "<br>";
 			$db->get_results ("Insert into listshare set listid = '$p1', userid = $selection");
 		}
 	}
-	${"am_" . $listInfo['am']} = "checked";
-	${"pm_" . $listInfo['pm']} = "checked";
 	$selected = getShared($p1);
-	foreach ($selected as $user) {
-		$names .= $user['name'] . "<br>";
-		$show[$user['userid']] = 'selected';
-	}
 	$users = getAllUsers();
-	$select = "<select name=\"test[]\" id=\"test\" size=10 MULTIPLE>" . 
-                       GetMultipleOptionList($users, $show) . 
-                       "</select>";
-	$makeampm = "<hr><form name=\"myform\" action=\"index.php\" method=\"GET\">
-			<div align=\"center\">
-			<input type=hidden name=cmd value=editlist>
-			<input type=hidden name=p1 value=$p1>
-			<b>Attendance Period</b><br>
-			<input type=\"checkbox\" name=\"am\" value=\"1\" $am_1> am
-			<input type=\"checkbox\" name=\"pm\" value=\"1\" $pm_1> pm<br>
-			<b>Users With Access</b><br>
-			$select<br>
-			<input type=submit value=\"Make Official Attendance List\" name=attSubmit>
-			<br><br><b>Curent Users Who Share The List</b><br>
-			$names
-			</div>
-			</form>";
-
+	$userMenu = array();
+	foreach($users as $u) {
+		$userMenu[$u['id']] = $u['name'];
+	}
+	$currentUserIDs = array();
+	$currentUserNames = array();
+	if($selected != NULL) {
+		foreach ($selected as $u) {
+			$currentUserIDs[] = $u['userid'];
+			$currentUserNames[] = $u['name'];
+		}
+	}
 }
 
-
-$student = getPotentialListItems($userID, Privilege(A11));
-//$student = $student2;
-
+$membersMenu = array();
 if($list != "") {
-   $showlist = showListOptional($list);
-   $showcount = count($list);
+	foreach ($list as $s) {
+		$membersMenu[$s['studentid']] = $s['lname'].", ".$s['fname'];
+	}
+   $showcount = count($membersMenu);
 } else {
- $showlist = '<option value = "">{Empty Group}</option>';
- $showcount = 0;
+	$membersMenu[""] = "{Empty Group}";
+	$showcount = 0;
 }
-function arr_diff($a1,$a2){
-  foreach($a1 as $k=>$v){
-   unset($dv);
-   if(is_int($k)){
-     // Compare values
-     if(array_search($v,$a2)===false) $dv=$v;
-     else if(is_array($v)) $dv=arr_diff($v,$a2[$k]);
-     if($dv) $diff[]=$dv;
-   }else{
-     // Compare noninteger keys
-     if(!$a2[$k]) $dv=$v;
-     else if(is_array($v)) $dv=arr_diff($v,$a2[$k]);
-     if($dv) $diff[$k]=$dv;
-   }   
-  }
-  return $diff;
-}
+
 /********* array difference code that could be improved but works *********/
 function my_serialize(&$arr,$pos){
   $arr = serialize($arr);
@@ -148,6 +114,9 @@ function my_serialize(&$arr,$pos){
 function my_unserialize(&$arr,$pos){
   $arr = unserialize($arr);
 }
+
+$student = getPotentialListItems(NULL, Privilege(A11));
+
 if(count($list) != 0) {
      //make a copy
     $first_array_s = $student;
@@ -166,160 +135,69 @@ if(count($list) != 0) {
     $diff = $student;
 }
 /********* array difference code that could be improved but works *********/
-debugPrint("<p>Potential: " . print_r($student, TRUE) . "<br><br>");
-debugPrint("List: " . print_r($list, TRUE) . "<br><br>");
-debugPrint("Diff: " . print_r($diff, TRUE) . "<br><br>");
 
-$showpotential = showListOptional($diff);
-$potentialCount = count($diff);
-
-$body .= "<script>
-<!--
-function confirm_delete(id)
-{
-  input_box=confirm(\"Click OK to delete or Cancel\");
-  if (input_box==true)
-  { 
-     window.location=\"index.php?cmd=deletelist&p1=\" + id;
-     return false;
-  } else {
-     return false;
-  }
+$potentialMenu = array();
+foreach ($diff as $s) {
+	$potentialMenu[$s['studentid']] = $s['lname'].", ".$s['fname'];
 }
--->
- </script>";
+$potentialCount = count($potentialMenu);
 
-/*************** UPDATE LIST ******************/
-
-$updateList = "<form name=editList action=index.php method=get>
-<input type=hidden name=cmd value=editlist>
-<select name=\"p1\" onChange=\"submit()\">";
-
+$listMenu = array();
 foreach($mylists as $my) {
-  $lid = $my['listid'];
-  $lname = $my['listname'];
-  $updateList .= "<option value=\"$lid\" " . selected ($lid, $p1) . ">$lname</option>";
-  }
-$gradebooks = "<a href=?cmd=gb_edit&subcmd=newgb&listid=$p1>New Gradebook</a><br><br>GradeBooks<br>";
+	$listMenu[$my['listid']] = $my['listname'];
+}
+
+/* Gradebook */
 $gb = $db->get_results("select gid, name from gb_main where lid='$p1'", ARRAY_A);
-foreach($gb as $g) {
-	$gradebooks .= "{$g['name']}
-	<a href=?cmd=gb&gid={$g['gid']}>View</a> <a href=?cmd=gb_edit&gid={$g['gid']}>Edit</a><br>";
+$gradebooks = array();
+if($gb != NULL) {
+	foreach($gb as $g) {
+		$gradebooks[$g['gid']] = $g['name'];
+	}
 }
+/* --------- */
 
-$updateList .= "</select> Select to edit list</form> ";
-
-/*************** UPDATE LIST ******************/
-$sites = getSitesOptions($listType, $A14Priv);
-
-$typeBody = "<form style=\"margin-bottom:0;\" name=updateType method=post action=\"index.php?cmd=updateListType\">
-<input type=\"hidden\" name=\"p1\" value=$p1>
-<input type=hidden name=userid value=$currentUserID>
-<select name=p2 onChange='submit()'>
-                   <option value=\"self\"" . selected("self", $listType) . ">Mine!</option>
-                   $sites
-                   </select>&nbsp;
-                   </td>
-</form>";
-
-$body .= '<table border=0 ><tr><td colspan=4>' . $updateList . '</td></tr><tr><td>Group Name:</td><td>
-<form style="margin-bottom:0;" name="updateName" method="post" action="index.php?cmd=updateListName">
-<input type="hidden" name="p1" value="' . $p1 . '" />
-<input type="text" name="p2" maxlength=12 size=11 value="' . $listname . '" />
-<input name="save" type="submit" value="Rename Group" />
-<button type=submit onClick="return confirm_delete(' . $p1. ');">Delete Group</Button>
-</form></td><td nowrap>&nbsp;&nbsp;Type: </td><td>' . $typeBody . '</td></tr></table>';
-
-$exportMenus .= '<table border=0>
-		<tr>' . $sfaexport .
-		'<td>
-		&nbsp;&nbsp;&nbsp;
-		</td><td>
-			<form name="exportlist" id="exportlist" method="post" action="index.php?cmd=exportlist&listid=' . $p1 . '">
-			<input name="export" type="submit" id="export" value="Export">
-			</form>
-		</td><td>
-			<form name="duplist" id="duplist" method="post" action="index.php?cmd=duplist&listid=' . $p1 . '">
-			<input name="dup" type="submit" id="dup" value="Duplicate">
-			</form>
-		</td></tr>
-		<tr><td colspan=3>'
-		 . $exportTypes .'
-		 </td></tr>
-	</table>' . $makeampm ;
-	
-if($listKind != 'search') {
-$body .= '<table width=80% align="left" border="0" cellpadding="5" cellspacing="0"><tr><td>
-<form name="studentform" id="studentform" method="post" action="index.php?cmd=updatelist">
-<input type="hidden" name="previoussearch" value="0" />
-<input type="hidden" name="id" value="'. $p1 . '" />
-  <table align="center" border="0" cellpadding="5" cellspacing="0">
-    <tr>
-      <td valign="top">' .
-          $showcount . ' Current Group Members      </td>
-      <td></td>
-      <td valign="top">' .
-          $potentialCount . ' Potential Group Members      </td>
-    </tr>
-    <tr>
-      <td valign="top">
-          <select name="removeselect[]" size="20" id="removeselect" multiple
-                  onFocus="document.studentform.add.disabled=true;
-                           document.studentform.remove.disabled=false;
-                           document.studentform.addselect.selectedIndex=-1;" />';
-$body .= $showlist;
-
-$body .= '
-          </select></td>
-      <td valign="top">
-        <br />
-        <input name="add" type="submit" id="add" value="&larr;" />
-        <br />
-        <input name="remove" type="submit" id="remove" value="&rarr;" />
-        <br />
-      </td>
-      <td valign="top">
-          <select name="addselect[]" size="20" id="addselect" multiple
-                  onFocus="document.studentform.add.disabled=false;
-                           document.studentform.remove.disabled=true;
-                           document.studentform.removeselect.selectedIndex=-1;">' .
-$showpotential .
-         '</select>
-         <br />
- <!---
-         <input type="text" name="searchtext" size="30" value="" 
-                  onFocus ="document.studentform.add.disabled=true;
-                            document.studentform.remove.disabled=true;
-                            document.studentform.removeselect.selectedIndex=-1;
-                            document.studentform.addselect.selectedIndex=-1;"
-                  onkeydown = "var keyCode = event.which ? event.which : event.keyCode;
-                               if (keyCode == 13) {
-                                    document.studentform.previoussearch.value=1;
-                                    document.studentform.submit();
-                               } " />
-         <input name="search" id="search" type="submit" value="Search" />
- --->
-                </td>
-    </tr>
-  </table>
-</form>
-</td></tr>
-<tr><td align=center>' .
-$exportMenus . '
-</td></tr>
-<tr><td>'.$gradebooks.'</table>';
-
-} else {
-	$body .= "<table><tr><td> <h1>Search List</h1> </td></tr>
-<tr><td align=center>
-$exportMenus 
-</td></tr></table>
-$gradebooks
-";
+$sites = getSites($A14Priv);
+$typeMenu = array("self" => "Mine!");
+foreach($sites as $s) {
+	$typeMenu[$s['siteid']] = $s['siteid'];
 }
+$typeMenu['Private'] = "Private";
 
+$title = "Edit Group";
 
+$smarty->assign('pageTitle',$title);
+$smarty->assign('listMenu',$listMenu);
+$smarty->assign('listID',$p1);
+$smarty->assign('listname',$listname);
+$smarty->assign('listType',$listType);
+$smarty->assign('typeMenu',$typeMenu);
+$smarty->assign('type',$listType);
+$smarty->assign('currentUserID',$currentUserID);
+$smarty->assign('listKind',$listKind);
+$smarty->assign('membersMenu',$membersMenu);
+$smarty->assign('showcount',$showcount);
+$smarty->assign('potentialMenu',$potentialMenu);
+$smarty->assign('potentialCount',$potentialCount);
+$smarty->assign('exportMenu',$exportMenu);
+$smarty->assign('qstart',$qstart);
+$smarty->assign('qend',$qend);
+$smarty->assign('showExport',$showExport);
+$smarty->assign('showSFA',$showSFA);
 
+$smarty->assign('showAttendance',$showAttendance);
+if($showAttendance) {
+	$smarty->assign('am',$listInfo['am']);
+	$smarty->assign('pm',$listInfo['pm']);
+	$smarty->assign('currentUserIDs',$currentUserIDs);
+	$smarty->assign('currentUserNames',$currentUserNames);
+	$smarty->assign('userMenu',$userMenu);
+}
+$smarty->assign('gradebooks',$gradebooks);
+
+//set flag to indicate that smarty template exists for this page
+$isSmarty=true;
 include ("template.inc");
 
+$smarty->display('editlist.tpl');
 ?>
