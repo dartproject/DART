@@ -36,9 +36,9 @@ $studentChanges = getStudentChanges2($studentID);
 
 $studentName = $studentInfo['fname'] . " " . $studentInfo['lname'];
 
-$reportPrivileges = new ReportPrivileges($idEqual, $siteEqual, $studentID, $edit, $CurrentYear);
-$reportLinks = $reportPrivileges->getLinks();
-$reportNames = $reportPrivileges->getNames();
+//$reportPrivileges = new ReportPrivileges($idEqual, $siteEqual, $studentID, $edit, $CurrentYear);
+//$reportLinks = $reportPrivileges->getLinks();
+//$reportNames = $reportPrivileges->getNames();
 array_unshift($reportLinks, "");
 array_unshift($reportNames, "None");
 
@@ -199,8 +199,8 @@ for ($i = 0; $i < $wnum; $i++) {
 
 $smarty->assign('pageTitle',$title);
 $smarty->assign('studentID',$studentID);
-$smarty->assign('reportLinks',$reportLinks);
-$smarty->assign('reportNames',$reportNames);
+//$smarty->assign('reportLinks',$reportLinks);
+//$smarty->assign('reportNames',$reportNames);
 $smarty->assign('subjectMenu',$subjectMenu);
 
 $smarty->assign('Display',$Display);

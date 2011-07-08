@@ -384,9 +384,9 @@
                    />
             <input id="qs_StudentID" type="hidden" value='{$currentStudentID|default:''}' />
         </div>
-        <div id="qs_navDIV" style="float:left; vertical-align: middle;   {if $currentStudentID eq ''} 
-             display:none; {/if} width:50px">
-            {if $currentStudentID <>''}
+        <div id="qs_navDIV" style="float:left; vertical-align: middle; height:22px;   {if $currentStudentID|default:'' eq ''} 
+             display:none; {/if}">
+            {if $currentStudentID|default:'' <>''}
                 {include file="comp/studentNavLinks.tpl"}
             {/if}
         </div>

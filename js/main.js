@@ -36,6 +36,14 @@
         }
     });
     
+    
+    $('#quichSearch').change(function(){
+        if($('#quickSearch').val()==''){
+            $('#qs_StudentID').val()='';
+            $('#qs_navDIV').css('display','none');  
+        } 
+    });
+    
     $.fn.extend({
         sticky: function() {
             var header = $(this),

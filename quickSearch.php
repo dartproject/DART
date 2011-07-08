@@ -55,10 +55,10 @@ $query_results = $db->get_results($sql, ARRAY_A);
 
 //read results
 $result=array();
-foreach ($results as $i) {
+foreach ($query_results as $i) {
     $k['value'] = $i['fname'] . ' ' . $i['lname'];
     $k['studentID'] = $i['studentid'];
-    array_push($res2, $k);
+    array_push($result, $k);
 }
 
 echo json_encode($result);

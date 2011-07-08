@@ -7,11 +7,11 @@
 
 <font class="big">Individual View - All Content Areas - {$studentName}</font>
 <br /><br />
-<form name="reports" method="get" action=''>
+{*<form name="reports" method="get" action=''>
 	{html_options name="reportMenu" values=$reportLinks output=$reportNames
 	onChange='window.location=this.value'}
 	Go To Report
-</form>
+</form>*}
 <br />
 <ul>
 	<li type='circle'>
