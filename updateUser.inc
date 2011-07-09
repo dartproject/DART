@@ -53,7 +53,8 @@ debugPrint ("MSG: $msg<br>");
 
 if ($msg == "") {
       if($psswd1 != "") {
-        $passwdSet = "pwd='$psswd1',";
+      	$hash = getHash($psswd1);
+        $passwdSet = "pwd='$hash',";
       }
            
       $set = "set name='$name',
