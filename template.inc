@@ -47,7 +47,7 @@ $smarty->assign('currentUserName', $currentUserName);
 include("leftside.inc");
 
 //is smarty template doesn't exist set $body
-if ($isSmarty != true) {
+if (!isset($isSmarty) || $isSmarty != true) {
     $isSmarty = false;
     if (isset($head))
         $smarty->assign('head', $head);

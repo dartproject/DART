@@ -27,6 +27,10 @@ $id = $_GET['id'];
 $student = getStudentInfo($id);
 $student["studentScores"] = getStudentOverallScore($id);
 
+$_SESSION['currentStudentID'] = $id;
+$_SESSION['currentStudentName'] = $student['fname'] . ' ' . $student['lname'];
+
+
 $name = $student['fname']. " " . $student['lname'];
 $picture = $student['picture'] != "" ? $student['picture'] : "no_photo.jpg";
 $student["profilePic"] = $rootURL . "/images/student/" . $picture;

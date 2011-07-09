@@ -37,9 +37,9 @@
     });
     
     
-    $('#quichSearch').change(function(){
+    $('#quickSearch').change(function(){
         if($('#quickSearch').val()==''){
-            $('#qs_StudentID').val()='';
+            $('#qs_StudentID').val='';
             $('#qs_navDIV').css('display','none');  
         } 
     });
