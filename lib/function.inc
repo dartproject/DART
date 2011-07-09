@@ -316,16 +316,18 @@ function getStudentGlobals() {
 function studentlogon($user, $pwd) {
     global $db;
 
-    $query = "select studentid from student where user='$user' and pwd  = '$pwd' and status = 'Active'";
+    $query = "select studentid, pwd from student where user='$user' and status = 'Active'";
     debugPrint("Logon Query: " . $query);
     $res = $db->get_results($query);
     if ($db->num_rows == 1) {
-        $_SESSION['sessionStudentID'] = $res[0]->studentid;
-        debugPrint("LOGIN UserID: " . $_SESSION['sessionStudentID']);
-        return( $res[0]->studentid);
-    } else {
-        return (0);
+		$hash = $res[0]->pwd;
+		if(checkHash($pwd, $hash)) {
+       	    $_SESSION['sessionStudentID'] = $res[0]->studentid;
+            debugPrint("LOGIN UserID: " . $_SESSION['sessionStudentID']);
+			return( $res[0]->studentid);
+		}
     }
+    return (0);
 }
 
 function checkStudentLogon() {
@@ -353,16 +355,18 @@ function unsetStudentLogon() {
 function logon($user, $pwd) {
     global $db;
 
-    $query = "select userid from user where user='$user' and pwd  = '$pwd' and status = 'Active'";
+    $query = "select userid, pwd from user where user='$user' and status = 'Active'";
     debugPrint("Logon Query: " . $query);
     $res = $db->get_results($query);
     if ($db->num_rows == 1) {
-        $_SESSION['sessionUserID'] = $res[0]->userid;
-        debugPrint("LOGIN UserID: " . $_SESSION['sessionUserID']);
-        return( $res[0]->userid);
-    } else {
-        return (0);
-    }
+		$hash = $res[0]->pwd;
+		if(checkHash($pwd, $hash)) {
+        	$_SESSION['sessionUserID'] = $res[0]->userid;
+        	debugPrint("LOGIN UserID: " . $_SESSION['sessionUserID']);
+			return( $res[0]->userid);
+		}
+    } 
+    return (0);
 }
 
 /* * * Access to user table ** */
@@ -416,12 +420,13 @@ function admin_getUsers() {
 
 function admin_adduser($name, $user, $password) {
     global $db;
+	$hash = getHash($password);
 
-    if ($name != "" and $user != "" and pwd != "") {
+    if ($name != "" and $user != "" and $password != "") {
         $sql = "INSERT into user
 				SET name ='$name',
 				user = '$user',
-				pwd = '$password'";
+				pwd = '$hash'";
         debugPrint($sql);
         $db->get_results($sql);
         return (TRUE);
@@ -440,8 +445,9 @@ function admin_statususer($id, $status) {
 
 function admin_changepassword($id, $pwd) {
     global $db;
+	$hash = getHash($pwd);
 
-    $sql = "Update user SET pwd = '$pwd' where userid = '$id'";
+    $sql = "Update user SET pwd = '$hash' where userid = '$id'";
     debugPrint($sql);
     $db->get_results($sql);
 }
@@ -758,34 +764,41 @@ function newStudent($id, $site) {
 function getStudentPwd($username) {
     global $dartEmail, $db, $rootURL;
 
-    $sql = "select email, name, pwd from student where user='$username'";
-    debugPrint("forgetPassword: " . $sql);
-    $result = $db->get_results($sql);
-    $res = $result[0];
-    debugPrint("Here in getPWD");
-    $email = $res->email;
-    debugPrint("Email: $email");
+    $sql = "select studentid, fname, lname, email from student where user='$username'";
+	$res = $db->get_row($sql);
 
-    if ($email == "") {
-        $ans['result'] = FALSE;
-        $ans['msg'] = "The user name you gave does not exist in our system";
-    } else {
-        $name = $res->name;
-        $pwd = $res->pwd;
+	if($res == NULL) {
+		$ans['result'] = FALSE;
+		$ans['msg'] = "The user name you gave does not exist in our system.";
+	} else {
+		$email = $res->email;
+		if ($email == "") {
+			$ans['result'] = FALSE;
+			$ans['msg'] = "There is no email associated with this account. Please email us for instructions.";
+		} else {
+        $fname = $res->fname;
+        $lname = $res->lname;
+		$studentid = $res->studentid;
+		$code = getHash(time().$studentid.rand());
         $headers = "From: Dart Admin <$dartEmail>\n";
-        $to_email = "$name <$email>\n";
-        $subject = "Password for Dart";
+        $to_email = "$lname $fname <$email>";
+        $subject = "Reset Password for Dart";
 
-        $message = "Hello $name,\nYour password is $pwd.\nPlease go to $rootURL. To logon with your password.";
-        debugPrint("<br>MSG: " . $message);
+		$message = "Hello $fname,\n\n".
+				"You have requested to reset your DART password.\n".
+				"Please go to $rootURL/index.php?cmd=resetPwd&code=$code to reset your password.\n\n".
+				"DART Support";
         if (mail($to_email, $subject, $message, $headers)) {
             $ans['result'] = TRUE;
-            $ans['msg'] = "Your password will be emailed to your email address on file shortly.";
+			$ans['msg'] = "A link to reset your password will be emailed to your email address on file shortly.";
+           	$sql = "INSERT INTO pwd_recovery_students(studentid, code) VALUES ('$userid', '$code')";
+           	$db->get_results($sql);
         } else {
             $ans['result'] = FALSE;
             $ans['msg'] = "Sorry we are having temporary trouble with sending mail. Please try again later or call dart administrator.";
         }
     }
+	}
     return ($ans);
 }
 
@@ -2397,37 +2410,45 @@ function getUserNameInfo($username) {
 }
 
 function getPwd($username) {
-    global $dartEmail, $db, $rootURL;
+	global $dartEmail, $db, $rootURL;
 
-    $sql = "select * from user where user='$username'";
-    debugPrint("forgetPassword: " . $sql);
-    $result = $db->get_results($sql);
-    $res = $result[0];
-    debugPrint("Here in getPWD");
-    $email = $res->email;
-    debugPrint("Email: $email");
+	$sql = "select userid, email, name from user where user='$username'";
+	$res = $db->get_row($sql);
 
-    if ($email == "") {
-        $ans['result'] = FALSE;
-        $ans['msg'] = "The user name you gave does not exist in our system";
-    } else {
-        $name = $res->name;
-        $pwd = $res->pwd;
-        $headers = "From: Dart Admin <$dartEmail>\n";
-        $to_email = "$name <$email>\n";
-        $subject = "Password for Dart";
+	if($res == NULL) {
+		$ans['result'] = FALSE;
+		$ans['msg'] = "The user name you gave does not exist in our system.";
+	} else {
+		$email = $res->email;
+		if ($email == "") {
+			$ans['result'] = FALSE;
+			$ans['msg'] = "There is no email associated with this account. Please email us for instructions.";
+		} else {
+			$name = $res->name;
+			$userid = $res->userid;
+			$code = getHash(time().$userid.rand());
+			$headers = "From: Dart Admin <$dartEmail>\n";
+			$to_email = "$name <$email>";
+			$name = explode(",", $name);
+			$fname = $name[1];
+			$subject = "Reset Password for Dart";
 
-        $message = "Hello $name,\nYour password is $pwd.\nPlease go to $rootURL. To logon with your password.";
-        debugPrint("<br>MSG: " . $message);
-        if (mail($to_email, $subject, $message, $headers)) {
-            $ans['result'] = TRUE;
-            $ans['msg'] = "Your password will be emailed to your email address on file shortly.";
-        } else {
-            $ans['result'] = FALSE;
-            $ans['msg'] = "Sorry we are having temporary trouble with sending mail. Please try again later or call dart administrator.";
-        }
-    }
-    return ($ans);
+			$message = "Hello$fname,\n\n".
+					"You have requested to reset your DART password.\n".
+					"Please go to $rootURL/index.php?cmd=resetPwd&code=$code to reset your password.\n\n".
+					"DART Support";
+			if (mail($to_email, $subject, $message, $headers)) {
+				$ans['result'] = TRUE;
+				$ans['msg'] = "A link to reset your password will be emailed to your email address on file shortly.";
+            	$sql = "INSERT INTO pwd_recovery(userid, code) VALUES ('$userid', '$code')";
+            	$db->get_results($sql);
+			} else {
+				$ans['result'] = FALSE;
+				$ans['msg'] = "Sorry we are having temporary trouble with sending mail. Please try again later or call dart administrator.";
+			}
+		}
+	}
+	return ($ans);
 }
 
 function initialize() {
@@ -3468,6 +3489,29 @@ function getDates($year, $quarter) {
         "day" => array($curdate, $curdate)
     );
     return $dates;
+}
+
+function getHash($value) {
+	$hasher = new PasswordHash(8, FALSE);
+	$hash = $hasher->HashPassword($value);
+	return $hash;
+}
+
+function checkHash($value, $hash) {
+	$hasher = new PasswordHash(8, FALSE);
+	return $hasher->CheckPassword($value, $hash);
+}
+
+function encryptPasswords() {
+    global $db;
+    $sql = "SELECT userid, pwd FROM user_tmp ";
+	$res = $db->get_results($sql);
+	foreach($res as $user) {
+		$hash = getHash($user->pwd);
+		$id = $user->userid;
+    	$sql = "UPDATE user_tmp SET pwd = '$hash' WHERE userid='$id'";
+		$db->get_results($sql);
+	}
 }
 
 ?>
