@@ -35,6 +35,8 @@ include_once ("lib/ez_sql.php");
 include_once ("lib/function.inc");
 include_once ("lib/PasswordHash.php");
 
+date_default_timezone_set($timezone);
+
 if (isset($debugflag))
     debugPrint("DebugFlag before session: $debugflag<br>");
 else

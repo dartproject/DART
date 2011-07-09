@@ -94,16 +94,9 @@ a img {
     z-index:100;
 }
 
-#menu .menu_item{
-    position:relative;
-    float:left;
-    padding: 0px 5px 0px 5px;
-    width:200px;
-}
 
-#menu .menu_item{
 
-}
+
 
 #menu li {
     float:left;
@@ -115,6 +108,16 @@ a img {
     margin-top:0px;
     border:none;
     z-index:100;
+}
+
+#menu li.menu_item {
+    padding: 1px 10px 1px 10px;
+}
+
+#menu li.menu_item:hover {
+    border: 0px;
+    background-color: transparent;
+     padding: 1px 10px 1px 10px;
 }
 
 #menu.sticky{

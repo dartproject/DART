@@ -28,38 +28,38 @@ $currentPrivB = "";
 $currentScopeA = "";
 $currentScopeB = "";
 
+include_once("lib/YearQuarter.inc");
 include_once ("lib/machine.config.php");
 include_once ("lib/config.inc");
 include_once ("lib/ez_sql.php");
 include_once ("lib/function.inc");
+require_once("ReportPrivileges.php");
 
 
 getMyGlobals();
 
-$res2 = array();
-$sql = "SELECT studentid, student.fname, student.lname  FROM student WHERE ";
+$studentID = $_GET['studentID'];
 
-//limit search to site if user not district wide
-if (Privilege(A27) == 'site') {
-    $sql .= "site='" . $currentMySite . "' AND";
+$studentInfo = getStudentInfo($studentID);
+$site = $studentInfo['site'];
+
+$siteEqual = isset($currentMySite) && $currentMySite == $site;
+$idEqual = true;
+
+if (!isset($currentStudentID) || $currentStudentID == '') {
+    $edit = true;
+} else {
+    $edit = false;
 }
 
-if (isset($_GET['term']))
-    $sql .= ' (student.fname LIKE "' . $_GET['term'] . '%" OR 
-            student.lname LIKE "' . $_GET['term'] . '%") ';
 
-$sql .= "order by 2 asc;";
 
-//run query
-$query_results = $db->get_results($sql, ARRAY_A);
+$reportPrivileges = new ReportPrivileges($idEqual, $siteEqual, $studentID, $edit, $CurrentYear);
 
-//read results
-$result=array();
-foreach ($query_results as $i) {
-    $k['value'] = $i['fname'] . ' ' . $i['lname'];
-    $k['studentID'] = $i['studentid'];
-    array_push($result, $k);
-}
+$smarty->assign('studentReports',$reportPrivileges);
 
-echo json_encode($result);
+$smarty->display('comp/studentNavLinks.tpl');
+
+
 ?>
+

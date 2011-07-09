@@ -15,6 +15,9 @@ if ($A6Priv != 'district') {
 $id = $_GET['id'];
 
 $student = getStudentInfo($id);
+
+$_SESSION['currentStudentID'] = $id;
+$_SESSION['currentStudentName'] = $student['fname'] . ' ' . $student['lname'];
 //$showDates = " | <a href='' onClick='popUp(\"./index.php?cmd=StudentShowDates&id=$id\", 400, 400);return(false);' >Show Dates</a>";
 //$activeButton = $student['status'] == 'Active' ?
 //        "<font size=\"2\" face=\"Arial,Helvetica,Geneva,Swiss,SunSans-Regular\"><b>Student Active: </b></font> <a href='' onClick='popUp(\"./index.php?cmd=StudentExit&id=$id\", 800, 600);return(false);' >Make Inactive</a>" :

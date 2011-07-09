@@ -196,7 +196,7 @@
                         </tr>
                         <tr>
                             <td nowrap bgcolor="#ccccff" width="15%"><font size="2"><b>Suspensions Y1:</b></font></td>
-                            <td width="35%">{$student.suspensions}</td>
+                            <td width="35%">{$student.suspensions|default:''}</td>
                             <td nowrap bgcolor="#ccccff" width="15%"><font size="2"><b>
                                         <a href="javascript:editValue('Activities_Eligible:','eligibility','{$student.eligibility}');">Activities Eligible: </a>
                                     </b></font>

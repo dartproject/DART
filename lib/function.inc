@@ -268,6 +268,14 @@ function displayCurrentYearQuarter() {
 function getMyGlobals() {
     global $db, $currentUserID, $currentUserName, $currentUser, $currentPrivA, $currentPrivB, $currentScopeA, $currentScopeB, $currentMySite, $cmd, $msg;
 
+//    if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
+//        // last request was more than 30 minates ago
+//        session_destroy();   // destroy session data in storage
+//        session_unset();     // unset $_SESSION variable for the runtime
+//    }
+//    $_SESSION['LAST_ACTIVITY'] = time();
+
+
     if (isset($_SESSION['sessionUserID'])) {
         $currentUserID = $_SESSION['sessionUserID'];
         $query = "select * from user where userID='$currentUserID'";
@@ -671,7 +679,8 @@ function getListStudents($lid) {
             $id = $row['studentid'];
             $str .= $str == '' ? "" : ",";
             $str .= "$id";
-    } else $str = "(NULL)";
+        } else
+        $str = "(NULL)";
     return($str);
 }
 
