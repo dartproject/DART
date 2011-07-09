@@ -8,6 +8,10 @@
   12/9/09 rlj - fixed getSubjectInfo to also return level name
 
  */
+
+require_once('security/User.php');
+
+
 define("GRADETHRESHHOLD", 80);
 
 // <editor-fold defaultstate="collapsed" desc="Privileges">
@@ -278,6 +282,11 @@ function getMyGlobals() {
 
     if (isset($_SESSION['sessionUserID'])) {
         $currentUserID = $_SESSION['sessionUserID'];
+        
+        //$loggedInUser = new User($_SESSION['sessionUserID'], $db);
+        
+        
+        // <editor-fold defaultstate="collapsed" desc="OLD User code (still in use)">
         $query = "select * from user where userID='$currentUserID'";
         debugPrint("getGlobals SQL: " . $query . "<br>");
         $res = $db->get_results($query);
@@ -295,6 +304,7 @@ function getMyGlobals() {
             else
                 $currentAffiliatedID = -1;
         }
+        // </editor-fold>
     }
 }
 
