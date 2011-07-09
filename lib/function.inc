@@ -3513,12 +3513,12 @@ function checkHash($value, $hash) {
 
 function encryptPasswords() {
     global $db;
-    $sql = "SELECT userid, pwd FROM user_tmp ";
+    $sql = "SELECT userid, pwd FROM user";
 	$res = $db->get_results($sql);
 	foreach($res as $user) {
 		$hash = getHash($user->pwd);
 		$id = $user->userid;
-    	$sql = "UPDATE user_tmp SET pwd = '$hash' WHERE userid='$id'";
+    	$sql = "UPDATE user SET pwd = '$hash' WHERE userid='$id'";
 		$db->get_results($sql);
 	}
 }
