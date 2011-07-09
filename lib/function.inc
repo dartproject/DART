@@ -368,6 +368,7 @@ function logon($user, $pwd) {
     $res = $db->get_results($query);
     if ($db->num_rows == 1) {
 		$hash = $res[0]->pwd;
+                
 		if(checkHash($pwd, $hash)) {
         	$_SESSION['sessionUserID'] = $res[0]->userid;
         	debugPrint("LOGIN UserID: " . $_SESSION['sessionUserID']);
@@ -3508,15 +3509,24 @@ function getHash($value) {
 
 function checkHash($value, $hash) {
 	$hasher = new PasswordHash(8, FALSE);
+        
+        
 	return $hasher->CheckPassword($value, $hash);
 }
 
 function encryptPasswords() {
     global $db;
-    $sql = "SELECT userid, pwd FROM user";
+    $sql = "SELECT userid, pwd FROM user WHERE userid<>'679'";
 	$res = $db->get_results($sql);
+        
+        
 	foreach($res as $user) {
 		$hash = getHash($user->pwd);
+//                echo "DB ". $hash . "<br/>"; 
+//                echo "String ". getHash('b') . "<br/>";
+//                echo "DB: " .checkHash('b', $hash) .'<br/>';
+//                echo "String ". checkHash('b',getHash('b'));
+                
 		$id = $user->userid;
     	$sql = "UPDATE user SET pwd = '$hash' WHERE userid='$id'";
 		$db->get_results($sql);

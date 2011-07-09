@@ -117,6 +117,8 @@ if (checkLogon() == FALSE and $cmd != 'processLogon' and $cmd != 'getPwd' and $c
         }
     $cmd = 'logon';
 }
+//encryptPasswords();
+
 switch ($cmd) {
     case "districtrep":
         include("districtrep.inc");
