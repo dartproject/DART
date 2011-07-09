@@ -497,17 +497,17 @@ a img {
     font-weight: bold;
 }
 
-/*a 
+#container a 
 {
     color: #436976;
     text-decoration: none;
 }
 
-a:hover
+#container a:hover
 {
     color: #000000;
     text-decoration: underline;
-}*/
+}
 
 .big
 {
