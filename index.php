@@ -33,6 +33,7 @@ include_once ("lib/machine.config.php");
 include_once ("lib/config.inc");
 include_once ("lib/ez_sql.php");
 include_once ("lib/function.inc");
+include_once ("lib/PasswordHash.php");
 
 date_default_timezone_set($timezone);
 
@@ -109,7 +110,7 @@ debugPrint("<b>CMD=> $cmd USERID - $currentUserID SITEID - $currentMySite P1=>$p
   $cmd = 'logon';
   }
  */
-if (checkLogon() == FALSE and $cmd != 'processLogon' and $cmd != 'getPwd' and $cmd != 'expired' and $cmd != 'logon' and $cmd != 'forget') {
+if (checkLogon() == FALSE and $cmd != 'processLogon' and $cmd != 'getPwd' and $cmd != 'expired' and $cmd != 'logon' and $cmd != 'forget' && $cmd != 'resetPwd') {
     if (isset($loggedIn))
         if ($loggedIn != "") {
             $_GET['msg'] = $loggedIn;
@@ -177,6 +178,9 @@ switch ($cmd) {
         break;
     case "getPwd":
         include ("getPwd.inc");
+        break;
+    case "resetPwd":
+        include ("resetPwd.inc");
         break;
     case "sreport":
         include ("sreport.inc");

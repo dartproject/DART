@@ -751,7 +751,7 @@ function getTeacherTutorHomeroom () {
   return ($results);
 }
 
-function getDates ($year) {
+function getDatesSFA ($year) {
   global $db;
   
   $sql = "select * from sfainfo where year = '$year'"; 

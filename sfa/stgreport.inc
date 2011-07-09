@@ -203,7 +203,7 @@ $body .= "<h2>Short Term Goal</h2>$selection
               <td $w><b>4th</b></td>
             </tr>";
 
-$adt = getDates($year);
+$adt = getDatesSFA($year);
 $alignment = "align=right";
 
 function countURL ($stg, $stage, $kind, $num) {
