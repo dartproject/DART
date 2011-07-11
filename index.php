@@ -23,8 +23,11 @@ $currentPriv = "";
 $currentPrivB = "";
 $currentScopeA = "";
 $currentScopeB = "";
+$loggedInUser = null;
 
 session_start();
+
+
 
 error_reporting(1);
 error_reporting(E_ALL);
@@ -42,8 +45,12 @@ if (isset($debugflag))
 else
     debugPrint("DebugFlag before session: DebugFlag is not initiated <br>");
 
+if (isset($_SESSION['sessionUserID'])) {
+     $loggedInUser = new User($_SESSION['sessionUserID'], $db);
+}
 
 getMyGlobals();
+
 
 foreach ($modules as $module) {
     include_once("$module/config.inc");

@@ -191,12 +191,12 @@
                                     Drill Down
                                 </a>
                             </li>
-                            <li>
+                           {* <li>
                                 <a href="index.php?cmd=extraPacingReport">
-                                    {*<img align="absmiddle" src="{$imageURL}/icons/vcard_edit_16.png" alt="" />*}
+                                    <img align="absmiddle" src="{$imageURL}/icons/vcard_edit_16.png" alt="" />
                                     Pass
                                 </a>
-                            </li>
+                            </li> *}
                         {/if}
                     </ul>
                 </div>

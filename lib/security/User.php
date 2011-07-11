@@ -23,6 +23,10 @@
  *
  * @author Bolek Kurowski (bkurowsk@andrew.cmu.edu)
  */
+
+require_once('Privileges.php');
+require_once('UPrivilege.php');
+
 class User {
     private $_name;
     private $_login;
@@ -31,6 +35,7 @@ class User {
     private $_status;
     private $_email;
     private $_role;
+    private $_privileges;
     
     private $_db;
     
@@ -46,21 +51,42 @@ class User {
     public function getLogin(){
         return $this->_login;
     }
+    
+    public function getSite(){
+        return $this->_siteID;
+    }
+    
+    public function getStatus(){
+        return $this->_status;
+    }
+    
+    public function getEmail(){
+        return $this->_email;
+    }
+    
+    public function getRole(){
+        return $this->_role;
+    }
+    
+    public function getUPrivilegeSet($set){
+        return $this->_privileges[$set];
+    }
     // </editor-fold>
     
     public function __construct($UserID, $db) {
         $this->_id = $UserID;
         $this->_db = $db;
         
-        getUser($UserID);
+        $this->getUser($UserID);
         
     }
     
     private function getUser($UserID){
-        $query = 'SELECT user, name, status, site,email, type 
+        $query = 'SELECT user, name, status, site,email, type, privilegeA, privilegeB,
+            scopeA, scopeB
             FROM user WHERE userID="' . mysql_real_escape_string($UserID) . '";';
         
-        $result = $db->get_results($query);
+        $result = $this->_db->get_results($query);
         
         if(count($result)==1){
             $this->_name    = $result[0]->name;
@@ -68,16 +94,22 @@ class User {
             $this->_siteID  = $result[0]->site;
             $this->_status  = $result[0]->status;
             $this->_email   = $result[0]->email;
-            $this->_role    = $result[0]->role;
+            $this->_role    = $result[0]->type;
+            $this->_privileges['A'] = new UPrivilege($result[0]->privilegeA, $result[0]->scopeA);
+            $this->_privileges['B'] = new UPrivilege($result[0]->privilegeB, $result[0]->scopeB);
+            
         }else{
             throw new Exception('User not found.');
         }
     }
     
+    public function isAuthorized($privilege){
+        return Privileges::check($this->_privileges, $privilege);
+    }
     
-    
-    
-    
+    public function isScopeAuthorized($privilege, $pScopeType){
+        return Privileges::checkScope($this->_privileges, $pScopeType, $privilege);
+    }
 }
 
 ?>

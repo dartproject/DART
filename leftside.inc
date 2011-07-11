@@ -5,6 +5,7 @@
 //	 Web: http://wiki.bssd.org/index.php/DART_System
 // ==================================================================
 
+require_once('lib/security/Privileges.php');
 $A6Priv = Privilege(A6);
 
 //$leftside = "";
@@ -26,7 +27,8 @@ $A6Priv = Privilege(A6);
 // Transcripts *****************************************************************
 //******************************************************************************
 
-$smarty->assign('showTranscriptOptions', PDisplayB(B12));
+$smarty->assign('showTranscriptOptions', 
+        $loggedInUser->isAuthorized(Privileges::MANAGE_TRANSCRIPTS));
 //$leftside .= PDisplayB(B12) ? "<br>$but3<br><img src=\"images/10_h.gif\" alt=\"\" height=\"2\" width=\"10\" border=\"0\"><a href=\"index.php?cmd=editTranscripts\">Edit Transcripts</a><br>" : "";
 
 /* * ****** Dart Home Information ******** */
@@ -44,10 +46,8 @@ $smarty->assign('showTranscriptOptions', PDisplayB(B12));
 // Search **********************************************************************
 //******************************************************************************
 
-$smarty->assign('showSearch', PDisplay(A27));
-//if(PDisplay(A27)) {
-//  $leftside .="<img src=\"images/10_h.gif\" alt=\"\" height=\"2\" width=\"10\" border=\"0\"><a href=\"index.php?cmd=search\">Search</a><br>";
-//}
+$smarty->assign('showSearch', 
+        $loggedInUser->isAuthorized(Privileges::SEARCH_EXPORT_STUDENTS));
 
 //******************************************************************************
 // Dashboard *******************************************************************
@@ -150,7 +150,7 @@ $smarty->assign('showAdminArea',PDisplay(A30 + A29));
 // Users ***********************************************************************
 //******************************************************************************
 
-$smarty->assign('showUsers',PDisplay(A30));
+$smarty->assign('showUsers',$loggedInUser->isAuthorized(Privileges::MANAGE_USERS));
 //if (PDisplay(A30)) {
 //    $leftside .= "<img src=\"images/10_h.gif\" alt=\"\" height=\"2\" width=\"10\" border=\"0\"><a href=\"index.php?cmd=userAdmin&site=$currentMySite&status=Active\">Users $currentMySite</a><br>";
 //    $leftside .= "<img src=\"images/10_h.gif\" alt=\"\" height=\"2\" width=\"10\" border=\"0\"><a href=\"index.php?cmd=InternalError\">Internal Error</a><br>";

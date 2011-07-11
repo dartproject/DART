@@ -11,8 +11,6 @@
 // Times arein seconds; 
 //$timeout = 3600; Set in js/timeout.js
 
-
-
 require_once("ReportPrivileges.php");
 
 
