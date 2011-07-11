@@ -246,7 +246,7 @@
 ********************** Admin ***************************************************
     *******************************************************************************}
 
-    {if $showAdminArea}
+    {if $showUsers || $showHistory}
         <li><a href="#" class="drop">Admin</a>
             <div class="dropdown_4columns">
                 <div class="col_1">
