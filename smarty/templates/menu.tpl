@@ -434,14 +434,14 @@
                 </div>
             {/if}
             {if $showTesting}
-            <div class="col_1">
-                <h3> Testing</h3>
-                <ul>
-                    <li>
-                        <a href=index.php?module=testing&cmd=testingHome>Home</a>
-                    </li>
-                </ul>
-            </div>
+                <div class="col_1">
+                    <h3> Testing</h3>
+                    <ul>
+                        <li>
+                            <a href=index.php?module=testing&cmd=testingHome>Home</a>
+                        </li>
+                    </ul>
+                </div>
             {/if}
         </div>
     </li
@@ -483,6 +483,8 @@
             </p>
 
         </div>
+    </li>
+    <li id="timer" class="menu_right menu_item" style="color:white">
     </li>
     {*<!-- End Home Item -->
 

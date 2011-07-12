@@ -59,14 +59,14 @@
         <body>
             {*******************************************************************
                 Header
-             ******************************************************************}
-            
+            ******************************************************************}
+
             {include file="header.tpl"}
 
             {*******************************************************************
                 Top Menu
-             *******************************************************************}
-            
+            *******************************************************************}
+
             {include file="menu.tpl"}
 
             <div id="container">
@@ -75,13 +75,13 @@
                 *******************************************************************************}
 
                 {*<div id="leftMenu">
-                    {include file="leftSideMenu.tpl"}  
+                {include file="leftSideMenu.tpl"}  
                 </div>*}
 
                 {******************************************************************************
                         Content
                 *******************************************************************************}
-               <div id="content">
+                <div id="content">
                     <script type="text/javascript" >
                         document.getElementById("content").style.display = "none";
                     </script>
@@ -100,7 +100,7 @@
                             });
                         </script>
                     {/literal}
-               </div>
+                </div>
             </div>
             {******************************************************************************
                         Footer
@@ -111,13 +111,24 @@
             </div>
 
             {******************************************************************************
+            `   Dialog Window Markup
+            ********************************************************************************}
+            <div id="dialog" title="Your session is about to expire!" style="display:none">
+                <p>You will be logged off in <span id="dialog-countdown"></span> seconds.</p>
+                <p>Do you want to continue your session?</p>
+            </div
+
+
+            {******************************************************************************
                         Javascript files
             *******************************************************************************}
             <script type="text/javascript" src="js/wz_tooltip.js"></script>
 
 
             <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
-            <script type="text/javascript" src="js/timeout.js"></script>
+<!--            <script type="text/javascript" src="js/timeout.js"></script>-->
+            <script type="text/javascript" src="js/jquery/jquery.idletimeout.js"></script>
+            <script type="text/javascript" src="js/jquery/jquery.idletimer.js"></script>
             <script type="text/javascript" src="js/main.js"></script>
             {block name=js}{/block}
         </body>

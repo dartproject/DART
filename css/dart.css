@@ -1,7 +1,6 @@
 body, html{
     margin:0px;
     padding:0px;
-    
 }
 
 p, body, table
@@ -19,7 +18,6 @@ a img {
 
     width:1000px;
     margin:120px 0px 0px 15px;
-   
 }
 
 #container.sticky{
@@ -57,14 +55,18 @@ a img {
 }
 
 #footer{
+    color:white;
+    font-size:8pt;
+    font-weight: bold;
     clear:both;
     border-top: #006666 1px solid;
     padding-top:10px;
-    margin-bottom:60px;
     margin-top:10px;
     text-align:center;
     left:0px;
-    right:0px;  
+    right:0px;    
+    background:#013953;
+    height:40px;
 }
 
 #leftMenu{
@@ -74,10 +76,7 @@ a img {
 
 #content{
     padding:1em;
-    
 }
-
-
 
 #menu {
     position:fixed;
@@ -496,6 +495,11 @@ a img {
     font-weight: bold;
 }
 
+#footer a{
+    color:white;
+    text-decoration: none;
+}
+
 #container a 
 {
     color: #436976;
@@ -564,3 +568,5 @@ td.leftbottomline {
     /* add padding to account for vertical scrollbar */
     padding-right: 20px;
 }
+
+a.ui-dialog-titlebar-close { display:none }
