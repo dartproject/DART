@@ -74,14 +74,14 @@
                         Left Side Menu
                 *******************************************************************************}
 
-                <div id="leftMenu">
+                {*<div id="leftMenu">
                     {include file="leftSideMenu.tpl"}  
-                </div>
+                </div>*}
 
                 {******************************************************************************
                         Content
                 *******************************************************************************}
-                <div id="content">
+               <div id="content">
                     <script type="text/javascript" >
                         document.getElementById("content").style.display = "none";
                     </script>
@@ -100,7 +100,7 @@
                             });
                         </script>
                     {/literal}
-                </div>
+               </div>
             </div>
             {******************************************************************************
                         Footer

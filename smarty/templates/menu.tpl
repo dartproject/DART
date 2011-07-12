@@ -390,42 +390,59 @@
             <div class="col_1">
                 <h3>SIP</h3>
                 <ul>
+                    {if $showSIP}
+                        <li>
+                            <a href=index.php?module=sip&cmd=siphome>Home</a>
+                        </li>
+                    {/if}
                     <li>
-                        <a href="index.php?cmd=districtrep" target=_blank>District Plan</a>
+                        <a href="index.php?cmd=districtrep">District Plan</a>
                     </li>
                     <li>
-                        <a href="index.php?cmd=siterep" target=_blank>School Plan</a>
+                        <a href="index.php?cmd=siterep">School Plan</a>
                     </li>
                     <li>
-                        <a href="index.php?cmd=teacherrep" target=_blank>Teacher Plan</a>
+                        <a href="index.php?cmd=teacherrep">Teacher Plan</a>
                     </li>
 
                 </ul>
             </div>
+            {if $showSPED}
+                <div class="col_1">
+                    <h3> Special Ed</h3>
+                    <ul>
+                        <li>
+                            <a href=index.php?module=sped&cmd=spedlist>List</a>
+                        </li>
+                        <li>
+                            <a href=index.php?module=sped&cmd=spedhistory>History</a>
+                        </li>
+                    </ul>
+                </div>
+            {/if}
+            {if $showSFA}
+                <div class="col_1">
+                    <h3> SFA</h3>
+                    <ul>
+                        <li>
+                            <a href='index.php?module=sfa&cmd=sfahome'>Home</a>
+                        </li>
+                        <li>
+                            <a target="_blank" href='sfa/sri.html'>SRI Sheet</a>
+                        </li>
+                    </ul>
+                </div>
+            {/if}
+            {if $showTesting}
             <div class="col_1">
-                <h3> Special Ed</h3>
-                <ul>
-                    <li>
-
-                    </li>
-                </ul>
-            </div>
-             <div class="col_1">
-                <h3> SFA</h3>
-                <ul>
-                    <li>
-
-                    </li>
-                </ul>
-            </div>
-             <div class="col_1">
                 <h3> Testing</h3>
                 <ul>
                     <li>
-
+                        <a href=index.php?module=testing&cmd=testingHome>Home</a>
                     </li>
                 </ul>
             </div>
+            {/if}
         </div>
     </li
 

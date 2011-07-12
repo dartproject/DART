@@ -68,8 +68,8 @@ class Privileges {
     CONST BIG_RED_BUTTON = 'B512';                      //B10
     CONST STANDARD_INFORMATION_EDIT = 'B1024';          //B11
     CONST TRANSCRIPTS_MANAGE = 'B2048';                 //B12
-    CONST VIEW_TESTING_MODULE = 'B4096';                //B13
-    CONST EDIT_TESTING_MODULE = 'B8192';                //B14
+    CONST TESTING_MODULE_VIEW = 'B4096';                //B13
+    CONST TESTING_MODULE_EDIT = 'B8192';                //B14
 
     /**
      * Check whether the given User privileges ($uPrivilege) has a specific

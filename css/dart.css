@@ -16,8 +16,8 @@ a img {
 
 #container{
 
-    width:900px;
-    margin:100px 0px 0px 15px;
+    width:1000px;
+    margin:120px 0px 0px 15px;
 }
 
 #container.sticky{
@@ -71,8 +71,6 @@ a img {
 }
 
 #content{
-    float:right;
-    width:750px;
     padding:1em;
 }
 
