@@ -385,6 +385,50 @@
         </li>
     {/if}
 
+    <li><a href="#" class="drop">Modules</a>
+        <div class="dropdown_3columns">
+            <div class="col_1">
+                <h3>SIP</h3>
+                <ul>
+                    <li>
+                        <a href="index.php?cmd=districtrep" target=_blank>District Plan</a>
+                    </li>
+                    <li>
+                        <a href="index.php?cmd=siterep" target=_blank>School Plan</a>
+                    </li>
+                    <li>
+                        <a href="index.php?cmd=teacherrep" target=_blank>Teacher Plan</a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="col_1">
+                <h3> Special Ed</h3>
+                <ul>
+                    <li>
+
+                    </li>
+                </ul>
+            </div>
+             <div class="col_1">
+                <h3> SFA</h3>
+                <ul>
+                    <li>
+
+                    </li>
+                </ul>
+            </div>
+             <div class="col_1">
+                <h3> Testing</h3>
+                <ul>
+                    <li>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </li
+
     <li class="menu_item">
         <div style="float:left;">
 

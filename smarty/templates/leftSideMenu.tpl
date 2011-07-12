@@ -25,9 +25,9 @@
 {*<a href="index.php?cmd=home">Dart Home</a><br/>*}
 {*<a href="index.php?cmd=editProfile">Edit Profile</a><br/>*}
 {*<a href="mailto:dart@bssd.org" target=_blank>Feedback</a><br/>*}
-<a href="index.php?cmd=districtrep" target=_blank>SIP Plan</a><br/>
+{*<a href="index.php?cmd=districtrep" target=_blank>SIP Plan</a><br/>
 <a href="index.php?cmd=siterep" target=_blank>Site SIP Plan</a><br/>
-<a href="index.php?cmd=teacherrep" target=_blank>Teacher SIP Plan</a><br/>
+<a href="index.php?cmd=teacherrep" target=_blank>Teacher SIP Plan</a><br/> *}
 
 {******************************************************************************
                         Search Students
