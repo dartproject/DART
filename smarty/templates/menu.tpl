@@ -76,7 +76,6 @@
                         <li><a href=index.php?cmd=showscores&p1={$group.listid}>{$group.listname}</a></li>
                     {/foreach}
                 </ul>
-
             </div>
 
             <div class="col_1" >
@@ -86,7 +85,6 @@
                         <li><a href=index.php?cmd=showscores&p1={$group.listid}>{$group.listname}</a></li>
                     {/foreach}
                 </ul>
-
             </div>
 
             <div class="col_1" >

@@ -9,9 +9,13 @@ include_once("ReportPrivileges.php");
 
 $cellwidth = 60;
 $studentID = (!isset($currentStudentID) || $currentStudentID == '') ? $_GET['p1'] : $currentStudentID;
-$studentInfo = getStudentInfo($studentID);
-$site = $studentInfo['site'];
-$g1 = $studentInfo['grade'];
+$student = getStudentInfo($studentID);
+
+$_SESSION['currentStudentID'] = $studentID;
+$_SESSION['currentStudentName'] = $student['fname'] . ' ' . $student['lname'];
+
+$site = $student['site'];
+$g1 = $student['grade'];
 
 $siteEqual = isset($currentMySite) && $currentMySite == $site;
 $idEqual = $currentAffiliatedID == $studentID;
@@ -34,13 +38,13 @@ if(!isset($currentStudentID) || $currentStudentID == '') {
 
 $studentChanges = getStudentChanges2($studentID);
 
-$studentName = $studentInfo['fname'] . " " . $studentInfo['lname'];
+$studentName = $student['fname'] . " " . $student['lname'];
 
 //$reportPrivileges = new ReportPrivileges($idEqual, $siteEqual, $studentID, $edit, $CurrentYear);
 //$reportLinks = $reportPrivileges->getLinks();
 //$reportNames = $reportPrivileges->getNames();
-array_unshift($reportLinks, "");
-array_unshift($reportNames, "None");
+//array_unshift($reportLinks, "");
+//array_unshift($reportNames, "None");
 
 $summary = getSummaryInfo();
 
