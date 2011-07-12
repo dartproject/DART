@@ -38,7 +38,7 @@ if (isset($_SESSION['currentStudentID'])) {
     $smarty->assign('studentReports', $reportPrivileges);
 }
 
-$smarty->assign('currentUserName', $currentUserName);
+$smarty->assign('currentUserName', $loggedInUser->getName());
 
 
 

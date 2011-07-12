@@ -5,28 +5,37 @@
         <div class="dropdown_2columns">
 
             <div class="col_2">
-                <h2>Welcome {$currentUserName} </h2>
+                <h3>Welcome {$currentUserName} </h3>
+            </div>
+
+            <div class="col_2" style="border-bottom: 1px solid #666666; margin-bottom:5px;">
+                <ul class=vert >
+                    {if $showDashboard}
+                        <li style="padding-bottom:5px;">
+                            <a href="index.php?cmd=Dashboard">
+                                <img align="absmiddle" src="{$imageURL}/icons/table_chart_16.png" alt="Edit Profile" />   Dashboard</a>
+                        </li>
+                    {/if}
+                    <li style="padding-bottom:5px;">
+                        <a href="index.php?cmd=editProfile">
+                            <img align="absmiddle" src="{$imageURL}/icons/change_password_16.png" alt="Edit Profile" />   Change password</a>
+                    </li>
+                </ul>
             </div>
 
             <div class="col_2">
-                <p>Welcome to the new DART menu. We hope to improve your experience significantly.</p>
-            </div>
+                <ul>
+                    <li>
+                        <a href="index.php?cmd=logout">
+                            <img align="absmiddle" src="{$imageURL}/icons/door_out_32.png" alt="Log Out" />   Log Out</a>
+                    </li>
+                    <li style="padding-top:10px;">
+                        <a href="mailto:dart@bssd.org" target=_blank>
+                            <img align="absmiddle" src="{$imageURL}/icons/pencil_16.png" alt="Log Out" />   Mail feedback</a>
+                    </li>
+                </ul>
 
-            <div class="col_2">
 
-                <p>
-                    <a href="index.php?cmd=editProfile">
-                        <img align="absmiddle" src="{$imageURL}/icons/change_password_32.png" alt="Edit Profile" />   Change Your Password</a>
-                </p>
-                <p>
-                    <a href="index.php?cmd=logout">
-                        <img align="absmiddle" src="{$imageURL}/icons/door_out_32.png" alt="Log Out" />   Log Out</a>
-                </p>
-                <p class="line" style="border-bottom: 1pt solid #666666;"><p>
-                <p>
-                    <a href="mailto:dart@bssd.org" target=_blank>
-                        <img align="absmiddle" src="{$imageURL}/icons/pencil_16.png" alt="Log Out" />   Mail feedback</a>
-                </p>
             </div>
         </div>
 
@@ -189,11 +198,11 @@
                                     Drill Down
                                 </a>
                             </li>
-                           {* <li>
-                                <a href="index.php?cmd=extraPacingReport">
-                                    <img align="absmiddle" src="{$imageURL}/icons/vcard_edit_16.png" alt="" />
-                                    Pass
-                                </a>
+                            {* <li>
+                            <a href="index.php?cmd=extraPacingReport">
+                            <img align="absmiddle" src="{$imageURL}/icons/vcard_edit_16.png" alt="" />
+                            Pass
+                            </a>
                             </li> *}
                         {/if}
                     </ul>
@@ -268,6 +277,11 @@
                             <li>
                                 <a href="index.php?cmd=historylogin">
                                     Login History
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.php?cmd=history">
+                                    Toggle History
                                 </a>
                             </li>
                         {/if}

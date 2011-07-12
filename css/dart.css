@@ -290,11 +290,13 @@ a img {
     display:inline;
     float:left;
     width:auto;
+    vertical-align: middle;
 }
 
 #menu ul.vert a {
     display:inline-block;
     padding-right: 15px;
+    vertical-align: middle;
 }
 
 .strong {
