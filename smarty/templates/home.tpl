@@ -6,8 +6,8 @@ Home Page
 
 {block name="body"}
     
-      
-    
+ <div style="width:900px; margin:0 auto">   
+   
     {if $showDistrictReminders}
 <font size="4" color="#cc0000">DART System Status &amp; Reminders</font>
 
@@ -64,5 +64,5 @@ Home Page
 
 </div>
 
-
+</div>
 {/block}
