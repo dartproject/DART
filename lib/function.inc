@@ -3516,21 +3516,23 @@ function checkHash($value, $hash) {
 
 function encryptPasswords() {
     global $db;
-    $sql = "SELECT userid, pwd FROM user WHERE userid<>'679'";
+    $sql = "SELECT userid, pwd FROM user";
 	$res = $db->get_results($sql);
         
         
 	foreach($res as $user) {
 		$hash = getHash($user->pwd);
-//                echo "DB ". $hash . "<br/>"; 
-//                echo "String ". getHash('b') . "<br/>";
-//                echo "DB: " .checkHash('b', $hash) .'<br/>';
-//                echo "String ". checkHash('b',getHash('b'));
-                
 		$id = $user->userid;
     	$sql = "UPDATE user SET pwd = '$hash' WHERE userid='$id'";
 		$db->get_results($sql);
 	}
+}
+
+function getMonthOptions() {
+	$monthMenu = array();
+	for($i = 1; $i <= 12; $i++)
+		$monthMenu["$i"] = date('F', mktime(0,0,0,$i,1));
+	return $monthMenu;
 }
 
 ?>
