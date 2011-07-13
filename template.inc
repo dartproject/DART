@@ -11,8 +11,6 @@
 // Times arein seconds; 
 //$timeout = 3600; Set in js/timeout.js
 
-
-
 require_once("ReportPrivileges.php");
 
 
@@ -40,7 +38,7 @@ if (isset($_SESSION['currentStudentID'])) {
     $smarty->assign('studentReports', $reportPrivileges);
 }
 
-$smarty->assign('currentUserName', $currentUserName);
+$smarty->assign('currentUserName', $loggedInUser->getName());
 
 
 

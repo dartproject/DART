@@ -7,7 +7,7 @@
 $user = $_POST['user'];
 
 
-savePostedPriv($HTTP_POST_VARS, $user);
+savePostedPriv($_POST, $user);
 
     echo("<META HTTP-EQUIV=\"Refresh\" CONTENT=\"1; URL=index.php?cmd=permissions&user=$user\"> ");
 

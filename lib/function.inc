@@ -8,6 +8,10 @@
   12/9/09 rlj - fixed getSubjectInfo to also return level name
 
  */
+
+require_once('security/User.php');
+
+
 define("GRADETHRESHHOLD", 80);
 
 // <editor-fold defaultstate="collapsed" desc="Privileges">
@@ -266,7 +270,7 @@ function displayCurrentYearQuarter() {
 }
 
 function getMyGlobals() {
-    global $db, $currentUserID, $currentUserName, $currentUser, $currentPrivA, $currentPrivB, $currentScopeA, $currentScopeB, $currentMySite, $cmd, $msg;
+    global $loggedInUser, $db, $currentUserID, $currentUserName, $currentUser, $currentPrivA, $currentPrivB, $currentScopeA, $currentScopeB, $currentMySite, $cmd, $msg;
 
 //    if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
 //        // last request was more than 30 minates ago
@@ -278,23 +282,30 @@ function getMyGlobals() {
 
     if (isset($_SESSION['sessionUserID'])) {
         $currentUserID = $_SESSION['sessionUserID'];
-        $query = "select * from user where userID='$currentUserID'";
-        debugPrint("getGlobals SQL: " . $query . "<br>");
-        $res = $db->get_results($query);
-        debugPrint("Globals Sql: " . print_r($res[0], true));
-        if (ucfirst($res[0]->status) == "Active") {
-            $currentUserName = $res[0]->name;
-            $currentUser = $res[0]->user;
-            $currentPrivA = $res[0]->privilegeA;
-            $currentPrivB = $res[0]->privilegeB;
-            $currentScopeA = $res[0]->scopeA;
-            $currentScopeB = $res[0]->scopeB;
-            $currentMySite = $res[0]->site;
-            if (isset($res[0]->affiliated))
-                $currentAffiliatedID = $res[0]->affiliated;
-            else
-                $currentAffiliatedID = -1;
+        
+       
+        
+        
+        // <editor-fold defaultstate="collapsed" desc="OLD User code (still in use)">
+        //$query = "select * from user where userID='$currentUserID'";
+        //debugPrint("getGlobals SQL: " . $query . "<br>");
+        //$res = $db->get_results($query);
+        //debugPrint("Globals Sql: " . print_r($res[0], true));
+        
+        if ($loggedInUser->getStatus() == "Active") {
+            $currentUserName = $loggedInUser->getName();
+            $currentUser = $loggedInUser->getLogin();
+            $currentPrivA = $loggedInUser->getUPrivilegeSet('A')->getValue();
+            $currentPrivB = $loggedInUser->getUPrivilegeSet('B')->getValue();
+            $currentScopeA = $loggedInUser->getUPrivilegeSet('A')->getScope();
+            $currentScopeB = $loggedInUser->getUPrivilegeSet('B')->getScope();
+            $currentMySite = $loggedInUser->getSite();
+//            if (isset($res[0]->affiliated))
+//                $currentAffiliatedID = $res[0]->affiliated;
+//            else
+                $currentAffiliatedID = -1; //not in the user table
         }
+        // </editor-fold>
     }
 }
 

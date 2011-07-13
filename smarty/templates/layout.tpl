@@ -30,7 +30,7 @@
         src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>-->
         <script type="text/javascript"
         src="js/jquery/jquery-1.6.2.min.js"></script>
-        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/base/jquery-ui.css" type="text/css" media="all">
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/base/jquery-ui.css" type="text/css" media="all">
             <link rel="stylesheet" type="text/css"
                   href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css" />
 
@@ -59,14 +59,14 @@
         <body>
             {*******************************************************************
                 Header
-             ******************************************************************}
-            
+            ******************************************************************}
+
             {include file="header.tpl"}
 
             {*******************************************************************
                 Top Menu
-             *******************************************************************}
-            
+            *******************************************************************}
+
             {include file="menu.tpl"}
 
             <div id="container">
@@ -74,9 +74,9 @@
                         Left Side Menu
                 *******************************************************************************}
 
-                <div id="leftMenu">
-                    {include file="leftSideMenu.tpl"}  
-                </div>
+                {*<div id="leftMenu">
+                {include file="leftSideMenu.tpl"}  
+                </div>*}
 
                 {******************************************************************************
                         Content
@@ -111,13 +111,24 @@
             </div>
 
             {******************************************************************************
+            `   Dialog Window Markup
+            ********************************************************************************}
+            <div id="dialog" title="Your session is about to expire!" style="display:none">
+                <p>You will be logged off in <span id="dialog-countdown"></span> seconds.</p>
+                <p>Do you want to continue your session?</p>
+            </div
+
+
+            {******************************************************************************
                         Javascript files
             *******************************************************************************}
             <script type="text/javascript" src="js/wz_tooltip.js"></script>
 
 
             <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
-            <script type="text/javascript" src="js/timeout.js"></script>
+<!--            <script type="text/javascript" src="js/timeout.js"></script>-->
+            <script type="text/javascript" src="js/jquery/jquery.idletimeout.js"></script>
+            <script type="text/javascript" src="js/jquery/jquery.idletimer.js"></script>
             <script type="text/javascript" src="js/main.js"></script>
             {block name=js}{/block}
         </body>

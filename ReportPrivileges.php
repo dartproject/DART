@@ -20,7 +20,12 @@
 		$this->links = array();
 		$this->names = array();
 
-		if(viewReport($this->idEqual, $this->siteEqual, Privilege(A4)) and $this->edit) {
+		if(viewReport($this->idEqual, $this->siteEqual, Privilege(A2))){
+                    $this->links[] = "index.php?cmd=toggleStudent&p1=$this->studentID";
+                    $this->names[] = "Standard Tracking Information";
+                }
+                
+                if(viewReport($this->idEqual, $this->siteEqual, Privilege(A4)) and $this->edit) {
 			$this->links[] = "index.php?cmd=repcurrentcreate&id=$this->studentID";
 			$this->names[] = "Create Current Report";
 
@@ -30,6 +35,7 @@
 			$this->links[] = "index.php?cmd=StudentEdit&id=$this->studentID";
 			$this->names[] = "Edit Student Information";
 		}
+                
 		if(viewReport($this->idEqual, $this->siteEqual, Privilege(A18))) {
 			$this->links[] = "index.php?cmd=sreport&id=$this->studentID";
 			$this->names[] = "Report Cover - no QPI";
@@ -64,6 +70,8 @@
 			$this->links[] = "index.php?cmd=StudentTranscriptEdit&id=$this->studentID";
 			$this->names[] = "Additional Transcript Info";
 		}
+                
+                
 	}
 
 	public function getLinks() {

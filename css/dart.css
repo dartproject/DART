@@ -16,8 +16,8 @@ a img {
 
 #container{
 
-    width:900px;
-    margin:100px 0px 0px 15px;
+    width:1000px;
+    margin:120px 0px 0px 15px;
 }
 
 #container.sticky{
@@ -55,14 +55,18 @@ a img {
 }
 
 #footer{
+    color:white;
+    font-size:8pt;
+    font-weight: bold;
     clear:both;
     border-top: #006666 1px solid;
     padding-top:10px;
-    margin-bottom:50px;
     margin-top:10px;
     text-align:center;
     left:0px;
     right:0px;    
+    background:#013953;
+    height:40px;
 }
 
 #leftMenu{
@@ -71,12 +75,8 @@ a img {
 }
 
 #content{
-    float:right;
-    width:750px;
     padding:1em;
 }
-
-
 
 #menu {
     position:fixed;
@@ -93,10 +93,6 @@ a img {
     border-top: 1px solid #002232;
     z-index:100;
 }
-
-
-
-
 
 #menu li {
     float:left;
@@ -290,11 +286,13 @@ a img {
     display:inline;
     float:left;
     width:auto;
+    vertical-align: middle;
 }
 
 #menu ul.vert a {
     display:inline-block;
     padding-right: 15px;
+    vertical-align: middle;
 }
 
 .strong {
@@ -497,6 +495,11 @@ a img {
     font-weight: bold;
 }
 
+#footer a{
+    color:white;
+    text-decoration: none;
+}
+
 #container a 
 {
     color: #436976;
@@ -565,3 +568,5 @@ td.leftbottomline {
     /* add padding to account for vertical scrollbar */
     padding-right: 20px;
 }
+
+a.ui-dialog-titlebar-close { display:none }

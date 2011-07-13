@@ -35,6 +35,9 @@ as well as feedback on how DART can be most easily be documented.
 
 To install the DART system:
 
+Requirements:
+- DART uses the SMARTY template system (download and install from www.smarty.net). You need to set the path to the SMARTY installation in lib/config.inc at the top of the file - require_once(PATH_TO_INSTALLATION/Smarty.class.php)
+
 - Put all components in a directory that is assessible by a web browser running php/mysql. 
 - Then use the lib/dart_create.sql file to create a sql database. 
 - Set up the database access parameters and other machine specific information in the lib/machine.config.php file.

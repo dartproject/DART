@@ -25,9 +25,9 @@
 {*<a href="index.php?cmd=home">Dart Home</a><br/>*}
 {*<a href="index.php?cmd=editProfile">Edit Profile</a><br/>*}
 {*<a href="mailto:dart@bssd.org" target=_blank>Feedback</a><br/>*}
-<a href="index.php?cmd=districtrep" target=_blank>SIP Plan</a><br/>
+{*<a href="index.php?cmd=districtrep" target=_blank>SIP Plan</a><br/>
 <a href="index.php?cmd=siterep" target=_blank>Site SIP Plan</a><br/>
-<a href="index.php?cmd=teacherrep" target=_blank>Teacher SIP Plan</a><br/>
+<a href="index.php?cmd=teacherrep" target=_blank>Teacher SIP Plan</a><br/> *}
 
 {******************************************************************************
                         Search Students
@@ -41,9 +41,7 @@
                         Dashboard
 *******************************************************************************}
 
-{if $showDashboard}
-<a href="index.php?cmd=Dashboard">Dashboard</a><br>
-{/if}
+
 
 {******************************************************************************
                         My Groups
@@ -98,7 +96,7 @@
 *******************************************************************************}
 
  {if $showReports}
-<br><font color="#0066ff"><b>Reports</b></font><br>
+{*<br><font color="#0066ff"><b>Reports</b></font><br>*}
  {/if}
 
 {******************************************************************************
@@ -122,9 +120,9 @@
                         Admin Area
 *******************************************************************************}
 
-{if $showAdminArea}
+{*{if $showAdminArea}
 <br><font color="#0066ff"><b>Admin Area</b></font><br>
-{/if}
+{/if}*}
 
 {******************************************************************************
                         Users & Internal Error
@@ -158,11 +156,11 @@
                         School Calendar
 *******************************************************************************}
 
-  {if $showEditSchoolCal}
+  {*{if $showEditSchoolCal}
 <a href="index.php?cmd=SchoolCalendar&site=DIO&year={$currentYear}">
     Edit School Cal</a><br>
   {/if}
-
+*}
 {******************************************************************************
                         Progress
 *******************************************************************************}
@@ -175,12 +173,12 @@
 {******************************************************************************
                         History
 *******************************************************************************}
-
+{*
 {if $showHistory}
 <a href="index.php?cmd=history">History Toggle</a><br>
 <a href="index.php?cmd=historylogin">History Login</a><br/>
 {/if}
-
+*}
 {******************************************************************************
                         Mass Import
 *******************************************************************************}
