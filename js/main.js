@@ -97,12 +97,23 @@ $("#dialog").dialog({
 
 // cache a reference to the countdown element so we don't have to query the DOM for it on each ping.
 var $countdown = $("#dialog-countdown");
-    
+
+//
+var $idleTime = $("#timeout");
+
+
+function formatTime(time){
+    var min = Math.floor(time/60000);
+    var sec = Math.floor((time-min*60000)/1000);
+          
+    return min +'min '+sec+'s';
+}
 
 // start the idle timer plugin
 $.idleTimeout('#dialog', 'div.ui-dialog-buttonpane button:first', {
     idleAfter: 1200,
     pollingInterval: 60,
+    warningLength: 120,
     keepAliveURL: 'keepalive.php',
     serverResponseEquals: 'OK',
     onTimeout: function(){
@@ -113,6 +124,9 @@ $.idleTimeout('#dialog', 'div.ui-dialog-buttonpane button:first', {
     },
     onCountdown: function(counter){
         $countdown.html(counter); // update the counter
+    },
+    getIdleTime: function(idleCounter){
+        $idleTime.html(formatTime(idleCounter));
     }
 });
 
