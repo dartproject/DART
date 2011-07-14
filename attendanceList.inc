@@ -51,25 +51,25 @@ function getAttendanceRates($listID, $date, $period) {
 	global $db;
 	$list = $db->get_results("select lists.kind, lists.sql from lists where listid = '$listID' ", ARRAY_A);
 	if ($list[0]['kind'] == 'search') {
-	    $sql = $list[0]['sql'];
+		$sql = $list[0]['sql'];
 		$studentClause = "student.studentid";
 	} else {
-	    $sql = "select studentid from listvalues where listid = '$listID'";
+		$sql = "select studentid from listvalues where listid = '$listID'";
 		$studentClause = "listvalues.studentid";
 	}
-	
+
 	$listMembers = new ListMembers($db, $sql, $studentClause, $currentUserID); // $currentUserID is a global variable
-	
+
 	$sql = "SELECT AG.Description AS attendance, COUNT(*) AS total ".
-		"FROM ".
+			"FROM ".
 			"list_members_tmp, attendancecodegroups AS ACG, attendancegroups AS AG, AttendanceEvents AS AE ".
-		"WHERE ".
+			"WHERE ".
 			"AE.studentid = list_members_tmp.studentid AND list_members_tmp.process_id = '".$listMembers->getId()."' AND ".
 			"AE.CodeID = ACG.CodeID AND AG.GroupID = ACG.GroupID AND AE.date = '$date' AND AE.PeriodID = '$period' AND ".
 			"(AG.Description = 'Absent' OR AG.Description = 'Present') ".
-		"GROUP BY ".
+			"GROUP BY ".
 			"attendance";
-	 
+
 	$results = $db->get_results($sql, ARRAY_A);
 	$rates = array("Present" => 0, "Absent" => 0);
 	if($results != NULL) {

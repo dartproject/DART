@@ -1,13 +1,13 @@
 function setCheckboxes(the_form, do_check) {
 	var elts      = (typeof(document.forms[the_form].elements['studentID[]']) != 'undefined')? 
-		document.forms[the_form].elements['studentID[]'] 
-		: 
-		(typeof(document.forms[the_form].elements['studentID[]']) != 'undefined') ? 
-			document.forms[the_form].elements['studentID[]']
-			: 
-			document.forms[the_form].elements['studentID[]'];
+	document.forms[the_form].elements['studentID[]']
+	:
+	(typeof(document.forms[the_form].elements['studentID[]']) != 'undefined') ?
+	document.forms[the_form].elements['studentID[]']
+	:
+	document.forms[the_form].elements['studentID[]'];
 	var elts_cnt  = (typeof(elts.length) != 'undefined')? 
-				elts.length : 0;
+	elts.length : 0;
 
 	if (elts_cnt) {
 		for (var i = 0; i < elts_cnt; i++) {
@@ -24,7 +24,9 @@ function checkChecks () {
 	var elts = document.forms['fieldsForm'].elements['studentID[]'];
 	var elts_cnt = elts.length;
 	for (var i = 0; i < elts_cnt; i++) {
-		if(elts[i].checked == true) { return true; }
+		if(elts[i].checked == true) {
+			return true;
+		}
 	} 
 	alert ('There are no students checked.');
 	return false;
@@ -39,19 +41,23 @@ function showCalendar() {
 	form.year.value = $.datepick.formatDate("yyyy", selectedDate);
 }
 
-$('#date').datepick({showOnFocus: false, showTrigger: '#calImg', onSelect:showCalendar});
+$('#date').datepick({
+	showOnFocus: false,
+	showTrigger: '#calImg',
+	onSelect:showCalendar
+});
 
 /* Load Table */
 Ext.require([
-    'Ext.grid.*',
-    'Ext.data.*',
-    'Ext.util.*',
-    'Ext.toolbar.Paging',
-    'Ext.ModelManager',
-    'Ext.tip.QuickTipManager',
-    'Ext.state.*',
+	'Ext.grid.*',
+	'Ext.data.*',
+	'Ext.util.*',
+	'Ext.toolbar.Paging',
+	'Ext.ModelManager',
+	'Ext.tip.QuickTipManager',
+	'Ext.state.*',
 	'Ext.selection.CheckboxModel'
-]);
+	]);
 
 Ext.onReady(function() {
 
@@ -65,20 +71,20 @@ Ext.onReady(function() {
 	var periodName = document.getElementsByName("periodName")[0].value; 
 	var imageURL = document.getElementsByName("imageURL")[0].value; 
 
-    Ext.QuickTips.init();
+	Ext.QuickTips.init();
     
-    // setup the state provider, all state information will be saved to a cookie
-    Ext.state.Manager.setProvider(Ext.create('Ext.state.CookieProvider'));
+	// setup the state provider, all state information will be saved to a cookie
+	Ext.state.Manager.setProvider(Ext.create('Ext.state.CookieProvider'));
 
 	var proxy = new Ext.data.proxy.Ajax({
-        url : 'index.php',
-        reader: {
-            type: 'json',
-            root: 'students',
-            totalProperty: 'totalCount'
-        },
-        simpleSortMode: true,
-        extraParams: {
+		url : 'index.php',
+		reader: {
+			type: 'json',
+			root: 'students',
+			totalProperty: 'totalCount'
+		},
+		simpleSortMode: true,
+		extraParams: {
 			cmd     : "ajax",
 			url     : "getAttendanceList.php",
 			listID  : params.listid,
@@ -87,89 +93,110 @@ Ext.onReady(function() {
 			year    : year,
 			period  : params.period
 		}
-    });
+	});
 
-    // create the data store
-    Ext.define('StudentAttendance', {
-        extend: 'Ext.data.Model',
-        fields: [
-            { name: 'studentid', type: 'int' },
-            { name: 'name', type: 'string' },
-            { name: 'alaskaid', type: 'int' },
-            { name: 'site', type: 'string' },
-            { name: 'grade', type: 'string' },
-            { name: 'age', type: 'string' },
-            { name: 'Code', type: 'string' }
-        ],
+	// create the data store
+	Ext.define('StudentAttendance', {
+		extend: 'Ext.data.Model',
+		fields: [
+		{
+			name: 'studentid',
+			type: 'int'
+		},
+		{
+			name: 'name',
+			type: 'string'
+		},
+		{
+			name: 'alaskaid',
+			type: 'int'
+		},
+		{
+			name: 'site',
+			type: 'string'
+		},
+		{
+			name: 'grade',
+			type: 'string'
+		},
+		{
+			name: 'age',
+			type: 'string'
+		},
+		{
+			name: 'Code',
+			type: 'string'
+		}
+		],
 		proxy: proxy,
 		idProperty: 'studentid'
-    });
+	});
 
-    var store = Ext.create('Ext.data.Store', {
-        model: 'StudentAttendance',
-        pageSize : 30,
-        remoteSort: true,
-        sorters: [{
-            property: 'name',
-            direction: 'DESC'
-        }]
-    });
+	var store = Ext.create('Ext.data.Store', {
+		model: 'StudentAttendance',
+		pageSize : 30,
+		remoteSort: true,
+		sorters: [{
+			property: 'name',
+			direction: 'DESC'
+		}]
+	});
 
 	// Render functions
-    function renderCheckbox(value, p, record) {
-        return Ext.String.format(
+	function renderCheckbox(value, p, record) {
+		return Ext.String.format(
 			'<div style="display:none"><input type="checkbox" name="studentID[]" value="{0} {1}" class="radio"></div>',
-            record.data.studentid,
-            record.data.site
-        );
-    }
-    function renderAction(value, p, record) {
-        return Ext.String.format(
+			record.data.studentid,
+			record.data.site
+			);
+	}
+	function renderAction(value, p, record) {
+		return Ext.String.format(
 			'<a href="index.php?cmd=AttendanceCalendar&student={0}&year={1}"><img alt="Attendance" src="' + imageURL + 'icons/report_16.png" title="Attendance" style="padding:2px; vertical-align: middle" /></a>&nbsp;<a href="?cmd=advEdit&id={0}"><img alt="Advanced Edit" src="' + imageURL + 'icons/user_edit_16.png" title="Advanced Edit" style="padding:2px; vertical-align: middle" /></a>',
-            value,
+			value,
 			2010
-        );
-    }
-    function renderName(value, p, record) {
-        return Ext.String.format(
+			);
+	}
+	function renderName(value, p, record) {
+		return Ext.String.format(
 			'<a href="?cmd=toggleStudent&p1={0}">{1}</a>',
-            record.data.studentid,
-            value
-        );
-    }
-    function renderEdit(value, p, record) {
-        return Ext.String.format(
+			record.data.studentid,
+			value
+			);
+	}
+	function renderEdit(value, p, record) {
+		return Ext.String.format(
 			'&gt;&gt;<a href="?cmd=advEdit&id={0}">Edit</a>',
-            value
-        );
-    }
-    function renderAge(value, p, record) {
-        return Ext.String.format(
+			value
+			);
+	}
+	function renderAge(value, p, record) {
+		return Ext.String.format(
 			'{0}',
-            record.data.age
-        );
-    }
-    function renderGrade(value, p, record) {
-        return Ext.String.format(
+			record.data.age
+			);
+	}
+	function renderGrade(value, p, record) {
+		return Ext.String.format(
 			'{0}',
-            record.data.grade
-        );
-    }
+			record.data.grade
+			);
+	}
 
-    // Create the Grid
-    var pluginExpanded = true;
-    var sm = Ext.create('Ext.selection.CheckboxModel', {
+	// Create the Grid
+	var pluginExpanded = true;
+	var sm = Ext.create('Ext.selection.CheckboxModel', {
 		// Mirror checkbox behavior
-        listeners: {
-            select: function(sm, record, index) {
+		listeners: {
+			select: function(sm, record, index) {
 				var checkbox = document.forms['fieldsForm'].elements['studentID[]'];
 				checkbox[index].checked = true;
-            },
-            deselect: function(sm, record, index) {
+			},
+			deselect: function(sm, record, index) {
 				var checkbox = document.forms['fieldsForm'].elements['studentID[]'];
 				checkbox[index].checked = false;
-            }
-        }
+			}
+		}
 	});
 
 	// Field to change the number of records displayed by page
@@ -182,95 +209,95 @@ Ext.onReady(function() {
 		listeners: {
 			change: function(field, value) {
 				bbar.store.pageSize = parseInt(value, 10);
-    			store.loadPage(1);
+				store.loadPage(1);
 			}
 		}
 	});
 	// Paging toolbar, including the field to change page size
 	var bbar = new Ext.PagingToolbar({
-        store: store,
-        displayInfo: true,
+		store: store,
+		displayInfo: true,
 		items: [
-			'-',
-			'Per Page: ',
-			pageSize
+		'-',
+		'Per Page: ',
+		pageSize
 		],
-    });
-    var grid = Ext.create('Ext.grid.Panel', {
+	});
+	var grid = Ext.create('Ext.grid.Panel', {
 		title: 'Attendance Date: ' + month + '/' + day + '/' + year + ' -  Period: ' + periodName,
-        store: store,
-        selModel: sm, // For checkbox model
-        stateful: true,
-        stateId: 'stateGrid',
-        columns: [
-            {
-                width     : 5,
-                sortable : false,
-				renderer : renderCheckbox,
-				hidden   : true,
-                dataIndex: 'studentid'
-            },
-            {
-                text     : 'Name',
-            	width    : 150,
-                sortable : true,
-            	renderer : renderName,
-                dataIndex: 'name'
-            },
-            {
-                text     : 'Student Number',
-                sortable : true,
-                dataIndex: 'studentid'
-            },
-            {
-                text     : 'AK Student ID',
-                sortable : true,
-                dataIndex: 'alaskaid'
-            },
-            {
-                text     : 'School Site',
-                sortable : true,
-				width    : 90,
-                dataIndex: 'site'
-            },
-            {
-                text     : 'Testing Grade',
-            	renderer : renderGrade,
-                sortable : true,
-				width    : 90,
-                dataIndex: 'grade_order'
-            },
-            {
-                text     : 'Age',
-            	renderer : renderAge,
-                sortable : true,
-				width    : 90,
-                dataIndex: 'age_order'
-            },
-            {
-                text     : 'Code',
-				width    : 60,
-                sortable : true,
-                dataIndex: 'Code'
-            },
-            {
-                text     : 'Action',
-                flex     : 1,
-            	renderer: renderAction,
-                sortable : false,
-                dataIndex: 'studentid'
-            }
-        ],
-        height: 500,
-        width: 800,
+		store: store,
+		selModel: sm, // For checkbox model
+		stateful: true,
+		stateId: 'stateGrid',
+		columns: [
+		{
+			width     : 5,
+			sortable : false,
+			renderer : renderCheckbox,
+			hidden   : true,
+			dataIndex: 'studentid'
+		},
+		{
+			text     : 'Name',
+			width    : 150,
+			sortable : true,
+			renderer : renderName,
+			dataIndex: 'name'
+		},
+		{
+			text     : 'Student Number',
+			sortable : true,
+			dataIndex: 'studentid'
+		},
+		{
+			text     : 'AK Student ID',
+			sortable : true,
+			dataIndex: 'alaskaid'
+		},
+		{
+			text     : 'School Site',
+			sortable : true,
+			width    : 90,
+			dataIndex: 'site'
+		},
+		{
+			text     : 'Testing Grade',
+			renderer : renderGrade,
+			sortable : true,
+			width    : 90,
+			dataIndex: 'grade_order'
+		},
+		{
+			text     : 'Age',
+			renderer : renderAge,
+			sortable : true,
+			width    : 90,
+			dataIndex: 'age_order'
+		},
+		{
+			text     : 'Code',
+			width    : 60,
+			sortable : true,
+			dataIndex: 'Code'
+		},
+		{
+			text     : 'Action',
+			flex     : 1,
+			renderer: renderAction,
+			sortable : false,
+			dataIndex: 'studentid'
+		}
+		],
+		height: 500,
+		width: 800,
 		resizable: true,
-        renderTo: 'attendanceList',
-        iconCls: 'icon-grid',
-        // paging bar on the bottom
-        bbar: bbar,
-        viewConfig: {
-            stripeRows: true
-        }
-    });
-    store.loadPage(1);
+		renderTo: 'attendanceList',
+		iconCls: 'icon-grid',
+		// paging bar on the bottom
+		bbar: bbar,
+		viewConfig: {
+			stripeRows: true
+		}
+	});
+	store.loadPage(1);
 });

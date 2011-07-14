@@ -8,10 +8,6 @@
 {block name="css"}
 <link rel="stylesheet" type="text/css" href="js/jquery.datepick.package/jquery.datepick.css" />
 <link rel="stylesheet" type="text/css" href="js/extjs/resources/css/ext-all.css" />
-
-<!--
-<link rel="stylesheet" type="text/css" href="js/extjs/examples/shared/example.css" />
--->
 {/block}
 
 {block name="body"}
