@@ -484,7 +484,9 @@
 
         </div>
     </li>
-    <li id="timer" class="menu_right menu_item" style="color:white">
+    <li class="menu_right menu_item" style="color:white; margin-right:2px;">
+        <img align="absmiddle" src="{$imageURL}icons/session_idle_time.png" alt="" />
+        <span id="timeout"></span>
     </li>
     {*<!-- End Home Item -->
 

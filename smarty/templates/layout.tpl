@@ -57,50 +57,53 @@
                 </script>
         </head>
         <body>
-            {*******************************************************************
+            <div id="wrapper">
+                {*******************************************************************
                 Header
-            ******************************************************************}
+                ******************************************************************}
 
-            {include file="header.tpl"}
+                {include file="header.tpl"}
 
-            {*******************************************************************
+                {*******************************************************************
                 Top Menu
-            *******************************************************************}
+                *******************************************************************}
 
-            {include file="menu.tpl"}
+                {include file="menu.tpl"}
 
-            <div id="container">
-                {******************************************************************************
+                <div id="container">
+                    {******************************************************************************
                         Left Side Menu
-                *******************************************************************************}
+                    *******************************************************************************}
 
-                {*<div id="leftMenu">
-                {include file="leftSideMenu.tpl"}  
-                </div>*}
-
-                {******************************************************************************
+                    {*<div id="leftMenu">
+                    {include file="leftSideMenu.tpl"}  
+                    </div>*}
+                    {*{if $isSmarty}
+                    <img alt="smarty template" src="{$imageURL}smarty_logo.png" align="right" />
+                    {/if}*}
+                    {******************************************************************************
                         Content
-                *******************************************************************************}
-                <div id="content">
-                    <script type="text/javascript" >
-                        document.getElementById("content").style.display = "none";
-                    </script>
-
-                    {if $isSmarty}
-                        <img alt="smarty template" src="{$imageURL}smarty_logo.png" align="right" />
-                    {/if}
-
-                    {block name=body}{/block}
-                    {$body|default:""}
-
-                    {literal}
+                    *******************************************************************************}
+                    <div id="content">
                         <script type="text/javascript" >
-                            $(document).ready(function(){
-                                document.getElementById("content").style.display = "block";
-                            });
+                            document.getElementById("content").style.display = "none";
                         </script>
-                    {/literal}
+
+
+
+                        {block name=body}{/block}
+                        {$body|default:""}
+
+                        {literal}
+                            <script type="text/javascript" >
+                                $(document).ready(function(){
+                                    document.getElementById("content").style.display = "block";
+                                });
+                            </script>
+                        {/literal}
+                    </div>
                 </div>
+                    <div class="clearfooter"></div>
             </div>
             {******************************************************************************
                         Footer

@@ -43,7 +43,7 @@
 
 </style>
 
-<div align="center">
+<div align="center" style="width:900px; margin:0 auto">
     <div align="left">
         <font size="4" color="#cc0000">DART System Search</font><br>
     </div>

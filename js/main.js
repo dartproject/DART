@@ -66,54 +66,68 @@
         $('#menu').sticky();
     });
     
-    //Courtesy of Eric Hynds
-    //http://www.erichynds.com/jquery/a-new-and-improved-jquery-idle-timeout-plugin/
+//Courtesy of Eric Hynds
+//http://www.erichynds.com/jquery/a-new-and-improved-jquery-idle-timeout-plugin/
 
    
 
 }(jQuery));
 
- // setup the dialog
-    $("#dialog").dialog({
-        autoOpen: false,
-        modal: true,
-        width: 400,
-        height: 200,
-        closeOnEscape: false,
-        draggable: false,
-        resizable: false,
-        buttons: {
-            'Yes, Keep Working': function(){
-                $(this).dialog('close');
-            },
-            'No, Logoff': function(){
-                // fire whatever the configured onTimeout callback is.
-                // using .call(this) keeps the default behavior of "this" being the warning
-                // element (the dialog in this case) inside the callback.
-                $.idleTimeout.options.onTimeout.call(this);
-            }
-        }
-    });
-
-    // cache a reference to the countdown element so we don't have to query the DOM for it on each ping.
-    var $countdown = $("#dialog-countdown");
-    
-
-    // start the idle timer plugin
-    $.idleTimeout('#dialog', 'div.ui-dialog-buttonpane button:first', {
-        idleAfter: 600,
-        pollingInterval: 60,
-        keepAliveURL: 'keepalive.php',
-        serverResponseEquals: 'OK',
-        onTimeout: function(){
-            window.location = "index.php?cmd=expired&msg=Idle time exceed. You have been automatically logged out.";
+// setup the dialog
+$("#dialog").dialog({
+    autoOpen: false,
+    modal: true,
+    width: 400,
+    height: 200,
+    closeOnEscape: false,
+    draggable: false,
+    resizable: false,
+    buttons: {
+        'Yes, Keep Working': function(){
+            $(this).dialog('close');
         },
-        onIdle: function(){
-            $(this).dialog("open");
-        },
-        onCountdown: function(counter){
-            $countdown.html(counter); // update the counter
+        'No, Logoff': function(){
+            // fire whatever the configured onTimeout callback is.
+            // using .call(this) keeps the default behavior of "this" being the warning
+            // element (the dialog in this case) inside the callback.
+            $.idleTimeout.options.onTimeout.call(this);
         }
-    });
+    }
+});
+
+// cache a reference to the countdown element so we don't have to query the DOM for it on each ping.
+var $countdown = $("#dialog-countdown");
+
+//
+var $idleTime = $("#timeout");
+
+
+function formatTime(time){
+    var min = Math.floor(time/60000);
+    var sec = Math.floor((time-min*60000)/1000);
+          
+    return min +'min '+sec+'s';
+}
+
+// start the idle timer plugin
+$.idleTimeout('#dialog', 'div.ui-dialog-buttonpane button:first', {
+    idleAfter: 1200,
+    pollingInterval: 60,
+    warningLength: 120,
+    keepAliveURL: 'keepalive.php',
+    serverResponseEquals: 'OK',
+    onTimeout: function(){
+        window.location = "index.php?cmd=expired&msg=Idle time exceed. You have been automatically logged out.";
+    },
+    onIdle: function(){
+        $(this).dialog("open");
+    },
+    onCountdown: function(counter){
+        $countdown.html(counter); // update the counter
+    },
+    getIdleTime: function(idleCounter){
+        $idleTime.html(formatTime(idleCounter));
+    }
+});
 
 

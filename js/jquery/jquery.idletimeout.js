@@ -26,18 +26,28 @@
             this.countdownOpen = false;
             this.failedRequests = options.failedRequests;
             this._startTimer();
+            this._showTimeout = true;
 
             // expose obj to data cache so peeps can call internal methods
             $.data( elem[0], 'idletimeout', this );
 
             // start the idle timer
             $.idleTimer(options.idleAfter * 1000);
+            
+            this.idleTimeCheck = win.setInterval(function(){
+                options.getIdleTime.call(this.warning,'0min 0s');
+                if(self._showTimeout)
+                    options.getIdleTime.call(this.warning,
+                        options.idleAfter*1000-$.idleTimer('getElapsedTime'));
+            }, 1000);
 
             // once the user becomes idle
             $(document).bind("idle.idleTimer", function(){
 
                 // if the user is idle and a countdown isn't already running
                 if( $.data(document, 'idleTimer') === 'idle' && !self.countdownOpen ){
+                    //$.idleTimer('destroy');
+                    self._showTimeout=false;
                     self._stopTimer();
                     self.countdownOpen = true;
                     self._idle();
@@ -68,6 +78,8 @@
             // set inital value in the countdown placeholder
             options.onCountdown.call(warning, counter);
 
+            
+
             // create a timer that runs every second
             this.countdown = win.setInterval(function(){
                 if(--counter === 0){
@@ -81,7 +93,7 @@
 
         _startTimer: function(){
             var self = this;
-
+            self._showTimeout=true;
             this.timer = win.setTimeout(function(){
                 self._keepAlive();
             }, this.options.pollingInterval * 1000);
@@ -164,6 +176,9 @@
 		*/
         // callback to fire when the session times out
         onTimeout: $.noop,
+        
+        //onIdleTime - get's idle time'
+        getIdleTime: $.noop,
 
         // fires when the user becomes idle
         onIdle: $.noop,
