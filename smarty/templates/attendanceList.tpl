@@ -3,6 +3,7 @@
 {block name="js"}
 <script type="text/javascript" src="js/jquery.datepick.package/jquery.datepick.js"></script>
 <script type="text/javascript" src="js/extjs/bootstrap.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/view/Student.js"></script>
 <script language="JavaScript" type="text/javascript" src="js/attendanceList.js"></script>
 {/block}
 {block name="css"}
