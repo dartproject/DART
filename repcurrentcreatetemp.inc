@@ -9,14 +9,14 @@
 		<link rel="stylesheet" href="css/dart.css" type="text/css">
 	</head>
 
-	<body bgcolor="#ffffff">
+	<body bgcolor="#ffffff" style="margin:0 auto">
 		<form>
 		<input type=hidden name=id value="$id">
 		<input type=hidden name="cmd" value="repcurrentcreate">
 		Start: <input type=text name=start value="$start"> Finish: <input type=text name=finish value=$finish>
 		<input type=submit name=submit value=Submit>
 		</form>
-		<table border="0" cellpadding="0" cellspacing="0" background="(EmptyReference!)">
+		<table border="0" width="900" cellpadding="0" cellspacing="0" background="(EmptyReference!)">
 			<tr>
 				<td valign="top" width="100%">
 					<div align="center">

@@ -1,6 +1,7 @@
 body, html{
     margin:0px;
     padding:0px;
+    height:100%;
 }
 
 p, body, table
@@ -12,16 +13,6 @@ p, body, table
 a img {
     border:0px;
     padding-right: 2px;
-}
-
-#container{
-
-    width:1000px;
-    margin:120px 0px 0px 15px;
-}
-
-#container.sticky{
-    margin: 28px 0px 0px 15px;
 }
 
 #header {
@@ -42,40 +33,53 @@ a img {
     /* For Internet Explorer 8 */
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#0272a7, endColorstr=#013953)";
 
-    /* Borders */
-
     border-bottom: 1px solid #002232;
-
-    /*margin-bottom:20px;*/
-
 }
 
 #header.sticky{
     display:none;
 }
 
+#wrapper{
+    margin-bottom: -52px;
+    min-height:100%;
+}
+
+#container{
+
+    margin: 0 auto;
+    padding-top:120px;
+    padding-left:15px;
+}
+
+#container.sticky{
+    margin: 28px 0px -50px 0px;
+}
+
 #footer{
+    position:relative;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width:100%;
+    display:inline-block;
+    
+    vertical-align: middle;
     color:white;
     font-size:8pt;
     font-weight: bold;
-    clear:both;
     border-top: #006666 1px solid;
-    padding-top:10px;
-    margin-top:10px;
-    text-align:center;
-    left:0px;
-    right:0px;    
+    text-align:center;  
     background:#013953;
-    height:40px;
 }
 
-#leftMenu{
-    float:left;
-    width:100px;
+.clearfooter {
+    height: 50px;
+    clear: both;
 }
 
 #content{
-    padding:1em;
+    margin: 0 auto;
+    width:auto;
 }
 
 #menu {
@@ -113,7 +117,7 @@ a img {
 #menu li.menu_item:hover {
     border: 0px;
     background-color: transparent;
-     padding: 1px 10px 1px 10px;
+    padding: 1px 10px 1px 10px;
 }
 
 #menu.sticky{
@@ -221,7 +225,7 @@ a img {
 
 #menu .menu_right {
     float:right;
-    margin-right:20px;
+    margin-right:10px;
 }
 #menu li .align_right {
     /* Rounded Corners */
