@@ -603,6 +603,11 @@ switch ($cmd) {
     case "saveDB":
         include("saveDB.inc");
         break;
+    case "ajax":
+        $url = getValue($_GET, "url");
+        if($url != null)
+            include($url);
+        break;
     default:
         include("home.inc");
         break;
