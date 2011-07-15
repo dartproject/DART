@@ -62,7 +62,7 @@ function getAttendanceRates($listID, $date, $period) {
 
 	$sql = "SELECT AG.Description AS attendance, COUNT(*) AS total ".
 			"FROM ".
-			"list_members_tmp, attendancecodegroups AS ACG, attendancegroups AS AG, AttendanceEvents AS AE ".
+			"list_members_tmp, AttendanceCodeGroups AS ACG, AttendanceGroups AS AG, AttendanceEvents AS AE ".
 			"WHERE ".
 			"AE.studentid = list_members_tmp.studentid AND list_members_tmp.process_id = '".$listMembers->getId()."' AND ".
 			"AE.CodeID = ACG.CodeID AND AG.GroupID = ACG.GroupID AND AE.date = '$date' AND AE.PeriodID = '$period' AND ".
