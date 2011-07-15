@@ -38,7 +38,7 @@ $listMembers = new ListMembers($db, $sql, $studentClause, $currentUserID); // $c
 $sql = "SELECT list_members_tmp.studentid, CONCAT_WS(' ', fname, lname) AS name, site, alaskaid, grade, cast(grade as unsigned) AS grade_order, bday, datediff(current_date(),bday) AS age_order, AC.Code, AG.Description AS attendance ".
 		"FROM (list_members_tmp, student) ".
 		"LEFT JOIN ".
-		"(attendancecodegroups AS ACG, Attendancecodes AS AC, attendancegroups AS AG, AttendanceEvents AS AE) ".
+		"(AttendanceCodeGroups AS ACG, AttendanceCodes AS AC, AttendanceGroups AS AG, AttendanceEvents AS AE) ".
 		"ON (AC.CodeID = ACG.CodeID AND AG.GroupID = ACG.GroupID AND AE.date = '$date' AND AE.PeriodID = '$period' AND AE.studentid = list_members_tmp.studentid AND AE.CodeID = AC.CodeID AND (AG.Description = 'Absent' OR AG.Description = 'Present')) ".
 		"WHERE ".
 		"student.studentid = list_members_tmp.studentid AND list_members_tmp.process_id = '".$listMembers->getId()."' ".
