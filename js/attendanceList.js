@@ -124,13 +124,31 @@ Ext.onReady(function() {
 	});
 
 	bbar.bindStore(store);
+
+	// Select columns from studentColumns in view/Student.js
+	var columns = getMyColumns([
+		"StudentID-checkbox",
+		"Name",
+		"StudentID",
+		"AlaskaID",
+		"Site",
+		"TestingGrade",
+		"Age",
+		"AttendanceCode"
+	]);
+	// Action icons
+	columns.push({
+        xtype: 'actioncolumn',
+        width: 50,
+		items: StudentActions
+	});
 	var grid = Ext.create('Ext.grid.Panel', {
 		title: 'Attendance Date: ' + month + '/' + day + '/' + year + ' -  Period: ' + periodName,
 		store: store,
 		selModel: sm, // For checkbox model
 		stateful: true,
 		stateId: 'stateGrid',
-		columns: studentColumns,
+		columns: columns,
 		height: 500,
 		width: 800,
 		resizable: true,

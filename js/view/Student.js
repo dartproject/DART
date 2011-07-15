@@ -4,7 +4,7 @@ var imageURL = document.getElementsByName("imageURL")[0].value;
 // Render functions
 function renderCheckbox(value, p, record) {
 	return Ext.String.format(
-		'<div style="display:none"><input type="checkbox" name="studentID[]" value="{0} {1}" class="radio"></div>',
+	'<div style="display:none"><input type="checkbox" name="studentID[]" value="{0} {1}" class="radio"></div>',
 		record.data.studentid,
 		record.data.site
 		);
@@ -44,63 +44,109 @@ function renderGrade(value, p, record) {
 
 var studentColumns =  [
 	{
-		width     : 5,
-		sortable : false,
-		renderer : renderCheckbox,
-		hidden   : true,
-		dataIndex: 'studentid'
+		id: "StudentID-checkbox",
+		value: 
+			{
+				width     : 5,
+				sortable : false,
+				renderer : renderCheckbox,
+				hidden   : true,
+				dataIndex: 'studentid'
+			}
 	},
-	{
-		text     : 'Name',
-		width    : 150,
-		sortable : true,
-		renderer : renderName,
-		dataIndex: 'name'
+	{	
+		id: "Name",
+		value: 
+			{
+				text     : 'Name',
+				width    : 150,
+				sortable : true,
+				renderer : renderName,
+				dataIndex: 'name'
+			}
 	},
-	{
-		text     : 'Student Number',
-		sortable : true,
-		dataIndex: 'studentid'
+	{	
+		id: "StudentID",
+		value: 
+			{
+				text     : 'Student Number',
+				sortable : true,
+				dataIndex: 'studentid'
+			}
 	},
-	{
-		text     : 'AK Student ID',
-		sortable : true,
-		dataIndex: 'alaskaid'
+	{	
+		id: "AlaskaID",
+		value: 
+			{
+				text     : 'AK Student ID',
+				sortable : true,
+				dataIndex: 'alaskaid'
+			}
 	},
-	{
-		text     : 'School Site',
-		sortable : true,
-		width    : 90,
-		dataIndex: 'site'
+	{	
+		id: "Site",
+		value: 
+			{
+				text     : 'School Site',
+				sortable : true,
+				width    : 90,
+				dataIndex: 'site'
+			}
 	},
-	{
-		text     : 'Testing Grade',
-		renderer : renderGrade,
-		sortable : true,
-		width    : 90,
-		dataIndex: 'grade_order'
+	{	
+		id: "TestingGrade",
+		value: 
+			{
+				text     : 'Testing Grade',
+				renderer : renderGrade,
+				sortable : true,
+				width    : 90,
+				dataIndex: 'grade_order'
+			}
 	},
-	{
-		text     : 'Age',
-		renderer : renderAge,
-		sortable : true,
-		width    : 90,
-		dataIndex: 'age_order'
+	{	
+		id: "Age",
+		value: 
+			{
+				text     : 'Age',
+				renderer : renderAge,
+				sortable : true,
+				width    : 90,
+				dataIndex: 'age_order'
+			}
 	},
-	{
-		text     : 'Code',
-		width    : 60,
-		sortable : true,
-		dataIndex: 'Code'
-	},
-	{
-		text     : 'Action',
-		flex     : 1,
-		renderer: renderAction,
-		sortable : false,
-		dataIndex: 'studentid'
+	{	
+		id: "AttendanceCode",
+		value: 
+			{
+				text     : 'Code',
+				width    : 60,
+				sortable : true,
+				dataIndex: 'Code'
+			}
 	}
 ];
+
+var StudentActions = [
+	{
+		icon   : imageURL + 'icons/report_16.png',
+		tooltip: 'Attendance',
+		handler: function(grid, rowIndex, colIndex) {
+			var rec = grid.store.getAt(rowIndex);
+			window.location.href = Ext.String.format("?cmd=AttendanceCalendar&student={0}&year={1}",
+				rec.getId(), 2010);
+		}
+	}, {
+		icon   : imageURL + 'icons/user_edit_16.png',
+		tooltip: 'Advanced Edit',
+		handler: function(grid, rowIndex, colIndex) {
+			var rec = grid.store.getAt(rowIndex);
+			window.location.href = Ext.String.format("?cmd=advEdit&id={0}",
+				rec.getId());
+		}
+	}
+];
+
 Ext.define('StudentModel', {
 	extend: 'Ext.data.Model',
 	fields: [
@@ -159,3 +205,15 @@ var bbar = new Ext.PagingToolbar({
 	pageSize
 	],
 });
+
+function getMyColumns(ids) {
+	columns = new Array();
+	for(var i = 0; i < ids.length; ++i) {
+		for(var j = 0; j < studentColumns.length; ++j) {
+			if(ids[i] == studentColumns[j].id) {
+				columns.push(studentColumns[j].value);
+			}
+		}
+	}
+	alert(columns.length);
+}
