@@ -2027,6 +2027,7 @@ function array_sort($array, $key) {
 }
 
 function getSearchSQL($values) {
+    
     $wherestudent = "";
     $wherelevel = "";
     $wheregrades = "";
@@ -2055,8 +2056,8 @@ function getSearchSQL($values) {
     $wherelevel .= createOr($values['level'], "studentlevel.level");
     $wherelevel .= createOr($values['overall'], "studentlevel.progress");
 
-    if ($values['area'] != '' or $values['level'] != '')
-        $wherelevel .= " studentlevel.final = '0000-00-00 00:00:00' and ";
+    if ($values['area'][0] != '' or $values['level'][0] != '')
+       $wherelevel .= " studentlevel.final = '0000-00-00 00:00:00' and ";
 
     $wheregrades .= createOr($values['QPIs'], "grades.value");
 
@@ -2087,8 +2088,8 @@ function getSearchSQL($values) {
         $other .= " student.site = site.siteid and ";
         $tables .= "site, ";
     }
-
-    $sql = "select *, (CURDATE() - bday) as age from $tables student where $wherestudent $wherelevel $wheregrades $wheresite $other 1 group by student.studentid";
+//,(CURDATE() - bday) as age
+    $sql = "select *  from $tables student where $wherestudent $wherelevel $wheregrades $wheresite $other 1 group by student.studentid";
     return $sql;
 }
 
@@ -2207,6 +2208,7 @@ function getStudentSearchResults($values, $start, $limit) {
     global $db;
 
     $sql = getSearchSQL($values);
+
     $results['sql'] = $sql;
     debugPrint("SQL Results: " . $sql);
     $res1 = $db->get_results($sql);

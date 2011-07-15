@@ -116,7 +116,7 @@
                             <td nowrap bgcolor="#ccccff" width="15%"><font size="2"><b>Last Name: </b></font></td>
                             <td width="35%">{$student.lname}</td>
                             <td nowrap bgcolor="#ccccff" width="15%"><font size="2"><b>Password: </b></font></td>
-                            <td width="35%">{$student.pwd}</td>
+                            <td width="35%">*******</td>
                         </tr>
                         <tr>
                             <td nowrap bgcolor="#ccccff" width="15%"><b><font size="2">Mailing Address:</font></b></td>

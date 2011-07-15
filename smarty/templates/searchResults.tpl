@@ -55,8 +55,10 @@
                                     <table width="100%" cellpadding="1" cellspacing="1" border="0" class="listtable">
                                         
                                         <tr class="listhead">
-                                            <td width="2%"></td>                                            
-                                            <td></td>                          
+                                            <td width="2%"></td>     
+                                            {if $showEdit}
+                                            <td></td>     
+                                            {/if}
                                             <td align="center" nowrap><a href="(EmptyReference!)">&nbsp;Name&nbsp;</a></td>
                                             <td align="center">
                                                 <div align="center">

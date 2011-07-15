@@ -10,7 +10,7 @@ global $db;
 
 $defaultLimit = 50;
 
-if ($_POST['continue'] == "yes") {
+if (isset($_POST['continue']) && $_POST['continue'] == "yes") {
     $limit = $_POST['limit'];
     if ($limit < 1) {
         $limit = $defaultLimit;
@@ -27,6 +27,7 @@ if ($_POST['continue'] == "yes") {
     $start = 1;
     $values = getStudentSearchResults($_POST, $start - 1, $limit);
     $students = $values['list'];
+    
     $total = $values['total'];
     $sql = $values['sql'];
 }

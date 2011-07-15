@@ -45,22 +45,22 @@
 
     {* {$noGroups=$showMyGroups + $showSharedGroups + $privateSharedGroups } *}
 
-    {$noGroups=0}
+    {*{$noGroups=0}
     {if isset($showSharedGroups)}
-        {$noGroups=$noGroups+1}
+    {$noGroups=$noGroups+1}
     {/if}
 
     {if isset($showMyGroups)}
-        {$noGroups=$noGroups+1}
+    {$noGroups=$noGroups+1}
     {/if}
 
-    {if isset($privateSharedGroups)}
-        {$noGroups=$noGroups+1}
+    {if isset($privateSharedGroups|default)}
+    {$noGroups=$noGroups+1}
     {/if}
 
     {if $noGroups==0 & !$showManageGroups}
-        {$noGroups=1}
-    {/if}
+    {$noGroups=1}
+    {/if}*}
     <li><a href="#" class="drop">Groups</a>
         <div class="dropdown_3columns">
 
@@ -95,19 +95,20 @@
                     {/foreach}
                 </ul>
             </div>
+            {if $privateSharedGroups|default:''}
 
-            <div class="col_1" >
-                <p class="black_box">Private Shared</p>
-                <ul style="max-height: 200px; overflow:auto">
-                    <ul >
-                        {foreach $privateSharedGroups as $group}
-                            <li><a href=index.php?cmd=showscores&p1={$group.listid}>{$group.listname}</a></li>
-                        {/foreach}
+                <div class="col_1" >
+                    <p class="black_box">Private Shared</p>
+                    <ul style="max-height: 200px; overflow:auto">
+                        <ul >
+                            {foreach $privateSharedGroups as $group}
+                                <li><a href=index.php?cmd=showscores&p1={$group.listid}>{$group.listname}</a></li>
+                            {/foreach}
+                        </ul>
                     </ul>
-                </ul>
 
-            </div>
-
+                </div>
+            {/if}
         </div>
     </li>
 
