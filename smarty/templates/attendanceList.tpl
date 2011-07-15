@@ -52,7 +52,7 @@
 				</font>
 			</div>
 			<br />
-			<div align="center">
+			<div align="center" style="width:800px;">
 				<font size="4" color="#cc0000" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">Keeping a List &amp; Checking it Twice...</font>
 			</div>
 			<font size="1" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">

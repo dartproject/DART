@@ -139,7 +139,7 @@ Ext.onReady(function() {
 	// Action icons
 	columns.push({
         xtype: 'actioncolumn',
-        width: 50,
+        width: 80,
 		items: StudentActions
 	});
 	var grid = Ext.create('Ext.grid.Panel', {

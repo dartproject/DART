@@ -215,5 +215,5 @@ function getMyColumns(ids) {
 			}
 		}
 	}
-	alert(columns.length);
+	return columns;
 }

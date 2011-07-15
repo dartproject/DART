@@ -49,16 +49,8 @@ function getAttendanceCodes() {
 
 function getAttendanceRates($listID, $date, $period) {
 	global $db;
-	$list = $db->get_results("select lists.kind, lists.sql from lists where listid = '$listID' ", ARRAY_A);
-	if ($list[0]['kind'] == 'search') {
-		$sql = $list[0]['sql'];
-		$studentClause = "student.studentid";
-	} else {
-		$sql = "select studentid from listvalues where listid = '$listID'";
-		$studentClause = "listvalues.studentid";
-	}
 
-	$listMembers = new ListMembers($db, $sql, $studentClause, $currentUserID); // $currentUserID is a global variable
+	$listMembers = new ListMembers($db, $listID, $currentUserID); // $currentUserID is a global variable
 
 	$sql = "SELECT AG.Description AS attendance, COUNT(*) AS total ".
 			"FROM ".
