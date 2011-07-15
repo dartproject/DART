@@ -38,12 +38,7 @@ $sql = "SELECT list_members_tmp.studentid, CONCAT_WS(' ', fname, lname) AS name,
 
 $list = $db->get_results($sql, ARRAY_A);
 
-$sql = "SELECT COUNT(*) AS n FROM list_members_tmp ".
-		"WHERE list_members_tmp.process_id = '".$listMembers->getId()."'";
-
-$total = $db->get_row($sql);
-
-$results = array("totalCount" => $total->n, "success" => true, "students" => array());
+$results = array("totalCount" => $listMembers->count(), "success" => true, "students" => array());
 if($list != null) {
 	foreach($list as $row) {
 		$row['age'] = age($row['bday']);

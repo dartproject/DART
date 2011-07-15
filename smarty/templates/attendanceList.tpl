@@ -69,6 +69,7 @@
 				<input type="hidden" name="period" value="{$period}" />
 				<input type="hidden" name="periodName" value="{$periodname}" />
 				<input type="hidden" name="imageURL" value="{$imageURL}" />
+				<input type="hidden" name="CurrentYear" value="{$CurrentYear}" />
 
 				{* The table is generated in this div using Ext-js (see js/attendanceList.js and getAttendanceList.php) *}
 				<div id="attendanceList"></div>

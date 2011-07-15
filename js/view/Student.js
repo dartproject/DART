@@ -1,4 +1,5 @@
-// Hidden variables
+// Hidden variables (ToDo: find a better way to access these variables)
+var CurrentYear = document.getElementsByName("CurrentYear").length == 0 ? '' : document.getElementsByName("CurrentYear")[0].value; 
 var imageURL = document.getElementsByName("imageURL")[0].value; 
 
 // Render functions
@@ -13,7 +14,7 @@ function renderAction(value, p, record) {
 	return Ext.String.format(
 		'<a href="index.php?cmd=AttendanceCalendar&student={0}&year={1}"><img alt="Attendance" src="' + imageURL + 'icons/report_16.png" title="Attendance" style="padding:2px; vertical-align: middle" /></a>&nbsp;<a href="?cmd=advEdit&id={0}"><img alt="Advanced Edit" src="' + imageURL + 'icons/user_edit_16.png" title="Advanced Edit" style="padding:2px; vertical-align: middle" /></a>',
 		value,
-		2010
+		CurrentYear
 		);
 }
 function renderName(value, p, record) {
@@ -134,7 +135,7 @@ var StudentActions = [
 		handler: function(grid, rowIndex, colIndex) {
 			var rec = grid.store.getAt(rowIndex);
 			window.location.href = Ext.String.format("?cmd=AttendanceCalendar&student={0}&year={1}",
-				rec.getId(), 2010);
+				rec.getId(), CurrentYear);
 		}
 	}, {
 		icon   : imageURL + 'icons/user_edit_16.png',

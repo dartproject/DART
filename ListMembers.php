@@ -4,6 +4,7 @@ class ListMembers {
 
 	private $id;
 	private $db;
+	private $n;
 
 	public function  __construct($db, $listID, $userid) {
 		$this->id = uniqid(substr($userid, 0, 12)); // In case length($userid) > 12
@@ -19,11 +20,15 @@ class ListMembers {
 		}
 		$from_pos = stripos($sql, " from ");
 		$tail = substr($sql, $from_pos);
-		$this->db->get_results("INSERT INTO list_members_tmp(process_id, studentid) (SELECT '$this->id', $studentClause $tail)");
+		$this->n = $this->db->query("INSERT INTO list_members_tmp(process_id, studentid) (SELECT '$this->id', $studentClause $tail)");
 	}
 
 	public function getId() {
 		return $this->id;
+	}
+
+	public function count() {
+		return $this->n;
 	}
 
 	public function  __destruct() {
