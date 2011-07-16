@@ -108,7 +108,7 @@ body{
 }
 	</style>
 	<link rel=\"stylesheet\" href=\"lib/tab-view.css\" type=\"text/css\" media=\"screen\">
-	<script type=\"text/javascript\" src=\"lib/ajax.js\"></script>
+	<script type=\"text/javascript\" src=\"js/ajax.js\"></script>
 	<script type=\"text/javascript\" src=\"lib/tab-view.js\"></script>
 	<script src=\"lib/utility.txt\"></script>
 	<script type=\"text/javascript\" src=\"lib/myScript.js\"></script>

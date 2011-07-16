@@ -123,6 +123,7 @@ if (checkLogon() == FALSE and $cmd != 'processLogon' and $cmd != 'getPwd' and $c
     if (isset($loggedIn))
         if ($loggedIn != "") {
             $_GET['msg'] = $loggedIn;
+            $_SESSION['sessionUserID'] = $loggedInUser->getID();
         }
     $cmd = 'logon';
 }
@@ -428,8 +429,8 @@ switch ($cmd) {
     case "AttendanceListRecord":
         include("attendanceListRecord.inc");
         break;
-    case "EnrollmentStudent":
-        include("enrollmentStudent.inc");
+    case "studentEnrollmentForm":
+        include("studentEnrollmentForm.inc");
         break;
     case "ChangeExitCode":
         include("changeExitCode.inc");
