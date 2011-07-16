@@ -7,7 +7,7 @@
 //  Web: http://wiki.bssd.org/index.php/DART_System
 // ==================================================================
 
-require_once('lib/Smarty/libs/Smarty.class.php');
+require_once('/lib/Smarty/libs/Smarty.class.php');
 
 $config = parse_ini_file('config/config.ini');
 
