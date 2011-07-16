@@ -49,7 +49,7 @@ if (isset($_SESSION['sessionUserID'])) {
     
     $sendForm = new SendForm();
     $sendForm->body = $body;
-    $sendForm->subject = "Enroll Student";
+    $sendForm->subject = "Transfer/Drop Student";
     $sendForm->fromEmail = $loggedInUser->getEmail();
     $sendForm->fromName = $loggedInUser->getName();
     

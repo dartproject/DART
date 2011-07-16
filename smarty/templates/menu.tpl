@@ -225,7 +225,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="transfer_form.shtml">
+                            <a href="index.php?cmd=studentTransferForm">
     <!--                            <img align="absmiddle" src="{$imageURL}/icons/vcard_edit_16.png" alt="" />-->
                                 Drop/Transfer
                             </a>

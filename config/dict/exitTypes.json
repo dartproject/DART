@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "name": "Transfer to a public school in BSSD"
+    },
+    {
+        "id": 2,
+        "name": "Transfer to a public school in a different school district in Alaska"
+    },
+    {
+        "id": 3,
+        "name": "Transfer to a public school in a different state or country"
+    },
+    {
+        "id": 5,
+        "name": "Transfer to a private school"
+    },
+    {
+        "id": 6,
+        "name": "Transfer to an institution with an educational program"
+    },
+    {
+        "id": 7,
+        "name": "Graduated with regular diploma"
+    },
+   {
+        "id": 8,
+        "name": "Graduated with regular diploma under a waiver"
+    },
+    {
+        "id": 9,
+        "name": "COA (certificate of attendance or achivement)"
+    },
+    {
+        "id": 10,
+        "name": "Death"
+    },{
+        "id":11,
+        "name":"Maximum age and did not receive a diploma or COA"
+    },{
+        "id":12,
+        "name":"Dropped Out"
+    },{
+        "id":13,
+        "name":"Finished year as 12th grader & expected to return"
+    },{
+        "id":14,
+        "name":"Finished year as PK-11th grader & returning"
+    }
+]
