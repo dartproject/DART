@@ -659,14 +659,14 @@ function getCoreSubjects() {
     global $db;
     $query = "SELECT id, name FROM subjects WHERE core = 'x' ORDER BY subjects.order";
     $subject = $db->get_results($query, ARRAY_A);
-    return $subject;
+    return $subject == NULL? array() : $subject;
 }
 
 function getElectiveSubjects() {
     global $db;
     $query = "SELECT id, name FROM subjects WHERE core = '' ORDER BY subjects.order";
     $subject = $db->get_results($query, ARRAY_A);
-    return $subject;
+    return $subject == NULL? array() : $subject;
 }
 
 /* * * Access to lists table ** */
@@ -3106,30 +3106,30 @@ function getListTabs($listID) {
 }
 
 function getSummaryInfo() {
-    $summary = array(
-        "qpi" => array(
-            "description" => "Quarterly Performance Indicator",
-            "label" => "QPI",
-            "options" => array(
-                "", "Disengaged", "Deficient", "Acceptable", "Exemplary", "Not_Instructed"
-            )
-        ),
-        "ase" => array(
-            "description" => "ASE",
-            "label" => "ASE",
-            "options" => array(
-                "", "Eligible", "Not_Eligible"
-            )
-        ),
-        "prog" => array(
-            "description" => "PROGRESS",
-            "label" => "Progress",
-            "options" => array(
-                "", "On Track!", "Not On Track"
-            )
-        )
-    );
-    return $summary;
+	$summary = array(
+		"qpi" => array(
+			"description" => "Quarterly Performance Indicator",
+			"label" => "QPI",
+			"options" => array(
+				"", "Disengaged", "Deficient", "Acceptable", "Exemplary", "Not_Instructed"
+			)
+		),
+		"ase" => array(
+			"description" => "ASE",
+			"label" => "ASE",
+			"options" => array(
+				"", "Eligible", "Not_Eligible"
+			)
+		),
+		"prog" => array(
+			"description" => "PROGRESS",
+			"label" => "Progress",
+			"options" => array(
+				"", "On Track!", "Not On Track"
+			)
+		)
+	);
+	return $summary;
 }
 
 function getSubjectLevelInfo($studentsID, $subject, $level) {
@@ -3256,93 +3256,93 @@ function getSubjectLevelInfo($studentsID, $subject, $level) {
 			s.lname, 
 			g.studentid";
 
-    $summary = $db->get_results($query, ARRAY_A);
-    $n2 = count($summary);
-    $student = NULL;
-    $s = -1;
-    $j = 0;
-    $types = array("std" => "standards", "over" => "overall", "qpi" => "summary",
-        "ase" => "summary", "prog" => "summary", "comment" => "comment");
-    for ($i = 0; $i < $n; $i++) {
-        $this_student = $res[$i]['studentid'];
-        if ($this_student != $student) {
-            $student = $this_student;
-            $data[++$s] = array();
-            $data[$s]['studentID'] = $student;
-            $data[$s]['fname'] = $res[$i]['fname'];
-            $data[$s]['lname'] = $res[$i]['lname'];
-            $data[$s]['progress'] = $res[$i]['progress'];
-            $data[$s]['change_username'] = $res[$i]['change_username'];
-            $data[$s]['change_timestamp'] = $res[$i]['change_timestamp'];
-            $data[$s]['site'] = $res[$i]['site'];
-            $data[$s]['grade'] = $res[$i]['grade'];
-            $data[$s]['gradetype'] = $res[$i]['gradetype'];
-            $data[$s]['gradetypename'] = $res[$i]['gradetypename'];
-            $data[$s]['standards'] = array();
-            $data[$s]['overall'] = array();
-            $data[$s]['summary'] = array();
+$summary = $db->get_results($query, ARRAY_A);
+$n2 = count($summary);
+$student = NULL;
+$s = -1;
+$j = 0;
+$types = array("std" => "standards", "over" => "overall", "qpi" => "summary",
+		"ase" => "summary", "prog" => "summary", "comment" => "comment");
+for ($i = 0; $i < $n; $i++) {
+	$this_student = $res[$i]['studentid'];
+	if ($this_student != $student) {
+		$student = $this_student;
+		$data[++$s] = array();
+		$data[$s]['studentID'] = $student;
+		$data[$s]['fname'] = $res[$i]['fname'];
+		$data[$s]['lname'] = $res[$i]['lname'];
+		$data[$s]['progress'] = $res[$i]['progress'];
+		$data[$s]['change_username'] = $res[$i]['change_username'];
+		$data[$s]['change_timestamp'] = $res[$i]['change_timestamp'];
+		$data[$s]['site'] = $res[$i]['site'];
+		$data[$s]['grade'] = $res[$i]['grade'];
+		$data[$s]['gradetype'] = $res[$i]['gradetype'];
+		$data[$s]['gradetypename'] = $res[$i]['gradetypename'];
+		$data[$s]['standards'] = array();
+		$data[$s]['overall'] = array();
+		$data[$s]['summary'] = array();
 
-            // Search for student in $summary
-            for ($k = $j; $k < $n2; $k++) {
-                if ($summary[$k]['studentid'] == $student)
-                    break;
-            }
-            // Retrieve each summary record
-            for ($j = $k; $j < $n2; $j++) {
-                if ($summary[$j]['studentid'] != $student)
-                    break;
-                $type = $types[$summary[$j]['std']];
+		// Search for student in $summary
+		for ($k = $j; $k < $n2; $k++) {
+			if ($summary[$k]['studentid'] == $student)
+				break;
+		}
+		// Retrieve each summary record
+		for ($j = $k; $j < $n2; $j++) {
+			if ($summary[$j]['studentid'] != $student)
+				break;
+			$type = $types[$summary[$j]['std']];
 
-                $data[$s][$type][$summary[$j]['std']] = array(
-                    'value' => $summary[$j]['value']
-                );
-            }
-        }
+			$data[$s][$type][$summary[$j]['std']] = array(
+					'value' => $summary[$j]['value']
+			);
+		}
+	}
 
-        $type = $types[$res[$i]['type']];
+	$type = $types[$res[$i]['type']];
 
-        if (isset($res[$i]['value'])) {
-            $data[$s][$type][$res[$i]['std']] = array(
-                'value' => $res[$i]['value']
-            );
-        }
-    }
-    return $data;
+	if (isset($res[$i]['value'])) {
+		$data[$s][$type][$res[$i]['std']] = array(
+				'value' => $res[$i]['value']
+		);
+	}
+}
+return $data;
 }
 
 function getSubjectStandardsArray($sub, $level) {
-    global $db;
-    $query = "SELECT std, description, link, shortname FROM standards WHERE subject='$sub' AND level='$level' AND type='std' ORDER BY standards.order ASC";
-    $res = $db->get_results($query, ARRAY_A);
-    for ($i = 0; $i < count($res); $i++) {
-        $res[$i]['description'] = str_replace("'", "\'", htmlentities($res[$i]['description']));
-    }
-    return $res;
+global $db;
+$query = "SELECT std, description, link, shortname FROM standards WHERE subject='$sub' AND level='$level' AND type='std' ORDER BY standards.order ASC";
+$res = $db->get_results($query, ARRAY_A);
+for ($i = 0; $i < count($res); $i++) {
+	$res[$i]['description'] = str_replace("'", "\'", htmlentities($res[$i]['description']));
+}
+return $res;
 }
 
 function getSubjectOverallArray($sub, $level) {
-    global $db;
-    $query = "SELECT std, description FROM standards WHERE subject='$sub' AND level='$level' AND type='over' ORDER BY standards.order ASC";
-    $res = $db->get_results($query, ARRAY_A);
-    for ($i = 0; $i < count($res); $i++) {
-        $res[$i]['description'] = str_replace("'", "\'", htmlentities($res[$i]['description']));
-    }
-    return $res;
+global $db;
+$query = "SELECT std, description FROM standards WHERE subject='$sub' AND level='$level' AND type='over' ORDER BY standards.order ASC";
+$res = $db->get_results($query, ARRAY_A);
+for ($i = 0; $i < count($res); $i++) {
+	$res[$i]['description'] = str_replace("'", "\'", htmlentities($res[$i]['description']));
+}
+return $res;
 }
 
 function getCoreLevels() {
-    global $db;
-    $query = "SELECT DISTINCT level FROM level, subjects WHERE subjects.id = level.subject AND subjects.core = 'x'  ORDER BY CAST(level AS SIGNED)";
-    $res = $db->get_results($query, ARRAY_A);
-    return $res;
+global $db;
+$query = "SELECT DISTINCT level FROM level, subjects WHERE subjects.id = level.subject AND subjects.core = 'x' ORDER BY CAST(level AS SIGNED)";
+$res = $db->get_results($query, ARRAY_A);
+return $res;
 }
 
 function getValue($arr, $key, $default = NULL) {
-    if (isset($arr[$key]) && $arr[$key] != "") {
-        return $arr[$key];
-    } else {
-        return $default;
-    }
+if (isset($arr[$key]) && $arr[$key] != "") {
+	return $arr[$key];
+} else {
+	return $default;
+}
 }
 
 function getStudentToggles($startdate, $enddate, $site='', $start = 0, $limit = 30) {
@@ -3496,20 +3496,20 @@ function getTeacherToggles($startdate, $enddate, $site='', $start = 0, $limit = 
 }
 
 function getDates($year, $quarter) {
-    global $db;
-    $sql = "select * from quarters where year = '$year' order by quarter ";
-    $res = $db->get_results($sql, ARRAY_A);
-    $startQ = $res[$quarter - 1]['start'];
-    $endQ = $res[$quarter - 1]['finish'];
-    $startY = $res[0]['start'];
-    $endY = $res[3]['finish'];
-    $curdate = date('Y-m-d');
-    $dates = array(
-        "quarter" => array($res[$quarter - 1]['start'], $res[$quarter - 1]['finish']),
-        "year" => array($res[0]['start'], $res[3]['finish']),
-        "day" => array($curdate, $curdate)
-    );
-    return $dates;
+	global $db;
+	$sql = "select * from quarters where year = '$year' order by quarter ";
+	$res = $db->get_results($sql, ARRAY_A);
+	$startQ = $res[$quarter - 1]['start'];
+	$endQ = $res[$quarter - 1]['finish'];
+	$startY = $res[0]['start'];
+	$endY = $res[3]['finish'];
+	$curdate = date('Y-m-d');
+	$dates = array(
+		"quarter" => array($res[$quarter - 1]['start'], $res[$quarter - 1]['finish']),
+		"year" => array($res[0]['start'], $res[3]['finish']),
+		"day" => array($curdate, $curdate)
+	);
+	return $dates;
 }
 
 function getHash($value) {
@@ -3520,21 +3520,18 @@ function getHash($value) {
 
 function checkHash($value, $hash) {
 	$hasher = new PasswordHash(8, FALSE);
-        
-        
 	return $hasher->CheckPassword($value, $hash);
 }
 
 function encryptPasswords() {
-    global $db;
-    $sql = "SELECT userid, pwd FROM user";
+	global $db;
+	$sql = "SELECT userid, pwd FROM user";
 	$res = $db->get_results($sql);
-        
-        
+
 	foreach($res as $user) {
 		$hash = getHash($user->pwd);
 		$id = $user->userid;
-    	$sql = "UPDATE user SET pwd = '$hash' WHERE userid='$id'";
+		$sql = "UPDATE user SET pwd = '$hash' WHERE userid='$id'";
 		$db->get_results($sql);
 	}
 }

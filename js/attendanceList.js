@@ -57,7 +57,7 @@ Ext.require([
 	'Ext.tip.QuickTipManager',
 	'Ext.state.*',
 	'Ext.selection.CheckboxModel'
-	]);
+]);
 
 Ext.onReady(function() {
 
@@ -74,6 +74,25 @@ Ext.onReady(function() {
     
 	// setup the state provider, all state information will be saved to a cookie
 	Ext.state.Manager.setProvider(Ext.create('Ext.state.CookieProvider'));
+
+	// Select fields from studentFields in view/Student.js
+	var fields = getMyValues(studentFields, [
+		"StudentID",
+		"Name",
+		"AlaskaID",
+		"Site",
+		"TestingGrade",
+		"TestingGrade-Order",
+		"Age",
+		"Age-Order",
+		"AttendanceCode"
+	]);
+	// Create Model
+	Ext.define('StudentModel', {
+		extend: 'Ext.data.Model',
+		fields: fields,
+		idProperty: 'studentid'
+	});
 
 	var proxy = new Ext.data.proxy.Ajax({
 		url : 'index.php',
@@ -126,28 +145,32 @@ Ext.onReady(function() {
 	bbar.bindStore(store);
 
 	// Select columns from studentColumns in view/Student.js
-	var columns = getMyColumns([
-		"StudentID-checkbox",
+	var columns = getMyValues(studentColumns, [
+		"StudentID-Checkbox",
 		"Name",
 		"StudentID",
 		"AlaskaID",
 		"Site",
-		"TestingGrade",
-		"Age",
+		"TestingGrade-Order",
+		"Age-Order",
 		"AttendanceCode"
 	]);
 	// Action icons
+	var actions = getMyValues(studentActions, [
+		"AttendanceCalendar",
+		"AdvancedEdit"
+	]);
 	columns.push({
-        xtype: 'actioncolumn',
-        width: 80,
-		items: StudentActions
+		xtype: 'actioncolumn',
+		width: 80,
+		items: actions
 	});
 	var grid = Ext.create('Ext.grid.Panel', {
 		title: 'Attendance Date: ' + month + '/' + day + '/' + year + ' -  Period: ' + periodName,
 		store: store,
 		selModel: sm, // For checkbox model
 		stateful: true,
-		stateId: 'stateGrid',
+		stateId: 'attendanceListGrid',
 		columns: columns,
 		height: 500,
 		width: 800,
