@@ -9,9 +9,11 @@ include_once 'WeightedList.php';
 $listID = $_GET['p1'];
 $listinfo = getListInfo($listID);
 $listName = $listinfo['listname'];
+
 //TODO: WeightedList doesn't work right now, so grades is not needed 
 //$grades = getGradesList($listID); 
 $grades = array();
+
 $subjects = getCoreSubjects();
 $electives = getElectiveSubjects();
 $list = getStudentList($listID);
@@ -29,11 +31,12 @@ $weightedStd = $weightedList->getList();
 $title = "Show Scores for List";
 
 if (Privilege(A6) == 'district')
-    $showEdit = 1;
+	$showEdit = 1;
 else
-    $showEdit = 0;
+	$showEdit = 0;
 
 
+// This functionality was moved to WeightedList.php
 /*
 for ($y = 0; $y < count($list); $y++) {
 	$id = $list[$y]['studentid'];
@@ -96,14 +99,8 @@ $smarty->assign('listName',$listName);
 $smarty->assign('stdcount',$stdcount);
 $smarty->assign('oldtabid',0);
 $smarty->assign('tabs',$tabs);
-$smarty->assign('subjects',$subjects);
-$smarty->assign('electives',$electives);
-$smarty->assign('list',$list);
-$smarty->assign('color1',$color1);
-$smarty->assign('color2',$color2);
 $smarty->assign('weightedStd',$weightedStd);
-$smarty->assign('student',$student);
-$smarty->assign('showEdit',$showEdit);
+$smarty->assign('imageURL',$imageURL);
 
 //set flag to indicate that smarty template exists for this page
 $isSmarty=true;

@@ -37,6 +37,8 @@ include_once ("lib/config.inc");
 include_once ("lib/ez_sql.php");
 include_once ("lib/function.inc");
 include_once ("lib/PasswordHash.php");
+require_once ("lib/security/Privileges.php");
+require_once ("lib/security/PScopeType.php");
 
 date_default_timezone_set($timezone);
 
