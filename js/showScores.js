@@ -188,6 +188,7 @@ Ext.onReady(function() {
 				height: 500,
 				width: 800,
 				resizable: true,
+				resizeHandles: 'se',
 				renderTo: 'tabhome',
 				// paging bar on the bottom
 				bbar: bbar,

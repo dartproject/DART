@@ -175,6 +175,7 @@ Ext.onReady(function() {
 		height: 500,
 		width: 800,
 		resizable: true,
+		resizeHandles: 'se',
 		renderTo: 'attendanceList',
 		iconCls: 'icon-grid',
 		// paging bar on the bottom
