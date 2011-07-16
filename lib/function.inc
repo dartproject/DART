@@ -283,7 +283,7 @@ function getMyGlobals() {
     if (isset($_SESSION['sessionUserID'])) {
         $currentUserID = $_SESSION['sessionUserID'];
         
-       
+   
         
         
         // <editor-fold defaultstate="collapsed" desc="OLD User code (still in use)">

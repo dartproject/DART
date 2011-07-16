@@ -219,7 +219,7 @@
                     <h3>Manage</h3>
                     <ul>
                         <li>
-                            <a href="enrollment_form.shtml">
+                            <a href="index.php?cmd=studentEnrollmentForm">
                                 <img align="absmiddle" src="{$imageURL}/icons/user_add_16.png" alt="" />
                                 Add Student
                             </a>

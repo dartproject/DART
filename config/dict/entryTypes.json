@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "name": "Transfer from another district school"
+    },
+    {
+        "id": 2,
+        "name": "Transfer from a public school in a different school district in Alaska"
+    },
+    {
+        "id": 3,
+        "name": "Transfer from a public school in a different state or country"
+    },
+    {
+        "id": 4,
+        "name": "Transfer from home schooling"
+    },
+    {
+        "id": 5,
+        "name": "Transfer from private school"
+    },
+    {
+        "id": 6,
+        "name": "Transfer from an institution with an educational program"
+    },
+    {
+        "id": 7,
+        "name": "Re-Entry after a volantary withdrawal from same school"
+    },
+   {
+        "id": 8,
+        "name": "Re-Entry after a explusion from same school"
+    },
+    {
+        "id": 9,
+        "name": "Student is new to school"
+    },
+    {
+        "id": 10,
+        "name": "Student continusing from last year without break in attendance"
+    }
+]
