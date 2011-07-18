@@ -14,7 +14,6 @@ $disciplines = getDiscipline($studentid, $year, $sort, $dir, $start, $limit, $ds
 $total = getTotalDiscipline($studentid, $year, $dstatusValues);
 $results = array("totalCount" => $total, "success" => true, "incidents" => $disciplines);
 
-writeFile(json_encode($results));
 echo json_encode($results);
 
 ?>
