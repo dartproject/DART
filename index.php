@@ -432,6 +432,9 @@ switch ($cmd) {
     case "studentEnrollmentForm":
         include("studentEnrollmentForm.inc");
         break;
+    case "studentTransferForm":
+        include("studentTransferForm.inc");
+        break;
     case "ChangeExitCode":
         include("changeExitCode.inc");
         break;

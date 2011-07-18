@@ -1,0 +1,53 @@
+[
+    {
+        "id": 1,
+        "name": "Not a drop"
+    },
+    {
+        "id": 2,
+        "name": "10+ Days Unexcused Absence"
+    },
+    {
+        "id": 3,
+        "name": "Truancy"
+    },
+    {
+        "id": 5,
+        "name": "Kindegartner - stopped comming"
+    },
+    {
+        "id": 6,
+        "name": "Transfer to home schooling"
+    },
+    {
+        "id": 7,
+        "name": "Left for unknown reasons"
+    },
+   {
+        "id": 8,
+        "name": "Employment"
+    },
+    {
+        "id": 9,
+        "name": "Family problems"
+    },
+    {
+        "id": 10,
+        "name": "Pregnancy"
+    },{
+        "id":11,
+        "name":"Alcohol/Drug Dependency"
+    },{
+        "id":12,
+        "name":"Illness"
+    },{
+        "id":13,
+        "name":"Expulsion due to bahavior"
+    },{
+        "id":14,
+        "name":"Pursuing GED"
+    },{
+        "id":15,
+        "name":"Entering military"
+    }
+]
