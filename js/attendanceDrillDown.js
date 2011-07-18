@@ -30,3 +30,139 @@ function checkChecks () {
     alert ('There are no students checked.');
     return false;
 }
+
+/* Load Table */
+Ext.require([
+	'Ext.grid.*',
+	'Ext.data.*',
+	'Ext.util.*',
+	'Ext.toolbar.Paging',
+	'Ext.ModelManager',
+	'Ext.tip.QuickTipManager',
+	'Ext.state.*',
+	'Ext.selection.CheckboxModel'
+]);
+
+Ext.onReady(function() {
+
+	// GET Variables
+	var params = Ext.Object.fromQueryString(location.search.substring(1));
+
+	// Hidden variables
+	/*
+	var month = document.getElementsByName("month")[0].value; 
+	var day = document.getElementsByName("day")[0].value; 
+	var year = document.getElementsByName("year")[0].value; 
+	*/
+
+	Ext.QuickTips.init();
+    
+	// setup the state provider, all state information will be saved to a cookie
+	Ext.state.Manager.setProvider(Ext.create('Ext.state.CookieProvider'));
+
+	// Select fields from studentFields in view/Student.js
+	var fields = getMyValues(studentFields, [
+		"StudentID",
+		"Name",
+		"Site",
+	]);
+	// Select columns from studentColumns in view/Student.js
+	var columns = getMyValues(studentColumns, [
+		"StudentID-Checkbox",
+		"Name",
+		"StudentID",
+		"Site"
+	]);
+
+	// This information could also be retrieved from the DB
+	var categories = ["Absent", "Late", "ISS", "Suspended", "Present"];
+	for(i = 0; i < categories.length; ++i) {
+		columns.push({
+			text: categories[i],
+			width: 83,
+			sortable : true,
+			dataIndex: categories[i]
+		});
+		fields.push({
+			name: categories[i],
+			type: 'float'
+		});
+	}
+
+	// Create Model
+	Ext.define('AttendanceDrillDownModel', {
+		extend: 'Ext.data.Model',
+		fields: fields,
+		idProperty: 'studentid'
+	});
+
+	var proxy = new Ext.data.proxy.Ajax({
+		url : 'index.php',
+		reader: {
+			type: 'json',
+			root: 'rows',
+			totalProperty: 'totalCount'
+		},
+		simpleSortMode: true,
+		extraParams: {
+			cmd     : "ajax",
+			url     : "getAttendanceDrillDown.php",
+			type    : params.type,
+			site    : params.site,
+			quarter : params.quarter,
+			cdate   : params.cdate,
+			year    : params.year,
+		}
+	});
+
+	// create the data store
+	var store = Ext.create('Ext.data.Store', {
+		model: 'AttendanceDrillDownModel',
+		pageSize : 30,
+		proxy: proxy,
+		autoLoad: false,
+		remoteSort: true,
+		sorters: [{
+			property: 'name',
+			direction: 'DESC'
+		}]
+	});
+
+	// Create the Grid
+	var pluginExpanded = true;
+	var sm = Ext.create('Ext.selection.CheckboxModel', {
+		// Mirror checkbox behavior
+		listeners: {
+			select: function(sm, record, index) {
+				var checkbox = document.forms['selectionForm'].elements['studentID[]'];
+				checkbox[index].checked = true;
+			},
+			deselect: function(sm, record, index) {
+				var checkbox = document.forms['selectionForm'].elements['studentID[]'];
+				checkbox[index].checked = false;
+			}
+		}
+	});
+
+	bbar.bindStore(store);
+
+	var grid = Ext.create('Ext.grid.Panel', {
+		store: store,
+		selModel: sm, // For checkbox model
+		stateful: true,
+		stateId: 'attendanceDrillDownGrid',
+		columns: columns,
+		height: 500,
+		width: 800,
+		resizable: true,
+		resizeHandles: 'se',
+		renderTo: 'attendanceDrillDown',
+		iconCls: 'icon-grid',
+		// paging bar on the bottom
+		bbar: bbar,
+		viewConfig: {
+			stripeRows: true
+		}
+	});
+	store.loadPage(1);
+});
