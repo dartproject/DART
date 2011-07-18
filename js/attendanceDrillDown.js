@@ -106,7 +106,7 @@ Ext.onReady(function() {
 		simpleSortMode: true,
 		extraParams: {
 			cmd     : "ajax",
-			url     : "getAttendanceDrillDown.php",
+			url     : "getAttendanceDrillDown_2.php",
 			type    : params.type,
 			site    : params.site,
 			quarter : params.quarter,
