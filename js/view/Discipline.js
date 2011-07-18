@@ -4,10 +4,16 @@ var imageURL = document.getElementsByName("imageURL").length == 0? '' : document
 
 // Render functions
 function renderDate(value, p, record) {
-	return Ext.Date.dateFormat(value, 'm-d-Y');
+	if(value == null) // Date in wrong format
+		return "";
+	else
+		return Ext.Date.dateFormat(value, 'm-d-Y');
 }
 
 function renderDateTime(value, p, record) {
+	if(value == null)
+		return "";
+	else
 	return Ext.Date.dateFormat(value, 'm-d-Y H:i:s');
 }
 
