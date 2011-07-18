@@ -22,7 +22,7 @@ $dates = getDates($year, $quarter, $curdate);
 
 $day_options = array("absent", "late");
 
-$groups = $db->get_results("SELECT * FROM attendanceGroups");
+$groups = $db->get_results("SELECT * FROM AttendanceGroups");
 
 if(in_array($type, array_keys($dates))) { // year, quarter or day
 	$date = $dates[$type];
