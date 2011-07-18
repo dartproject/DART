@@ -23,6 +23,7 @@ $titles = array(
 );
 
 $groups = $db->get_results("SELECT * FROM AttendanceGroups");
+$day_options = array("absent", "late");
 
 $sql = NULL;
 if(in_array($type, array_keys($dates))) { // year, quarter or day
@@ -41,16 +42,15 @@ if(in_array($type, array_keys($dates))) { // year, quarter or day
 	}
 	$date = $dates["day"];
 	$currdatedisplay = PHPDate("m/d/Y", $date[0]);
-	$studentlist = getStudentIn("SELECT S.studentid as id
-		FROM AttendanceEvents AE, AttendanceCodeGroups AG, student S
+	$studentlist = getStudentIn("SELECT studentid as id
+		FROM AttendanceEvents AE, AttendanceCodeGroups AG
 		WHERE $siteselect AE.Date = '$date[0]' AND AE.CodeID = AG.CodeID and AG.GroupID = $id
-			and S.studentid = AE.studentid 
-		GROUP BY S.studentid");
+		GROUP BY studentid");
 	if($studentlist != NULL) {
 		$sql = "SELECT AE.SiteID, S.studentid as id, fname, lname, count(AG.GroupID)/2 as count, GroupID
 			FROM AttendanceEvents AE, AttendanceCodeGroups AG, student S
 			WHERE $siteselect AE.Date = '$date[0]' AND AE.CodeID = AG.CodeID and S.studentid IN ($studentlist) 
-			AND S.studentid = AE.studentid AND AG.GroupID = $id 
+			AND S.studentid = AE.studentid 
 			GROUP BY S.studentid, site, AG.GroupID ORDER BY S.lname, S.fname";
 	}
 }
