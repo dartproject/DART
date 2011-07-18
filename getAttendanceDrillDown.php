@@ -14,7 +14,7 @@ $sort = getValue($_GET, "sort", "name");
 $dir = getValue($_GET, "dir", "ASC");
 
 if($sort == 'name') $sort = "lname $dir, fname";
-else if($sort == 'studentid') $sort = 's.studentid';
+else if($sort == 'studentid') $sort = 'S.studentid';
 
 $d = explode("-",$curdate);
 $currdatedisplay = date("m/d/Y", mktime(0,0,0,$d[1],$d[2],$d[0]));
@@ -30,8 +30,8 @@ if(in_array($type, array_keys($dates))) { // year, quarter or day
 	foreach($groups as $g) {
 		$sql .= "SUM(IF(groupId = ".$g->GroupID.", 1,0))/2 as ".$g->Description.", ";
 	}
-	$sql .= "s.studentid, CONCAT_WS(' ', fname, lname) AS name, AE.siteID AS site ".
-		"FROM student s, AttendanceEvents as AE, AttendanceCodeGroups as ACG ".
+	$sql .= "S.studentid, CONCAT_WS(' ', fname, lname) AS name, AE.siteID AS site ".
+		"FROM student S, AttendanceEvents as AE, AttendanceCodeGroups as ACG ".
 		"WHERE AE.codeID = ACG.codeID AND $siteselect".
 		"AE.date between '$date[0]' and '$date[1]' AND ".
 		"S.studentid = AE.studentid ".
@@ -49,7 +49,7 @@ if(in_array($type, array_keys($dates))) { // year, quarter or day
 			break;
 		}
 	}
-	$sql = "SELECT s.studentid, CONCAT_WS(' ', fname, lname) AS name, AE.siteID AS site, ".
+	$sql = "SELECT S.studentid, CONCAT_WS(' ', fname, lname) AS name, AE.siteID AS site, ".
 		"COUNT(*)/2 AS ".$g->Description." ".
 		"FROM student s, AttendanceEvents as AE, AttendanceCodeGroups as ACG ".
 		"WHERE AE.codeID = ACG.codeID AND $siteselect".
