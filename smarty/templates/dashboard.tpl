@@ -2,7 +2,7 @@
 {block name="title"}{$pageTitle}{/block}
 
 {block name="body"}
-<div style="width:1024px; margin: 0 auto" align="center">
+<div style="width:1024px; margin: auto; padding-bottom:30px;" align="center">
 	<form name=ptime method=get action="index.php">
 		<input type=hidden name=cmd value=Dashboard />
 		<input type=hidden name=year value={$year} />

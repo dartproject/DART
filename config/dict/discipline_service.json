@@ -1,0 +1,12 @@
+{
+    "" : "Choose Status",
+    "NC" : "No Change in Setting",
+    "ISS-Y" : "ISS with Educational Services",
+    "ISS-N" : "ISS without Services",
+    "S-Y" : "Suspension with Services",
+    "ISS-N" : "Suspension without Services",
+    "E-N" : "Expulsion With Services",
+    "IAES-Y" : "Interim Alternate Setting",
+    "UR" : "Unilateral Removal"
+}
+

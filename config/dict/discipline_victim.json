@@ -1,0 +1,19 @@
+{
+    "" : "Select Type",
+    "126" : "Student",
+    "850" : "Parent / Guardian",
+    "1232" : "Substitute",
+    "3036" : "Teacher",
+    "3038" : "Counselor",
+    "3040" : "Medical Staff",
+    "3041" : "Administrator",
+    "3042" : "Principal",
+    "3043" : "Assistant Principal",
+    "3047" : "Other School Staff",
+    "3048" : "Transportation Staff",
+    "3050" : "Custodial Staff",
+    "3052" : "Paraprofessional / Aide",
+    "3054" : "Law Enforcement Officer",
+    "3062" : "Other Nonstudent Youth",
+    "3061" : "Other Adult"
+}

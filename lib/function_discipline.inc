@@ -4,6 +4,22 @@
 //	 Web: http://wiki.bssd.org/index.php/DART_System
 // ==================================================================
 
+require_once 'lib/dict/Dict.php';
+require_once 'lib/dict/DictType.php';
+
+/* *****************************************************************************
+ * Get Dictionaries
+ * **************************************************************************** */
+$non_weapon = Dict::getDict(DictType::DISCIPLINE_NON_WEAPON);
+$police = Dict::getDict(DictType::DISCIPLINE_POLICE);
+$consequence = Dict::getDict(DictType::DISCIPLINE_CONSEQUENCE);
+$length = Dict::getDict(DictType::DISCIPLINE_LENGTH);
+$weapon = Dict::getDict(DictType::DISCIPLINE_WEAPON);
+$victim = Dict::getDict(DictType::DISCIPLINE_VICTIM);
+$disability = Dict::getDict(DictType::DISCIPLINE_DISABILITY);
+$iep = Dict::getDict(DictType::DISCIPLINE_IEP);
+$service = Dict::getDict(DictType::DISCIPLINE_SERVICE);
+
 $nonweaponValues =  array(
 	array("id"  => "", "name" => "Select One"),
 	array("id"  => "1", "name" => "Assault"),
@@ -144,15 +160,17 @@ $eduServicesSelect =  array(
 	array("id"  => "E-N", "name" => "Expulsion With Services"),
 	array("id"  => "IAES-Y", "name" => "Interim Alternate Setting"),
 	array("id"  => "UR", "name" => "Unilateral Removal")
-
 );
 
-function getDiscipline($studentid, $year, $sort, $dir, $start, $limit, $dstatusValues) {
+function getDiscipline($studentid, $year, $sort, $dir, $start, $limit) {
 	global $db;
 
+	// Get Dictionary
+	$status = Dict::getDict(DictType::DISCIPLINE_STATUS);
+
 	$sql = "SELECT disciplineid, kind, creation, incidentdate, CASE dstatus ";
-	foreach($dstatusValues as $value) {
-		$sql .= "WHEN '".$value['id']."' THEN '".$value['name']."' ";
+	foreach($status as $id => $value) {
+		$sql .= "WHEN '$id' THEN '$value' ";
 	}
 	$sql .= "END AS status FROM discipline WHERE studentid = '$studentid' AND year = '$year' ".
 		"ORDER BY $sort $dir LIMIT $start, $limit";
@@ -187,25 +205,30 @@ function createDiscipline($studentid, $year, $kind, $site) {
 function getDisciplineData ($dispID) {
 	global $db;
 
-	$sql = "select *, concat(fname, ' ', lname) as studentname from discipline, student where disciplineid = '$dispID' and discipline.studentid = student.studentid";
-	$results = $db->get_results($sql, ARRAY_A);
-	return ($results[0]);
+	$sql = "SELECT ".
+		"S.studentid, CONCAT_WS(' ', fname, lname) AS studentname, ".
+		"picture, nonweapon, victimno, police, consequence, dstatus, lengthdays, ".
+		"weapon, victimtype, relateddisability, iepmeet, eduservice, ".
+		"incidentdate, guardian, startdate, notes, enddate, kind, meetdate ".
+		"FROM discipline AS D, student AS S ".
+		"WHERE disciplineid = '$dispID' AND D.studentid = S.studentid";
+	$results = $db->get_row($sql);
+	return $results;
 
 }
 
 function saveDiscipline ($values) {
 	global $db;
+	$new_values = array();
 
-	while(list($var, $value) = each($values)) {
-		if(substr($var, 0, 2) == "i_") {
-			$setvalues .= $setvalues == "" ? "" : ",\n";
-			$setvalues .= substr($var, 2, 100) . " = '$value'";
+	foreach($values as $name => $value) {
+		if(substr($name, 0, 2) == "i_") {
+			$new_values[] = substr($name, 2, 100)." = '$value'"; 
 		}
 	}
 	$did = $values['disciplineid'];
-	$sql = "UPDATE discipline SET $setvalues WHERE disciplineid = '$did'";
-	echo $sql;
-	$db->get_results($sql);
+	$sql = "UPDATE discipline SET ".implode(", ", $new_values)." WHERE disciplineid = '$did'";
+	return $db->query($sql);
 }
 
 function varValue($list, $val) {

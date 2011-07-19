@@ -1,0 +1,20 @@
+{
+    "" : "Select One",
+    "1" : "Assault",
+    "2" : "Alcohol",
+    "3" : "Arson",
+    "4" : "Cheating / Unethical Behavior",
+    "5" : "Disorderly Conduct",
+    "6" : "Drugs",
+    "7" : "Embezzlement",
+    "8" : "Extortion",
+    "9" : "Fighting",
+    "10" : "Bullying/Harassment/Intimidation",
+    "11" : "Insubordination",
+    "12" : "Other Non-Weapon Incident",
+    "13" : "Theft",
+    "14" : "Threat",
+    "15" : "Tobacco",
+    "16" : "Vandalism",
+    "17" : "Profanity"
+}

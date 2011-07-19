@@ -3,6 +3,7 @@
 {block name="js"}
 <script type="text/javascript" src="js/jquery.datepick.package/jquery.datepick.js"></script>
 <script type="text/javascript" src="js/extjs/bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery/jquery.simplemodal.1.4.1.min.js"></script>
 <script language="JavaScript" type="text/javascript" src="js/view/Student.js"></script>
 <script language="JavaScript" type="text/javascript" src="js/attendanceList.js"></script>
 {/block}
@@ -19,19 +20,27 @@
 			<font class="big" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">- {$listName}</font>
 		</td>
 	</tr>
-	<!--
 	<tr>
-		<td align="left">
+		<td>
+			<a id="page_help" href="#" onclick="" style="font-size: 8pt; color: #006FEB">
+				<img alt="help" src="{$imageURL}icons/help_16.png" style="vertical-align: middle"/> About this page
+			</a>
+
 			<blockquote>
-				<div class="noteimportant">
-					<font size="2" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">To take attendance, select a group of students and then select
-						the correct code at the bottom of the screen.
+				<div id="page_modal_help" style="display:none">
+					<p><font size="3"><b>Group Attendance</b></font></p>
+					<font size="2" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">
+						<p>
+						Attendance is taken in batches. Select the checkbox next to all of the 
+						names that will be marked in this batch, and then select the correct 
+						code at the bottom of the screen. This screen will refresh, and the 
+						next batch of codes can be entered.
+						</p>
 					</font>
 				</div>
 			</blockquote>
 		</td>
 	</tr>
-	-->
 	<tr>
 		<td>
 			<div align="right" style="background-color:#ccffff; width:800px;">

@@ -2,7 +2,9 @@
 {block name="title"}{$pageTitle}{/block}
 {block name="js"}
 <script type="text/javascript" src="js/extjs/bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery/jquery.simplemodal.1.4.1.min.js"></script>
 <script language="JavaScript" type="text/javascript" src="js/view/Student.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/wz_tooltip.js"></script>
 <script language="JavaScript" type="text/javascript" src="js/showScores.js"></script>
 {/block}
 {block name="css"}
@@ -18,13 +20,34 @@
 <div style="width:1024px;">
 	<div align="left">
 		<br/>
-		<font size="4">Overview - All Content Areas - {$listName} Group<br/><br/></font>
-		<font size="2">Here is a &quot;weighted list&quot; of the common relative
-			weaknesses of this group of students from <i>all of their content areas</i>.
-			The more students is this group that show any standard as having no toggled
-			status, Emerging status, or Developing status, the larger the name
-			of the standard is in the list. This means that the largest short standard
-			names are the most common relative weaknesses of the group.</font>
+		<font size="4">Overview - All Content Areas - {$listName} Group</font>
+		<br />
+		<a id="page_help" href="#" onclick="" style="font-size: 8pt; color: #006FEB">
+			<img alt="help" src="{$imageURL}icons/help_16.png" style="vertical-align: middle"/> About this page
+		</a>
+
+		<blockquote>
+			<div id="page_modal_help" style="display:none">
+				<p><font size="3"><b>Weighted List of Standards Needed</b></font></p>
+				<font size="2" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular"><p>
+					Here is a &quot;weighted list&quot; of the common relative
+					weaknesses of this group of students from <i>all of their content areas</i>.
+					The more students is this group that show any standard as having no toggled
+					status, Emerging status, or Developing status, the larger the name
+					of the standard is in the list. This means that the largest short standard
+					names are the most common relative weaknesses of the group.</p>
+				</font>
+				<br />
+				<p><font size="3"><b>Overview - All Content Areas</b></font></p>
+				<font size="2" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">
+					<!--- Roll over each content area code to read it!</font><br />-->
+					- Click on the Level Number in any Content Area to view the <i>students in this group at that level</i>.<br />
+					- Click on the name of the student to see<i> his or her standards progress in all content areas</i>.<br />
+					- Click on any Content Area to <i>re-sort the view by Content Area &amp; Level Number</i>.<br />
+				</font>
+			</div>
+		</blockquote>
+		<br/><br/>
 		<p><font size="4" color="#cc0000">Weighted List of Standards Needed</font>
 			<font size="2">: </font></p>
 
@@ -35,14 +58,6 @@
 	        {/foreach}
 		</div>
 
-		<div align="left">
-			<ul>
-				<li type="circle"><font size="2">Roll over each content area code to read it!</font></li>
-				<li type="circle"><font size="2">Click on the Level Number in any Content Area to view the <i>students in this group at that level</i>.</font></li>
-				<li type="circle"><font size="2" color="black">Click on the name of the student to see<i> his or her standards progress in all content areas</i>. </font><font size="2"></font></li>
-				<li type="circle"><font size="2">Click on any Content Area to <i>re-sort the view by Content Area &amp; Level Number</i>.</font></li>
-			</ul>
-		</div>
 	</div>
 	<b>Student count - {$stdcount}</b><br/>
 	<a href='index.php?cmd=editlist&p1={$listID}'>Edit Group</a> |
@@ -73,7 +88,7 @@
 	</div>
 	{/foreach}
 </div>
-<div id="tabhome" style="margin:0 auto" class="unhidden"></div>
-<br />
-
+<div style="margin-bottom:30px;">
+	<div id="tabhome" class="unhidden"></div>
+</div>
 {/block}
