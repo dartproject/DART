@@ -132,13 +132,10 @@ foreach ($names as $stu) {
 
 //	$test = getTestScores($sid);
 //	print_r($test);
-        echo "Before grades<br/<";
 	$grades = getGrades($sid, $start, $final);
-        echo "After grades <br/>";
 	$line = 1; $side = 1; $page = 1;
 	$year = '';
         
-        echo "Before grade loop <br/>";
 	foreach($grades as $g) {
 //		print_r($g);
 //		echo "<br>";
@@ -191,9 +188,7 @@ foreach ($names as $stu) {
 	}
 
 	// Create the FDF file of data used to populate the template
-        echo "Before creating fdf file <br/>";
 	createFDF($fdf_file, $data);
-        echo "Before creating pdf file <br/>";
 	createPDFFile ($template, $pdf_temp_file, $fdf_file);
 	mergePDFFile($pdf_temp_file, $pdf_file, $tmp_file);
 	
@@ -248,17 +243,15 @@ function getTestScores($sid){
 function getGrades($sid, $lower=-2, $upper=13) {
 	global $db, $CurrentYear, $CurrentQuarter;
 	
-        
 	$sl = "('$sid')";
 	$sql = "SELECT * FROM testinglevel WHERE studentid in $sl ";
-        echo $sql . "<br/>";
 	$results = $db->get_results($sql, ARRAY_A);
 	foreach($results as $row) {
 		$testinglevel[$row['studentid']][$row['year']] = $row['testinglevel'];
 	}
 	
 	$sql = "SELECT sq.year as syear, sq.quarter as squarter, eq.year as eyear, eq.quarter as equarter, s.*, l.* FROM quarters as sq, quarters as eq,  studentlevel as s, level as l WHERE s.studentid in $sl and s.start >= sq.start and s.start <= sq.finish and  s.final >= eq.start and s.final <= eq.finish and final != '0000-00-00' and s.subject = l.subject and s.level = l.level ORDER BY studentid, syear ";
-	echo $sql ." <br/>";
+//	echo $sql;
 	$results = $db->get_results($sql, ARRAY_A);
 	foreach($results as $row) {
 		populateEntry($data, $row);
@@ -267,14 +260,14 @@ function getGrades($sid, $lower=-2, $upper=13) {
 	$sql = "SELECT sq.year as syear, sq.quarter as squarter, '$CurrentYear' as eyear, '$CurrentQuarter' as equarter, s.*, l.* FROM quarters as sq, studentlevel as s, level as l  WHERE s.studentid in $sl and s.start >= sq.start and s.start <= sq.finish and final = '0000-00-00' and s.subject = l.subject and s.level = l.level  ORDER BY studentid, syear";
 //	echo $sql;
 	$results = $db->get_results($sql, ARRAY_A);
-	print_r($results);
+	//print_r($results);
 	foreach($results as $row) {
 		populateEntry($data, $row);
 	}
 	
 	$schools = getSchools($sid);
 
-	print_r($data);
+//	print_r($data);
 	$row ='';
 	foreach($data as $student) {
 		$studentid = $student['studentid'];
