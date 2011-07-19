@@ -184,7 +184,7 @@ foreach ($names as $stu) {
 //		echo "$line-$side-$maxline) {$g['name']} - {$g['Q1']} - {$g['Q2']} - {$g['Q3']} - {$g['Q4']}<br><br>";
 		$line++;
 	}
-	
+
 	// Create the FDF file of data used to populate the template
 	createFDF($fdf_file, $data);
 	createPDFFile ($template, $pdf_temp_file, $fdf_file);
