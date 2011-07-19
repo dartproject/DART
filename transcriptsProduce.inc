@@ -133,11 +133,13 @@ foreach ($names as $stu) {
 //	$test = getTestScores($sid);
 //	print_r($test);
 	$grades = getGrades($sid, $start, $final);
+        echo "After grades <br/>";
 	$line = 1; $side = 1; $page = 1;
 	$year = '';
         
+        echo "Before grade loop <br/>";
 	foreach($grades as $g) {
-		print_r($g);
+//		print_r($g);
 //		echo "<br>";
 		if (($line == $maxline and $side == 2) or ($line == 1 and $side == 1)) {
 			if($page != 1) {
@@ -188,7 +190,9 @@ foreach ($names as $stu) {
 	}
 
 	// Create the FDF file of data used to populate the template
+        echo "Before creating fdf file <br/>";
 	createFDF($fdf_file, $data);
+        echo "Before creating pdf file <br/>";
 	createPDFFile ($template, $pdf_temp_file, $fdf_file);
 	mergePDFFile($pdf_temp_file, $pdf_file, $tmp_file);
 	
