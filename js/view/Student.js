@@ -5,6 +5,12 @@ var imageURL = document.getElementsByName("imageURL").length == 0? '' : document
 // Render functions
 function renderCheckbox(value, p, record) {
 	return Ext.String.format(
+		'<div style="display:none"><input type="checkbox" name="studentID[]" value="{0}" class="radio"></div>',
+		record.data.studentid
+	);
+}
+function renderCheckboxWithSite(value, p, record) {
+	return Ext.String.format(
 		'<div style="display:none"><input type="checkbox" name="studentID[]" value="{0} {1}" class="radio"></div>',
 		record.data.studentid,
 		record.data.site
@@ -45,6 +51,17 @@ function renderGrade(value, p, record) {
 
 // You can select columns for grid from this list
 var studentColumns =  [
+{
+	id: "StudentID-Checkbox-Site",
+	value:
+	{
+		width     : 5,
+		sortable : false,
+		renderer : renderCheckboxWithSite,
+		hidden   : true,
+		dataIndex: 'studentid'
+	}
+},
 {
 	id: "StudentID-Checkbox",
 	value:

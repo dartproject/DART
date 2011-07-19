@@ -14,7 +14,6 @@ $start = getValue($_GET, "start", 0);
 $limit = getValue($_GET, "limit", 30);
 $sort = getValue($_GET, "sort", "lname");
 $dir = getValue($_GET, "dir", "ASC");
-$userid = 10;
 
 if($sort == 'name') $sort = "lname"; // Sort by last name instead of by "fname lname"
 else if($sort == 'studentid') $sort = 'list_members_tmp.studentid';
@@ -38,7 +37,7 @@ $sql = "SELECT list_members_tmp.studentid, CONCAT_WS(' ', fname, lname) AS name,
 
 $list = $db->get_results($sql, ARRAY_A);
 
-$results = array("totalCount" => $listMembers->count(), "success" => true, "students" => array(), "other" => "more");
+$results = array("totalCount" => $listMembers->count(), "success" => true, "students" => array());
 if($list != null) {
 	foreach($list as $row) {
 		$row['age'] = age($row['bday']);

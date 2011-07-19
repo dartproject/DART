@@ -8,7 +8,7 @@ $site = $studentInfo['site'];
 
 $kind = $studentInfo['sped'] == "N" ? "regular" : "sped"; // regular, sped
 
-$disciplineid = createDisipline($studentid, $CurrentYear, $kind, $site);
+$disciplineid = createDiscipline($studentid, $CurrentYear, $kind, $site);
 if($debug <> "on") {
     echo("<META HTTP-EQUIV=\"Refresh\" CONTENT=\"1; URL=index.php?cmd=disciplineEdit&disciplineid=$disciplineid\">");
     }

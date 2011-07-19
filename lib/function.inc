@@ -3497,7 +3497,7 @@ function getTeacherToggles($startdate, $enddate, $site='', $start = 0, $limit = 
     return array("total" => $total, "data" => $res);
 }
 
-function getDates($year, $quarter) {
+function getDates($year, $quarter, $curdate) {
 	global $db;
 	$sql = "select * from quarters where year = '$year' order by quarter ";
 	$res = $db->get_results($sql, ARRAY_A);
@@ -3505,7 +3505,7 @@ function getDates($year, $quarter) {
 	$endQ = $res[$quarter - 1]['finish'];
 	$startY = $res[0]['start'];
 	$endY = $res[3]['finish'];
-	$curdate = date('Y-m-d');
+	if(!isset($curdate)) $curdate = date('Y-m-d');
 	$dates = array(
 		"quarter" => array($res[$quarter - 1]['start'], $res[$quarter - 1]['finish']),
 		"year" => array($res[0]['start'], $res[3]['finish']),

@@ -30,7 +30,7 @@ foreach($subjects as $s) {
 		"AND ".$s['id'].".subject = '".$s['id']."' AND ".$s['id'].".final = '00000000'";
 }
 $rows = array();
-if(count($subjects) > 1) {
+if(count($subjects) > 0) {
 	$sql = "SELECT s.studentid, CONCAT_WS(' ', fname, lname) AS name, ".
 		implode(", ", $fields).", ".
 		"GROUP_CONCAT(e.subject) AS electives, GROUP_CONCAT(e.level) AS electives_level ".

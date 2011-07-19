@@ -146,7 +146,7 @@ Ext.onReady(function() {
 
 	// Select columns from studentColumns in view/Student.js
 	var columns = getMyValues(studentColumns, [
-		"StudentID-Checkbox",
+		"StudentID-Checkbox-Site",
 		"Name",
 		"StudentID",
 		"AlaskaID",

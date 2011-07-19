@@ -10,7 +10,7 @@ $imageURL = $rootURL . "/images/";
 $logoURL = $rootURL . "/images/SchoolLogos/";
 $pictureURL = $rootURL . "/images/student/";
 $pictDIR = $rootURL . "/images/student/";
-$exportDIR = $rootURL . "/exp/";
+$exportDIR = $rootPATH . "/exp/";
 
 // Database inforamtion
 $dbuser = $config['DB_USER'];
