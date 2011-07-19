@@ -132,6 +132,7 @@ foreach ($names as $stu) {
 
 //	$test = getTestScores($sid);
 //	print_r($test);
+        echo "Before grades<br/<";
 	$grades = getGrades($sid, $start, $final);
         echo "After grades <br/>";
 	$line = 1; $side = 1; $page = 1;
