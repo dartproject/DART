@@ -1,40 +1,51 @@
 {extends file="layout.tpl"}
 {block name="title"}{$pageTitle}{/block}
 {block name="js"}
+<script type="text/javascript" src="js/jquery/jquery.simplemodal.1.4.1.min.js"></script>
 <script language="JavaScript" type="text/javascript" src="js/toggle.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/wz_tooltip.js"></script>
 {/block}
 {block name="body"}
 
-<div style="width:1024px; margin:0 auto">
+<div style="width:1024px; margin: auto; padding-bottom:30px;">
 	<font class="big">Individual View - All Content Areas - {$studentName}</font>
-	<br /><br />
-	{*<form name="reports" method="get" action=''>
-		{html_options name="reportMenu" values=$reportLinks output=$reportNames
-		onChange='window.location=this.value'}
-		Go To Report
-	</form>*}
 	<br />
-	<ul>
-		<li type='circle'>
-			<font size='2'><b>Note:</b>  Roll over each standard number to read
-	its short name!</font>
-		</li>
-	</ul>
-	<p>
-		<font size="2">The screen below shows the current status of these students
-	in this content area.  Toggle the appropriate indicator, and enter comments as
-	needed. Make sure you &quot;Save Changes&quot; for the entire page from either
-	the pull down menu, or the button at the bottom of the page.  The time and date
-	stamp of your entry for this student will be added.</font>
-	</p>
-	<br/>
-	<font size="2">Here is a &quot;weighted list&quot; of the common relative
-	weaknesses of this student from <i>all of their content areas</i>. The student
-	standard having no toggled status </font><font size="2">, Emerging status, or
-	Developing status, the larger the name of the standard is in the list
-	respectively. This means that the largest short standard names are the most
-	common relative weaknesses of the student.</font>
+	<a id="page_help" href="#" onclick="" style="font-size: 8pt; color: #006FEB">
+		<img alt="help" src="{$imageURL}icons/help_16.png" style="vertical-align: middle"/> About this page
+	</a>
 
+	<blockquote>
+		<div id="page_modal_help" style="display:none">
+			<p><font size="3"><b>Individual View - All Content Areas</b></font></p>
+			<font size="2" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">
+				<p>
+				The screen below shows the current status of these students
+				in this content area.  Toggle the appropriate indicator, and enter comments as
+				needed. Make sure you &quot;Save Changes&quot; for the entire page from either
+				the pull down menu, or the button at the bottom of the page.  The time and date
+				stamp of your entry for this student will be added.
+				</p>
+				<ul>
+					<li type='circle'>
+						<font size='2'><b>Note:</b>  Roll over each standard number to read
+						its short name!</font>
+					</li>
+				</ul>
+			</font>
+			<p><font size="3"><b>Weighted List of Standards Needed</b></font></p>
+			<font size="2" face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">
+				<p>
+				Here is a &quot;weighted list&quot; of the common relative
+				weaknesses of this student from <i>all of their content areas</i>. The student
+				standard having no toggled status </font><font size="2">, Emerging status, or
+				Developing status, the larger the name of the standard is in the list
+				respectively. This means that the largest short standard names are the most
+				common relative weaknesses of the student.
+				</p>
+			</font>
+		</div>
+	</blockquote>
+	<br/>
 	<p>
 		<font size="4" color="#cc0000">Weighted List of Standards Needed</font>
 		<font size="2">: </font>
@@ -44,34 +55,6 @@
 	{foreach $weightedStd as $w}
 		<a href="{$w.link}" target="_blank"><span class="{$w.class}">{$w.span}</span></a> ::
 	{/foreach}
-	</div>
-
-	<div align="left">
-		<ul>
-			<li type="circle">
-				<font size="2">
-					Roll over each content area code to read it!
-				</font>
-			</li>
-			<li type="circle">
-				<font size="2">
-					Click on the Level Number in any Content Area to view the
-					<i>students in this group at that level</i>.
-				</font>
-			</li>
-			<li type="circle">
-				<font size="2" color="black">
-					Click on the name of the student to see
-					<i> his or her standards progress in all content areas</i>.
-				</font>
-			</li>
-			<li type="circle">
-				<font size="2">
-					Click on any Content Area to
-					<i>re-sort the view by Content Area &amp; Level Number</i>.
-				</font>
-			</li>
-		</ul>
 	</div>
 
 	<form name="toggle" method="post" action=index.php?cmd=saveStudentToggle>
@@ -108,7 +91,5 @@
 	{/if}
 	</form>
 	<br />* Placing mouse over standard number will display standards descriptions.
-	<br />
-	<br />
 </div>
 {/block}

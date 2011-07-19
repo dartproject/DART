@@ -12,3 +12,13 @@ function handleSelection(value) {
 		window.location=value;
 	}
 }
+
+$(document).ready(function(){
+    $( "input:submit", "#content" ).button();
+    
+    $('#page_help').click(function (e) {
+        $('#page_modal_help').modal();
+
+        return false;
+    });
+});

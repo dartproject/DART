@@ -16,7 +16,6 @@ $period = getValue($_GET, "period", 0);
 $periodname = $period == 0 ? "am" : "pm";
 
 $listName = getListName($listID);
-$stdcount = count($students);
 
 $monthMenu = getMonthOptions();
 $keys = array_keys($monthMenu);
@@ -48,7 +47,7 @@ function getAttendanceCodes() {
 }
 
 function getAttendanceRates($listID, $date, $period) {
-	global $db;
+	global $db, $currentUserID;
 
 	$listMembers = new ListMembers($db, $listID, $currentUserID); // $currentUserID is a global variable
 
@@ -73,6 +72,7 @@ function getAttendanceRates($listID, $date, $period) {
 
 $title = "Group Attendance";
 
+$smarty->assign('pageTitle',$title);
 $smarty->assign('dayMenu',$dayMenu);
 $smarty->assign('monthMenu',$monthMenu);
 $smarty->assign('codeMenu',$codeMenu);

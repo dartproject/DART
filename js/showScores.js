@@ -4,6 +4,16 @@ function turnOn(id) {
 	$("#tab"+id).addClass('unhidden');
 }
 
+$(document).ready(function(){
+    $( "input:submit", "#content" ).button();
+    
+    $('#page_help').click(function (e) {
+        $('#page_modal_help').modal();
+
+        return false;
+    });
+});
+
 /* Load Table */
 Ext.require([
 	'Ext.grid.*',
@@ -77,6 +87,7 @@ Ext.onReady(function() {
 				// Custom columns: Subjects
 				columns.push({
 					text: row.data.id,
+					//text: '<span onMouseOver="return escape(\'' + row.data.name + '\')">' + row.data.id + '</span>',
 					width: 50,
 					sortable : true,
 					renderer: function(value, p, record) {
