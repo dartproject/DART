@@ -6,7 +6,7 @@
 
 include_once("lib/pdf_functions.php");
 include_once("lib/stopwatch.inc");
-include_once ("./graduation_report_aux.inc");
+include_once ("graduation_report_aux.inc");
 //include_once("lib/functions.inc");
 
 
