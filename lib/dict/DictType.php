@@ -36,6 +36,19 @@ class DictType {
     //SEARCH Dictionaries
     CONST SEARCH_SUSPENSIONS    = "search_suspensions.json";
     CONST SEARCH_ATTENDANCE     = "search_attendanceRates.json";
+
+    //DISCIPLINE Dictionaries
+    CONST DISCIPLINE_NON_WEAPON  = "discipline_non_weapon.json";
+    CONST DISCIPLINE_POLICE      = "discipline_police.json";
+    CONST DISCIPLINE_CONSEQUENCE = "discipline_consequence.json";
+    CONST DISCIPLINE_LENGTH      = "discipline_length.json";
+    CONST DISCIPLINE_STATUS      = "discipline_status.json";
+    CONST DISCIPLINE_WEAPON      = "discipline_weapon.json";
+    CONST DISCIPLINE_VICTIM      = "discipline_victim.json";
+    CONST DISCIPLINE_VICTIM_NO   = "discipline_victim_no.json";
+    CONST DISCIPLINE_DISABILITY  = "discipline_disability.json";
+    CONST DISCIPLINE_IEP         = "discipline_iep.json";
+    CONST DISCIPLINE_SERVICE     = "discipline_service.json";
 }
 
 ?>

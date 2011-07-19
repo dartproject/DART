@@ -1,0 +1,10 @@
+{
+    "" : "Select Consequence",
+    "none" : "Verbal Warning",
+    "G" : "Gym List",
+    "D" : "Detention",
+    "I" : "ISS",
+    "S" : "Suspended",
+    "E" : "Expelled",
+    "O" : "Other"
+}

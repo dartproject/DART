@@ -1,0 +1,13 @@
+{
+    "" : "Select Number",
+    "N/A" : "None",
+    "0" : "Less Than 0.5 Day",
+    "1" : "1 Day",
+    "2" : "2 Days",
+    "3" : "3 Days",
+    "4" : "4 Days",
+    "5" : "5 Days",
+    "6" : "6 Days",
+    "7" : "7 Days",
+    "8" : "8 Days"
+}
