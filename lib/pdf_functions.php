@@ -41,6 +41,7 @@ Last Modified: 9/12/2005
 
 
 function createFDF($file,$info){
+    echo "HELLO";
     $data="%FDF-1.2\n%����\n1 0 obj\n<< \n/FDF << /Fields [ ";
     foreach($info as $field => $val){
     	if(is_array($val)){
