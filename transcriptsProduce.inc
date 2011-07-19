@@ -112,7 +112,7 @@ $cttotal = count($names);
 
 echo "Total to produce: $cttotal<br>";
 foreach ($names as $stu) {
-    echo "WHY?";
+    
 	$sid = $stu['studentid'];
 	$sidname = $stu['fname'] . " " . $stu['lname'];
 	$data['sname'] = $sidname;
@@ -137,7 +137,7 @@ foreach ($names as $stu) {
 	$year = '';
         
 	foreach($grades as $g) {
-//		print_r($g);
+		print_r($g);
 //		echo "<br>";
 		if (($line == $maxline and $side == 2) or ($line == 1 and $side == 1)) {
 			if($page != 1) {
