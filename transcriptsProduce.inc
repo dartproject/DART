@@ -6,7 +6,7 @@
 
 include_once("lib/pdf_functions.php");
 include_once("lib/stopwatch.inc");
-include_once ("./graduation_report_aux.inc");
+include_once ("graduation_report_aux.inc");
 //include_once("lib/functions.inc");
 
 
@@ -112,6 +112,7 @@ $cttotal = count($names);
 
 echo "Total to produce: $cttotal<br>";
 foreach ($names as $stu) {
+    
 	$sid = $stu['studentid'];
 	$sidname = $stu['fname'] . " " . $stu['lname'];
 	$data['sname'] = $sidname;
@@ -134,8 +135,9 @@ foreach ($names as $stu) {
 	$grades = getGrades($sid, $start, $final);
 	$line = 1; $side = 1; $page = 1;
 	$year = '';
+        
 	foreach($grades as $g) {
-//		print_r($g);
+		print_r($g);
 //		echo "<br>";
 		if (($line == $maxline and $side == 2) or ($line == 1 and $side == 1)) {
 			if($page != 1) {
@@ -184,7 +186,7 @@ foreach ($names as $stu) {
 //		echo "$line-$side-$maxline) {$g['name']} - {$g['Q1']} - {$g['Q2']} - {$g['Q3']} - {$g['Q4']}<br><br>";
 		$line++;
 	}
-	
+
 	// Create the FDF file of data used to populate the template
 	createFDF($fdf_file, $data);
 	createPDFFile ($template, $pdf_temp_file, $fdf_file);

@@ -27,8 +27,6 @@ $loggedInUser = null;
 
 session_start();
 
-
-
 error_reporting(1);
 error_reporting(E_ALL);
 
@@ -575,6 +573,9 @@ switch ($cmd) {
         break;
     case "gb_assignstd":
         include("gb_assignstd.inc");
+        break;
+    case "resetPass":
+        encryptPasswords();
         break;
     case "updateAll":
         set_time_limit(900);
