@@ -46,7 +46,8 @@ if (Privilege(A27) == 'site') {
 
 if (isset($_GET['term']))
     $sql .= ' (student.fname LIKE "' . $_GET['term'] . '%" OR 
-            student.lname LIKE "' . $_GET['term'] . '%") ';
+            student.lname LIKE "' . $_GET['term'] . '%" OR 
+            CONCAT_WS(\' \', student.fname, student.lname) LIKE "' . $_GET['term'] . '%") ';
 
 $sql .= "order by 2 asc;";
 
@@ -55,10 +56,12 @@ $query_results = $db->get_results($sql, ARRAY_A);
 
 //read results
 $result=array();
+if($query_results != NULL) {
 foreach ($query_results as $i) {
-    $k['value'] = $i['fname'] . ' ' . $i['lname'];
-    $k['studentID'] = $i['studentid'];
-    array_push($result, $k);
+        $k['value'] = $i['fname'] . ' ' . $i['lname'];
+        $k['studentID'] = $i['studentid'];
+        array_push($result, $k);
+    }
 }
 
 echo json_encode($result);
