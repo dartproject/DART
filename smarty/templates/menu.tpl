@@ -194,7 +194,7 @@
                         *******************************************************************************}
                         {if $showDrillDown}
                             <li>
-                                <a href="index.php?cmd=pivot">
+                                <a href="index.php?cmd=reportsInd">
                                     {*<img align="absmiddle" src="{$imageURL}/icons/vcard_edit_16.png" alt="" />*}
                                     Drill Down
                                 </a>
