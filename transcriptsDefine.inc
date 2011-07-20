@@ -45,6 +45,7 @@ $lists = array_merge((array) $list1, (array) $list2);
 
 $smarty->assign('studentList', $reportstudents);
 $smarty->assign('listOptions', $lists);
+$smarty->assign('listid', $listid);
 $isSmarty = true;
 
 include ("template.inc");
