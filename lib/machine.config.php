@@ -21,5 +21,5 @@ $dbname = $config['DB_NAME'];
 $dbhose = $config['DB_HOST'];
 
 // pdftk
-$pdftk = '/usr/bin/pdftk';
+$pdftk = $config['PDFTK_PATH'];
 ?>

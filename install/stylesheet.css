@@ -1,0 +1,75 @@
+body,td,th,input,textarea {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+}
+body {
+	background-color: #A8BCCB;
+	background-image: url(../admin/interface/background.png);
+	background-repeat: repeat-x;
+	margin: 0px;
+}
+form {
+	margin: 0;
+}
+
+input:focus, select:focus {
+	background: #F1F8FD;
+}
+
+.wrong {
+	background-color: #FFDBDB;
+}
+
+.submit {
+	border : solid 1px #CCCCCC;
+	background: #E9ECEF;
+	color : #003366;
+	font-weight : bold;
+	font-size : 11px;
+	padding: 4px;
+	width: 100%;
+	cursor:pointer;cursor:hand;
+}
+.content {
+	background-color: #FFFFFF;
+	padding: 15px;
+	height: 350px;
+	width: 750px;
+	text-align: justify;
+	vertical-align: top;
+}
+hr {
+	margin: 15px 0px 15px 0px;
+	color: #003366;
+	height: 1px;
+}
+h1 {
+	font-size: 15px;
+	color: #336699;
+	margin: 0px 0px 5px 0px;
+	border-bottom: 1px solid #CCCCCC;
+}
+a:link, a:visited, a:active {
+	color: #003366;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+	color: #336699;
+}
+.bad {
+	color: #FF0000;
+	font-weight: bold;
+}
+.good {
+	color: #009900;
+	font-weight: bold;
+}
+.note {
+	color: #666666;
+	font-size: 10px;
+}
+.hide {
+	display: none;
+}
