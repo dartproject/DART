@@ -207,7 +207,6 @@ flush();
 
 function getSchools($id) {
 	global $db;
-	echo $id;
 	$sql = "SELECT SchoolYear, name FROM studentmovement, SchoolCalendar, site WHERE date >= StartDate and date <= EndDate and studentmovement.site=SchoolCalendar.SiteID and kind = 'enter' and studentid = '$id' and SchoolCalendar.siteID = site.siteid  ORDER BY date";
 	$results = $db->get_results($sql, ARRAY_A); 
 	foreach ($results as $m) {
