@@ -44,10 +44,13 @@ function set_error($message, $field_name = '') {
 			$_SESSION['database_username'] = $_POST['database_username'];
 			$_SESSION['database_password'] = $_POST['database_password'];
 			$_SESSION['database_name'] = $_POST['database_name'];
-			if(!isset($_POST['install_tables'])) {
-				$_SESSION['install_tables'] = false;
-			} else {
-				$_SESSION['install_tables'] = true;
+			$_SESSION['install_tables'] = false;
+			$_SESSION['install_demo'] = false;
+			if(isset($_POST['install'])) {
+				switch($_POST['install']) {
+					case 'tables': $_SESSION['install_tables'] = true; break;
+					case 'demo': $_SESSION['install_demo'] = true; break;
+				}
 			}
 			$_SESSION['website_url'] = $_POST['website_url'];
 			$_SESSION['admin_username'] = $_POST['admin_username'];
@@ -170,14 +173,18 @@ if(!isset($_POST['database_name']) OR $_POST['database_name'] == '') {
 	$database_name = $_POST['database_name'];
 }
 
-// Find out if the user wants to install tables and data
-if(isset($_POST['install_tables']) AND $_POST['install_tables'] == 'true') {
-	$install_tables = true;
-} else {
-	$install_tables = false;
+// Find out what installation the user wants
+$install_tables = false;
+$install_demo = false;
+if(isset($_POST['install'])) {
+	switch($_POST['install']) {
+		case 'tables': $install_tables = true; break;
+		case 'demo': $install_demo = true; break;
+	}
 }
-// End database details code
 
+
+// End database details code
 
 // Begin admin user details code
 // Get admin username
@@ -273,7 +280,7 @@ TIMEZONE = US/Alaska
 ;******** Used Modules *********************************************************
 ;*******************************************************************************
 
-;Comment if you don't want to use a specific module
+;Comment if you do not want to use a specific module
 MODULES[] = sfa
 MODULES[] = sip
 MODULES[] = sped
@@ -321,7 +328,6 @@ if(!$handle = fopen($config_filename, 'w')) {
 	fclose($handle);
 }
 
-
 // Define configuration vars
 define('DB_TYPE', 'mysql');
 define('DB_HOST', $database_host);
@@ -337,34 +343,44 @@ if(!$db) {
 	set_error('Database host name, username and/or password incorrect. MySQL Error:<br />'.mysql_error());
 }
 
-//mysql_query('CREATE DATABASE `'.$database_name.'`');
-
 if(!mysql_select_db($database_name, $db)) {
 	set_error('Database name incorrect. MySQL Error:<br />'.mysql_error());
 }
 
+$queries = array();
 if($install_tables) {
 	
-	$filename =  "core.sql";
-	$fp = @fopen ( $filename, 'r' );
-	$READ = fread ( $fp, filesize ( $filename) );
+	$filename = "core.sql";
+	$fp = fopen($filename, 'r');
+	if($fp) {
+		$queries = fread($fp, filesize($filename));
+		$queries = explode(";\n",$queries);
 	
-	$READ = explode ( ";\n", $READ );
+		$hasher = new PasswordHash(8, FALSE);
+		$hash = $hasher->HashPassword($admin_password);
 	
-	foreach ($READ AS $RED) {
-		mysql_query($RED);
+		$queries[] = "INSERT INTO `user` set user='$admin_username', pwd='$hash', privilegeA='1073741822', privilegeB='1073741822', scopeA='1073741822', scopeB='1073741822', name='Administrator', status='Active', email='$admin_email', site='Admin', type='Administrator', homeroom='X', reading='X'";
+	} else {
+		set_error('Error loading file core.sql');
 	}
 	
-	$hasher = new PasswordHash(8, FALSE);
-	$hash = $hasher->HashPassword($admin_password);
-	
-	$sql = "INSERT INTO `user` set user='$admin_username', pwd='$hash', privilegeA='1073741822', privilegeB='1073741822', scopeA='1073741822', scopeB='1073741822', name='Administrator', status='Active', email='$admin_email', site='Admin', type='Administrator', homeroom='X', reading='X'";
-	
-	mysql_query($sql);
-	
-	mysql_close();
-		
+} else if($install_demo) {
+	$filename = "sample.sql";
+	$fp = @fopen($filename, 'r');
+	if($fp) {
+		$queries = fread($fp, filesize($filename));
+		$queries = explode(";\n",$queries);
+	} else {
+		set_error('Sample database not found, please download the file from --- and save it in '.dirname(__FILE__));
+	}
 }
+
+// Install database
+foreach ($queries as $q) {
+	mysql_query($q);
+}
+mysql_close();
+
 header('Location: ../index.php?msg=Installation complete now login');
 
 ?>

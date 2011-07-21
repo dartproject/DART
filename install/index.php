@@ -164,14 +164,27 @@ function change_os(type) {
 				<input type="password" tabindex="10" name="database_password" style="width: 98%;"<?php if(isset($_SESSION['database_password'])) { echo ' value = "'.$_SESSION['database_password'].'"'; } ?> />
 			</td>
 		</tr>
-		<tr>
 
-			<td colspan="5">
-				<input type="checkbox" tabindex="12" name="install_tables" id="install_tables" value="true"<?php if(!isset($_SESSION['install_tables'])) { echo ' checked'; } elseif($_SESSION['install_tables'] == 'true') { echo ' checked'; } ?> />
-				<label for="install_tables" style="color: #666666;">Install Tables</label>
+		<tr>
+			<td colspan="5"><h1>Installation Setup</h1>Please choose the type of installation you want</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<input type="radio" tabindex="12" name="install" id="install_tables" value="tables" <?php if(!isset($_SESSION['install_tables'])){ echo 'checked="checked"'; } elseif($_SESSION['install_tables']) { echo 'cheked="checked"'; } ?> />
+				<label for="install_tables" style="color: #666666;">Standard Installation</label>
 				<br />
-				<span style="font-size: 10px; color: #666666;">(Please note: May remove existing tables and data)</span></td>		
+				<span style="font-size: 10px; color: #666666;">(This will remove existing tables and data)</span>
 			</td>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<input type="radio" tabindex="13" name="install" id="install_demo" value="demo" <?php if(isset($_SESSION['install_demo']) && $_SESSION['install_demo']) { echo 'checked="checked"'; } ?> />
+				<label for="install_demo" style="color: #666666;">Demo Installation</label>
+				<br />
+				<span style="font-size: 10px; color: #666666;">(Test the system with sample data. This may be a slow process.)</span>
+			</td>
+			<td colspan="2">&nbsp;</td>
 		</tr>
 		<tr>
 			<td colspan="5"><h1>Administration Information</h1>Please enter your Administrator account details for Dart below...</td>
@@ -179,23 +192,23 @@ function change_os(type) {
 		<tr>
 			<td style="color: #666666;">Username:</td>
 			<td>
-				<input <?php echo field_error('admin_username');?> type="text" tabindex="14" name="admin_username" style="width: 98%;" value="<?php if(isset($_SESSION['admin_username'])) { echo $_SESSION['admin_username']; } else { echo 'admin'; } ?>" />
+				<input <?php echo field_error('admin_username');?> type="text" tabindex="15" name="admin_username" style="width: 98%;" value="<?php if(isset($_SESSION['admin_username'])) { echo $_SESSION['admin_username']; } else { echo 'admin'; } ?>" />
 			</td>
 			<td>&nbsp;</td>
 			<td style="color: #666666;">Password:</td>
 			<td>
-				<input <?php echo field_error('admin_password');?> type="password" tabindex="16" name="admin_password" style="width: 98%;"<?php if(isset($_SESSION['admin_password'])) { echo ' value = "'.$_SESSION['admin_password'].'"'; } ?> />
+				<input <?php echo field_error('admin_password');?> type="password" tabindex="17" name="admin_password" style="width: 98%;"<?php if(isset($_SESSION['admin_password'])) { echo ' value = "'.$_SESSION['admin_password'].'"'; } ?> />
 			</td>
 		</tr>
 		<tr>
 			<td style="color: #666666;">Email:</td>
 			<td>
-				<input <?php echo field_error('admin_email');?> type="text" tabindex="15" name="admin_email" style="width: 98%;"<?php if(isset($_SESSION['admin_email'])) { echo ' value = "'.$_SESSION['admin_email'].'"'; } ?> />
+				<input <?php echo field_error('admin_email');?> type="text" tabindex="16" name="admin_email" style="width: 98%;"<?php if(isset($_SESSION['admin_email'])) { echo ' value = "'.$_SESSION['admin_email'].'"'; } ?> />
 			</td>
 			<td>&nbsp;</td>
 			<td style="color: #666666;">Re-Password:</td>
 			<td>
-				<input <?php echo field_error('admin_repassword');?> type="password" tabindex="17" name="admin_repassword" style="width: 98%;"<?php if(isset($_SESSION['admin_repassword'])) { echo ' value = "'.$_SESSION['admin_repassword'].'"'; } ?> />
+				<input <?php echo field_error('admin_repassword');?> type="password" tabindex="18" name="admin_repassword" style="width: 98%;"<?php if(isset($_SESSION['admin_repassword'])) { echo ' value = "'.$_SESSION['admin_repassword'].'"'; } ?> />
 			</td>
 		</tr>
 		<!-- Start District Info -->
@@ -205,18 +218,18 @@ function change_os(type) {
 		<tr>
 			<td width="120" style="color: #666666;">District Name:</td>
 			<td width="230">
-				<input <?php echo field_error('district_name');?> type="text" tabindex="18" name="district_name" style="width: 98%;" value="<?php if(isset($_SESSION['district_name'])) { echo $_SESSION['district_name']; } ?>" />
+				<input <?php echo field_error('district_name');?> type="text" tabindex="19" name="district_name" style="width: 98%;" value="<?php if(isset($_SESSION['district_name'])) { echo $_SESSION['district_name']; } ?>" />
 			</td>
 			<td width="7">&nbsp;</td>
 			<td width="70" style="color: #666666;">Slogan:</td>
 			<td>
-				<input <?php echo field_error('district_slogan');?> type="text" tabindex="20" name="district_slogan" style="width: 98%;" value="<?php if(isset($_SESSION['district_slogan'])) { echo $_SESSION['district_slogan']; } ?>" />
+				<input <?php echo field_error('district_slogan');?> type="text" tabindex="21" name="district_slogan" style="width: 98%;" value="<?php if(isset($_SESSION['district_slogan'])) { echo $_SESSION['district_slogan']; } ?>" />
 			</td>
 		</tr>
 		<tr>
 			<td width="120" style="color: #666666;">Contact Email:</td>
 			<td width="230">
-				<input <?php echo field_error('district_contact');?> type="text" tabindex="19" name="district_contact" style="width: 98%;" value="<?php if(isset($_SESSION['district_contact'])) { echo $_SESSION['district_contact']; } ?>" />
+				<input <?php echo field_error('district_contact');?> type="text" tabindex="20" name="district_contact" style="width: 98%;" value="<?php if(isset($_SESSION['district_contact'])) { echo $_SESSION['district_contact']; } ?>" />
 			</td>
 			<td width="7">&nbsp;</td>
 			<td width="70" style="color: #666666;">&nbsp;</td>
