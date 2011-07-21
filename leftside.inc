@@ -29,8 +29,7 @@ $smarty->assign('showTranscriptOptions', $loggedInUser->isAuthorized(Privileges:
 // Search **********************************************************************
 //******************************************************************************
 
-$smarty->assign('showSearch', 
-        $loggedInUser->isAuthorized(Privileges::STUDENT_SEARCH_VIEW_EXPORT));
+$smarty->assign('showSearch', $loggedInUser->isAuthorized(Privileges::STUDENT_SEARCH_VIEW_EXPORT));
 
 //******************************************************************************
 // Dashboard *******************************************************************
@@ -47,7 +46,7 @@ $smarty->assign('showDashboard', $loggedInUser->isAuthorized(Privileges::DASHBOA
 $groupAuth = $loggedInUser->isAuthorized(Privileges::GROUPS);
 $smarty->assign('showMyGroups', $groupAuth);
 if ($groupAuth) {
-$smarty->assign('myGroups', getMyList($currentUserID));
+    $smarty->assign('myGroups', getMyList($currentUserID));
 
 //			$leftside .= "<br>
 //			<font color=\"#0066ff\"><b>My Groups</b></font><br>" .
@@ -59,12 +58,12 @@ $smarty->assign('myGroups', getMyList($currentUserID));
 //*****************************************************************************
 
 $groupSiteAuth =
-$loggedInUser->isAuthorized(Privileges::SITE_SHARED_GROUPS_VIEW);
+        $loggedInUser->isAuthorized(Privileges::SITE_SHARED_GROUPS_VIEW);
 
 $smarty->assign('showSharedGroups', $groupAuth);
 $smarty->assign('currentMySite', $currentMySite);
 if ($groupAuth) {
-$smarty->assign('sharedGroups', getMyList($currentUserID, $currentMySite));
+    $smarty->assign('sharedGroups', getMyList($currentUserID, $currentMySite));
 //			$leftside .= "<br><font color=\"#0066ff\"><b>Shared Groups<br>$currentMySite</b></font><br>"
 //    . showMyList($currentUserID, '<img src="images/10_h.gif" alt="" height="2" width="10" border="0">','<font color="#0066ff"><br>', $currentMySite);
 }
@@ -77,7 +76,7 @@ $sharedList = getSharedList($currentUserID);
 //$sharedList = showSharedList($currentUserID, '<img src="images/10_h.gif" alt="" height="2" width="10" border="0">','<font color="#0066ff"><br>');
 //if($sharedList <> "") {
 if (count($sharedList) > 0) {
-$smarty->assign('privateSharedGroups', $sharedList);
+    $smarty->assign('privateSharedGroups', $sharedList);
 //$leftside .= "<br><font color=\"#0066ff\"><b>Private Shared List</b></font><br>$sharedList";
 }
 
@@ -86,8 +85,7 @@ $smarty->assign('privateSharedGroups', $sharedList);
 // Manage Groups  **************************************************************
 //******************************************************************************
 
-$smarty->assign('showManageGroups',
- $loggedInUser->isAuthorized(Privileges::GROUPS));
+$smarty->assign('showManageGroups', $loggedInUser->isAuthorized(Privileges::GROUPS));
 //if (PDisplay(A11)) {
 //    $leftside .= "<br><font color=\"#0066ff\"><b>Manage Groups</b></font><br>
 //			<img src=\"images/10_h.gif\" alt=\"\" height=\"2\" width=\"10\" border=\"0\"><a href=\"index.php?cmd=newlist\">New Group</a><br>
@@ -103,15 +101,13 @@ $smarty->assign('showReports', PDisplay(A26 + A24));
 // Official Report *************************************************************
 //******************************************************************************
 
-$smarty->assign('showOfficialReport',
- $loggedInUser->isAuthorized(Privileges::REPORT_CARD));
+$smarty->assign('showOfficialReport', $loggedInUser->isAuthorized(Privileges::REPORT_CARD));
 
 //******************************************************************************
 // Drill Down ******************************************************************
 //******************************************************************************
 
-$smarty->assign('showDrillDown',
- $loggedInUser->isAuthorized(Privileges::PIVOT_TABLE_DATA_VIEW));
+$smarty->assign('showDrillDown', $loggedInUser->isAuthorized(Privileges::PIVOT_TABLE_DATA_VIEW));
 
 //******************************************************************************
 // Admin Area ******************************************************************
@@ -125,8 +121,7 @@ $smarty->assign('showAdminArea', PDisplay(A30 + A29));
 // Users ***********************************************************************
 //******************************************************************************
 
-$smarty->assign('showUsers', 
-        $loggedInUser->isAuthorized(Privileges::USER_ACCESS_SETTINGS));
+$smarty->assign('showUsers', $loggedInUser->isAuthorized(Privileges::USER_ACCESS_SETTINGS));
 //if (PDisplay(A30)) {
 //    $leftside .= "<img src=\"images/10_h.gif\" alt=\"\" height=\"2\" width=\"10\" border=\"0\"><a href=\"index.php?cmd=userAdmin&site=$currentMySite&status=Active\">Users $currentMySite</a><br>";
 //    $leftside .= "<img src=\"images/10_h.gif\" alt=\"\" height=\"2\" width=\"10\" border=\"0\"><a href=\"index.php?cmd=InternalError\">Internal Error</a><br>";
@@ -135,69 +130,64 @@ $smarty->assign('showUsers',
 // Red Button, Grd, Test *******************************************************
 //******************************************************************************
 //if (PrivilegeB(B10) != 'none')
-if($loggedInUser->isAuthorized(Privileges::BIG_RED_BUTTON))
-$smarty->assign('showRedButton_Grd_Test', 1);
-else
-$smarty->assign('showRedButton_Grd_Test', 0);
+if ($loggedInUser->isAuthorized(Privileges::BIG_RED_BUTTON)) {
+    $smarty->assign('showRedButton_Grd_Test', 1);
+    $smarty->assign('showSiteManagement',1);
+}
+else{
+    $smarty->assign('showRedButton_Grd_Test', 0);
+    $smarty->assign('showSiteManagement', 0);
+}
 
 //******************************************************************************
 // Edit Standards **************************************************************
 //******************************************************************************
 //if (PrivilegeB(B11) != 'none') {
-if($loggedInUser->isAuthorized(Privileges::STANDARD_INFORMATION_EDIT))
-$smarty->assign('showEditStandards', 1);
+if ($loggedInUser->isAuthorized(Privileges::STANDARD_INFORMATION_EDIT))
+    $smarty->assign('showEditStandards', 1);
 
 //******************************************************************************
 // Edit School Calendar ********************************************************
 //******************************************************************************
 
-$smarty->assign('showEditSchoolCal',
- $loggedInUser->isAuthorized(Privileges::SCHOOL_CALENDAR));
+$smarty->assign('showEditSchoolCal', $loggedInUser->isAuthorized(Privileges::SCHOOL_CALENDAR));
 $smarty->assign('currentYear', $CurrentYear);
 
 //******************************************************************************
 // Progress ********************************************************************
 //******************************************************************************
 
-$smarty->assign('showProgress',
- $loggedInUser->isAuthorized(Privileges::PROMOTE_STUDENTS));
+$smarty->assign('showProgress', $loggedInUser->isAuthorized(Privileges::PROMOTE_STUDENTS));
 
 //******************************************************************************
 // History *********************************************************************
 //******************************************************************************
 
-$smarty->assign('showHistory',
- $loggedInUser->isAuthorized(Privileges::HISTORY_VIEW));
+$smarty->assign('showHistory', $loggedInUser->isAuthorized(Privileges::HISTORY_VIEW));
 
 //******************************************************************************
 // Mass Import *****************************************************************
 //******************************************************************************
 
-$smarty->assign('showMassImport',
- $loggedInUser->isScopeAuthorized(Privileges::STUDENT_INFO_EDIT, 
-         PScopeType::DISTRICT));
+$smarty->assign('showMassImport', $loggedInUser->isScopeAuthorized(Privileges::STUDENT_INFO_EDIT, PScopeType::DISTRICT));
 
 //******************************************************************************
 // Mass Import *****************************************************************
 //******************************************************************************
 
-$smarty->assign('showEditNotes', 
-        $loggedInUser->isAuthorized(Privileges::SITE_NOTES_EDIT));
+$smarty->assign('showEditNotes', $loggedInUser->isAuthorized(Privileges::SITE_NOTES_EDIT));
 
 //******************************************************************************
 // Edit Report Notes ***********************************************************
 //******************************************************************************
 
-$smarty->assign('showEditReportNotes', 
-        $loggedInUser->isAuthorized(Privileges::REPORT_CARD_NOTES));
+$smarty->assign('showEditReportNotes', $loggedInUser->isAuthorized(Privileges::REPORT_CARD_NOTES));
 
 $smarty->assign('showStudentManagement', 1);
 
 //******************************************************************************
 // Module Links ****************************************************************
 //******************************************************************************
-
-
 //******************************************************************************
 // SIP
 //******************************************************************************
@@ -206,17 +196,19 @@ $smarty->assign('showSIP', $loggedInUser->isAuthorized(Privileges::SIP_VIEW));
 //******************************************************************************
 // SFA
 //******************************************************************************
-$smarty->assign('showSFA',$loggedInUser->isAuthorized(Privileges::SFA_VIEW));
+$smarty->assign('showSFA', $loggedInUser->isAuthorized(Privileges::SFA_VIEW));
 
 //******************************************************************************
 // SPED
 //******************************************************************************
-$smarty->assign('showSPED',$loggedInUser->isAuthorized(Privileges::SPED));
+$smarty->assign('showSPED', $loggedInUser->isAuthorized(Privileges::SPED));
 
 //******************************************************************************
 // Testing
 //******************************************************************************
-$smarty->assign('showTesting',$loggedInUser->isAuthorized(Privileges::TESTING_MODULE_VIEW));
+$smarty->assign('showTesting', $loggedInUser->isAuthorized(Privileges::TESTING_MODULE_VIEW));
+
+$smarty->assign('showEditSchools', $loggedInUser->isAuthorized(Privileges::USER_ACCESS_SETTINGS));
 
 //$smarty->assign('moduleLinks', $moduleleft);
 //echo ($leftside . "<br>" . $moduleleft);

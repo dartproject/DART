@@ -38,29 +38,7 @@
 
             </div>
         </div>
-
     </li>
-
-
-
-    {* {$noGroups=$showMyGroups + $showSharedGroups + $privateSharedGroups } *}
-
-    {*{$noGroups=0}
-    {if isset($showSharedGroups)}
-    {$noGroups=$noGroups+1}
-    {/if}
-
-    {if isset($showMyGroups)}
-    {$noGroups=$noGroups+1}
-    {/if}
-
-    {if isset($privateSharedGroups|default)}
-    {$noGroups=$noGroups+1}
-    {/if}
-
-    {if $noGroups==0 & !$showManageGroups}
-    {$noGroups=1}
-    {/if}*}
     <li><a href="#" class="drop">Groups</a>
         <div class="dropdown_3columns">
 
@@ -337,6 +315,16 @@
                             <li>
                                 <a href="index.php?cmd=editgs">
                                     Grades
+                                </a>
+                            </li>
+                        {/if}
+                        {**************************************************************
+                         Site management
+                        **************************************************************}
+                        {if $showEditSchools}
+                            <li>
+                                <a href="index.php?cmd=sitesView">
+                                    District Schools
                                 </a>
                             </li>
                         {/if}

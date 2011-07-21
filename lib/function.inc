@@ -1902,13 +1902,15 @@ function saveRepNotes($site, $notes) {
     $db->get_results($sql);
 }
 
-function getSites($priv="none", $admin=true) {
+function getSites($priv="none", $admin=true, $siteid="") {
     global $db, $currentMySite;
 
     $results = "";
     if ($priv != 'none') {
         $where = $priv == 'site' ? " and siteid = '$currentMySite' " : "";
         $where .= $admin ? "" : " and name != 'Admin' ";
+        if($siteid<>"")
+            $where .= " and siteid='$siteid' ";
         $sql = "SELECT * FROM site where 1 $where order by site.order ASC";
         debugPrint($sql);
         $results = $db->get_results($sql, ARRAY_A);
