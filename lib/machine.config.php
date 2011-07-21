@@ -22,6 +22,7 @@ $dbhose = $config['DB_HOST'];
 // District information
 $districtName = $config['DISTRICT_NAME'];
 $districtPhrase = $config['DISTRICT_PHRASE'];
+$logo = $config['DISTRICT_LOGO'];
 
 // pdftk
 $pdftk = $config['PDFTK_PATH'];
