@@ -15,6 +15,7 @@ require_once("ReportPrivileges.php");
 
 
 $smarty->assign('imageURL', $imageURL);
+$smarty->assign('logo', $logo);
 $smarty->assign('districtName', $districtName);
 $smarty->assign('districtPhrase', $districtPhrase);
 

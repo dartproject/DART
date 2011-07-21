@@ -360,7 +360,6 @@
                         <tr>
                             <td colspan="3"><br>
                                 <a name="testing"></a><font size="4">{$student.fname|cat:' '|cat:$student.lname} - Testing Summary - </font><font size="2"><a href="(EmptyReference!)">Detailed Testing Data</a></font><font size="4"> </font><br>
-														$pulldown
                                 <br>
                                 <br>
                                 <table width="100%" border="0" cellspacing="2" cellpadding="0">

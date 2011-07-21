@@ -11,6 +11,8 @@
 if (isset($_GET['msg']))
     $smarty->assign('msg', $_GET['msg']);
 $smarty->assign('imageURL', $imageURL);
+$smarty->assign('logo', $logo);
+$smarty->assign('districtName', $districtName);
 
 $smarty->display('logon.tpl');
 ?>

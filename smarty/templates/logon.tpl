@@ -36,8 +36,8 @@
                                                             <tr>
                                                                 <td bgcolor="white" width="100%">
                                                                     <div align="center">
-                                                                        <font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">Delta School District</font><br>
-                                                                        <img src="{$imageURL}delta_logo.gif" alt="Delta Logo"><br>
+                                                                        <font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">{$districtName}</font><br>
+                                                                        <img src="{$imageURL}{$logo}" alt="Logo"><br>
                                                                         <font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular">DART: Data Analysis &amp; Reporting Toolkit</font>
                                                                     </div>
                                                                 </td>
@@ -74,9 +74,6 @@
                                                                                         <a href=index.php?cmd=forget>Forget your password?</a></font>
                                                                                 </div>
                                                                             </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td colspan="2">Optional Demo credentials: <br/>Username: demo Password: demo</td>
                                                                         </tr>
                                                                     </table>
                                                                 </td>
