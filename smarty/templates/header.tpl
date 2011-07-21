@@ -4,10 +4,10 @@
     </div>
     <div style="display:inline;height:auto; vertical-align: middle">
         <div style="font-size: 20pt; color:white;">
-            Delta School District
+            {$districtName}
         </div>
         <div style="color:white;">
-            Inspired Learning
+            {$districtPhrase}
         </div>
     </div>
 </div>
