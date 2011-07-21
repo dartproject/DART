@@ -291,6 +291,7 @@ MODULES[] = testing
 ;*******************************************************************************
 DISTRICT_NAME = "$district_name"
 DISTRICT_PHRASE = "$district_slogan"
+DISTRICT_LOGO = logo.gif
 
 CONTACT_EMAIL = $district_contact
 ;*******************************************************************************
@@ -347,37 +348,31 @@ if(!mysql_select_db($database_name, $db)) {
 	set_error('Database name incorrect. MySQL Error:<br />'.mysql_error());
 }
 
-$queries = array();
-if($install_tables) {
-	
-	$filename = "core.sql";
-	$fp = fopen($filename, 'r');
-	if($fp) {
-		$queries = fread($fp, filesize($filename));
-		$queries = explode(";\n",$queries);
-	
-		$hasher = new PasswordHash(8, FALSE);
-		$hash = $hasher->HashPassword($admin_password);
-	
-		$queries[] = "INSERT INTO `user` set user='$admin_username', pwd='$hash', privilegeA='1073741822', privilegeB='1073741822', scopeA='1073741822', scopeB='1073741822', name='Administrator', status='Active', email='$admin_email', site='Admin', type='Administrator', homeroom='X', reading='X'";
-	} else {
-		set_error('Error loading file core.sql');
-	}
-	
-} else if($install_demo) {
+if($install_demo) {
 	$filename = "sample.sql";
-	$fp = @fopen($filename, 'r');
-	if($fp) {
-		$queries = fread($fp, filesize($filename));
-		$queries = explode(";\n",$queries);
-	} else {
-		set_error('Sample database not found, please download the file from --- and save it in '.dirname(__FILE__));
-	}
+} else if($install_tables) {
+	$filename = "core.sql";
 }
-
-// Install database
-foreach ($queries as $q) {
-	mysql_query($q);
+$fp = @fopen($filename, 'r');
+if($fp) {
+	$query = "";
+	$size = 1000000;
+	while (!feof($fp)) {
+		$line = stream_get_line($fp, $size, ";\n");
+		if(strlen($line) < $size) {
+			mysql_query($query.$line);
+			$query = "";
+		} else {
+			$query .= $line;
+		}
+	} 
+	$hasher = new PasswordHash(8, FALSE);
+	$hash = $hasher->HashPassword($admin_password);
+	
+	$query = "INSERT INTO `user` set user='$admin_username', pwd='$hash', privilegeA='1073741822', privilegeB='1073741822', scopeA='1073741822', scopeB='1073741822', name='Administrator', status='Active', email='$admin_email', site='Admin', type='Administrator', homeroom='X', reading='X'";
+	mysql_query($query);
+} else {
+	set_error("Error loading file $filename");
 }
 mysql_close();
 
