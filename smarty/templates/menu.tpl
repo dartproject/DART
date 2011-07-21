@@ -34,8 +34,6 @@
                             <img align="absmiddle" src="{$imageURL}/icons/pencil_16.png" alt="Log Out" />   Mail feedback</a>
                     </li>
                 </ul>
-
-
             </div>
         </div>
     </li>
@@ -122,6 +120,13 @@
                             </a>
                         </li>
                     {/if}
+
+                    <li>
+                        <a href="index.php?cmd=uploadInput">
+                            <img align="absmiddle" src="{$imageURL}/icons/table_import_32.png" alt="" />
+                            Import data
+                        </a>
+                    </li>
                 </ul>
             </div>
 
@@ -161,10 +166,10 @@
                         *******************************************************************************}
                         {if $showOfficialReport}
                             <li>
-                                <a href="index.php?cmd=pivot">
+                               {* <a href="index.php?cmd=reportsInd">*}
                                     {*<img align="absmiddle" src="{$imageURL}/icons/document_copies_16.png" alt="" />*}
                                     Official
-                                </a>
+                               {* </a> *}
                             </li>
                         {/if}
                         {******************************************************************************
@@ -214,18 +219,9 @@
                                 Level Change
                             </a>
                         </li>
-                        <li>
-                            <a href="forms/elective_form.shtml">
-                                {*<img align="absmiddle" src="{$imageURL}/icons/vcard_edit_16.png" alt="" />*}
-                                Add Elective
-                            </a>
-                        </li>
                     </ul>
                 </div>
             {/if}
-
-
-
         </div>
     </li>
     {*******************************************************************************
@@ -264,10 +260,7 @@
                                 </a>
                             </li>
                         {/if}
-
                     </ul>
-
-
                 </div>
                 {*******************************************************************
                         Dictionaries
@@ -275,6 +268,19 @@
                 <div class="col_1">
                     <h3>Dictionaries</h3>
                     <ul>
+                        {if $showRedButton_Grd_Test}
+                            <li>
+                                <a href="index.php?cmd=createlevels">
+                                    Courses
+                                </a>
+                            </li>
+                            <li>
+                                <a href="forms/elective_form.shtml">
+                                    {*<img align="absmiddle" src="{$imageURL}/icons/vcard_edit_16.png" alt="" />*}
+                                    Electives
+                                </a>
+                            </li>
+                        {/if}
                         {**************************************************************
                         Grade Setup
                         **************************************************************}
@@ -296,14 +302,13 @@
                             </li>
                         {/if}
 
-
                         {**************************************************************
                         Test Levels
                         **************************************************************}
                         {if $showRedButton_Grd_Test}
                             <li>
                                 <a href="index.php?cmd=edittestlevel">
-                                    Test Levels
+                                    Grade Levels
                                 </a>
                             </li>
                         {/if}
@@ -314,7 +319,7 @@
                         {if $showRedButton_Grd_Test}
                             <li>
                                 <a href="index.php?cmd=editgs">
-                                    Grades
+                                    Grading Scales
                                 </a>
                             </li>
                         {/if}
@@ -362,14 +367,28 @@
                 {*******************************************************************
                         Other
                 *******************************************************************}
-                {*
-                <a href="index.php?cmd=InternalError">
-                <img align="absmiddle"
-                src="{$imageURL}/icons/bug_error_32.png" alt=""/>
-                Internal Error
-                </a>
+                <div class="col_1">
+                    <h3>Other</h3>
+                    <ul>
+                        {if $showRedButton_Grd_Test}
+                            <li>
+                                <a href="index.php?cmd=InternalError">
+                                    <img align="absmiddle"
+                                         src="{$imageURL}/icons/bug_16.png" alt=""/>
+                                    Internal Error
+                                </a>
+                            </li>
 
-                *}
+
+                            <li>
+                                <a href="index.php?cmd=bigRed">
+
+                                    Close current year
+                                </a>
+                            </li>
+                        {/if}   
+                    </ul>
+                </div>
             </div>
         </li>
     {/if}
