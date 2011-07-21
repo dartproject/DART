@@ -2,8 +2,9 @@
 
 include_once("lib/pdf_functions.php");
 
-$pdf_file = "exp/$currentUserID.pdf";
+$file_path = "exp/$currentUserID.pdf";
+$file_name = getValue($_GET, "file", $currentUserID);
 
-exportPDFFile($pdf_file);
+exportPDFFile($file_path, $file_name);
 
 ?>

@@ -9,7 +9,7 @@
 
 {block name="body"}
 <div align="center">
-    <form name=doreports method=post action="index.php?cmd=transcriptsProduce">
+    <form name=doreports method=post action="index.php?cmd=transcriptsProduce&listid={$listid}">
         <input type=hidden name=foo value=bar>
         <table width="100%" border="0" cellspacing="2" cellpadding="0">
             <tr>

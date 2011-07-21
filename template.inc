@@ -15,6 +15,8 @@ require_once("ReportPrivileges.php");
 
 
 $smarty->assign('imageURL', $imageURL);
+$smarty->assign('districtName', $districtName);
+$smarty->assign('districtPhrase', $districtPhrase);
 
 if (isset($_SESSION['currentStudentName']))
     $smarty->assign('currentStudentName', $_SESSION['currentStudentName']);

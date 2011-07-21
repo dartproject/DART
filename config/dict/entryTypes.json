@@ -1,42 +1,62 @@
 [
     {
         "id": 1,
-        "name": "Transfer from another district school"
+        "name": "Transfer from another district school",
+		"example" : "One of our other villages!",
+		"description" : "Transfer within District"
     },
     {
         "id": 2,
-        "name": "Transfer from a public school in a different school district in Alaska"
+        "name": "Transfer from a public school in a different school district in Alaska",
+		"example" : "Nome, NWABSD, Anchorage, Mt. Edgecumbe",
+		"description" : "Transfer within Alaska"
     },
     {
         "id": 3,
-        "name": "Transfer from a public school in a different state or country"
+        "name": "Transfer from a public school in a different state or country",
+		"example" : "Lower 48",
+		"description" : "Transfer another State or Country"
     },
     {
         "id": 4,
-        "name": "Transfer from home schooling"
+        "name": "Transfer from home schooling",
+		"example" : "Does not include students just kept home ;-)",
+		"description" : "Transfer from home schooling"
     },
     {
         "id": 5,
-        "name": "Transfer from private school"
+        "name": "Transfer from private school",
+		"example" : "Anchorage Christian, etc.",
+		"description" : "Transfer from private school"
     },
     {
         "id": 6,
-        "name": "Transfer from an institution with an educational program"
+        "name": "Transfer from an institution with an educational program",
+		"example" : "Anvil Mountain Youth Facility, Northstar, jail, etc.",
+		"description" : "Transfer from an institute w/Ed Prog"
     },
     {
         "id": 7,
-        "name": "Re-Entry after a volantary withdrawal from same school"
+        "name": "Re-Entry after a voluntary withdrawal from same school",
+		"example" : "Former drop out",
+		"description" : "RE-Entry voluntary WD same School"
     },
    {
         "id": 8,
-        "name": "Re-Entry after a explusion from same school"
+        "name": "Re-Entry after a explusion from same school",
+		"example" : "Expelled last year",
+		"description" : "Re-entry involuntary WD same school"
     },
     {
         "id": 9,
-        "name": "Student is new to school"
+        "name": "Student is new to school",
+		"example" : "New Kindergarten or pre-school students",
+		"description" : "Initial Entry (student new to school"
     },
     {
         "id": 10,
-        "name": "Student continusing from last year without break in attendance"
+        "name": "Student continuing from last year without break in attendance",
+		"example" : "Was still an active student on last day of last year!",
+		"description" : "Return Student Prior Year"
     }
 ]

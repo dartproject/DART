@@ -41,8 +41,7 @@ Last Modified: 9/12/2005
 
 
 function createFDF($file,$info){
-    echo "HELLO";
-    $data="%FDF-1.2\n%����\n1 0 obj\n<< \n/FDF << /Fields [ ";
+    $data="%FDF-1.2\n%âãÏÓ\n1 0 obj\n<< \n/FDF << /Fields [ ";
     foreach($info as $field => $val){
     	if(is_array($val)){
         	$data.='<</T('.$field.')/V[';
@@ -56,7 +55,6 @@ function createFDF($file,$info){
     $data.="] \n/F (".$file.") /ID [ <".md5(time()).">\n] >>".
         " \n>> \nendobj\ntrailer\n".
         "<<\n/Root 1 0 R \n\n>>\n%%EOF\n";
-    echo "HELLO";
     writeNewFile($file, $data);
     return $data;
 }
@@ -99,8 +97,9 @@ function createPDFFile ($template, $pdfFile, $fdfFile) {
   global $pdftk;
   
   $cmd = "$pdftk $template fill_form $fdfFile output $pdfFile flatten";
-//  echo "$cmd<br>";
-  passthru( $cmd);
+  //echo "<br/>$cmd<br/>";
+
+  passthru($cmd);
 }
 
 function mergePDFFile ($template, $pdfFile, $tmpfile) {
@@ -115,10 +114,10 @@ function mergePDFFile ($template, $pdfFile, $tmpfile) {
   passthru( $cmd);
 }
 
-function exportPDFFile($file) {
+function exportPDFFile($path, $name) {
 
   header( 'Content-type: application/pdf' );
-  header( 'Content-disposition: attachment; filename=test.pdf' ); // prompt to save to disk
-  readfile($file);
+  header( "Content-disposition: attachment; filename=$name" ); // prompt to save to disk
+  readfile($path);
 }
 ?>

@@ -17,8 +17,8 @@ $siteselect = $site != 'overall' ? "AE.SiteID='$site' AND" : "" ;
 $nextyear = $year+1;
 $dates = getDates($year, $quarter, $curdate);
 $titles = array(
-	"year" => "Year vew: $year - ".($year+1)." for Site: $site",
-	"quarter" => "Quarter vew: Q$quarter for Site: $site",
+	"year" => "Year view: $year - ".($year+1)." for Site: $site",
+	"quarter" => "Quarter view: Q$quarter for Site: $site",
 	"day" => "Day view: $currdatedisplay for Site: $site",
 	"absent" => "Absent Day view: $currdatedisplay for Site: $site",
 	"late" => "Late Day view: $currdatedisplay for Site: $site"

@@ -49,6 +49,9 @@ class DictType {
     CONST DISCIPLINE_DISABILITY  = "discipline_disability.json";
     CONST DISCIPLINE_IEP         = "discipline_iep.json";
     CONST DISCIPLINE_SERVICE     = "discipline_service.json";
+
+	//MOVEMENT Dictionaries
+    CONST MOVEMENT_ENTRY_TYPES    = "entryTypes.json";
 }
 
 ?>

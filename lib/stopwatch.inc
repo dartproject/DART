@@ -49,7 +49,7 @@ class stopwatch
     */
     function get_microtime()
     { 
-        list($secs, $micros) = split(" ", microtime()); 
+        list($secs, $micros) = explode(" ", microtime()); 
         $mt = $secs + $micros; 
         
         return $mt; 

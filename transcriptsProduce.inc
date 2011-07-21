@@ -19,11 +19,18 @@ $stopwatch = new stopwatch;
 $flag = false; // true is print ; false is hold it
 $transtype = 'notgpa';
 $fdf_file = "exp/$currentUserID.txt";
+$listid = getValue($_GET, "listid");
 $pdf_file = "exp/$currentUserID.pdf";
 $pdf_temp_file = "exp/$currentUserID" . "_temp.pdf";
 $test_file = "exp/test.pdf"; // initial file for setting everything up.
 $tmp_file = "exp/tmp.pdf";
 $template = "transcript.pdf";
+
+if($listid != NULL) {
+	$info = getListInfo($listid);
+	$file_name = $info["listname"];
+} else
+	$file_name = $currentUserID;
 
 unlink ($pdf_file);
 unlink ($pdf_temp_file);
@@ -112,7 +119,6 @@ $cttotal = count($names);
 
 echo "Total to produce: $cttotal<br>";
 foreach ($names as $stu) {
-    
 	$sid = $stu['studentid'];
 	$sidname = $stu['fname'] . " " . $stu['lname'];
 	$data['sname'] = $sidname;
@@ -135,7 +141,6 @@ foreach ($names as $stu) {
 	$grades = getGrades($sid, $start, $final);
 	$line = 1; $side = 1; $page = 1;
 	$year = '';
-        
 	foreach($grades as $g) {
 //		print_r($g);
 //		echo "<br>";
@@ -186,7 +191,7 @@ foreach ($names as $stu) {
 //		echo "$line-$side-$maxline) {$g['name']} - {$g['Q1']} - {$g['Q2']} - {$g['Q3']} - {$g['Q4']}<br><br>";
 		$line++;
 	}
-
+	
 	// Create the FDF file of data used to populate the template
 	createFDF($fdf_file, $data);
 	createPDFFile ($template, $pdf_temp_file, $fdf_file);
@@ -196,13 +201,12 @@ foreach ($names as $stu) {
 }
 // this will export the pdf file. Make sure that there is no text print out before this is called.
 
-echo "<br><br><a href='index.php?cmd=transcriptDL'>If Download Does Not Start Click Here</a> <br><br>
+echo "<br><br><a href='index.php?cmd=transcriptDL&file=$file_name'>If Download Does Not Start Click Here</a> <br><br>
 <a href='index.php?cmd=transcriptsDefine'>Go Back</a>";
 flush();
 
 function getSchools($id) {
 	global $db;
-	echo $id;
 	$sql = "SELECT SchoolYear, name FROM studentmovement, SchoolCalendar, site WHERE date >= StartDate and date <= EndDate and studentmovement.site=SchoolCalendar.SiteID and kind = 'enter' and studentid = '$id' and SchoolCalendar.siteID = site.siteid  ORDER BY date";
 	$results = $db->get_results($sql, ARRAY_A); 
 	foreach ($results as $m) {
@@ -251,7 +255,6 @@ function getGrades($sid, $lower=-2, $upper=13) {
 	}
 	
 	$sql = "SELECT sq.year as syear, sq.quarter as squarter, eq.year as eyear, eq.quarter as equarter, s.*, l.* FROM quarters as sq, quarters as eq,  studentlevel as s, level as l WHERE s.studentid in $sl and s.start >= sq.start and s.start <= sq.finish and  s.final >= eq.start and s.final <= eq.finish and final != '0000-00-00' and s.subject = l.subject and s.level = l.level ORDER BY studentid, syear ";
-//	echo $sql;
 	$results = $db->get_results($sql, ARRAY_A);
 	foreach($results as $row) {
 		populateEntry($data, $row);
@@ -260,14 +263,12 @@ function getGrades($sid, $lower=-2, $upper=13) {
 	$sql = "SELECT sq.year as syear, sq.quarter as squarter, '$CurrentYear' as eyear, '$CurrentQuarter' as equarter, s.*, l.* FROM quarters as sq, studentlevel as s, level as l  WHERE s.studentid in $sl and s.start >= sq.start and s.start <= sq.finish and final = '0000-00-00' and s.subject = l.subject and s.level = l.level  ORDER BY studentid, syear";
 //	echo $sql;
 	$results = $db->get_results($sql, ARRAY_A);
-	//print_r($results);
 	foreach($results as $row) {
 		populateEntry($data, $row);
 	}
 	
 	$schools = getSchools($sid);
 
-//	print_r($data);
 	$row ='';
 	foreach($data as $student) {
 		$studentid = $student['studentid'];
@@ -334,10 +335,10 @@ function populateEntry(&$data, $row) {
 }?>
 
 <script language="javascript">
-function StartDownload(){
-	window.location.href='index.php?cmd=transcriptDL';
+function StartDownload(file){
+	window.location.href='index.php?cmd=transcriptDL&file=' + file;
 	return;
 }
-StartDownload();
+StartDownload("<?php echo $file_name ?>");
 </script>
 

@@ -5,6 +5,11 @@
 //	 Web: http://wiki.bssd.org/index.php/DART_System
 // ==================================================================
 
+if(!file_exists('config/config.ini')) {
+	header("Location: install/index.php");
+	exit(0);
+}
+
 include_once("lib/YearQuarter.inc");
 
 if (isset($_GET['debug']))
@@ -125,7 +130,6 @@ if (checkLogon() == FALSE and $cmd != 'processLogon' and $cmd != 'getPwd' and $c
         }
     $cmd = 'logon';
 }
-//encryptPasswords();
 
 switch ($cmd) {
     case "districtrep":
