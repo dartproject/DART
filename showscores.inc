@@ -10,9 +10,7 @@ $listID = $_GET['p1'];
 $listinfo = getListInfo($listID);
 $listName = $listinfo['listname'];
 
-//TODO: WeightedList doesn't work right now, so grades is not needed 
-//$grades = getGradesList($listID); 
-$grades = array();
+$grades = getGradesList($listID); 
 
 $subjects = getCoreSubjects();
 $electives = getElectiveSubjects();
@@ -35,9 +33,6 @@ if (Privilege(A6) == 'district')
 else
 	$showEdit = 0;
 
-
-// This functionality was moved to WeightedList.php
-/*
 for ($y = 0; $y < count($list); $y++) {
 	$id = $list[$y]['studentid'];
 	foreach ($subjects as $s) {
@@ -89,7 +84,6 @@ for ($i = $start; $i <= $end; $i++) {
 	$weightedStd[$i]['class'] = "t$loc";
 	$weightedStd[$i]['span'] = $sid."-".$wlist[$i]['shortname'];
 }
-*/
 
 $smarty->assign('pageTitle',$title);
 $smarty->assign('att_am',$att_am);
