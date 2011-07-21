@@ -41,13 +41,19 @@ function setCheckboxes(the_form, do_check)
 
 function checkChecks () {
     var elts = document.forms['fieldsForm'].elements['studentID[]'];
-    var elts_cnt = elts.length;
-    //    alert ('length' + elts_cnt);
-    //    if(elts_cnt == 0) { return false; }
-    for (var i = 0; i < elts_cnt; i++) {
-        if(elts[i].checked == true) {
-            return true;
-        }
+	if(typeof(elts != 'undefined')) {
+		if(elts instanceof NodeList) { // Array
+    		var elts_cnt = elts.length;
+    		for (var i = 0; i < elts_cnt; i++) {
+        		if(elts[i].checked) {
+            		return true;
+				}
+			}
+        } else { // One element
+			if(elts.checked) {
+				return true;
+			}
+		}
     }
     alert ('There are no students checked.');
     return false;

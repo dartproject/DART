@@ -22,14 +22,22 @@ function setCheckboxes(the_form, do_check) {
 
 function checkChecks () {
 	var elts = document.forms['fieldsForm'].elements['studentID[]'];
-	var elts_cnt = elts.length;
-	for (var i = 0; i < elts_cnt; i++) {
-		if(elts[i].checked == true) {
-			return true;
+	if(typeof(elts != 'undefined')) {
+		if(elts instanceof NodeList) { // Array
+    		var elts_cnt = elts.length;
+    		for (var i = 0; i < elts_cnt; i++) {
+        		if(elts[i].checked) {
+            		return true;
+				}
+			}
+        } else { // One element
+			if(elts.checked) {
+				return true;
+			}
 		}
-	} 
-	alert ('There are no students checked.');
-	return false;
+    }
+    alert ('There are no students checked.');
+    return false;
 }
 
 function showCalendar() {
@@ -143,11 +151,33 @@ Ext.onReady(function() {
 		listeners: {
 			select: function(sm, record, index) {
 				var checkbox = document.forms['fieldsForm'].elements['studentID[]'];
-				checkbox[index].checked = true;
+				if(checkbox instanceof NodeList)
+					checkbox[index].checked = true;
+				else
+					checkbox.checked = true;
 			},
 			deselect: function(sm, record, index) {
 				var checkbox = document.forms['fieldsForm'].elements['studentID[]'];
-				checkbox[index].checked = false;
+				if(checkbox instanceof NodeList)
+					checkbox[index].checked = false;
+				else
+					checkbox.checked = false;
+			},
+			selectionchange: function(sm, records, options) { // When all records are selected or deselected at once, the previous events are not triggered
+				var checkbox = document.forms['fieldsForm'].elements['studentID[]'];
+				var new_value = false;
+				if(sm.store.data.length == records.length) { // All records selected
+					new_value = true;
+				} else if(records.length == 0) { // No records selected
+					new_value = false;
+				} else return;
+				if(checkbox instanceof NodeList) {
+					for(var i = 0; i < sm.store.data.length; i++) {
+						checkbox[i].checked = new_value;
+					}
+				} else {
+					checkbox.checked = new_value;
+				}
 			}
 		}
 	});
