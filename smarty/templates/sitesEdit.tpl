@@ -60,7 +60,7 @@
                         <td style="font-weight:bold">Logo:</td>
                         <td>
                             {if $site && $site.logo}
-                                <img width="200" height="200" alt="" src="{$imageURL}SchoolLogos/{$site.logo}" /><br/>
+                                <img alt="" src="{$imageURL}SchoolLogos/{$site.logo}" /><br/>
                             {/if}
                             <input type="file" name="file" id="file" /> Images should be 200px x 200px and not larger than 300kB
                         </td>

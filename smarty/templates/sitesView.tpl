@@ -56,7 +56,7 @@
                 <td style="border-bottom: 1px solid; border-top: 1px solid;">{$site.name}</td>
                 <td style="border-bottom: 1px solid; border-top: 1px solid;">{$site.siteid}</td>
                 <td style="border-bottom: 1px solid; border-right: 1px solid; border-top: 1px solid;">
-                    <img width="200" height="200" alt="" src="{$logoURL}{$site.logo}" />
+                    <img alt="" src="{$logoURL}{$site.logo}" />
                 </td>
             </tr>
             {/foreach}
