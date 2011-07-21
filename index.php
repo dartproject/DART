@@ -16,8 +16,8 @@ if (isset($_GET['debug']))
     $debugflag = $_GET['debug'];
 //  $debugflag="on";
 //For Chrome PHPConsole
-require_once('debugTools/PhpConsole.php');
-PhpConsole::start();
+//require_once('debugTools/PhpConsole.php');
+//PhpConsole::start();
 
 $currentUser = "";
 $currentUserID = "";
