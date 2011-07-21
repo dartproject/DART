@@ -247,7 +247,6 @@ function getTestScores($sid){
 function getGrades($sid, $lower=-2, $upper=13) {
 	global $db, $CurrentYear, $CurrentQuarter;
 	
-        
 	$sl = "('$sid')";
 	$sql = "SELECT * FROM testinglevel WHERE studentid in $sl ";
 	$results = $db->get_results($sql, ARRAY_A);

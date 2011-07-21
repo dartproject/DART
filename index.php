@@ -611,6 +611,18 @@ switch ($cmd) {
     case "showscoresEditInfo":
         include("showscoresEditInfo.inc");
         break;
+    case "sitesView":
+        include("sitesView.inc");    
+        break;
+    case "sitesEdit":
+        include("sitesEdit.inc");
+        break;
+    case "sitesDelete":
+        include("sitesDelete.inc");
+        break;
+    case "sitesUpdate":
+        include("sitesUpdate.inc");
+        break;
     case "saveDB":
         include("saveDB.inc");
         break;
