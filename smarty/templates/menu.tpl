@@ -268,7 +268,7 @@
                     <ul class="vert">
                         {if $showUsers}
                             <li>
-                                <a href="index.php?cmd=userAdmin&site=$currentMySite&status=Active">
+                                <a href="index.php?cmd=userAdmin&site={$currentMySite}&status=Active">
                                     <img align="absmiddle" src="{$imageURL}/icons/group_16.png" alt="" />
                                     Manage {$currentMySite}
                                 </a>
