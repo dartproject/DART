@@ -7,7 +7,7 @@ Create/Edit Subject<br>
 	<form action='' method=post>
 		<table>
 			<tr>
-				<td>ID: <input type=text name=id size=2></td>
+				<td>ID: <input type=text name=id size="2" maxlength="2" ></td>
 				<td>Name: <input type=text name=name></td>
 				<td>
 					<input type=submit name=button value=Create>
