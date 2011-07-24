@@ -92,13 +92,13 @@ INSERT INTO `AttendanceCodeGroups` (`CodeID`, `GroupID`) VALUES (0,4),(1,0),(2,1
 UNLOCK TABLES;
 
 --
--- Table structure for table `attendancecodes`
+-- Table structure for table `AttendanceCodes`
 --
 
-DROP TABLE IF EXISTS `attendancecodes`;
+DROP TABLE IF EXISTS `AttendanceCodes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `attendancecodes` (
+CREATE TABLE `AttendanceCodes` (
   `CodeID` int(11) NOT NULL default '0',
   `Code` varchar(5) NOT NULL default '',
   `Description` varchar(255) default NULL,
@@ -109,13 +109,13 @@ CREATE TABLE `attendancecodes` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `attendancecodes`
+-- Dumping data for table `AttendanceCodes`
 --
 
-LOCK TABLES `attendancecodes` WRITE;
-/*!40000 ALTER TABLE `attendancecodes` DISABLE KEYS */;
-INSERT INTO `attendancecodes` (`CodeID`, `Code`, `Description`, `Color`) VALUES (0,'P','Present',NULL),(1,'A','Absent','FF0000'),(2,'L','Late','FF0000'),(3,'E','Excused Tardy','FF0000'),(4,'T','Student Activity',NULL),(5,'H','Health Absence','FF0000'),(6,'X','Excused Absence','FF0000'),(7,'R','Subsistence Leave','FF0000'),(8,'W','Workstudy','FF0000'),(9,'S','Suspended','FF0000'),(10,'I','In-school Suspension','FF0000'),(11,'V','Vacation',''),(12,'--','No School Day','FF0000');
-/*!40000 ALTER TABLE `attendancecodes` ENABLE KEYS */;
+LOCK TABLES `AttendanceCodes` WRITE;
+/*!40000 ALTER TABLE `AttendanceCodes` DISABLE KEYS */;
+INSERT INTO `AttendanceCodes` (`CodeID`, `Code`, `Description`, `Color`) VALUES (0,'P','Present',NULL),(1,'A','Absent','FF0000'),(2,'L','Late','FF0000'),(3,'E','Excused Tardy','FF0000'),(4,'T','Student Activity',NULL),(5,'H','Health Absence','FF0000'),(6,'X','Excused Absence','FF0000'),(7,'R','Subsistence Leave','FF0000'),(8,'W','Workstudy','FF0000'),(9,'S','Suspended','FF0000'),(10,'I','In-school Suspension','FF0000'),(11,'V','Vacation',''),(12,'--','No School Day','FF0000');
+/*!40000 ALTER TABLE `AttendanceCodes` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -147,13 +147,13 @@ LOCK TABLES `attendanceevents` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `attendancegroups`
+-- Table structure for table `AttendanceGroups`
 --
 
-DROP TABLE IF EXISTS `attendancegroups`;
+DROP TABLE IF EXISTS `AttendanceGroups`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `attendancegroups` (
+CREATE TABLE `AttendanceGroups` (
   `GroupID` int(11) NOT NULL default '0',
   `Description` varchar(255) default NULL,
   PRIMARY KEY  (`GroupID`)
@@ -161,23 +161,23 @@ CREATE TABLE `attendancegroups` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `attendancegroups`
+-- Dumping data for table `AttendanceGroups`
 --
 
-LOCK TABLES `attendancegroups` WRITE;
-/*!40000 ALTER TABLE `attendancegroups` DISABLE KEYS */;
-INSERT INTO `attendancegroups` (`GroupID`, `Description`) VALUES (0,'Absent'),(1,'Late'),(2,'ISS'),(3,'Suspended'),(4,'Present');
-/*!40000 ALTER TABLE `attendancegroups` ENABLE KEYS */;
+LOCK TABLES `AttendanceGroups` WRITE;
+/*!40000 ALTER TABLE `AttendanceGroups` DISABLE KEYS */;
+INSERT INTO `AttendanceGroups` (`GroupID`, `Description`) VALUES (0,'Absent'),(1,'Late'),(2,'ISS'),(3,'Suspended'),(4,'Present');
+/*!40000 ALTER TABLE `AttendanceGroups` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `attendanceperiods`
+-- Table structure for table `AttendancePeriods`
 --
 
-DROP TABLE IF EXISTS `attendanceperiods`;
+DROP TABLE IF EXISTS `AttendancePeriods`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `attendanceperiods` (
+CREATE TABLE `AttendancePeriods` (
   `PeriodID` int(11) NOT NULL default '0',
   `Description` varchar(255) default NULL,
   PRIMARY KEY  (`PeriodID`)
@@ -185,13 +185,13 @@ CREATE TABLE `attendanceperiods` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `attendanceperiods`
+-- Dumping data for table `AttendancePeriods`
 --
 
-LOCK TABLES `attendanceperiods` WRITE;
-/*!40000 ALTER TABLE `attendanceperiods` DISABLE KEYS */;
-INSERT INTO `attendanceperiods` (`PeriodID`, `Description`) VALUES (0,'AM'),(1,'PM');
-/*!40000 ALTER TABLE `attendanceperiods` ENABLE KEYS */;
+LOCK TABLES `AttendancePeriods` WRITE;
+/*!40000 ALTER TABLE `AttendancePeriods` DISABLE KEYS */;
+INSERT INTO `AttendancePeriods` (`PeriodID`, `Description`) VALUES (0,'AM'),(1,'PM');
+/*!40000 ALTER TABLE `AttendancePeriods` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1179,13 +1179,13 @@ LOCK TABLES `reportlist` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `schooleventcodegroups`
+-- Table structure for table `SchoolEventCodeGroups`
 --
 
-DROP TABLE IF EXISTS `schooleventcodegroups`;
+DROP TABLE IF EXISTS `SchoolEventCodeGroups`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `schooleventcodegroups` (
+CREATE TABLE `SchoolEventCodeGroups` (
   `CodeID` int(11) NOT NULL default '0',
   `GroupID` int(11) NOT NULL default '0',
   PRIMARY KEY  (`CodeID`,`GroupID`)
@@ -1193,23 +1193,23 @@ CREATE TABLE `schooleventcodegroups` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `schooleventcodegroups`
+-- Dumping data for table `SchoolEventCodeGroups`
 --
 
-LOCK TABLES `schooleventcodegroups` WRITE;
-/*!40000 ALTER TABLE `schooleventcodegroups` DISABLE KEYS */;
-INSERT INTO `schooleventcodegroups` (`CodeID`, `GroupID`) VALUES (0,2),(0,3),(1,2),(1,3),(2,2),(2,3),(4,1),(4,3),(7,2),(7,3),(8,2),(8,3),(9,2),(9,3),(11,3);
-/*!40000 ALTER TABLE `schooleventcodegroups` ENABLE KEYS */;
+LOCK TABLES `SchoolEventCodeGroups` WRITE;
+/*!40000 ALTER TABLE `SchoolEventCodeGroups` DISABLE KEYS */;
+INSERT INTO `SchoolEventCodeGroups` (`CodeID`, `GroupID`) VALUES (0,2),(0,3),(1,2),(1,3),(2,2),(2,3),(4,1),(4,3),(7,2),(7,3),(8,2),(8,3),(9,2),(9,3),(11,3);
+/*!40000 ALTER TABLE `SchoolEventCodeGroups` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `schooleventcodes`
+-- Table structure for table `SchoolEventCodes`
 --
 
-DROP TABLE IF EXISTS `schooleventcodes`;
+DROP TABLE IF EXISTS `SchoolEventCodes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `schooleventcodes` (
+CREATE TABLE `SchoolEventCodes` (
   `CodeID` int(11) NOT NULL default '0',
   `Code` varchar(5) NOT NULL default '',
   `Description` varchar(255) default NULL,
@@ -1221,23 +1221,23 @@ CREATE TABLE `schooleventcodes` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `schooleventcodes`
+-- Dumping data for table `SchoolEventCodes`
 --
 
-LOCK TABLES `schooleventcodes` WRITE;
-/*!40000 ALTER TABLE `schooleventcodes` DISABLE KEYS */;
-INSERT INTO `schooleventcodes` (`CodeID`, `Code`, `Description`, `IsRequired`, `Color`) VALUES (0,'--','Regular School Day',1,NULL),(1,'C','School Closes',1,'ffb6c1'),(2,'E','End of Quarter',0,NULL),(3,'H','Legal Holiday',0,'7fff00'),(4,'I','Inservice Day',1,'00ff7f'),(5,'M','Meeting',1,NULL),(6,'N','Not Meeting',1,'ff8c00'),(7,'O','School Opens',1,'ffb6c1'),(8,'S','Saturday School',1,'d2b48c'),(9,'T','Testing',0,'00bfff'),(10,'V','Vacation Day',1,'7fff00'),(11,'W','Teacher Workday',0,'ffd700'),(12,'X','No School',0,'e7e7e7');
-/*!40000 ALTER TABLE `schooleventcodes` ENABLE KEYS */;
+LOCK TABLES `SchoolEventCodes` WRITE;
+/*!40000 ALTER TABLE `SchoolEventCodes` DISABLE KEYS */;
+INSERT INTO `SchoolEventCodes` (`CodeID`, `Code`, `Description`, `IsRequired`, `Color`) VALUES (0,'--','Regular School Day',1,NULL),(1,'C','School Closes',1,'ffb6c1'),(2,'E','End of Quarter',0,NULL),(3,'H','Legal Holiday',0,'7fff00'),(4,'I','Inservice Day',1,'00ff7f'),(5,'M','Meeting',1,NULL),(6,'N','Not Meeting',1,'ff8c00'),(7,'O','School Opens',1,'ffb6c1'),(8,'S','Saturday School',1,'d2b48c'),(9,'T','Testing',0,'00bfff'),(10,'V','Vacation Day',1,'7fff00'),(11,'W','Teacher Workday',0,'ffd700'),(12,'X','No School',0,'e7e7e7');
+/*!40000 ALTER TABLE `SchoolEventCodes` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `schooleventgroups`
+-- Table structure for table `SchoolEventGroups`
 --
 
-DROP TABLE IF EXISTS `schooleventgroups`;
+DROP TABLE IF EXISTS `SchoolEventGroups`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `schooleventgroups` (
+CREATE TABLE `SchoolEventGroups` (
   `GroupID` int(11) NOT NULL auto_increment,
   `Description` varchar(255) default NULL,
   PRIMARY KEY  (`GroupID`)
@@ -1245,23 +1245,23 @@ CREATE TABLE `schooleventgroups` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `schooleventgroups`
+-- Dumping data for table `SchoolEventGroups`
 --
 
-LOCK TABLES `schooleventgroups` WRITE;
-/*!40000 ALTER TABLE `schooleventgroups` DISABLE KEYS */;
-INSERT INTO `schooleventgroups` (`GroupID`, `Description`) VALUES (1,'Inservice'),(2,'Student'),(3,'Teacher');
-/*!40000 ALTER TABLE `schooleventgroups` ENABLE KEYS */;
+LOCK TABLES `SchoolEventGroups` WRITE;
+/*!40000 ALTER TABLE `SchoolEventGroups` DISABLE KEYS */;
+INSERT INTO `SchoolEventGroups` (`GroupID`, `Description`) VALUES (1,'Inservice'),(2,'Student'),(3,'Teacher');
+/*!40000 ALTER TABLE `SchoolEventGroups` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `schoolevents`
+-- Table structure for table `SchoolEvents`
 --
 
-DROP TABLE IF EXISTS `schoolevents`;
+DROP TABLE IF EXISTS `SchoolEvents`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `schoolevents` (
+CREATE TABLE `SchoolEvents` (
   `CalendarID` int(11) NOT NULL default '0',
   `Date` date NOT NULL default '0000-00-00',
   `CodeID` int(11) default NULL,
@@ -1270,12 +1270,12 @@ CREATE TABLE `schoolevents` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `schoolevents`
+-- Dumping data for table `SchoolEvents`
 --
 
-LOCK TABLES `schoolevents` WRITE;
-/*!40000 ALTER TABLE `schoolevents` DISABLE KEYS */;
-/*!40000 ALTER TABLE `schoolevents` ENABLE KEYS */;
+LOCK TABLES `SchoolEvents` WRITE;
+/*!40000 ALTER TABLE `SchoolEvents` DISABLE KEYS */;
+/*!40000 ALTER TABLE `SchoolEvents` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
