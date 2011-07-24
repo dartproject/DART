@@ -32,8 +32,8 @@ $loggedInUser = null;
 
 session_start();
 
-error_reporting(1);
-error_reporting(E_ALL);
+error_reporting(0);
+error_reporting(E_ERROR);
 
 include_once ("lib/machine.config.php");
 include_once ("lib/config.inc");
