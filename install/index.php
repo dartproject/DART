@@ -173,18 +173,18 @@ function change_os(type) {
 				<input type="radio" tabindex="12" name="install" id="install_tables" value="tables" <?php if(!isset($_SESSION['install_tables'])){ echo 'checked="checked"'; } elseif($_SESSION['install_tables']) { echo 'cheked="checked"'; } ?> />
 				<label for="install_tables" style="color: #666666;">Standard Installation</label>
 				<br />
-				<span style="font-size: 10px; color: #666666;">(This will remove existing tables and data)</span>
+				<span style="font-size: 10px; color: #666666;">This will remove existing tables and data</span>
 			</td>
 			<td colspan="2">&nbsp;</td>
 		</tr>
 		<tr>
-			<td colspan="3">
+			<td colspan="4">
 				<input type="radio" tabindex="13" name="install" id="install_demo" value="demo" <?php if(isset($_SESSION['install_demo']) && $_SESSION['install_demo']) { echo 'checked="checked"'; } ?> />
 				<label for="install_demo" style="color: #666666;">Demo Installation</label>
 				<br />
-				<span style="font-size: 10px; color: #666666;">(Test the system with sample data. This may be a slow process.)</span>
+				<span style="font-size: 10px; color: #666666;">First download the <b><a href="https://dartdemo2.bssd.org/downloads/sample.sql">sample data</a></b> and save it in <?php echo dirname(__FILE__); ?></span>
 			</td>
-			<td colspan="2">&nbsp;</td>
+			<!--<td colspan="2">&nbsp;</td>-->
 		</tr>
 		<tr>
 			<td colspan="5"><h1>Administration Information</h1>Please enter your Administrator account details for Dart below...</td>
