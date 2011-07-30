@@ -36,149 +36,104 @@ as well as feedback on how DART can be most easily be documented.
 To install the DART system:
 
 Requirements:
-- DART uses the SMARTY template system (download and install from www.smarty.net). You need to set the path to the SMARTY installation in lib/config.inc at the top of the file - require_once(PATH_TO_INSTALLATION/Smarty.class.php)
+-------------
+- DART uses Pdftk to create PDF files. You need to install Pdftk before using 
+DART (see http://www.pdflabs.com/docs/install-pdftk/)
 
-- Put all components in a directory that is assessible by a web browser running php/mysql. 
-- Then use the lib/dart_create.sql file to create a sql database. 
-- Set up the database access parameters and other machine specific information in the lib/machine.config.php file.
+- DART uses a MySql database, you need to provide the name of a existing 
+database and user, and the installer will create the tables
 
-----------------------
-REPLACING STUDENT DATA
-----------------------
-There are three (3) tables have all the student information in the system:
+Installation:
+-------------
+- Put all components in a directory that is assessible by a web browser running 
+php/mysql. 
 
-        student - core student information
-        studentlevel - current and pass level information
-        grades - individual toggle information
+- Create folders to use the SMARTY template system (Smarty (www.smarty.net) is 
+already included in the source folder). Follow these instructions in a command console:
+$> cd smarty
+$> mkdir templates_c
+$> mkdir cache
+$> mkdir configs
+# templates_c and cache have to be writtable by Apache. For instance, you can do:
+$> chown _www:_mysql templates_c
+$> chown _www:_mysql cache
+$> chmod 775 templates_c
+$> chmod 775 cache
+$> cd ..
 
-----------------------
-REPLACING USER INFORMATION
---------------------------
-There are also three (3) tables have all the users information in the system:
+- Give permissions to other special files and folders: 
+# exp and exp/tmp.pdf have to be writtable by Apache. For instance, you can do:
+$> chown _www:_mysql exp
+$> chown _www:_mysql exp/tmp.pdf
 
-        user - basic user information with logon and password
-        list - name of list that the user has created along with shared site
-        listitem - studentid, listid pair for creating a list of students
+- If you want to test the system with a sample database, you have to download it from 
+https://dartdemo2.bssd.org/downloads/sample.sql and save it in the install folder
 
---------------------------------------------
-INFORMATION FOR REPLACING BSSD STANDARDS
---------------------------------------------
+- Open the index file in a browser. Eg: http://localhost:8888/DART/index.php
 
-        subject - List of all the subjects that you are teaching with graduation level
-        standards - List of every standard with subject, level and std
-        level - List of all the levels that the system needs to know about
+- Follow the page instructions to install DART. This will create the tables in 
+the database and the config/config.ini file. This file can be later modified to 
+set up other configuration parameters, such as the installation path of Pdftk
 
-------------------------------------------------------------------
-GENERAL MODULES AND PAGES
-------------------------------------------------------------------
+Starting to use DART:
+--------------------
+A good order to set things up is:
 
-USER PERMISSIONS
------------
-        userAdmin - userAdmin.inc
-        userInfo - userInfo.inc
-        updateUser - updateUser.inc
-        permissions - permissions.inc
-        savePermissions - savePermissions.inc
+- Create School:
+  Admin > Dictionaries > District School (index.php?cmd=sitesEdit)
 
-NOTES
------
-        editNotes - editNotes.inc
-        saveNotes - saveNotes.inc
+- Add information to the start page of each shool: You can an Important, 
+Warning and Tip message to be displayed in the start page, for users where
+this privilege is granted (see "Set Privileges")
+  Admin > Notes > Site Notes (index.php?cmd=editNotes)
 
-GROUPS
-------
-        editlist - editlist.inc
-        deletelist - deleteList.inc
-        updateListName - updateListName.inc
-        updateListType - updateListType.inc
-        newlist - newList.inc
-        updatelist - updatelist.inc
-        handleGroup - handleGroup.inc
+- Create Grading System: You can skip this step if you wnat to use the existing 
+systems
+  Admin > Grading Scales (index.php?cmd=editgs)
 
-REPORTS
--------
-        pivot - pivot.inc
-        drilldown - drilldown.inc
-        reportsInd - reportsInd.inc
-        reports - reports.inc
-        pacingReport - pacingReport.inc
-        progressReport - progressReport.inc
-        sreport - sreport.inc
+- Assign Grading System:
+systems
+  Admin > Grading Scales > Edit Site Grades, select site and then click 
+"New Grade Schedule For Site" (index.php?cmd=editsite)
 
-SEARCH
--------
-        search - search.inc
-        searchResults - searchResults.inc
+- Create Courses (Subjects): You can create your own courses and/or use the
+existing ones.
+  Admin > Dictionaries > Courses > Create Subjects (index.php?cmd=createsubject)
 
-STUDENT INFO
-------------
-        showscores - showscores.inc = displays all students in group
+- Create Levels for each subject (you need to create levels for the existing
+subjects before you can enroll students)
+  Admin > Dictionaries > Courses (index.php?cmd=createlevels)
 
-        toggle - toggleSubjectLevel.inc = displays group on subject level (toggle)
-        saveToggle - saveToggle.inc
+- Create Standards for each subject and level (you need to create standards for the existing
+subjects before you can enroll students)
 
-        toggleStudent - toggleStudent.inc = displays student entire record (toggle)
-        saveStudentToggle - saveStudentToggle.inc
+  Admin > Dictionaries > Create, Delete and Rename (index.php?cmd=standardManipulation)
 
-        studentInfo - studentInfo.inc - individual student aux info (edit)
-        saveStudentInfo - saveStudentInfo.inc
-        upload - upload.inc - for pictures
+- Add Information to Standards: Select standard and add shortname, description 
+and link to curriculum
+  Admin > Dictionaries > Create, Standards (index.php?cmd=editStandards)
 
-        advEdit - advEdit - abilty to edit all information about a student. This is reserved for only the super of super users.
-        saveAdvEditStudentInfo - saveAdvEditStudentInfo.inc - saves the demographic information about a student.
-        saveLevels - saveLevels.inc - saves the student level information about the current student. What level they are currently at.
-        saveAdvToggle - saveAdvToggle.inc - saves the toggle information that has been changed for the current student.
+- Add Students & Add Student Information
+  Admin > Manage Admin, select site and then click New Student (index.php?cmd=userAdmin&status=Active)
 
-HISTORY
--------
-        history - history.inc
+- Enroll Students to Levels: You can do this right after adding a new student, or 
+later by choosing "Edit Student Information" from the drop-down menu at the top of
+any page
 
-HOME PAGE
----------
-        home,default - home.inc
+- Add Teachers and Administrators: You have to assign them to schools or districtwide
+  Admin > Manage Admin (index.php?cmd=userAdmin&site=Admin&status=Active)
+First select school, then click "New Teacher" or "New Admin". Right after 
+creating a new user, you need to set their privileges (they are created without 
+any privileges)
 
-------------------------------------------------------------------
-SUPPORT PAGES
-------------------------------------------------------------------
+- Set Privileges for users: You can set privileges (none, school-wide for 
+teachers or district-wide for wide staff/admins to see all schools) for each 
+functionality, or use the template profiles at the bottom of the page. 
+  Admin > Manage Admin (index.php?cmd=userAdmin&site=Admin&status=Active)
+First select school, then locate the user and click "Privileges"
 
-Pages For All Users
-===================
-        expired,logout - logout.inc
-        logon - logon.inc
-        forget - forget.inc
-        getPwd - getPwd.inc
-        processLogon - processLogon.inc
+- Search for and form groups: Groups are the center of how users interact with 
+the site. The documentation on BSSD's wiki site and the GitHub site has
+some nice basics on creating groups already posted.
+  Students > Search for Students (index.php?cmd=search)
 
-Pages For Super Admin
-========================
-        initialize - initialize.inc
-
-+++++++++++++++++++++++++++ TABLE DEFINITIONS +++++++++++++++++++++++++++
-
-grades - individual values for each standards toggle value for each student
-
-history - toggle and update history
-
-history2 - change log (standards, login, logout, etc.)
-
-level - all the possible levels for each area 
-
-standards - listing of every standard with that standards information
-
-student - each student in the system
-
-studentlevel - each area and level that the student has achieved or is working on
-
-subjects - each area and what the graduation value is for that level
-
-users - users of the syste along with their permissions
-
-list - a user or sites list information (name, site, userid)
-
-listitems - student/list pair of the students  on a particular list 
-
-site - information about each school site
-
-============== WARNINGS ===========
-
-1) Do not have levels with . or _ or -
