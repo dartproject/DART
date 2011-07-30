@@ -32,6 +32,8 @@ class DictType {
     CONST PARENT_WITH_STUDENT   = "parentwstudent.json";
     
     CONST QPIs                  = "qpi.json";
+    CONST ASE                   = "ase.json";
+    CONST PROGRESS              = "progress.json";
     
     //SEARCH Dictionaries
     CONST SEARCH_SUSPENSIONS    = "search_suspensions.json";

@@ -1,6 +1,7 @@
 {
-    "Acceptable"        : "Acceptable",
     "Disengaged"        : "Disengaged",
-    "Not Instructed"    : "Not Instructed",
-    "Deficient"         : "Deficient"
+    "Deficient"         : "Deficient",
+    "Acceptable"        : "Acceptable",
+    "Exemplary"         : "Exemplary",
+    "Not_Instructed"    : "Not Instructed"
 }

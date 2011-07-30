@@ -9,7 +9,9 @@
 
  */
 
-require_once('security/User.php');
+require_once ("security/User.php");
+require_once ("lib/dict/Dict.php");
+require_once ("lib/dict/DictType.php");
 
 
 define("GRADETHRESHHOLD", 80);
@@ -3110,27 +3112,36 @@ function getListTabs($listID) {
 }
 
 function getSummaryInfo() {
+	$options = array(
+		'qpi' => Dict::getDict(DictType::QPIs),
+		'ase' => Dict::getDict(DictType::ASE),
+		'prog' => Dict::getDict(DictType::PROGRESS)
+	);
+
+	//Add empty option to arrays
+	foreach($options as $k => $v) {
+		$keys = array_keys($v);
+		array_unshift($keys, "");
+		$values = array_values($v);
+		array_unshift($values, "");
+		$options[$k] = array_combine($keys, $values);
+	}
+
 	$summary = array(
 		"qpi" => array(
 			"description" => "Quarterly Performance Indicator",
 			"label" => "QPI",
-			"options" => array(
-				"", "Disengaged", "Deficient", "Acceptable", "Exemplary", "Not_Instructed"
-			)
+			"options" => $options['qpi']
 		),
 		"ase" => array(
 			"description" => "ASE",
 			"label" => "ASE",
-			"options" => array(
-				"", "Eligible", "Not_Eligible"
-			)
+			"options" => $options['ase']
 		),
 		"prog" => array(
 			"description" => "PROGRESS",
 			"label" => "Progress",
-			"options" => array(
-				"", "On Track!", "Not On Track"
-			)
+			"options" => $options['prog']
 		)
 	);
 	return $summary;
