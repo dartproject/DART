@@ -71,9 +71,9 @@
 				{foreach $summary as $sumID => $sum}
 					{$student_sum = $student.summary.{$sumID}}
 					<td>
-						<input type=hidden name=old_{$student_sum.name} value={$student_sum.value} /> <!-- This one should be missing for "prog"... @todo -->
+						<input type=hidden name=old_{$student_sum.name} value={$student_sum.value} />
 						<input type=hidden id=ch_{$student_sum.name} name=ch_{$student_sum.name} value=empty />
-						{html_options name="{$student_sum.name}" values=$sum.options output=$sum.options selected=$student_sum.value onChange="changeValue('{$student_sum.name}', this.value)"}
+						{html_options name="{$student_sum.name}" options=$sum.options selected=$student_sum.value onChange="changeValue('{$student_sum.name}', this.value)"}
 					</td>
 				{/foreach}
 			{/if}
@@ -88,7 +88,7 @@
 				<!-- Summary -->
 				<td align=center>&nbsp;{$student.summary.qpi.value}&nbsp;</td>
 				<td align=center>&nbsp;{$student.summary.ase.value}&nbsp;</td>
-				<!-- Nothing for "prog", @todo -->
+				<td align=center>&nbsp;{$student.summary.prog.value}&nbsp;</td>
 			{/if}
 		{/if}
 		{$start = $end+1}{$end = $end+$width}
