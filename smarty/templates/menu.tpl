@@ -166,10 +166,10 @@
                         *******************************************************************************}
                         {if $showOfficialReport}
                             <li>
-                               {* <a href="index.php?cmd=reportsInd">*}
-                                    {*<img align="absmiddle" src="{$imageURL}/icons/document_copies_16.png" alt="" />*}
-                                    Official
-                               {* </a> *}
+                                <a href="index.php?cmd=reportsInd">
+                                    <img align="absmiddle" src="{$imageURL}/icons/document_copies_16.png" alt="" />
+                                    Report Center
+                                </a> 
                             </li>
                         {/if}
                         {******************************************************************************
@@ -177,7 +177,7 @@
                         *******************************************************************************}
                         {if $showDrillDown}
                             <li>
-                                <a href="index.php?cmd=reportsInd">
+                                <a href="index.php?cmd=pivot">
                                     {*<img align="absmiddle" src="{$imageURL}/icons/vcard_edit_16.png" alt="" />*}
                                     Drill Down
                                 </a>
